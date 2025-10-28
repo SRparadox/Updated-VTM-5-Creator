@@ -10,6 +10,7 @@ export const getEmptyCharacter = (): Character => ({
     sire: "",
     clan: "",
     selectedBane: "",
+    selectedCompulsion: "",
     sect: "",
     religion: "",
     predatorType: { name: "", pickedDiscipline: "", pickedSpecialties: [], pickedMeritsAndFlaws: [] },
@@ -131,6 +132,7 @@ export const characterSchema = z.object({
     sire: z.string(),
     clan: clanNameSchema,
     selectedBane: z.string(),
+    selectedCompulsion: z.string(),
     sect: sectSchema, // SectPicker value
     religion: religionSchema,
     // clanDisciplines:

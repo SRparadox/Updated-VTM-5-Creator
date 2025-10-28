@@ -62,9 +62,9 @@ const ClanPicker = ({ character, setCharacter, nextStep }: ClanPickerProps) => {
         setModalClan(clan);
     };
 
-    const handleBaneSelect = (bane: string) => {
+    const handleBaneAndCompulsionSelect = (bane: string, compulsion: string) => {
         if (!pendingCharacter || !modalClan) return;
-        setCharacter({ ...pendingCharacter, selectedBane: bane });
+        setCharacter({ ...pendingCharacter, selectedBane: bane, selectedCompulsion: compulsion });
         ReactGA.event({ action: "clan clicked", category: "clans", label: modalClan });
         setModalClan(null);
         setPendingCharacter(null);
@@ -113,7 +113,7 @@ const ClanPicker = ({ character, setCharacter, nextStep }: ClanPickerProps) => {
             <ClanBaneModal
                 opened={!!modalClan}
                 clan={modalClan as ClanName}
-                onSelect={handleBaneSelect}
+                onSelect={handleBaneAndCompulsionSelect}
                 onClose={handleModalClose}
             />
             <div style={{ height: height - 250 }}>
