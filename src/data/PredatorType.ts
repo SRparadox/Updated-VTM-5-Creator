@@ -1067,6 +1067,174 @@ export const PredatorTypes: Record<PredatorTypeName, PredatorType> = {
         humanityChange: -1,
         bloodPotencyChange: 0,
     },
+    "Alû": {
+        name: "Alû",
+        summary: "The Alû was a faceless spirit of Sumer that would drape itself like a shadowy cloak over its victims, overwhelming them with paralyzing fear while it sapped their health. Whether the Lasombra inspired the myth, or the thing itself inspired them, is a moot point to you and your prey.",
+        specialtyOptions: [
+            { skill: "stealth", name: "Those Slumbering" },
+            { skill: "awareness", name: "Entry Points" }
+        ],
+        disciplineOptions: [{ name: "oblivion" }, { name: "obfuscate" }],
+        meritsAndFlaws: [
+            { name: "Alû", level: 2, summary: "Feeding Merit: Alû (••) - Even when a victim wakes, they're unable to act, as per your namesake." },
+            { name: "Asneisen", level: 1, summary: "Mythic Merit: Asneisen (•) - Your shadow is a thing as devious as you." }
+        ],
+        selectableMeritsAndFlaws: [],
+        humanityChange: -1,
+        bloodPotencyChange: 0,
+    },
+    "Broker": {
+        name: "Broker",
+        summary: "While others hunt in business and institutions that they \"own\", you've built something better: a reputation. You get things done: quietly, cleanly, effectively. You solve problems for Kindred who can't, won't, or don't dare to fix them themselves. In return? They pay in blood; access to their herds, feeding rights in their Domain, or a sampling of their favored vessel.",
+        specialtyOptions: [
+            { skill: "investigation", name: "Fuck Ups" },
+            { skill: "awareness", name: "Complications" }
+        ],
+        disciplineOptions: [{ name: "auspex" }, { name: "obfuscate" }],
+        meritsAndFlaws: [
+            { name: "Blood Broker", level: 1, summary: "Psychological Flaw: Blood Broker (•) - You treat the term blood money rather literally, and prefer it." }
+        ],
+        selectableMeritsAndFlaws: [
+            {
+                options: [
+                    { name: "Fame", summary: "Background: Fame", maxLevel: 5 },
+                    { name: "Status", summary: "Background: Status", maxLevel: 5 }
+                ],
+                totalPoints: 2
+            }
+        ],
+        humanityChange: 0,
+        bloodPotencyChange: 0,
+    },
+    "Caballero": {
+        name: "Caballero",
+        summary: "Though associated with chivalric connotations in Mortal society, amongst the Sabbat the Caballero is a hunter of their own kind. Unlike the Blood Leech, however, these Kindred are usually unconcerned with protecting humans, and instead hunt the Children of Caine who they perceive have broken laws or committed wrongs.",
+        specialtyOptions: [
+            { skill: "melee", name: "Heavy Weapons" },
+            { skill: "firearms", name: "Heavy Weapons" },
+            { skill: "streetwise", name: "Non-Mortals" }
+        ],
+        disciplineOptions: [{ name: "animalism" }, { name: "potence" }],
+        meritsAndFlaws: [
+            { name: "Haven", level: 1, summary: "Haven Merit: (•) - You have a small safehouse somewhere in a dark corner of the city." },
+            { name: "Hidden Armory", level: 1, summary: "Haven Addon: Hidden Armory (•) - You keep some weapons under your pillow." }
+        ],
+        selectableMeritsAndFlaws: [
+            {
+                options: [
+                    { name: "Self-Righteous", summary: "Psychological Merit: Self-Righteous (••) - You hold fast to a certain value, especially when they're wielded in the name of violence.", maxLevel: 2 },
+                    { name: "Aeneas", summary: "Psychological Merit: Aeneas (••) - to push your will past its limits.", maxLevel: 2 }
+                ],
+                totalPoints: 2
+            }
+        ],
+        humanityChange: -1,
+        bloodPotencyChange: 0,
+    },
+    "Confessor": {
+        name: "Confessor",
+        summary: "A once-common method among the Lasombra with deep roots in the Catholic Church. From the shadows of a confessional booth or behind the guise of the clergy, the Confessor draws in sinners seeking absolution. Through whispered guilt and murmured shame, a rapport is built.",
+        specialtyOptions: [
+            { skill: "academics", name: "Theology" },
+            { skill: "insight", name: "Assuage" }
+        ],
+        disciplineOptions: [{ name: "dominate" }, { name: "presence" }],
+        meritsAndFlaws: [
+            { name: "Religious Prohibition", level: 1, summary: "Psychological Flaw: Religious Prohibition (•) - Over-indulgeance is a poor way to win people's trust, and in life you were likely taught better." }
+        ],
+        selectableMeritsAndFlaws: [
+            {
+                options: [
+                    { name: "Tithed Bibitor", summary: "Background: Tithed Bibitor (••) - Vitae offered freely causes no bonding effects.", maxLevel: 2 },
+                    { name: "Pack Priest", summary: "Background: Pack Priest (••) - you're the spiritual anchor of a Pack that likely takes a few extra drinks during the Vaulderie and other ritae you officiate.", maxLevel: 2 }
+                ],
+                totalPoints: 2
+            }
+        ],
+        humanityChange: 0,
+        bloodPotencyChange: 0,
+    },
+    "Gamemaker": {
+        name: "Gamemaker",
+        summary: "A possible hold-over from the Sabbat (or simply a Ritae for those still in the Black Hand). The Gamemaker has a group (a pack) they organize hunts with, creating bestial hunts that require teamwork and cruelty, all to secure to a \"trophy vessel\".",
+        specialtyOptions: [
+            { skill: "awareness", name: "Victims" },
+            { skill: "leadership", name: "Cruelty" }
+        ],
+        disciplineOptions: [{ name: "potence" }, { name: "protean" }],
+        meritsAndFlaws: [
+            { name: "Pack Tactics", level: 2, summary: "Sabbat Background: Pack Tactics (••)." },
+            { name: "Cruel Slice", level: 1, summary: "Bestial Merit: Cruel Slice (•) - There's satisfaction in violence." }
+        ],
+        selectableMeritsAndFlaws: [],
+        humanityChange: -1,
+        bloodPotencyChange: 0,
+    },
+    "Hector": {
+        name: "Hector",
+        summary: "A form of feeding that was ostensibly practiced by Lasombra who claimed to be brave and noble, but were actually domineering and brutish. These Cainites feed on those that depend on them, and who they depend on. Ostensibly even claiming this as a form of testing others to see if they're strong enough to survive.",
+        specialtyOptions: [
+            { skill: "brawl", name: "Allies" },
+            { skill: "brawl", name: "Contacts" },
+            { skill: "brawl", name: "Retainers" },
+            { skill: "intimidation", name: "Allies" },
+            { skill: "intimidation", name: "Contacts" },
+            { skill: "intimidation", name: "Retainers" }
+        ],
+        disciplineOptions: [{ name: "dominate" }, { name: "potence" }],
+        meritsAndFlaws: [
+            { name: "Machiavellivore", level: 2, summary: "Feeding Merit: Machiavellivore (••) - You exploit those who are also your resources as food. If they suffer, they should be strong enough to overcome that suffering." }
+        ],
+        selectableMeritsAndFlaws: [
+            {
+                options: [
+                    { name: "Contacts", summary: "Background: Contacts", maxLevel: 5 },
+                    { name: "Retainer", summary: "Background: Retainer", maxLevel: 5 }
+                ],
+                totalPoints: 1
+            }
+        ],
+        humanityChange: -1,
+        bloodPotencyChange: 0,
+    },
+    "Piscator": {
+        name: "Piscator",
+        summary: "Once a simple form of hunting for sailors at sea. The centuries have slowly warped the Piscator into being a form of feeding that feeds through the use of abyssal powers. These nights it has become one of the primary methods of feeding amongst Abyss Mystics and other more occult-minded Kindred.",
+        specialtyOptions: [
+            { skill: "occult", name: "Sacrificial Rites" },
+            { skill: "occult", name: "Eldritch Powers" }
+        ],
+        disciplineOptions: [{ name: "oblivion" }],
+        meritsAndFlaws: [
+            { name: "Cyclical Offering", level: 1, summary: "Feeding Merit: Cyclical Offering (•) - The Abyss grants you some small favor of the dark." },
+            { name: "Inner-Void", level: 1, summary: "Mythic Flaw: Inner-Void (•) - Numbing darkness is soothing." }
+        ],
+        selectableMeritsAndFlaws: [
+            {
+                options: [
+                    { name: "Ceremonies of Oblivion", summary: "Ceremonies of Oblivion", maxLevel: 5 }
+                ],
+                totalPoints: 2
+            }
+        ],
+        humanityChange: 0,
+        bloodPotencyChange: 0,
+    },
+    "Teardown": {
+        name: "Teardown",
+        summary: "For you, feeding is a social tool to break the proud or the accomplished just as much as it is to slake your hunger. You target those with power—corporate climbers, gang lieutenants, petty lords, and self-styled sovereigns. You strip them of their illusions and confidence to ensure they know exactly where they belong: With their throat in your mouth.",
+        specialtyOptions: [
+            { skill: "insight", name: "Insecurities" },
+            { skill: "persuasion", name: "Belittle" }
+        ],
+        disciplineOptions: [{ name: "presence" }, { name: "oblivion" }],
+        meritsAndFlaws: [
+            { name: "Prey on the Proud", level: 1, summary: "Feeding Merit: Prey on the Proud (•) - The most confident are the best to feed on, their blood resonating in yours." }
+        ],
+        selectableMeritsAndFlaws: [],
+        humanityChange: 0,
+        bloodPotencyChange: 0,
+    },
     "": {
         name: "",
         summary: "",

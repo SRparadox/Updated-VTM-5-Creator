@@ -382,6 +382,10 @@ export const meritsAndFlaws: MeritsAndFlaws[] = [
             { name: "Tortured Artist", cost: [2], summary: "While under the effects of a Compulsion, add dice to any creative efforts equal to the largest Dice Penalty that Compulsion confers. Cannot suffer penalties from Compulsions to your creative dice pools." },
             { name: "Utterly Enthralled", cost: [2], summary: "A piece of art, a building, or another Kindred has a psychological grip on you. Spending a Scene in its presence restores a point of Willpower, if it is damaged you take a Stain, and its outright destruction warrants 2 Stains." },
             { name: "Creative Existentialist", cost: [3], summary: "You suffer no penalties to creating art due to being at Humanity 5 or lower." },
+            { name: "Aeneas", cost: [2,3], summary: "Your tenacity compounds upon itself when contested. When taking this Merit choose one of your Convictions. Whenever you roll your current Willpower, add a Bonus die to the roll if it's made in the name of one of your convictions. If taken at three dots, double this bonus." },
+            { name: "What Must Be Done", cost: [2], summary: "When another Kindred would take an action that you know would give them a Stain, you can choose to take that action in their place, gaining the Stains they would. Should one of your convictions guard against those Stains, they guard against an additional Stain." },
+            { name: "Self-Righteous", cost: [2], summary: "Choose one of your Convictions. When you Blood Surge a pool to attack a Storyteller Character in the name of that Conviction, add an additional die to the pool. However if that roll fails you gain a Stain. If it's a Bestial Failure you gain two Stains instead." },
+            { name: "Vindicated", cost: [2], summary: "Choose one of your Convictions. It shields against an additional Stain, however when it does, that Conviction cannot shield from anymore Stains until the end of the Story or you spend an extended period, usually most of a night, with the associated Touchstone. Whichever happens first." },
         ],
         flaws: [
             { name: "Beacon of Profanity", cost: [1], summary: "Mortals with any amount of True Faith can sense your presence, regardless of True Faith level." },
@@ -400,7 +404,10 @@ export const meritsAndFlaws: MeritsAndFlaws[] = [
                 { name: "Beast of Habit", cost: [1], summary: "Like Pavlov's dogs, whenever you find yourself in a situation that strongly reminds you of your modus predationis, the Beast begins to salivate deep within you. Immediately roll to resist a Hunger Frenzy at a Difficulty equal to your current Hunger." },
                 { name: "Fear of Letting Go", cost: [1], summary: "There is someone from your past life—dead or alive—that you simply cannot let go of, no matter what. You gain one Stain whenever you go to day-sleep without them—or their remains—by your side. If you lose them permanently, you immediately gain three Stains." },
                 { name: "Phantasmagoria", cost: [1], summary: "You are tormented by visions rooted in guilt over your past deeds, traumatic experiences, or bestowed upon you by a malevolent supernatural force. The daymares can range from vividly reliving your mortal birth, the very act of your Embrace, a looped memory of a lover dying by your hand, or visions of the impending Gehenna. Each night, you wake from day-sleep screaming and suffer one point of Superficial Willpower damage." },
-        ].filter(flaw => !(bargainFlaws as any[]).some(b => b.name === flaw.name)),
+             { name: "Failure Instinct", cost: [1], summary: "Your mind sometimes struggles to recover. Perhaps due to a particularly traumatic Embrace, or the simple fact that you can't regain forward momentum. When you fail a roll in the presence of another Kindred, you suffer a -1 die penalty to the next roll you make until the end of the Scene." },
+            { name: "Religious Prohibition", cost: [2], summary: "You do your best to refrain from feeding, fasting for as long as you can. You cannot do Quick Hunts unless at Hunger 3 or higher, and all other rolls made towards hunting while at Hunger 0 to 2 suffer a -2 die penalty." },
+            { name: "Blood Broker", cost: [1], summary: "You regard blood as the only true currency. Accepting payment in Boons or Backgrounds (such as Status or Resources) inflicts 1 point of Aggravated Willpower damage. If offered Vitae, you must take 1 point of Aggravated Willpower damage to refuse it. This does not necessarily indicate addiction beyond that of a typical vampire, it merely reflects your belief that blood is worth more than favors, titles, or wealth." },
+        ].filter(flaw => !bargainFlaws.some(b => b.name === flaw.name)),
     },
     {
         title: "✨ Supernatural",
@@ -421,6 +428,8 @@ export const meritsAndFlaws: MeritsAndFlaws[] = [
             { name: "Up All Night", cost: [2,4], summary: "Treat Humanity as one higher (max 10), or two dots higher if taken at four dots, when using Blush of Life, eating, drinking, or sexual intercourse." },
             { name: "Naamah", cost: [2], summary: "When you have a Stain or Humanity 5 or lower, suffer no penalties to seduction pools and automatically gain Beautiful. If you already have Beautiful, gain Stunning instead. While under the Looks effect, you can have sexual intercourse and may enjoy it. Nosferatu with this Merit add two dice to Obfuscate pools to resist supernatural detection instead of gaining Beautiful." },
             { name: "Unblemished Rose", cost: [1], summary: "While you have no damaged Health or Willpower, automatically gain Blush of Life and Beautiful. If you already have Beautiful, gain Stunning instead." },
+            { name: "Scotomizatic Contour", cost: [1,3], summary: "Your outlier physicality is strangely at odds with the divinations of others. Add half your positive ratings in your other Looks Merits (rounded up) to your pools to resist supernatural perceptions, such as Auspex. Nosferatu must take this Merit at three dots, and instead add their Bane Severity (unhalved and unrounded) to such pools." },
+
         ],
         flaws: [
             { name: "Ugly", cost: [1], summary: "Lose one die from related Social pools." },
@@ -457,6 +466,8 @@ export const meritsAndFlaws: MeritsAndFlaws[] = [
                 { name: "Regular", cost: [1,2,3], summary: "You have some regulars that can act as equivalent dots in Allies,Contacts or Fame once per Story." },
                 { name: "Terrific Acoustics", cost: [1,2], summary: "Your Haven features good acoustics. Add 1 die to all Performance-pools to sing or play musical instruments for each dot in this addon." },
                 { name: "Watering Hole", cost: [1,2], summary: "This Haven has a large gathering of Kine. It serves as a location with an equivalent of twice this Background's rating of Herd, which anyone in attendance can use." },
+                 { name: "Mobile Shelter", cost: [1], summary: "Your haven is mobile, allowing you to take it with you in some way and still remain secure. A one dot Haven is small and portable, like a Sunbag with some camping amenities, a two-dot would be something like a small car or pop-up shelter, while a three-dot would be a large van or RV. The security of a Mobile Haven's base rating is partially gained primarily from its mobile nature, rather than being as secure as an equivalent structure." },
+            { name: "House of Leaves", cost: [1,2,3], summary: "Your Haven is a space with impossible geometry, rooms vanish and appear as needed. Perhaps it rests on a spiraling leyline, rests in a place that was never fully created, or simply borders on the reflective nothingness of the Abyss. Once per Session, your Haven functions as if it had an equal number of dots in either Cell, Library, or Hidden Armory. These spaces last until a new room is manifested, at which point any Character or animate thing within is ejected from the front door and any inanimate objects are lost until the room is made to re-appear." },
         ],
         flaws: [
             { name: "No Haven", cost: [1], summary: "you don't have a home" },
@@ -520,6 +531,10 @@ export const meritsAndFlaws: MeritsAndFlaws[] = [
             { name: "Prey on the weary", cost: [1], summary: "When you slake at least 2 Hunger from someone who has a fully marked Willpower Tracker or a Compulsion, you always gain an Intense Phlegmatic Resonance." },
             { name: "Romantic Duet", cost: [1], summary: "When you slake at least one Hunger from a vessel that's simultaneously being fed from by another Kindred, you slake an additional point of Hunger. If multiple effects would allow you to slake additional Hunger, choose one and ignore the rest. If the Kindred feeding with you is your Obsession they also benefit from this Merit's effect." },
             { name: "Tormentor", cost: [2], summary: "When you deal Superficial Willpower Damage to someone who has a Compulsion, or a non-Kindred who has a physical injury, you may remove one of your own Compulsions." },
+             { name: "Cyclical Offering", cost: [1], summary: "When you feed using a Power or Ceremony of Oblivion (i.e. Rapacious Communion or Hunger of Ahriman) your Ceremony Tests have their Difficulties reduced by 1 for the remainder of the night." },
+            { name: "Alû", cost: [2], summary: "When you feed on a sleeping victim, your bite induces sleep paralysis that lingers for a few hypnagogic moments afterwards. Even if victims wake, they will be in a hypnagogic and post-euphoric state. Their attempts to remember your features require a Resolve + Intelligence; Difficulty 3 Test. They remember one feature, such as skin or hair color, for each success beyond the margin. Egregious damage or significant pain, such as from a messy feeding will break the effects of this merit. Hecata cannot purchase this Merit." },
+            { name: "Machiavellivore", cost: [2], summary: "You can convert your dots in Contacts, Retainer, and Allies into an equal rating of Herd. However this damages the converted Background in the same way that Herd is damaged. They do not convert back until the end of the Story, and while damaged they may be too weak or uncompliant to use." },
+            { name: "Prey on the Proud", cost: [2], summary: "When you slake at least 2 Hunger from someone who has no marked Willpower Tracker, you always gain an Intense Choleric Resonance." },
 
         ],
         flaws: [
@@ -547,6 +562,8 @@ export const meritsAndFlaws: MeritsAndFlaws[] = [
             { name: "Messy Eater", cost: [1], summary: "When feeding directly from your victims' veins, you always leave splatters of blood on their clothing, your own clothing, and the surrounding area. You can spend extra time cleaning afterward, but without proper tools and detergents, you can't fully hide the evidence. Any messy critical or bestial failure while feeding turns your hunting grounds into a literal bloodbath—the consequences are left to the Storyteller's discretion." },
             { name: "Resonance Junkie", cost: [1], summary: "You crave vitae infused with a specific Blood Resonance—whether shaped by a strong emotion, a certain hormone, or a substance addictive to mortals. When feeding on any other type of mortal blood, you slake 1 level of Hunger less than you normally would—the regular stuff simply doesn't do it for you anymore." },
             { name: "Vicious Emesis", cost: [1], summary: "Whenever you attempt to eject undigested food, drink, or rancid blood, you vomit violently and profusely, losing a significant amount of your own vitae in the process. As your body is contorted by painful spasms, you are left temporarily vulnerable, and your Hunger automatically increases by 1." },
+            { name: "Rapacious Appetite", cost: [2], summary: "Your Beast wants to hunt, feed, and hunt again. You cannot reduce your Hunger to zero the first time you feed each night. This supersedes any other effects and traits that would allow you to reduce your Hunger to 0." },
+
         ],
     },
     {
@@ -572,6 +589,8 @@ export const meritsAndFlaws: MeritsAndFlaws[] = [
             { name: "Predatory Affinity", cost: [3], summary: "You bear an innate mastery of a Discipline born out of your preferred method of predation rather than derived from your bloodline. You can take dots in one Out-of-Clan Discipline you would receive from your Predator Type as though it were an In-Clan Discipline. Caitiff gain an extra dot in a Predator Type Discipline. Thin-Bloods cannot take this unless they already possess the Discipline Affinity Merit." },
             { name: "King of the Beasts", cost: [2], summary: "Animals, especially carnivores, do not shy away from you. When rolling to interact with predatory beasts, you can use Social Skills other than Animal Ken if appropriate. If you learn Animalism, gain a 2-Die Bonus to powers meant to sway or subdue predators." },
             { name: "Somnophore", cost: [4], summary: "Whether it's a gentle sting or a brutal laceration, something about your Kiss leaves mortal victims utterly delirious—unable to recall the last few moments of their lives, and more importantly, your face. Those fed upon more than once begin to suffer recurring nightmares of a faceless figure, with no proof their experiences—ecstatic or horrifying—were ever real." },
+        { name: "Deacon of the Deep", cost: [1,2,3], summary: "When you get a 1 or a 10 on a Rouse Check as part of the cost for a Ceremony of Oblivion, add +1 Bonus Die to your Resolve pools until dawn. This bonus cannot exceed the dots in this Merit." },
+            { name: "Asneisen", cost: [1], summary: "Your Shadow is an extension of, hopefully, your will. When you get a 1 or 10 on a Rouse Check, your Shadow can be mentally commanded to make a brief, simple, interaction with anything it's cast over. Examples include opening a door, pressing a button, or pushing an object. It can do this a number of times per night equal to your Bane Severity." },
         ],
         flaws: [
             { name: "Folkloric Bane", cost: [1], summary: "Take Aggravated Damage when touching a specific object rooted in vampire mythos of what harms them, example Silver." },
@@ -590,6 +609,12 @@ export const meritsAndFlaws: MeritsAndFlaws[] = [
             { name: "Dead Asleep", cost: [1], summary: "Your Beast detests the waking hours of the day and slumbers far deeper than that of other Kindred. Nothing can wake you from your day-sleep—not even fire or the scorching rays of the sun." },
             { name: "Posthumous Bloom", cost: [1], summary: "Your hair and nails grow rapidly during your day-sleep, each night reaching the exact length they would have attained had they been growing since the moment of your Embrace." },
             { name: "Rigor Mortis", cost: [1], summary: "Your body never fully recovered from postmortem rigidity, which becomes especially noticeable when you begin to move after standing still, even for a short moment. At first glance, it may appear as severe muscle soreness or the early stages of a rheumatic or genetic condition. You automatically fail all Initiative rolls and always act last during combat and similar encounters—you might be fully aware of what's happening to you and around you, but your stiff body needs a few heartbeats to adjust and catch up." },
+            { name: "Timorous", cost: [1], summary: "When you get a 1 or a 10 on a Rouse Check, you suffer a -1 die penalty to your Composure pools for the rest of the scene." },
+            { name: "Inner-Void", cost: [1], summary: "When you get a 1 or a 10 on a Rouse Check, you lose your current resonance, including intensity." },
+            { name: "Mirror Imago", cost: [1], summary: "When you get a 1 or a 10 on a Rouse Check, a nearby mirror cracks or shatters." },
+            { name: "Annulled Aspect", cost: [2], summary: "When you get a 1 or a 10 on a Rouse Check, you become a deeper dark. For the rest of the Scene you take Superficial Willpower Damage equal to your Bane each turn while in direct bright light." },
+            { name: "Weird Banality", cost: [2], summary: "Your blood is amalgamated with one or more otherworldly substances, giving you a bizarre weakness to wrought-iron. Touching the metal inflicts a point of Aggravated Health Damage, and damage from such weapons are dealt as Aggravated. As long as Aggravated Damage from such a source remains, you also suffer a -1 die penalty to your Discipline Pools." },
+            { name: "Exanimus", cost: [1,2], summary: "You're especially warped by the touch of the void, thinning your presence in mundane reality. You gain the Lasombra's Bane at Severity 1. Only Lasombra with this Flaw may take it as a two-dot flaw and when they take it, it instead increases their Bane Severity by 1." },
         ],
     },
     {
@@ -633,6 +658,8 @@ export const meritsAndFlaws: MeritsAndFlaws[] = [
                 { name: "Prestation Debts", cost: [1], summary: "They owe other Kindred boons, even if these boons are paid off the Kindred lords over them. The Boon-owning Kindred keeps a one-die bonus in Social combat against the one who owes it." },
                 { name: "Kalokagathia", cost: [1], summary: "Beauty may be in the eye of whoever beholds it, but you equate what you behold with qualities beyond mere looks, thinking skin deep appearances provide insight to a person's quality of character. Those who have a positive Looks Merit, such as Beautiful or Stunning, gain an additional +1 Bonus Die in any Social and Discipline Pools they use against you. Additionally you cannot attempt to make empathetic or Insight-based rolls on characters with negative Looks Flaws, such as Ugly or Repulsive." },
                 { name: "Pariah", cost: [2], summary: "You've been made into an outcast within the Domain, and everyone regards you with little favor and gives very little leeway or benefit of the doubt. You cannot gain official titles within the Domain and cannot buy positive Status, Fame, or Reputation, except in regards to others who are also Pariahs." },
+                { name: "Abusive Sire", cost: [1,2], summary: "Some Lasombra continue to test their Childer even after the Embrace and while most Kindred have little love lost for their Sire, yours is especially cruel and demanding. Your Sire adds dice equal to the dots in this Flaw to any Manipulation or threats against your Touchstones." },
+
         ],
     },
         {
@@ -646,6 +673,8 @@ export const meritsAndFlaws: MeritsAndFlaws[] = [
                 { name: "Capricious Purgation", cost: [2], summary: "Whenever you rid yourself of a compulsion through an effect other than it naturally ending through passage of time, you recover a point of Superficial or Aggravated Willpower." },
                 { name: "Cajolded Beast", cost: [2], summary: "While in Frenzy, you may make a Willpower Test; Difficulty equal to your unmarked Humanity, to assume control for one turn. This Test cannot be made if you have any Stains." },
                 { name: "Fight or Flight", cost: [2,3,4], summary: "When taking this Merit pick Terror or Fury Frenzy. Add +1 bonus die to resist the chosen Frenzy, but you suffer a -1 die penalty to resist the other. This bonus and penalty is doubled if this Merit is purchased at three dots." },
+                { name: "Cruel Slice", cost: [1,2,3], summary: "Your Beast revels in especially gruesome destruction. Your messy criticals that inflict physical harm to others restore an amount of Superficial Willpower equal to the dots in this Merit." },
+
             ],
                 flaws: [
                     { name: "Bestial Impulse", cost: [1], summary: "When you reach or start a scene at Hunger 4 or 5, your Beast will give you a Desire for the scene. All Dice Pools that aren't made towards achieving this desire get a -2 Dice penalty. This penalty is increased to -4 at Hunger 5." },
@@ -655,6 +684,8 @@ export const meritsAndFlaws: MeritsAndFlaws[] = [
                     { name: "Doomed Romantic", cost: [2], summary: "You feel the weight of your waning Humanity far more than others. Whenever you would make a Remorse Check at the end of a Session, you first gain another Stain." },
                     { name: "Hopeless Dependant", cost: [2], summary: "You're less comfortable whilst all on your own, and so seek company with your Beast. Whenever you're in a Scene without any other Kindred—even enemy Kindred—your Difficulties to resist Frenzy are increased by your Bane Severity." },
                     { name: "Kinder Aberrance", cost: [2], summary: "While your Humanity is at 6 or above, you have a -1 die penalty to any pools made to Manipulate or lie to Humans, if your Humanity is at 5 or below this penalty applies to Kindred instead." },
+                    { name: "Tempestuous Temperament", cost: [2], summary: "This odd quirk of the Beast, is found in those who spend a great deal of time near the sea or in particularly storming areas of the world. While it's raining your difficulties to resist Frenzy are increased by 1. During particularly bad storms the severity of this increase is doubled." },
+                
                 ],
         },
     {
@@ -668,6 +699,8 @@ export const meritsAndFlaws: MeritsAndFlaws[] = [
             { name: "Sin Bound", cost: [2], summary: "When someone of lower Humanity than you drinks your blood, they move two steps towards a bond, rather than one." },
             { name: "Shackle Eater", cost: [2], summary: "When you slake at least 1 Hunger by drinking the blood of the vampire you’re Blood Bound to, slake 1 additional Hunger (cannot reduce Hunger below zero)." },
             { name: "Deeper Bond", cost: [2], summary: "When an animal drinks at least a Rouse Check worth of your blood, they move two steps towards a bond with you, rather than one. Certain powers of Bonding (e.g., choosing a Famulus) take only two nights, not three." },
+            { name: "Tithed Bibitor", cost: [1], summary: "An oddly specific circumstance of the blood that is rarely seen outside of Lasombra faithful. When you drink Vitae that is offered freely, it cannot bond you." },
+
         ],
         flaws: [
             { name: "Long Bond", cost: [1], summary: "blood bonds on you take longer to wane" },
@@ -704,6 +737,51 @@ export const meritsAndFlaws: MeritsAndFlaws[] = [
                 cost: [1, 2, 3, 4, 5],
                 summary: "1 - a select subculture despises you, 5 - you are well known and hated globally",
             },
+        ],
+    },
+    {
+        title: "⚔️ Vendetta",
+        merits: [
+            { name: "Beholding Affliction", cost: [1], summary: "Whenever one of your Rituals or Ceremonies negatively affects your Vendetta directly, you innately know their direction for the remainder of the night." },
+            { name: "Crushing Abasement", cost: [1], summary: "Whenever a Storyteller Character is introduced or revealed to be the leader of several other Characters, you may immediately mark them as your Vendetta." },
+            { name: "Bloody Errancy", cost: [2], summary: "You cannot be Bloodbound to your Vendetta. If you're already bound to a Vendetta, that bond's strength cannot increase." },
+            { name: "Masticating Foe", cost: [2], summary: "If your Vendetta Surges their Blood to bolster an Attribute, the next time you make an aggressive roll against them in the same Scene, you may pin one of your Hunger Dice to a 10 and set it aside." },
+            { name: "Spiteful Embrace", cost: [3], summary: "If you Embrace your Vendetta, they immediately enter into a Level 3 Blood Bond with you. However this bond will always break within a month and you can never bond them again through any other means." },
+            { name: "Bittersweet Tooth", cost: [3], summary: "Add one bonus die to any pools made whilst Diablerizing your Vendetta. If your Humanity is 3 or lower, double this bonus." },
+            { name: "Bitter Campaign", cost: [1,2,3], summary: "When you launch a Project to damage your Vendetta's Backgrounds, you may add this Background to the Stake in addition to any others used. If you do, each time you make a Project Roll for that Project, you restore an amount of Superficial or Aggravated Willpower Damage equal to the number of dots in this Background." },
+        ],
+        flaws: [
+            { name: "Vindictive Feed", cost: [2], summary: "You can only reduce your Hunger to zero by feeding on and draining your Vendetta." },
+            { name: "Nemomaniac", cost: [1,2], summary: "While your Vendetta is in the scene, your Discipline Pools suffer a penalty equal to this rating when they don't include or affect your Vendetta directly and immediately." },
+        ],
+    },
+    {
+        title: "⚡ Sabbat",
+        merits: [
+            { name: "Ductis", cost: [1,2,3,4,5], summary: "The leader of a Pack. Your Packmates who want to contest your leadership with a Social Pool must beat this Background's rating as a Difficulty. Even if they do, you may spend Willpower to still Contest their roll normally. Only one Pack member may possess this Background." },
+            { name: "Pack Priest", cost: [1,2,3,4,5], summary: "The spiritual anchor of a Pack. At the end of each session, Packmates may come to you for guidance in resisting the pull of their Beast. You may remove a total number of Stains, up to your rating in this Background, divided among any who seek your council. For each Stain removed, the recipient suffers one point of Aggravated Willpower damage. Other members of your Pack may spend experience to buy dots in this Background for you. Only one Pack member may possess this Background." },
+            { name: "Pack Tactics", cost: [1,2], summary: "When you successfully Teamwork with a Packmate, or they with you, you both recover a point of Superficial Willpower or if taken at two-dots, you can choose to instead recover a point of Aggravated Willpower. This cannot recover an amount of Willpower greater than your Bond Strength to that Packmate each Session." },
+            { name: "Vaulderie Ritae", cost: [1], summary: "Usually taken by the Pack Priest. This Background means you know how to properly perform the Vaulderie. This ritae requires each member of a Pack to spill their blood into a sacred chalice (or any liquid-tight container large enough). You then bless and mix the vitae. Finally each participant drinks, increasing Bond Strength by 1, up to 3, amongst all who participate. Characters with Occult 3 or higher who are in a Pack can take this Background for free at the Storyteller's discretion." },
+        ],
+        flaws: [],
+    },
+    {
+        title: "⚖️ Amercements",
+        merits: [],
+        flaws: [
+            { name: "Amercement of Prosperity", cost: [1,2], summary: "Your total Resources cannot exceed three dots. If this flaw is taken at one dot your Resources cannot exceed two dots." },
+            { name: "Amercement of Line", cost: [1,2], summary: "You bear a visible brand or symbol of your subservience to the Camarilla (Or whoever placed this mark on you). Those who belong to the group that marked you add this Flaw's dots to their Status in regards to Social pools made against you." },
+            { name: "Amercement of Boons", cost: [1], summary: "You cannot hold or keep Major or Life Boons of any kind. Even if one is offered to you, it will not be kept or respected." },
+            { name: "Amercement of Innocence", cost: [1], summary: "You are forbidden from using, performing, or assisting with the Powers and Ceremonies of Oblivion." },
+            { name: "Amercement of Valiance", cost: [1], summary: "You have been given a specific area of the Domain to keep safe for Kindred. This usually requires you to deal with Hunters, Anarchs, Sabbat, or other creatures. You're given little support or assistance for this job." },
+            { name: "Amercement of Blood", cost: [1,2], summary: "You are given a Herd (•). You are only allowed to feed from this designated Herd, and possibly those outside the boundaries of the city's Domain. If this Flaw is taken at two dots you are banned from feeding within city limits outright." },
+            { name: "Amercement of Power", cost: [2], summary: "You cannot gain Status except in regards to those outside the local Domain, with others who have this Flaw, or with similar Flaws, such as Pariahs." },
+            { name: "Amercement of Duty", cost: [2], summary: "You are assigned as a personal servant to another Kindred. Once per Story, they may require something of you and you must obey." },
+            { name: "Amercement of Collective", cost: [2], summary: "You are held responsible for the crimes of all Lasombra in the domain. You suffer a two dice penalty to shift blame away from yourself, and a three dice penalty to shift blame away if it's due to the actions of another Lasombra." },
+            { name: "Amercement of Menials", cost: [2], summary: "You cannot have or keep blood-bound Ghouls and the only Retainers you have are blood-bound Ghouls provided by the local authority of the Domain (such as the Sheriff, Primogen, Prince, etc.)" },
+            { name: "Amercement of Shackles", cost: [2], summary: "You must drink directly from a designated member of the court once per week, usually resulting in a full Blood Bond. This Flaw is not mutually exclusive with other Merits that affect Bonding, such as Unbondable. However, keeping up the charade would be wise." },
+            { name: "Amercement of Domain", cost: [2], summary: "You may not hold Domain. Claims to Domain, even if won or taken, are given directly to someone else who may allow you to use it at their discretion." },
+            { name: "Amercement of Congregation", cost: [2], summary: "You cannot have Lasombra Mawlas and any attempts at communication with another Lasombra must first be approved by a member of the local authority of the Domain (such as the Sheriff, Primogen, Prince, etc.)." },
         ],
     },
 ]

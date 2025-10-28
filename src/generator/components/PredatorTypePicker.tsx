@@ -67,7 +67,7 @@ const PredatorTypePicker = ({ character, setCharacter, nextStep }: PredatorTypeP
                         {([
                             "Alleycat", "Extortionist", "Roadside Killer", "Montero",
                             "Tithe Collector", "Incarcerator", "Abductor", "Cazador", "Rival Predators", "Cannibal", "Civilization Destroyer",
-                            "Bogeyman", "Grotesque", "Cryptid"
+                            "Bogeyman", "Grotesque", "Cryptid", "Caballero", "Gamemaker", "Hector", "Teardown"
                         ] as PredatorTypeName[]).map((predatorTypeName) =>
                             createButton(predatorTypeName, "red")
                         )}
@@ -86,7 +86,7 @@ const PredatorTypePicker = ({ character, setCharacter, nextStep }: PredatorTypeP
                         {([
                             "Cleaver", "Consensualist", "Osiris", "Scene Queen", "Siren",
                             "Blood Baby", "Codependent", "Patron Of The Arts", "Cardillac", "Sacred Harlot",
-                            "Damsel", "Gourmand", "Nouveau Riche"
+                            "Damsel", "Gourmand", "Nouveau Riche", "Broker", "Confessor"
                         ] as PredatorTypeName[]).map((predatorTypeName) =>
                             createButton(predatorTypeName, "grape")
                         )}
@@ -105,7 +105,7 @@ const PredatorTypePicker = ({ character, setCharacter, nextStep }: PredatorTypeP
                         {([
                             "Sandman", "Graverobber", "Grim Reaper", "Pursuer", "Trapdoor",
                             "Ambulance Chaser", "Opportunist", "Cucuy", "Harvester", "Maskless", "Pet Collaborator", "Tormentor", "Nomadic Feeder", "Xenophile",
-                            "Nightcrawler", "Zero-Hour", "Spiker"
+                            "Nightcrawler", "Zero-Hour", "Spiker", "Alû"
                         ] as PredatorTypeName[]).map((predatorTypeName) =>
                             createButton(predatorTypeName, "gray")
                         )}
@@ -124,7 +124,7 @@ const PredatorTypePicker = ({ character, setCharacter, nextStep }: PredatorTypeP
                         {([
                             "Bagger", "Blood Leech", "Farmer",
                             "Condiment King", "Delivery Diner", "Sin Eater", "Intermittent Faster",
-                            "Kept Childe"
+                            "Kept Childe", "Piscator"
                         ] as PredatorTypeName[]).map((predatorTypeName) =>
                             createButton(predatorTypeName, "violet")
                         )}
