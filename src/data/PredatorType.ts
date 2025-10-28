@@ -856,6 +856,217 @@ export const PredatorTypes: Record<PredatorTypeName, PredatorType> = {
         humanityChange: 1,
         bloodPotencyChange: 0,
     },
+    "Bogeyman": {
+        name: "Bogeyman",
+        summary: "Blood enriched with adrenaline and cortisol proves intoxicating to you. You seek out victims ensnared in stressful, life-threatening situations or, if need be, orchestrate such scenarios yourself. As you satiate your Hunger, it's as though you're feeding not just on blood, but on fear itself.",
+        specialtyOptions: [
+            { skill: "occult", name: "Haunted Sites" },
+            { skill: "streetwise", name: "Sketchy Neighborhoods" }
+        ],
+        disciplineOptions: [{ name: "animalism" }, { name: "oblivion" }],
+        meritsAndFlaws: [
+            { name: "Somnophore", level: 2, summary: "Mythic Merit: Somnophore" },
+            { name: "Resonance Junkie (Choleric)", level: 2, summary: "Feeding Flaw: Resonance Junkie (Choleric—ideally on the verge of a heart attack)" }
+        ],
+        selectableMeritsAndFlaws: [],
+        humanityChange: -1,
+        bloodPotencyChange: 0,
+    },
+    "Cryptid": {
+        name: "Cryptid",
+        summary: "You are the thing that goes bump in the night during a midnight woodland stroll. The creature from terrifying campfire tales told by teen counselors before bedtime. You stick to the wilds but hunt game vastly different from deer or hare—campers, hikers, and other hunters.",
+        specialtyOptions: [
+            { skill: "awareness", name: "Wilderness" },
+            { skill: "survival", name: "Wilderness" }
+        ],
+        disciplineOptions: [{ name: "protean" }, { name: "celerity" }],
+        meritsAndFlaws: [
+            { name: "Haven", level: 1, summary: "Background: Haven (1 dot) - a small forgotten cave, an old mining shaft, or a cabin in the woods" },
+            { name: "Truce", level: 2, summary: "Status Merit: Truce - a silent, non-aggression pact with other supernatural beings residing in your neck of the woods—it applies only to you" },
+            { name: "Stalkers", level: 2, summary: "Retainers Flaw: Stalkers - amateur cryptid hunters who caught wind of your activity" }
+        ],
+        selectableMeritsAndFlaws: [],
+        humanityChange: 0,
+        bloodPotencyChange: 0,
+    },
+    "Damsel": {
+        name: "Damsel",
+        summary: "Just look at you. A hapless little thing. All out of luck. Brought down to your knees. Begging for someone to help you. Perhaps your car broke down in the absolute middle of nowhere, you're being chased by your abusive ex-girlfriend, or someone stole your wallet and ran into that dark alley behind you.",
+        specialtyOptions: [
+            { skill: "performance", name: "Solo Act" },
+            { skill: "insight", name: "Vessels" }
+        ],
+        disciplineOptions: [{ name: "dominate" }, { name: "presence" }],
+        meritsAndFlaws: [
+            { name: "Ingénue", level: 2, summary: "Looks Merit: Ingénue" }
+        ],
+        selectableMeritsAndFlaws: [],
+        humanityChange: 0,
+        bloodPotencyChange: 0,
+    },
+    "Gourmand": {
+        name: "Gourmand",
+        summary: "You miss the experience of eating out, whether for the social aspect or the culinary one. Feeding is forever etched in your mind as something done in restaurants, diners, food trucks, and bars. Like in a trance, that's where you naturally gravitate when the starved Beast begins to growl.",
+        specialtyOptions: [
+            { skill: "etiquette", name: "Dining" },
+            { skill: "subterfuge", name: "Vessels" }
+        ],
+        disciplineOptions: [{ name: "auspex" }, { name: "presence" }],
+        meritsAndFlaws: [
+            { name: "Eat Food", level: 2, summary: "Mythic Merit: Eat Food" }
+        ],
+        selectableMeritsAndFlaws: [
+            {
+                options: [
+                    { name: "Maladaptive Hunter", summary: "Feeding Flaw: Maladaptive Hunter", maxLevel: 2 },
+                    { name: "Prey Exclusion (Mortals lacking the scent of a freshly eaten meal)", summary: "Feeding Flaw: Prey Exclusion", maxLevel: 2 }
+                ],
+                totalPoints: 2
+            }
+        ],
+        humanityChange: 0,
+        bloodPotencyChange: 0,
+    },
+    "Grotesque": {
+        name: "Grotesque",
+        summary: "Few kine find time to look at the night sky anymore. Even fewer pay attention to sculptures from eras gone by, adorning building facades and quietly watching over the city. High above or low to the ground, you skulk in those blind spots.",
+        specialtyOptions: [
+            { skill: "athletics", name: "Landing" },
+            { skill: "streetwise", name: "Rooftops" }
+        ],
+        disciplineOptions: [{ name: "fortitude" }, { name: "potence" }],
+        meritsAndFlaws: [
+            { name: "Cold Dead Hunger", level: 2, summary: "Mythic Merit: Cold Dead Hunger" },
+            { name: "Rigor Mortis", level: 2, summary: "Mythic Flaw: Rigor Mortis" }
+        ],
+        selectableMeritsAndFlaws: [],
+        humanityChange: 0,
+        bloodPotencyChange: 0,
+    },
+    "Kept Childe": {
+        name: "Kept Childe",
+        summary: "All these years, you were kept in a bubble by an older, more powerful, and influential vampire. It could have been your overprotective sire (real or adoptive), your elder Kindred lover, or even the domain's Prince, who saw you more as a personal pet or keepsake than an independent being.",
+        specialtyOptions: [
+            { skill: "politics", name: "your domain" },
+            { skill: "etiquette", name: "Camarilla" }
+        ],
+        disciplineOptions: [{ name: "blood sorcery" }, { name: "dominate" }],
+        meritsAndFlaws: [
+            { name: "Herd", level: 4, summary: "Background: Herd (4 dot) - belongs to your benefactor—you can't increase it, and will face consequences if anything happens to it" },
+            { name: "Prestation Debts", level: 2, summary: "Flaw: Prestation Debts - you owe your benefactor for taking such good care of you" }
+        ],
+        selectableMeritsAndFlaws: [
+            {
+                options: [
+                    { name: "Bondslave", summary: "Bonding Flaw: Bondslave", maxLevel: 3 },
+                    { name: "Sired into Thralldom", summary: "Bonding Flaw: Sired into Thralldom", maxLevel: 3 }
+                ],
+                totalPoints: 3
+            }
+        ],
+        humanityChange: 0,
+        bloodPotencyChange: 0,
+    },
+    "Nightcrawler": {
+        name: "Nightcrawler",
+        summary: "When Kindred hunt, they are like criminals. Even when choosing words over violence, they interrupt the natural order of things. You lurk in places of accidents, disaster sites, war zones, fresh crime scenes—or follow other Kindred and prey on their leftovers.",
+        specialtyOptions: [
+            { skill: "awareness", name: "Shadowing" },
+            { skill: "investigation", name: "Crime Scenes" }
+        ],
+        disciplineOptions: [{ name: "animalism" }, { name: "blood sorcery" }, { name: "obfuscate" }],
+        meritsAndFlaws: [
+            { name: "Vessel Recognition", level: 2, summary: "Feeding Merit: Vessel Recognition" },
+            { name: "Contacts (true crime enthusiasts)", level: 1, summary: "Background: Contacts - true crime enthusiasts following police radio channels, or someone in the police force secretly tipping you off" }
+        ],
+        selectableMeritsAndFlaws: [
+            {
+                options: [
+                    { name: "Enemy (spotted around crime scenes)", summary: "Allies Flaw: Enemy - you have been spotted around one crime scene too many", maxLevel: 3 },
+                    { name: "Dark Secret (feeding off other Kindreds' Herds)", summary: "Fame Flaw: Dark Secret - someone knows you've been feeding off other Kindreds' Herds", maxLevel: 2 }
+                ],
+                totalPoints: 2
+            }
+        ],
+        humanityChange: 0,
+        bloodPotencyChange: 0,
+    },
+    "Nouveau Riche": {
+        name: "Nouveau Riche",
+        summary: "You might not be famous, and you might not be liked. What you most certainly are, however, is rich—capital R rich—and for some people out there, that's just enough. It certainly is enough for you, because money makes kine crawl all over you like maggots on a day-old corpse.",
+        specialtyOptions: [
+            { skill: "finance", name: "Stock Market" },
+            { skill: "finance", name: "Money Laundering" },
+            { skill: "etiquette", name: "One-Percenter" }
+        ],
+        disciplineOptions: [{ name: "potence" }, { name: "presence" }],
+        meritsAndFlaws: [
+            { name: "Resources", level: 4, summary: "Background: Resources (4 dot)" },
+            { name: "Flagged", level: 2, summary: "Resources Flaw: Flagged" }
+        ],
+        selectableMeritsAndFlaws: [
+            {
+                options: [
+                    { name: "Adversary (Kindred)", summary: "Mawla Flaw: Adversary - Kindred, whom you exploited, cheated, or stolen from to get where you are", maxLevel: 3 },
+                    { name: "Enemy (blackmailer)", summary: "Allies Flaw: Enemy - someone who knows your money isn't clean and is blackmailing you", maxLevel: 3 }
+                ],
+                totalPoints: 3
+            }
+        ],
+        humanityChange: 0,
+        bloodPotencyChange: 0,
+    },
+    "Spiker": {
+        name: "Spiker",
+        summary: "Uppers, downers, laughers, screamers—variety is the spice of life, and you like your blood very spicy. No, you're not an addict. Pff... Can Kindred even get addicted? It's just that nothing else gives you that special kick anymore, is all.",
+        specialtyOptions: [
+            { skill: "medicine", name: "Pharmaceuticals" },
+            { skill: "larceny", name: "Planting" },
+            { skill: "streetwise", name: "Drugs" }
+        ],
+        disciplineOptions: [{ name: "auspex" }, { name: "blood sorcery" }, { name: "celerity" }],
+        meritsAndFlaws: [
+            { name: "High Functioning Addict", level: 2, summary: "Substance Abuse Merit: High Functioning Addict (Choose your poison)" },
+            { name: "Resonance Junkie (Sanguine)", level: 2, summary: "Feeding Flaw: Resonance Junkie (Sanguine—the more spiked their blood, the harder it kicks)" }
+        ],
+        selectableMeritsAndFlaws: [
+            {
+                options: [
+                    { name: "Contacts (Drug dealers)", summary: "Background: Contacts (1 dot) - Drug dealers", maxLevel: 1 },
+                    { name: "Influence (Narcotics Anonymous)", summary: "Influence (1 dot) - Narcotics Anonymous", maxLevel: 1 }
+                ],
+                totalPoints: 1
+            }
+        ],
+        humanityChange: 0,
+        bloodPotencyChange: 0,
+    },
+    "Zero-Hour": {
+        name: "Zero-Hour",
+        summary: "You've found your niche among the show-up, cash-to-hand workers of the night—cleaners, couriers, drivers. Like background noise, they're everywhere, and no one ever questions their presence. People are simply grateful they're not the ones doing those jobs.",
+        specialtyOptions: [
+            { skill: "drive", name: "Navigating" },
+            { skill: "subterfuge", name: "Impersonating" },
+            { skill: "streetwise", name: "Illegal Labor" }
+        ],
+        disciplineOptions: [{ name: "celerity" }, { name: "fortitude" }],
+        meritsAndFlaws: [
+            { name: "Side Hustler", level: 2, summary: "Miscellaneous Merit: Side Hustler" },
+            { name: "Herd (Graveyard Shift)", level: 2, summary: "Background: Herd (Graveyard Shift)" },
+            { name: "Honest-to-God Job", level: 2, summary: "Resources Flaw: Honest-to-God Job" }
+        ],
+        selectableMeritsAndFlaws: [
+            {
+                options: [
+                    { name: "Resources", summary: "Background: Resources", maxLevel: 3 },
+                    { name: "City Secrets", summary: "Status Advantage: City Secrets - you found dirt on a high-profile mortal while doing your work", maxLevel: 2 }
+                ],
+                totalPoints: 2
+            }
+        ],
+        humanityChange: -1,
+        bloodPotencyChange: 0,
+    },
     "": {
         name: "",
         summary: "",
