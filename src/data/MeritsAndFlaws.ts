@@ -73,28 +73,37 @@ export const ghoulMeritsAndFlaws: MeritsAndFlaws[] = [
         title: "👥 Mawla",
         merits: [
             { name: "Mawla", cost: [1,2,3,4,5], summary: "Another kindred who has taken them under their wing to mentor them." },
+            { name: "Assimilated", cost: [1], summary: "Through your Mawla's influence, you've been accepted—at least partially—by the local members of their clan. You feel like one of them now, and may share their beliefs, customs, or even prejudices toward other groups and clans. Your adoptive clan may be more willing to share information with you, allow you to use their hunting grounds, or invite you to clan-only gatherings. Not everyone approves of this arrangement, though—either in the adoptive clan or your own." },
+            { name: "Raised by Wolves", cost: [1], summary: "Your Mawla took you in at a very early stage in your unlife, essentially replacing your absent sire—dead or otherwise. They taught you everything you know about the Kindred ways and gifts of the Blood. Replace one of your in-clan Disciplines (in which you have no dots) with one of your Mawla's in-clan Disciplines." },
+            { name: "Pack Hunt", cost: [1], summary: "You and your Mawla occasionally hunt together. Once per story, if your Mawla hunts alongside you, you can automatically succeed on your hunting roll. Additionally, add one extra die to your Predator pool if you convince another Kindred to hunt with you." },
         ],
         flaws: [
             { name: "Adversary", cost: [1,2,3,4,5], summary: "Another kindred who perhaps liked the character, but now goes out of their way to ruin their lives in any way they can. Rated two levels higher than the Mawla value." },
             { name: "Secret Master", cost: [1], summary: "Your Mawla gives you tasks that must be completed quietly. The character must have a Mawla to take this." },
+            { name: "Trophy Childe", cost: [1], summary: "While they still act as your Mawla, kindness wasn't the main reason they adopted you. Perhaps it was a political statement, an open act of defiance against the Primogen or the Prince, a mockery at your clan's expense, or an attempt to humiliate your sire. Everyone knows about it—and some Kindred hold a grudge. You inherit the following Background Flaws from your Mawla: Enemy, Infamy, Adversary, and Stalkers. Treat them as one dot lower than the original versions." },
         ],
     },
     {
         title: "💰 Resources",
         merits: [
             { name: "Resources", cost: [1,2,3,4,5], summary: "Cash flow, be it from stock trading or inheritance to working as a barista at night." },
+            { name: "Steady Income", cost: [1], summary: "Your money works for you. Through smart investments, passive income, or a well-diversified portfolio, you never have to worry about the well running completely dry. If you lose a dot of Resources, you regain it for free after three nights. This Advantage can't raise your Resources above 3." },
         ],
         flaws: [
             { name: "Destitute", cost: [1], summary: "No money, no home, and no monetary value beyond themselves." },
+            { name: "Honest-To-God Job", cost: [1], summary: "Maybe the business you run on the side requires constant supervision. Maybe you feel guilty enough about preying on mortals that you want at least your money to be clean. Or maybe you simply find it hard to make ends meet—even as a vampire. Either way, you have a job. A real one. Whether you're a self-employed entrepreneur, a gig artist, or a wage slave, once per story—and whenever you want to raise your Resources—you must spend a significant amount of time working. Treat this work as a Project (see Vampire: the Masquerade, pp. 417-420), and determine the exact nature of your work with the Storyteller. If you fail to deliver what is expected of you, this Flaw is forfeited and you immediately lose a total of 2 dots between your Resources and Mask Backgrounds. If you can't lose those either, you instead gain the Resources Flaw Destitute." },
+            { name: "Red-Flagged", cost: [1], summary: "Good news? You're not fully compromised—yet. Bad news? One of your bank accounts or shell companies has landed on a three-letter agency's watchlist. Maybe you slipped up or got set up by another Kindred. Maybe it all happened way before your Embrace. Back then, it was just a nuisance. Now, it could be lethal. Nobody's freezing your assets or sending a SWAT team to your Haven—yet—but you need to monitor your expenditures closely, because someone else probably already is." },
         ],
     },
     {
         title: "👤 Retainers",
         merits: [
             { name: "Retainers", cost: [1,2,3], summary: "Loyal followers who will do the character's bidding, sometimes Ghouls and/or Blood Bonded." },
+            { name: "Body Double", cost: [1], summary: "One of your Retainers bears an uncanny resemblance to you—you found and blood bound them specifically to serve as your identical twin, or perhaps received them as a gift from a Tzimisce who owed you a boon. They can make public appearances for you during the day, serve your sentence in prison, or even perform the ultimate sacrifice to cover your own tracks—unknowingly, of course." },
         ],
         flaws: [
             { name: "Stalkers", cost: [1], summary: "Something about the character tends to attract others who get a little bit too attached and just won't let go. Be it a former retainer or a past lover, should they get rid of them, another soon appears." },
+            { name: "Rogue Ghoul", cost: [1], summary: "A former ghoul, now free of your influence, harbors a bitter grudge—whether for being blood bound and mistreated, denied the cursed gift of the Embrace, or simply from years of witnessing your atrocities. They know better than to confront you directly. Instead, they'll weaponize every scrap of knowledge they have on you—your allies, routines, and preferences—to make your unlife miserable." },
         ],
     },
     {
@@ -114,6 +123,9 @@ export const ghoulMeritsAndFlaws: MeritsAndFlaws[] = [
         title: "📚 Linguistics",
         merits: [
             { name: "Linguistics", cost: [1,2,3,4,5], summary: "Each dot allows the character to read, write and speak fluently in another language outside of the default two they already know, which is their native language and the language of the Domain." },
+            { name: "Dead Tongues", cost: [1], summary: "You know languages considered extinct, with no living native speakers—whether out of necessity for your research, or taught to you by your sire, who still remembers when they were in active use. Each dot in this Merit grants you knowledge of two dead languages." },
+            { name: "Intuitive Communicator", cost: [1], summary: "You've spent half your life traveling the world—far and wide—or hunched over dusty books and tomes in all manner of languages, both dead and living. You might not be able to fluently speak anything other than your native tongue, but something has clicked for you, and you get this whole language thing now. You can communicate basic ideas and simple commands without knowing the language—using the odd phrase you picked up along the way, a mix of words from various other tongues, gesticulation, facial expressions, and onomatopoeia. This works with Discipline powers that require issuing simple voice commands, such as the Dominate power Compel. You still can't read or write in languages you don't know, but you can roll Intelligence + Academics against Difficulty 5 to understand anything spoken back to you." },
+            { name: "Polyglot", cost: [1], summary: "Practice makes perfect, and to say you've merely learned some languages would be an understatement. You have meticulously taken them apart—piece by piece—like a watchmaker, and mastered all there is to know about them. With this intimate understanding, the more of them you know, the easier it becomes to learn new ones. Each dot of the Linguistics Merit allows you to read, write, and speak in three new languages instead of just one, as fluently as a native." },
         ],
         flaws: [
             { name: "Illiterate", cost: [2], summary: "The Character cannot read nor write and their Science and Academics Skills may not go beyond 1 dot." },
@@ -128,6 +140,7 @@ export const ghoulMeritsAndFlaws: MeritsAndFlaws[] = [
             { name: "Famous Face", cost: [1], summary: "Appear as someone famous and gain two dice in social tests where this works to their benefit. Take a two-dice penalty whenever they attempt to hide in a crowd or avoid recognition." },
             { name: "Ingénue", cost: [1], summary: "They appear innocent and blameless, add two dice to any rolls related to avoiding suspicion or deflecting blame at the Storytellers' discretion." },
             { name: "Remarkable Feature", cost: [1], summary: "Possessing a rare, memorable feature such as eye color or unusual complexion. Add two-dice to social interactions with strangers and take a one-die penalty to disguise yourself." },
+            { name: "Skin-Deep Beauty", cost: [1], summary: "You maintain a healthy-looking façade, while your core rots more with each passing night. After draining and killing your prey, you automatically take on the Blush of Life, and while at Hunger 0, treat your Humanity score as one point higher than it actually is (maximum 10) for the purposes of eating, drinking, or sexual intercourse. This Merit doesn't combine with others that treat your Humanity as higher—if you have multiple ways to treat your Humanity as higher than it is, choose the most effective one in any situation." },
         ],
         flaws: [
             { name: "Ugly", cost: [1], summary: "Lose one die from related Social pools" },
@@ -136,6 +149,8 @@ export const ghoulMeritsAndFlaws: MeritsAndFlaws[] = [
             { name: "Transparent", cost: [1], summary: "Unable to lie due to a terrible poker face or a strong urge to be truthful. Lose one die in any pools requiring Subterfuge, they cannot take any dots in Subterfuge either." },
             { name: "Unblinking Visage", cost: [2], summary: "Treat Humanity as two lower (Min 0) when using Blush of Life, eating, drinking, or sexual intercourse." },
             { name: "Debilitating Scar", cost: [2], summary: "You have a wound that never fully heals, sapping your strength. Reduce one Physical Attribute by 1, to a minimum of 1. You cannot raise it above 4 with experience." },
+            { name: "Insult to Nature", cost: [2], summary: "You simply should not be. You have overstayed your welcome and do not belong in this world anymore. Even the very animated corpse that hosts your squalid spirit seems to work against the pretense of you still being one of the living. Whenever you activate a Discipline power, you lose your Blush of Life." },
+            { name: "Sharp-Set Visage", cost: [1], summary: "Your Beast refuses to stay hidden while starving, making it impossible to maintain the Blush of Life at Hunger 5. If you manage to temporarily satisfy the Beast by reducing your Hunger to 4 or lower, the Blush of Life does not return automatically—retaking it requires a new Rouse Check." },
         ],
     },
     {
@@ -146,11 +161,16 @@ export const ghoulMeritsAndFlaws: MeritsAndFlaws[] = [
         flaws: [
             { name: "Addiction", cost: [1], summary: "Unless the action is to immediately gain their drug, lose one die to all pools if the last feeding was not on the drug of their choice." },
             { name: "Hopeless Addiction", cost: [2], summary: "Unless the action is to immediately gain their drug, lose two dice to all pools if the last feeding was not on the drug of their choice." },
+            { name: "Blood Addict", cost: [1], summary: "It's not just about the Hunger with you. You simply crave this stuff—the viscous, metallic, warm, throat-filling sensation of drinking the forbidden nectar. Maybe you used to be a ghoul, and the addiction stayed with you, or perhaps this is just the way you are. Either way, each night after waking from your day-sleep, you cannot spend or recover Willpower until you get your fix of fresh, warm blood." },
+            { name: "Eternal Bender", cost: [1], summary: "If the last person you fed on wasn't under the influence of a drug or substance you haven't tried in the past seven nights, you lose one die from all pools, except pools for actions that will immediately get you such blood." },
         ],
     },
     {
         title: "🔮 Supernatural",
-        merits: [],
+        merits: [
+            { name: "Nihilus", cost: [2], summary: "You're like a walking suicide note. Something about you is so aberrant that it drains all color and hope from the world. The Veil thins in your presence, reducing the difficulty of Oblivion Ceremony rolls made nearby by 1. If you linger too long in one place—such as your Haven—it will eventually attract unwanted visitors from beyond the Shroud." },
+            { name: "Wraithbound", cost: [2], summary: "Whether consciously or not, you are the binding fetter of a Wraith—someone you were very close to in your previous life or even after the Embrace. While such a connection is extremely rare, it can be highly beneficial, as the spirit will not want its fetter destroyed. Whenever the Storyteller deems it appropriate, the ghost can manifest in a variety of ways to warn you of impending danger that could result in your Final Death. However, acting against the spirit's convictions might provoke the apparition into fits of anger." },
+        ],
         flaws: [
             { name: "Two Masters", cost: [1], summary: "Be Blood Bound to two individuals at the same time." },
         ],
@@ -159,6 +179,8 @@ export const ghoulMeritsAndFlaws: MeritsAndFlaws[] = [
         title: "🤝 Allies",
         merits: [
             { name: "Allies", cost: [2,3,4,5,6], summary: "A group of mortals who will support or aid the vampire. Family, friends, or an organization that has loyalty to the vampire. Build them between (• - ••••) Effectiveness and (•-•••) Reliability, the maximum amount of total points is 6. Effectiveness defines how proficient they are at a task. Reliability determines how dependable they are." },
+            { name: "Kindred Spirit", cost: [3], summary: "One of your Touchstones is a true, selfless friend—a living tether to the mortal world, not just a distant reminder of what's at stake. Whether aware of your condition or not, they choose to help you fight your demons, and you—blind to the risks of getting too close—take what they offer in spades. Treat them as a three-dot Ally (see Vampire: the Masquerade, pp. 184-185). Once per story, if you spend a scene with them—in shared silence, heartfelt confession, or long, restless conversation—you may erase one Stain from your Humanity tracker. As good as it sounds, entrusting the weight of your damned soul to a single mortal is an enormous burden. Should your Humanity ever fail, they'll be the first you drag into hell with you." },
+            { name: "Unlikely Alliance", cost: [4], summary: "As unlikely as it is fragile, this peculiar alliance ties you to another supernatural being—a mage, werewolf, wraith, changeling, or something else entirely—just as young, naive, and inexperienced as you. They are not your Ally in the full sense of the word, but will help you—mostly because they need something from you as well. Treat them as a four-dot Ally (see Vampire: the Masquerade, pp. 376-377 and Cults of the Blood Gods, p. 216), and determine the details of this relationship with the Storyteller. Once per story, you may ask for their help—an equivalent of a major boon—but they will expect the same from you in return. You don't even want to know what will happen to both of you when word of your business arrangement gets out—and it will." },
         ],
         flaws: [
             { name: "Enemy", cost: [1,2,3,4,5], summary: "The opposite to Allies, and are rated two dots less than their effectiveness." },
@@ -230,12 +252,30 @@ export const ghoulMeritsAndFlaws: MeritsAndFlaws[] = [
             { name: "Tempered Will", cost: [3], summary: "They are always aware when someone is attempting to use Dominate or Presence against them. They may add two additional dice to resistance pools once per session, which can only be taken by those with no dots in Dominate or Presence." },
             { name: "Untouchable", cost: [5], summary: "Once per story they are able to escape all official punishment for a crime that would otherwise see them destroyed." },
             { name: "Mystic of the Void", cost: [1,2], summary: "Choose a single Oblivion Power they do not know. They count as knowing that power for the purpose of prerequisites to learning Oblivion Ceremonies. Hecata and Lasombra can choose three Oblivion Powers they do not know instead of just one." },
+            { name: "Gehenna Prepper", cost: [1], summary: "Second Inquisition, the Sabbat, or the Antediluvians awakening from millennia-long torpor—you know one of those nights all hell will break loose, and you are ready for it. Whether by your own planning, your clanmates, or other accomplices, you have caches, stashes, and safehouses hidden throughout the domain. Once per story, you can burn one of these spots to find a conventional weapon of your choice, two blood bags, and a safe place to spend the day." },
+            { name: "Lie Told Thousand Times", cost: [1], summary: "For years, you have practiced telling a carefully crafted version of a made-up story, as if your unlife depended on it—whether to solidify your Mask, conceal your true agenda, or bury past transgressions beneath multiple layers of elaborate lies. You can now tell this story without the slightest hint of hesitation. Add three additional dice to your pool when doing so. You can purchase this Merit more than once—each instance covering a different story." },
         ],
         flaws: [
             { name: "Knowledge Hungry", cost: [1], summary: "At character creation pick a topic that your character desires to study. When they come across the methods to learn these things, they must make a Willpower roll at Difficulty 3 to resist." },
             { name: "Prestation Debts", cost: [1], summary: "They owe other Kindred boons, even if these boons are paid off the Kindred lords over them. The Boon-owning Kindred keeps a one-die bonus in Social combat against the one who owes it." },
             { name: "Risk-Taker Errata", cost: [1], summary: "When confronted with a risky temptation that the character hasn't done before, they suffer a two-dice penalty for all actions till they participate or the scene ends." },
             { name: "Weak-Willed", cost: [2], summary: "Even when they are aware that someone is attempting to sway they may not use the active resistance systems to avoid the attempts." },
+        ],
+    },
+    {
+        title: "📜 Archaic",
+        merits: [
+            { name: "Bygone Lore", cost: [1], summary: "You know many a Kindred tale of old—the myths, legends, stories, and hearsay. Perhaps this knowledge was passed down to you by your sire, or you gathered it from other clan members during your travels. At the Storyteller's discretion, add two dice to any Academics or Occult pools related to old Kindred lore. These stories often lack detail and may contradict one another, but they can still help you paint a vivid picture of things thought lost to the annals of time." },
+        ],
+        flaws: [
+            { name: "Out of Time", cost: [1], summary: "Though embraced decades ago, you remain, in practice, little more than a fledgling, having spent most of that time with a wooden stake driven through your unbeating heart, in torpor—an act of punishment, or perhaps one of mercy. While you can adapt to the modern nights, it will take years to work out the kinks. Your Academics, Drive, Etiquette, Firearms, Medicine, Politics, Science, and Technology skills reflect the knowledge and sensibilities of your own era. Raising any of these skills by at least one dot after character creation removes this drawback for that skill. You may also take the Archaic Flaw Living in the Past during character creation." },
+        ],
+    },
+    {
+        title: "⛓️ Bonding",
+        merits: [],
+        flaws: [
+            { name: "Sired Into Thralldom", cost: [2], summary: "Either due to the unusual circumstances surrounding your Embrace, or through the sheer potency of your sire's exceptionally strong vitae, you are now eternally blood bound to them. Until they meet their Final Death, this Bond's Strength always equals 3, never weakens, and cannot be broken through regular means." },
         ],
     },
 ]
@@ -357,6 +397,9 @@ export const meritsAndFlaws: MeritsAndFlaws[] = [
                 { name: "Knowledge Hungry", cost: [1], summary: "At character creation pick a topic that your character desires to study. When they come across the methods to learn these things, they must make a Willpower roll at Difficulty 3 to resist." },
                 { name: "Risk-Taker Errata", cost: [1], summary: "When confronted with a risky temptation that the character hasn't done before, they suffer a two-dice penalty for all actions till they participate or the scene ends." },
                 { name: "Weak-Willed", cost: [2], summary: "Even when they are aware that someone is attempting to sway they may not use the active resistance systems to avoid the attempts." },
+                { name: "Beast of Habit", cost: [1], summary: "Like Pavlov's dogs, whenever you find yourself in a situation that strongly reminds you of your modus predationis, the Beast begins to salivate deep within you. Immediately roll to resist a Hunger Frenzy at a Difficulty equal to your current Hunger." },
+                { name: "Fear of Letting Go", cost: [1], summary: "There is someone from your past life—dead or alive—that you simply cannot let go of, no matter what. You gain one Stain whenever you go to day-sleep without them—or their remains—by your side. If you lose them permanently, you immediately gain three Stains." },
+                { name: "Phantasmagoria", cost: [1], summary: "You are tormented by visions rooted in guilt over your past deeds, traumatic experiences, or bestowed upon you by a malevolent supernatural force. The daymares can range from vividly reliving your mortal birth, the very act of your Embrace, a looped memory of a lover dying by your hand, or visions of the impending Gehenna. Each night, you wake from day-sleep screaming and suffer one point of Superficial Willpower damage." },
         ].filter(flaw => !(bargainFlaws as any[]).some(b => b.name === flaw.name)),
     },
     {
@@ -497,6 +540,13 @@ export const meritsAndFlaws: MeritsAndFlaws[] = [
             { name: "Organovore", cost: [2], summary: "your hunger demands human flesh and organs" },
             { name: "Addiction", cost: [1], summary: "-1 die on all pools if the last person you fed from wasn't on your drug" },
             { name: "Hopeless Addiction", cost: [2], summary: "-2 dice on all pools if the last person you fed from wasn't on your drug" },
+            { name: "Aching Hunger", cost: [1], summary: "The craving for vitae wracks your body with pain—your innards audibly growl as your body trembles. You suffer one point of Superficial Health damage whenever you fail a Rouse Check while at Hunger 3 or higher." },
+            { name: "Agonizing Hunger", cost: [1], summary: "Vitae is the source of unlife—without it, you are but a corpse, and you feel this more strongly than others. Devoid of Blood, your undead body crumbles to the dust from which it came under the slightest pressure. While at Hunger 4 or higher, you receive all Physical damage as Aggravated damage." },
+            { name: "Glutton", cost: [2], summary: "You have an insatiable appetite for Blood, slaking 1 level of Hunger less than normal under all circumstances." },
+            { name: "Maladaptive Hunter", cost: [1], summary: "You find it extremely difficult to improvise or adapt to new hunting techniques. You suffer one point of Aggravated Willpower damage when attempting to feed in any way that does not align with your Predator Type." },
+            { name: "Messy Eater", cost: [1], summary: "When feeding directly from your victims' veins, you always leave splatters of blood on their clothing, your own clothing, and the surrounding area. You can spend extra time cleaning afterward, but without proper tools and detergents, you can't fully hide the evidence. Any messy critical or bestial failure while feeding turns your hunting grounds into a literal bloodbath—the consequences are left to the Storyteller's discretion." },
+            { name: "Resonance Junkie", cost: [1], summary: "You crave vitae infused with a specific Blood Resonance—whether shaped by a strong emotion, a certain hormone, or a substance addictive to mortals. When feeding on any other type of mortal blood, you slake 1 level of Hunger less than you normally would—the regular stuff simply doesn't do it for you anymore." },
+            { name: "Vicious Emesis", cost: [1], summary: "Whenever you attempt to eject undigested food, drink, or rancid blood, you vomit violently and profusely, losing a significant amount of your own vitae in the process. As your body is contorted by painful spasms, you are left temporarily vulnerable, and your Hunger automatically increases by 1." },
         ],
     },
     {
@@ -521,6 +571,7 @@ export const meritsAndFlaws: MeritsAndFlaws[] = [
             { name: "Tempered Will", cost: [3], summary: "Always aware when someone is attempting to use Dominate or Presence against them. May add two additional dice to resistance pools once per session, which can only be taken by those with no dots in Dominate or Presence." },
             { name: "Predatory Affinity", cost: [3], summary: "You bear an innate mastery of a Discipline born out of your preferred method of predation rather than derived from your bloodline. You can take dots in one Out-of-Clan Discipline you would receive from your Predator Type as though it were an In-Clan Discipline. Caitiff gain an extra dot in a Predator Type Discipline. Thin-Bloods cannot take this unless they already possess the Discipline Affinity Merit." },
             { name: "King of the Beasts", cost: [2], summary: "Animals, especially carnivores, do not shy away from you. When rolling to interact with predatory beasts, you can use Social Skills other than Animal Ken if appropriate. If you learn Animalism, gain a 2-Die Bonus to powers meant to sway or subdue predators." },
+            { name: "Somnophore", cost: [4], summary: "Whether it's a gentle sting or a brutal laceration, something about your Kiss leaves mortal victims utterly delirious—unable to recall the last few moments of their lives, and more importantly, your face. Those fed upon more than once begin to suffer recurring nightmares of a faceless figure, with no proof their experiences—ecstatic or horrifying—were ever real." },
         ],
         flaws: [
             { name: "Folkloric Bane", cost: [1], summary: "Take Aggravated Damage when touching a specific object rooted in vampire mythos of what harms them, example Silver." },
@@ -533,6 +584,12 @@ export const meritsAndFlaws: MeritsAndFlaws[] = [
             { name: "Revenant Mind", cost: [2], summary: "The Embrace was traumatic, occluding or erasing sections of memory. Upon taking this Flaw at character creation, subtract 1 from your starting Humanity." },
             { name: "Deathsight", cost: [2], summary: "You can peer past the Shroud unbidden. When an Insight, Awareness, Investigation, or Occult roll results in a Total or Bestial Failure, suffer a 2-Die penalty to all subsequent Social Pools for the rest of the scene." },
             { name: "Devil in the Details", cost: [2], summary: "You are locked into an ironclad pact with a supernatural force. Work with your Storyteller to define the pact. Whenever you fail to uphold your end or violate a clause, take a point of Aggravated Willpower Damage." },
+            { name: "Blood Drunk", cost: [1], summary: "Drinking blood puts you in a state of blissful intoxication, much like the stupor experienced by kine after alcohol. You truly feel immortal now. Everything seems possible—except maybe walking in a straight line or not having a giggle at a funeral. While drunk on vitae, you cannot recover Willpower, and treat any failure as a bestial failure—too dazed and clumsy to keep the Beast on a leash. How long the effects last depends on the potency and vintage of what you consumed—mortal blood only lasts an hour, while elder vitae can keep you inebriated for the entire night." },
+            { name: "Cadaveric Poison", cost: [1], summary: "Your mouth produces putrescent toxins, which can prove lethal to mortals if transmitted through kissing, intercourse, or licking their wounds. Those affected immediately begin to feel violently ill, and if they don't receive professional medical care within the next hour, they die a painful death, warranting a Stain." },
+            { name: "Day-Sleepwalker", cost: [1], summary: "For reasons unknown, your undead body sleepwalks during the day, attempting to reenact old routines from your previous life—or even wander outside. You can try circumventing this by preparing yourself and your surroundings beforehand. However, simple solutions might not be enough, as your sleepwalking body knows how to open doors, untie basic knots, and—if your strength allows—tear down boarded windows, or even break chains." },
+            { name: "Dead Asleep", cost: [1], summary: "Your Beast detests the waking hours of the day and slumbers far deeper than that of other Kindred. Nothing can wake you from your day-sleep—not even fire or the scorching rays of the sun." },
+            { name: "Posthumous Bloom", cost: [1], summary: "Your hair and nails grow rapidly during your day-sleep, each night reaching the exact length they would have attained had they been growing since the moment of your Embrace." },
+            { name: "Rigor Mortis", cost: [1], summary: "Your body never fully recovered from postmortem rigidity, which becomes especially noticeable when you begin to move after standing still, even for a short moment. At first glance, it may appear as severe muscle soreness or the early stages of a rheumatic or genetic condition. You automatically fail all Initiative rolls and always act last during combat and similar encounters—you might be fully aware of what's happening to you and around you, but your stiff body needs a few heartbeats to adjust and catch up." },
         ],
     },
     {
