@@ -2899,6 +2899,409 @@ export const loresheets: Loresheet[] = [
             { name: "Arte Vivente", cost: [5], summary: "Part of why your Bloodline was welcomed into the fold of the Camarilla was due to the Volgirre having almost six centuries of unique art. Much of this art was the result of your Bloodline's ability to mold flesh and bone. You have a Ghouled Retainer (••••) that has been either passed down to you by your Sire, or simply gifted to you by another of your line. This Retainer is a work of living art, whose body was used as canvas. They have Stunning (••••) and count as a Masterwork (••) that you and one other Toreador is Utterly Enthralled (••) with." },
         ]
     },
+    {
+        title: "1444 Chamber",
+        summary: "The 1444 Chamber were once the closest advisors and confidantes to Augustus Giovanni, and the beating, black heart of the Clan of Death's necromantic might. You're an agent of the Chamber's will, somewhere directly on the operations flowchart that cascades down from the so-called Board of Directors.",
+        source: "Supplement",
+        requirementFunctions: [isClan("Giovanni")],
+        merits: [
+            { name: "Shadow of the Chamber", cost: [1], summary: "Other Hecata know that at least one member of the Chamber trusts you to carry out their will. You have the equivalent of two additional dots of Status within the Hecata clan, but only for the purposes of forcing compliance or intimidating other Hecata." },
+            { name: "Mercenary Work", cost: [2], summary: "Once per story, you can arrange the mercenary services of your fellow Hecata for a vampire who is not part of your coterie or clan, calling up to three dots in any appropriate Background that represents the mercenaries' talents." },
+            { name: "Gilded Promises", cost: [3], summary: "If you satisfy the Chamber with your performance, you have access to four dots of Resources. Disappoint your patron, and you lose these dots until you make things right." },
+            { name: "Deathly Slave", cost: [4], summary: "Once per story, you can request the service of a spectre or another form of wraith, naming a specific task; unless it contravenes your patron's agenda, they will compel a single such ghost to perform that service for you." },
+            { name: "Anziani Patron", cost: [5], summary: "You directly serve one of the anziani on the Board of Directors. Once per chronicle, you can call upon your patron to push the 1444 Chamber into action and call all loyal Hecata in the region to your aid regardless of their other priorities." },
+        ]
+    },
+    {
+        title: "Agent of Justicar Parr",
+        summary: "Juliette Parr is the current Malkavian Justicar, given the authority to investigate traitors to the Camarilla. You are a confidant of Justicar Parr, serving as her eyes and ears, and given the authority to command Camarilla resources in her name.",
+        source: "Supplement",
+        requirementFunctions: [],
+        merits: [
+            { name: "Information Drop", cost: [1], summary: "You routinely provide information to Justicar Parr, reporting on the movements and conversations of other Kindred, but sometimes you receive useful information in return. Once per story you can ask the Storyteller for a piece of information relevant to an ongoing investigation." },
+            { name: "Camarilla Conditioning", cost: [2], summary: "You gain 1 die in all Willpower tests performed in the course of your duties, and you also add 1 additional die to your pool when making tests to resist any attempts to intimidate or compel you away from your duties." },
+            { name: "Request Backup", cost: [3], summary: "Once each story you may call upon a 5-dot Ally to back you up for the duration of a scene. They could grant you access to places you normally cannot go, introduce you to people you would not normally meet, or provide physical protection." },
+            { name: "Favored Protégé", cost: [4], summary: "You may consider Parr a 5-dot Mawla, but she also makes constant demands of you. It would be unwise to upset an elder of her power and influence." },
+            { name: "Camarilla Archon", cost: [5], summary: "You are publicly named as an Archon serving the Camarilla under Justicar Parr, and you hold a warrant that you can present to any Camarilla Kindred to demand their cooperation in your activities and investigations." },
+        ]
+    },
+    {
+        title: "Anarch Revolt",
+        summary: "You claim lineage to a vampire important to the Anarch Revolt of the 14th and 15th centuries, or perhaps you possess records chronicling the fall of tyrannical Princes. Your knowledge of the Anarch Revolt allows you to see the waves and eddies of time repeating itself in the society of the Damned tonight.",
+        source: "Supplement",
+        requirementFunctions: [],
+        merits: [
+            { name: "Critical Ancestor", cost: [1], summary: "You can name one of your ancestors as critical to the Anarch Revolt. Your ties to this ancestor give you credibility in discussions regarding the Revolt. Gain a point of Anarch status as well as the Suspect (Camarilla) flaw, or vice versa." },
+            { name: "Speak the Words", cost: [2], summary: "You can accurately pinpoint where oppression occurs, and where revolt is necessary. When vampires listen to you, they feel more inclined to seize power from their masters. Add two dice to social tests involving the instigation of Anarch activism." },
+            { name: "Enemy of the Establishment", cost: [3], summary: "Your views put you in direct opposition to the Camarilla. You gain the equivalent of a four-dot Mawla, representing your comrades among the Anarchs, as well as a one-dot Adversary from the Camarilla." },
+            { name: "Icon", cost: [4], summary: "You have taken the name of one of the Anarch Revolt's original participants. Many Anarchs see you as the next great leader of the Revolt. Gain two dots of Status, two dots in Herd and two dots in Resources for as long as you put the Anarch cause before anything else." },
+            { name: "Reignite the Revolt", cost: [5], summary: "You know how the Anarch Revolt took place half a millennium ago, and know how it needs to take place tonight. Once per story you can use this leverage to gain four dice in any Social conflict against a member of the Camarilla establishment." },
+        ]
+    },
+    {
+        title: "Archons",
+        summary: "Archons are the bogeymen of the Camarilla, the unliving extension of their Justicar's will. They are the watchful eye at the Anarch gathering, the fly on the Prince's wall, and blade in the dark to all who violate the Traditions. A vampire with this Loresheet is not automatically an Archon, but through narrative, is more likely to be recruited as one.",
+        source: "Supplement",
+        requirementFunctions: [],
+        merits: [
+            { name: "Undercover", cost: [1], summary: "You perform your work undercover, assuming a false identity to get close to your prey. You maintain a false identity as a minor member of the faction you are investigating and gain one bonus die to all rolls related to maintaining your cover." },
+            { name: "Watcher in the Dark", cost: [2], summary: "You have access to a vast repository of Camarilla contacts, records, and informants when prosecuting your duties. Once per chapter, you gain two automatic successes on any Investigation or Academics test concerning the subject of your investigation." },
+            { name: "Red Phone", cost: [3], summary: "You have a reliable way of contacting your patron Justicar. Their response varies depending on their current workload and can range from silence, to providing valuable information, exerting political influence, or even deployment of further Archons." },
+            { name: "Color of Authority", cost: [4], summary: "Your Status as a duly appointed Archon gives you sweeping powers, including the right of destruction. You hold the equivalent of four dots of Status in most Camarilla domains, but stand the risk of earning Adversaries if you judge other Kindred arbitrarily." },
+            { name: "Justicar's Blood", cost: [5], summary: "You have access to the potent vitae of the Justicar you serve. You gain three bonus dice for rolls related to one of the three clan Disciplines of your patron Justicar for the remainder of the night. You may use this once per story." },
+        ]
+    },
+    {
+        title: "Blacksite 24",
+        summary: "The former Chanute Air Force Base is now FIRSTLIGHT's blacksite for long-term detention and processing of captured Kindred. As a Kindred resident of Chicago, you have acquired knowledge of Blacksite 24's existence and what you do with that knowledge could have a serious impact on your own unlife.",
+        source: "Supplement",
+        requirementFunctions: [],
+        merits: [
+            { name: "Rumors", cost: [1], summary: "You know a lick who knows a lick who knows somebody that got scooped up by creepy, suspiciously well-informed and well-armed MIB-looking dudes. Once per story, you may ask the Storyteller to feed you one rumor — which may or may not be based in anything resembling reality." },
+            { name: "No, Really!", cost: [2], summary: "You are the lick the other lick knows. Whether you're a recent arrival in Chicago who witnessed something in your travels or part of a Kindred underground railroad, you know what you've seen. Once per story, you may ask the Storyteller for a solid piece of information about the weirdness you've witnessed." },
+            { name: "Paranoia Strikes Deep", cost: [3], summary: "You know about the existence of FIRSTLIGHT and you know they're active somewhere near Chicago. You possess Contacts (••••) whose particular expertise relates to FIRSTLIGHT or related government-sponsored vampire hunting operations and may utilize them once per story." },
+            { name: "It's My Job To Know This Stuff", cost: [4], summary: "You are part of the security apparatus of the Chicago Domain whose task encompasses ferreting out and neutralizing possible threats to the Kindred. This specialist knowledge grants you Status (••) among the Kindred and Influence (••) among the kine." },
+            { name: "The One That Got Away", cost: [5], summary: "You escaped from containment at Blacksite 24. Once per story, you may ask the Storyteller for one clear snippet of memory from your incarceration. You have gained immunity from FIRSTLIGHT-induced Rötschreck." },
+        ]
+    },
+    {
+        title: "Blood Asceticism",
+        summary: "Those who take this endeavor seriously model themselves on mortal ascetics, trying to slowly starve their Beast into submission or to reduce their reliance on the red stuff over years or even centuries. Some see it as a potential path to Golconda.",
+        source: "Supplement",
+        requirementFunctions: [],
+        merits: [
+            { name: "The Starveling Path", cost: [1], summary: "You're not quiet about your dedication to blood asceticism and your desire to conquer the red thirst. Once per session, providing you've not fed that night, you may add two dice to any roll to prove your strength of will, or to convince others of your dedication." },
+            { name: "Glade of the Sleeping Beast", cost: [2], summary: "You have found a place of quiet solitude to contemplate the shackles of your immortal hunger. While in your place of contemplation, as long as you are alone, you can re-roll one Rouse Check per scene." },
+            { name: "Lesser Vessels", cost: [3], summary: "To subdue your thirst for human blood, you have learned to subsist on the lesser vitae of base animals. While you are alone, feeding from animals slakes one more point of Hunger than it usually would for you. However, you also gain the Infamy Flaw: (•) Animal Drinker." },
+            { name: "Bloodless Pedestal", cost: [4], summary: "Your displays of ascetic self-denial have attracted other Kindred who desperately want your claims to be true. This provides you with the equivalent of five dots of Status solely among vampires who see you as some sort of holy figure. You lose the benefits for the duration of any scene in which they witness you drinking blood." },
+            { name: "Leash the Beast", cost: [5], summary: "You've starved your Beast so often that it's a weakened, feeble thing, bound beneath the chains of your willpower. The Difficulty of your Hunger frenzy rolls is always 2, regardless of the provocation." },
+        ]
+    },
+    {
+        title: "Calling the Family Reunion",
+        summary: "The Clan of Death, in all its forms, has always had a gift for understatement. The latest, the so-called 'Family Reunion,' was a combination of strategic removal of some high-profile elders and the subsequent unleashing of millions of outraged ghosts. You are party to the discussions between ancient enemies of the necessity and utility of working together.",
+        source: "Supplement",
+        requirementFunctions: [isClan("Hecata")],
+        merits: [
+            { name: "The Kids' Table", cost: [1], summary: "You were present at the dinner where the final details of the Reunion were discussed. You get two dice on any Persuasion checks against another Hecata who tries to resurrect old disagreements." },
+            { name: "Updating the Rolodex", cost: [2], summary: "Since you were present during the initial dealmaking, you now have access to a lot of new contacts. When asking for information or small favors, you have the equivalent of three dots of Status within the Hecata clan." },
+            { name: "Hiding the Bodies", cost: [3], summary: "You were involved in the cleanup of a key murder, and a Hecata elder is greatly in your debt. Once per story, you may cash in the effects of a minor boon or less. Once per chronicle, you may clear the debt in return for the effects of a major boon." },
+            { name: "Dealmaker", cost: [4], summary: "You were a part of one of the backroom deals made during the Family Reunion. An influential elder in the Hecata owes you as a result. That elder counts as a five-dot Mawla Background but will become a potent Adversary if the secrets are ever revealed." },
+            { name: "Spiritual Assault", cost: [5], summary: "You were involved in the murder of Augustus Giovanni. Anytime you or someone who consults you uses an Oblivion Ceremony to deal with a spectre or other antagonistic ghost, you gain two automatic successes." },
+        ]
+    },
+    {
+        title: "Children of Tenochtitlan",
+        summary: "Spanish Giovanni met representatives of the Aztec civilization and brought them into the fold, calling them pisanob. Now, the remaining children of Tenochtitlan are deciding on a new leader, while planning their revenge.",
+        source: "Supplement",
+        requirementFunctions: [isClan("Hecata")],
+        merits: [
+            { name: "Hiding from the Wolf", cost: [1], summary: "The remaining Pisanob survived because they are really good at hiding. You get one extra die on any roll to hide, including via the use of Disciplines or Ceremonies." },
+            { name: "Ghostly Instincts", cost: [2], summary: "The original Kindred embraced in Tenochtitlan were extremely talented necromancers. You've learned some of those secrets, which give you two additional dice on any Oblivion Ceremony roll involving the summoning, control, or destruction of ghosts." },
+            { name: "Forward Thinking", cost: [3], summary: "After years of being hunted, you've learned to always plan ahead. Once per story, you can reroll any Skill roll. In addition, you always get one free Skill reroll in any scene in which you work against another Hecata." },
+            { name: "Necromantic Prodigy", cost: [4], summary: "The secrets of Oblivion are yours to command. Your mastery of necromantic ceremonies is unparalleled. You get two automatic successes on any roll necessary for activating a necromantic Oblivion Ceremony." },
+            { name: "Next in Line", cost: [5], summary: "Now that Pochtli has sacrificed himself, it is time for another to step up and lead the Pisanob. You have an additional two dots of Status within the Hecata and an ally among the anziani, who acts as a five-dot Mawla once every other story." },
+        ]
+    },
+    {
+        title: "Cleopatras",
+        summary: "Some Nosferatu are visited in daysleep dreams by a woman who removes their blemishes and guides them to rule the Kindred. These Vagrants defy the clan's stigmas and stereotypes, dressing in fine clothes and projecting confidence and charisma.",
+        source: "Supplement",
+        requirementFunctions: [isClan("Nosferatu")],
+        merits: [
+            { name: "Close Examination", cost: [1], summary: "You remember things the woman told you at just the right time. Once per story, you may select an SPC, and tell the Storyteller you want to discover their deepest flaw. You gain three bonus dice to a Wits + Insight roll against that individual." },
+            { name: "Clothed in Power", cost: [2], summary: "You know how to make the ideal self in your dreams a reality. Pick an outfit, perfume, hair style, make-up routine, or skin-care routine. When you use this, you may reroll a Social roll failure or roll to resist fury frenzy once per story." },
+            { name: "Dream Appearance", cost: [3], summary: "Before entering your daysleep, you may roll your Composure + Resolve (Difficulty 3). If successful, your sleeping form loses the effect of your clan Bane for the duration of your sleep. When you wake, your Bane re-affects you within minutes, inflicting two Superficial Willpower damage." },
+            { name: "Figure-in-Waiting", cost: [4], summary: "Following your dreams paid off. Name a titled position in the domain. The current titleholder considers you next in line, granting four dots to spread between Mawla and Status. However, being second-in-line also earns you a two or three dot Adversary." },
+            { name: "The Beauty Within", cost: [5], summary: "You are destined to rule the Kindred. Once per story, when you are dressed in your finest clothes, you may negate your clan's Bane entirely for the duration of a chapter for the purposes of interaction with other vampires." },
+        ]
+    },
+    {
+        title: "FIRSTLIGHT",
+        summary: "FIRSTLIGHT is a joint operation among the world's intelligence agencies, tasked with learning about — and hunting — tonight's vampires. Most operatives aren't aware the people they're tracking down are no longer mortal.",
+        source: "Supplement",
+        requirementFunctions: [],
+        merits: [
+            { name: "Evasion Tactics", cost: [1], summary: "You're familiar with some basic surveillance tactics, and know simple ways to avoid being followed or spied upon. Add one die on rolls to avoid being tailed or listened in on." },
+            { name: "Branch Office", cost: [2], summary: "Through your Mawla's influence, you've been accepted by the local members of their clan. However you did it, you know where their closest base of operations is located." },
+            { name: "What Do They Know", cost: [3], summary: "You've intercepted some communications between agencies. Once per story, you may ask the Storyteller for a piece of information FIRSTLIGHT has on you or a coterie-mate that you've managed to seize." },
+            { name: "No Records Found", cost: [4], summary: "Through bribes, break-ins, and a heaping dose of paranoia, you've managed to erase yourself from FIRSTLIGHT's records. Add three dice to Larceny, Stealth, or Survival rolls when handling FIRSTLIGHT operations." },
+            { name: "Friend on the Inside", cost: [5], summary: "You've got someone on FIRSTLIGHT's payroll who reports back to you. The mole alerts you if their organization is coming after you, and once per story will commit an act of minor sabotage on your orders." },
+        ]
+    },
+    {
+        title: "Gehenna Cults",
+        summary: "A feverish millenarianism has gripped many Kindred with the belief that these are indeed the Final Nights. Blood cults and heresies spring up from the shadows in ever-growing numbers, with creeds that come in a dizzying variety of hatreds, anxieties, and hungers.",
+        source: "Supplement",
+        requirementFunctions: [],
+        merits: [
+            { name: "Mark the Bloody Trail", cost: [1], summary: "Once per session when you begin investigating or researching the presence of a blood cult you've not previously used this lore for, the Storyteller gives you one free clue to help locate the cult or to understand their current plans." },
+            { name: "Faithful Bloodhound", cost: [2], summary: "You're a proven investigator; you've exposed and taken down at least one Gehenna cult already. Either the Camarilla or the Anarchs trust you as an expert on Gehenna cults. You wield three dots of Status while taking action to investigate or persecute a cult on behalf of that sect." },
+            { name: "Dogma", cost: [3], summary: "You're steeped in the lore of Gehenna, and you've learned many permutations of warped faiths. Once per session, when you discuss a vampire's faith with them or observe them practicing their faith, you can extrapolate the rough nature of the doctrines, Convictions, or code that the religion focuses on." },
+            { name: "Cult Breaker", cost: [4], summary: "You know how to shatter their illusions and tear apart the foundations of their faith. Once per story for a scene, while socially interacting with you, cult members do not benefit from any dots in Status they may have within their own cult." },
+            { name: "Red Truths", cost: [5], summary: "Investigating blood cults has put you in a prime position to sift precious grains of truth from the bloated clot of lies. Once you have studied the practices or texts of any blood cult, you are able to learn any Rituals or other unusual supernatural capabilities they possess without need of a teacher." },
+        ]
+    },
+    {
+        title: "Harbingers of Ashur",
+        summary: "Holding the Jyhad's longest grudge, the Cappadocians were the Clan of Death before they were usurped by the upstart Giovanni. The majority joined the Sabbat and worked aggressively against Giovanni interests. These vampires respond to either name, having become some synthesis of Cappadocian and Harbinger.",
+        source: "Supplement",
+        requirementFunctions: [isClan("Cappadocian")],
+        merits: [
+            { name: "The Ashen Mask", cost: [1], summary: "You don a plain mask made of ash wood. If a Touchstone of yours is dead or dies after you purchase this lore, study of their corpse allows you to transfer the Conviction they represent to another mortal as if they died peacefully." },
+            { name: "The Gold Mask", cost: [2], summary: "You don a rose gold mask, because you strive to balance your existence between the living and the dead. You have the equivalent of four dots of Influence when attempting to cover up a death." },
+            { name: "The White Mask", cost: [3], summary: "You don a bone-white mask of a respected Harbinger lost in historic purges. You get three dice to any social roll against another Harbinger, and two dice to any social roll against another Hecata." },
+            { name: "The Obsidian Mask", cost: [4], summary: "You don a polished black mask, because you are more than just a vampire — you are truly half-dead. You may learn Oblivion Ceremonies without a teacher but are vulnerable to effects which target ghosts." },
+            { name: "The Lazarene Mask", cost: [5], summary: "You don the mask engraved in the image of one of the clan founders. You know the true secret of the Harbingers. You incur no Stains for any action taken in the pursuit of killing another Hecata Kindred." },
+        ]
+    },
+    {
+        title: "Lupine Expert",
+        summary: "Outside of the safe haven of cities, the Lupines roam. These shapeshifting beasts lie in wait to catch Kindred and tear them limb from limb. Unlike other Kindred, you have encountered the Lupines and lived to tell the tale. You know their secrets, and most importantly, how to use those secrets to keep your fellow vampires safe.",
+        source: "Supplement",
+        requirementFunctions: [],
+        merits: [
+            { name: "Huntsman", cost: [1], summary: "You've developed a keen eye for tracking Lupines, even when they're pretending to be human. Once per session, you may receive three extra dice to any Mental test to pursue Lupines." },
+            { name: "Tactician", cost: [2], summary: "You've lived through enough Lupine attacks to keep a cool head. When you and your allies use Teamwork against Lupines, the group can always assist each other. Every character can contribute one die to the Teamwork roll, no matter what Skill the test requires." },
+            { name: "Soldier", cost: [3], summary: "A werewolf's ability for combat should never be underestimated. When engaging you in Physical combat, a shifted Lupine only has a +2 damage modifier when using its claws and teeth." },
+            { name: "Trophy", cost: [4], summary: "You have slain a Lupine, and you have the evidence to prove it. Once per story, when you reveal this trophy to a werewolf, you may choose its initial reaction: Either it flees from you, or only targets you for Physical conflict." },
+            { name: "Ambassador", cost: [5], summary: "Your knowledge of werewolves is so great that you can parley with them. Whenever you try to heal the rift between individual vampires and werewolves, you receive two extra dice to Social tests in pursuit of your goal." },
+        ]
+    },
+    {
+        title: "Malkavian Family",
+        summary: "Being Embraced as a Malkavian in Chicago brings with it an almost instantaneous new family. Son wields his authority as Primogen to micromanage his clanmates' lives, hosting mandatory group counselling sessions and requiring them to share territories and havens.",
+        source: "Supplement",
+        requirementFunctions: [isClan("Malkavian")],
+        merits: [
+            { name: "Family Secrets", cost: [1], summary: "Attending Son's therapy sessions gives you glimpses into your clanmates' schemes and goals. Gain two dice on an Awareness or Insight roll involving another Malkavian." },
+            { name: "Sibling Bond", cost: [2], summary: "You've grown extremely close to another member of your clan. You share a two-dot Haven and a one-dot Herd, and once per story can call on this person for a significant favor." },
+            { name: "Tangled Web", cost: [3], summary: "Your frequent contact with other Oracles has heightened your ability to sense and use the Cobweb. Once per story, you may extend your perceptions along it to locate a specific clan member in the city." },
+            { name: "A Little Peace and Quiet", cost: [4], summary: "With Son constantly forcing you to share space and secrets with other Malkavians, you've had to carve out creative ways to get some alone time. Once per story, you may use an Auspex, Dominate, or Obfuscate power you haven't yet learned." },
+            { name: "Favorite Childe", cost: [5], summary: "A respected elder member of the clan has taken a shine to you. Gain them as a five-dot Mawla. Once per story, this person will act as a buffer between you and Son, relieving you of whatever obligation the Primogen was attempting to impose." },
+        ]
+    },
+    {
+        title: "Occult Artifacts",
+        summary: "The 21st century saw a great decline in the use of occult artifacts among the Kindred outside the chantries of Clan Tremere. The destruction wrought by the Second Inquisition, the Beckoning, and Tremere schism have begun to reverse this trend. You have gained access to, or knowledge of, one or more precious occult artifacts.",
+        source: "Supplement",
+        requirementFunctions: [character => character.clan === "Tremere" || character.clan === "Banu Haqim"],
+        merits: [
+            { name: "Rowan Ring", cost: [1], summary: "After making a Rouse Check, the ring mystically sharpens and elongates into a wooden stake that can be used to make a stake attack. The stake detaches after use and the ring falls off its wielder's finger." },
+            { name: "Cloak of Abalone", cost: [2], summary: "Woven by the Tremere as a powerful weapon against Toreador. The wearer must make a Rouse Check to activate the cloak, after which the targeted Toreador is immediately treated as if they rolled a Bestial Failure and are afflicted as if their Toreador Obsession was in effect." },
+            { name: "Powder of Rigidity", cost: [3], summary: "This uncommon mixture is hurled on the target in an opposed Dexterity + Athletics test. If the thrower succeeds, the target loses all ability to change shape for the next four hours." },
+            { name: "Monocle of Clarity", cost: [4], summary: "The user makes a Rouse Check to activate and rolls Wits or Resolve + three dice against the Target's Wits + Obfuscate. Success pierces the target's Obfuscate." },
+            { name: "Tapestry of Blood", cost: [5], summary: "The user must make five Rouse Checks and spend a full evening contemplating the weave of the tapestry. This grants them visions that could take almost any form, from glimpses of ancient civilizations to glimpses of the future." },
+        ]
+    },
+    {
+        title: "Road Courier",
+        summary: "Camarilla domains learned the hard way that online communication is a death trap for Kindred. To escape the fires of the Second Inquisition, vampires have turned to physical couriers. Whether you travel alone on a Yamaha cruiser or with a whole crew in an armored van, you know how to survive the roads.",
+        source: "Supplement",
+        requirementFunctions: [],
+        merits: [
+            { name: "Bucket", cost: [1], summary: "As long as you're in an urban area or along a major road, you rarely have problems finding a ride for the night. Add two extra dice to your Intelligence + Streetwise rolls while looking for a temporary vehicle." },
+            { name: "Six in the Morning", cost: [2], summary: "You know a hundred forgotten caves, empty garages, and abandoned warehouses. Once per story, receive a four-dice bonus to a Survival test to find shelter, as long as you're on a road or street and have a vehicle." },
+            { name: "Ride or Die", cost: [3], summary: "Select one vehicle that you've had for at least one entire story; the bonus for operating and working on this vehicle is three dice." },
+            { name: "Highway Harbinger", cost: [4], summary: "You've been delivering bad news long enough that vampires know your arrival spells trouble. For the first three nights in a new city after you announce yourself, you gain a three-dice bonus to all Intimidation, Investigation, and Streetwise tests with vampires." },
+            { name: "Midnight Express", cost: [5], summary: "You know spotters, scouts, and fellow couriers across the country. Once per story, you can order them to watch and clear the roads ahead of you for a single night, letting you maintain highway speeds even in the worst bucket." },
+        ]
+    },
+    {
+        title: "Spear of Orthia",
+        summary: "Clan scholars believe that Artemis Orthia is the first childe of Ventrue. The cultists of the Shattered Spear venerate this ancestor-figure, hiding in the shadows of Clan Ventrue and conducting their worship in defiance of Camarilla dictates. You are a member of the Shattered Spear.",
+        source: "Supplement",
+        requirementFunctions: [isClan("Ventrue")],
+        merits: [
+            { name: "Tip of the Spear", cost: [1], summary: "You are a member of the new wave of Shattered Spear adherents. Once per session, when interacting with another Ventrue character, you may ask the Storyteller whether the Ventrue will be receptive to your faith, tolerant of it, or will be opposed to it." },
+            { name: "Soldier's Code", cost: [2], summary: "You have embraced the liturgy of the Spear with ardent zeal. Choose one of the Convictions of the Spear. Once per story, you may use it to mitigate Stains as if it was one of yours." },
+            { name: "The Enduring Faith", cost: [3], summary: "You know one or more of the Ventrue in the region are secretly followers of Orthia. If you can contact them and enlist their aid, they will provide you with four dots of either Allies or Mawla." },
+            { name: "Witness to Orthia", cost: [4], summary: "You went down beneath Lisbon with Elena, and you saw the revelation of Orthia with your own undead eyes. Once per scene, after rolling the dice to convince one or more Ventrue, you may turn all 1s rolled into 10s." },
+            { name: "Splinter of the Spear", cost: [5], summary: "You possess a splinter of the spear of Orthia itself. As long as you have it about your person, channeling the power of Artemis Orthia grants you two automatic successes on Melee rolls when wielding spears or other piercing weapons." },
+        ]
+    },
+    {
+        title: "The Book of Nod",
+        summary: "The Book of Nod collects oral histories, text fragments, and other media detailing the history of Caine and his childer, with additional poems and prophecies regarding Gehenna and the Final Nights. The book provides the theological basis for the Sabbat's worship of Caine.",
+        source: "Supplement",
+        requirementFunctions: [],
+        merits: [
+            { name: "Precis", cost: [1], summary: "You are familiar with the broader concepts of the Book of Nod and some of the more commonly known prophecies. Once per story, add two dice to an Academics roll related to ancient Cainite history." },
+            { name: "Well-versed", cost: [2], summary: "Your sire or Mawla taught you certain passages from the book. Once per story, you may seek their input on a matter regarding Noddist lore, gaining a two-dice bonus to any Occult test related to the book." },
+            { name: "Scholar", cost: [3], summary: "You've dedicated significant time and study to the Book of Nod. Once per session, add three dice to a Persuasion roll when debating the Book of Nod's finer points." },
+            { name: "Collector", cost: [4], summary: "You own several fragments from the book or have memorized sections of Caine's history. Once per story, when you grant someone access to your collection, gain three temporary dots in Resources or other appropriate Background for the remainder of the story." },
+            { name: "Noddist Master", cost: [5], summary: "Other Noddists look to you for insight and interpretation on the texts. Once per story, you may derive a fact or prophecy from the Book of Nod that your character can apply to sway a decision, automatically succeeding at a Persuasion test." },
+        ]
+    },
+    {
+        title: "The Gorgons",
+        summary: "The Lamiae were a bloodline of Kindred believed to be descended from Lilith as well as Caine. In ancient times, they were dedicated warriors protecting the Cappadocian clan. The Gorgons lived on, much like their Cappadocian charges, taking the title of 'Lilins' and spreading the word of Lilith and the Bahari faith.",
+        source: "Supplement",
+        requirementFunctions: [isClan("Lamia")],
+        merits: [
+            { name: "The Serpent's Kiss", cost: [1], summary: "Once per story, you can choose to infect your mortal prey with disease, causing them one Aggravated Health damage every night for three nights. This ability has no effect on vampires." },
+            { name: "Protection", cost: [2], summary: "You embody the original purpose of the Lamiae — the protection of your charges, by any means necessary. You gain a two-dice bonus when using the Block maneuver to protect someone else." },
+            { name: "Four Humours", cost: [3], summary: "Once per story you may bite a mortal and inflict a two-dice penalty on all actions which don't immediately further their current resonance, until the end of the night or their resonance changes humours." },
+            { name: "Controlling the Beast", cost: [4], summary: "Chaos and pain are key aspects of the Bahari faith. Once per session, you can convert a messy critical in combat into a critical." },
+            { name: "Medusa's Gaze", cost: [5], summary: "Once per session after you win an Intimidation or conflict roll, those who lost become unable to act on the following conflict turn. Outside combat, they become unable to move for a scene unless they spend 1 Willpower." },
+        ]
+    },
+    {
+        title: "The Society of St. Leopold",
+        summary: "Named for their spiritual founder and inspiration, the Dominican friar Leopold von Murnau, the Society has existed in one form or another since the formation of the Holy Inquisition. As a Kindred resident of Chicago, you possess some knowledge of the Society of St. Leopold.",
+        source: "Supplement",
+        requirementFunctions: [],
+        merits: [
+            { name: "Postulant", cost: [1], summary: "Your relationship with your former Church is that you once seriously considered taking Holy Orders. Once per story, you may ask the Storyteller for a piece of known information about the Society." },
+            { name: "Novice", cost: [2], summary: "You were on the verge of entering into your novitiate when that life was permanently torn away from you. These Contacts (equivalent of ••) would naturally include your confessor and fellow novices." },
+            { name: "Brother or Sister", cost: [3], summary: "Before your Embrace you were a member of the Church. You possess detailed knowledge of the local diocese and may use this knowledge once per story to find a safe place to hide among Church properties." },
+            { name: "Father or Mother", cost: [4], summary: "You were a fully professed and ordained priest prior to your Embrace. You know exactly who the members of the Society are in the city and have developed strategies on how to avoid or misdirect them, amounting to Influence (•••) with the diocese." },
+            { name: "Inquisitor", cost: [5], summary: "You are a former, fallen member of the Society of St. Leopold. Once per story, you may ask the Storyteller for one piece of true and accurate information about the Society and its current activities. You also gain a tenuous Influence (••••) over any one branch of the group." },
+        ]
+    },
+    {
+        title: "Annabelle",
+        summary: "A neonate scarcely a few months undead, Annabelle has become the poster child for a new Anarch uprising in Los Angeles. Her nightly cause is to apply the strategies and tactics of resistance to authority that she learned as a mortal to the horrifying world of the vampires.",
+        source: "Supplement",
+        requirementFunctions: [],
+        merits: [
+            { name: "Inspiration", cost: [1], summary: "The fire that drives Annabelle and ignites the spark of her dream for a better future for all Kindred also burns within you. Gain a point of Anarch status and the Notorious (Camarilla) flaw." },
+            { name: "Soapbox", cost: [2], summary: "You've met Annabelle personally and studied her speeches. You get two extra dice in any roll involving a political debate or confrontation where you invoke her name and philosophies of compassionate change or resistance to Camarilla tyranny." },
+            { name: "Freedom Over Oppression", cost: [3], summary: "Drawing on Annabelle's example for inspiration, you gain two extra dice on rolls to resist Dominate attempts from other vampires." },
+            { name: "Liberty Over Tyranny", cost: [4], summary: "Annabelle's message has spread to your city. Your association with her grants you the equivalent of three dots of Allies among the Anarchs, in any domain." },
+            { name: "Independence Over Servitude", cost: [5], summary: "Once per story, if you can persuade her that your cause is worthy, Annabelle will take up your agenda as her own crusade. She'll speak in favor of your goals in public and utilize her own resources on your behalf." },
+        ]
+    },
+    {
+        title: "Ramona",
+        summary: "A Gangrel who works with the Valley Coterie on occasion, Ramona is an LA native who was Embraced in her late teenage years. She has an affinity with rats, employing her Rat Pack as spies and messengers, and currently takes pride in her domain over Griffith College.",
+        source: "Supplement",
+        requirementFunctions: [],
+        merits: [
+            { name: "Campus By Night", cost: [1], summary: "Ramona arranges for you to receive a student or faculty ID card that grants legal access to Griffith College. You may visit the campus freely and enjoy all the facilities and benefits that students or faculty normally enjoy." },
+            { name: "Sketchbook", cost: [2], summary: "Ramona will make an accurate sketch of any physical location you choose. When in possession of the sketch, you gain two dice on all Investigation rolls related to the place she drew." },
+            { name: "Unlikely Connections", cost: [3], summary: "Ramona is able to reliably get word to any of the characters who also have an LA by Night loresheet. Additionally she can also contact Beckett, Theo Bell, or Lucita." },
+            { name: "Rat Pack", cost: [4], summary: "Once per story the Rat Pack will infiltrate a place of your choosing and observe what's happening inside, then report back to Ramona. Gain 2 dice on all rolls related to any interactions connected to the situation or individuals spied on." },
+            { name: "Infestation", cost: [5], summary: "There's no business or building that can't be ruined by an infestation of rodents. Pick a target building: within a week the location suffers a devastating plague of rats that will close it for the duration of a story." },
+        ]
+    },
+    {
+        title: "Tlacique",
+        summary: "Before the Followers of Set became the Ministry, the Tlacique were part of the most respected Bloodlines within the Ministry, dominating the Americas before the colonizations. They were experts in astrology, astronomy, elemental magic, and divine darkness, believing themselves to be descended from Tezcatlipoca.",
+        source: "Supplement",
+        requirementFunctions: [],
+        merits: [
+            { name: "Cultural", cost: [1], summary: "Introduced to occult knowledge at an early age, you understand Mesoamerican culture and its enigmas. Whenever you need to make any roll involving Sorcery, forbidden lore, and riddles related to the culture in question, you gain +2 bonus dice." },
+            { name: "Descendant", cost: [2], summary: "You are one of the few remaining Tlaciques. Instead of gaining Presence as one of the Clan Disciplines, you gain Blood Sorcery and can trade Obfuscate for Auspex. Your Clan Weakness and other Traits remain the same." },
+            { name: "Former Member of the Sabbat", cost: [3], summary: "You had been recruited by the Sabbat as a Tlacique before the Calling destabilized the Sect. You have a point of Contact who is a member of both the Sabbat and the Ministry, and you can learn specific Discipline effects that could only be taught to members of the Sabbat." },
+            { name: "Descendant of Tezcatlipoca", cost: [4], summary: "You are one of the descendants of the Methuselah known as Tezcatlipoca. This offspring grants you an extra point in your Clan Disciplines and a point in Blood Potency." },
+            { name: "The Ancient Omen", cost: [5], summary: "A magical stone calendar created by an ancient Tlacique sorcerer fell into your hands. By spending a Willpower point and performing a Rouse Check, you can ask one question per session, which will be answered accurately by the secrets of the universe." },
+        ]
+    },
+    {
+        title: "Nictuku",
+        summary: "The Nosferatu nightmare of past centuries has become a reality. The return of the Nictuku marks them as antagonists to the Clan during modern times. Although somewhat different from what they were in the past, the Nictuku are back and will take the place of the Nosferatu!",
+        source: "Supplement",
+        requirementFunctions: [isClan("Nosferatu")],
+        merits: [
+            { name: "Connoisseur of History", cost: [1], summary: "Curious about the history of the Nictuku, you decided to study them and delve deeper into your Clan Nosferatu's involvement. Whenever you make any Knowledge check involving your Nosferatu Clan and the Nictuku, gain a +3 dice bonus." },
+            { name: "Converted Member", cost: [2], summary: "You've adopted the Nictuku Clan as your true origin. Whenever you need it, you can summon an ally equivalent to Contacts 3 or Allies 2 to help you in any conflict situation." },
+            { name: "Flag Bearer", cost: [3], summary: "As one of the first to join the Nictuku as true Nosferatu, you become the authority. Whenever you interact with another Nictuku or Nosferatu, you gain +2 dice to Social rolls when imposing authority and +1 automatic Success." },
+            { name: "True Nictuku", cost: [4], summary: "You are a true Nictuku. Your Clan Disciplines are Auspex, Potency, and Obfuscate, you begin the chronicle with Blood Potency at the maximum of your Generation and one Generation less than your Coterie." },
+            { name: "Son of the Occult", cost: [5], summary: "A very ancient vampire adopted you. This Cainite equivalent to Mawla 5, is an extremely powerful vampire and became your Mentor, willing to help you." },
+        ]
+    },
+    {
+        title: "Daughters of Cacophony",
+        summary: "On the fine line between genius and decadence, the Daughters of Cacophony balance on a long, clear note. No one sings like a Siren: the air in their lungs is solely for the production of beautiful, unearthly notes mortal throats can scarcely match.",
+        source: "Supplement",
+        requirementFunctions: [character => character.clan === "Malkavian" || character.clan === "Toreador"],
+        merits: [
+            { name: "Welcome Everywhere", cost: [1], summary: "There isn't a single salon, dive bar, or rave you can't walk into and expect an immediate welcome. Re-roll one die on social rolls in any location where people come to be entertained." },
+            { name: "Fanbase", cost: [2], summary: "You have admirers in every venue or city you've ever visited. Once per session, declare you know someone who can help you in whatever location you're currently in. They count as a 2-dot Ally for the rest of the session." },
+            { name: "Assumed Knowledge", cost: [3], summary: "You're assumed to be well-traveled and well-versed in the goings-on of other sects. Once per session, you roll three extra dice on any social test to advise on dealing with groups of Kindred other than the one asking for your input." },
+            { name: "Patronage", cost: [4], summary: "You count at least one powerful Kindred among your admirers. They maintain a steady stream of funding, gifts, and favors (4 dots to distribute across Mawla, Allies, and Resources)." },
+            { name: "Siren", cost: [5], summary: "Choose one specific emotion that you can evoke through your Siren's Song. Roll three extra dice on all tests to do so." },
+        ]
+    },
+    {
+        title: "Gargoyles",
+        summary: "That this bloodline exists at all is an accident the Tremere could not predict when they created the first Gargoyles through torturous experimentation. Tenuous though their existence has been for many centuries, the Gargoyles are thriving in modern nights.",
+        source: "Supplement",
+        requirementFunctions: [isClan("Gargoyle")],
+        merits: [
+            { name: "Blood Orphan", cost: [1], summary: "Nobody wants you — not the clans whose blood flows through your veins, not the Warlocks who made your bloodline. You have the Suspect (•) Flaw with Tremere. Once per scene though, you can beg a Trivial Boon from a Gangrel, Nosferatu, or Tzimisce." },
+            { name: "Haven in High Places", cost: [2], summary: "You can make an abandoned church tower or similar high-rise your one-dot Haven. Your ability to glide out of there when danger approaches gives it the two-dot Postern Merit." },
+            { name: "Blood Benefactor", cost: [3], summary: "You are on good terms with an influential Tremere or a member of one of your parent clans. This benefactor is a three-dot Mawla to you." },
+            { name: "You Do Not Serve", cost: [4], summary: "Your kind wasn't handed freedom — you broke the shackles placed on your mind with iron will. You can spend a Willpower point to resist Domination attempts, negating their effect completely." },
+            { name: "Mother's Memory", cost: [5], summary: "Virstania, the Great Mother, had a leading hand in creating and freeing the Gargoyles. Tapping into these memories, you can push through extreme adversity. Once per story, you can fully recover all your Willpower at Storyteller's discretion." },
+        ]
+    },
+    {
+        title: "Kiasyd",
+        summary: "The Kiasyd, strange collectors and blood connoisseur, find themselves adrift since the Lasombra's defection to the Camarilla. They are loners by nature, barely tolerating each other's presence let alone other Cainites. Each creates a unique and macabre collection of curated items or obscure knowledge.",
+        source: "Supplement",
+        requirementFunctions: [isClan("Kiasyd")],
+        merits: [
+            { name: "Connoisseur", cost: [1], summary: "You smell the fine nuances of blood. You may make a Resolve + Insight test to determine a person's blood resonance with no need for interaction, so long as you're within 10 feet of them." },
+            { name: "Sommelier", cost: [2], summary: "You can smell whether anyone within 30 feet of you has a specific blood resonance, that you name, with a Resolve + Awareness test." },
+            { name: "Harvest", cost: [3], summary: "After collecting blood outside its natural vessel, you can enhance any fleeting resonance it carries to intense resonance. Harvest takes one night to complete, and the Kiasyd's alchemy keeps the blood fresh over that time." },
+            { name: "Ripeness", cost: [4], summary: "After collecting blood outside its natural vessel, you can distill any intense resonance it carries into half the blood points with acute resonance. Ripeness takes one night to complete." },
+            { name: "Vintage", cost: [5], summary: "After collecting blood outside its natural vessel, you can change its Dyscrasia to a Dyscrasia of your choice within the same humor. Vintage takes one night to complete." },
+        ]
+    },
+    {
+        title: "Lhiannan",
+        summary: "The Beckoning ripped the Lhiannan, presumed extinct since the Dark Ages, from their earthen resting places. These neonates, like seeds on the wind, spread to all corners of the earth before settling down and claiming domain as the Lhiannan of old did. Every Lhiannan is closely tied to their domain.",
+        source: "Supplement",
+        requirementFunctions: [isClan("Lhiannan")],
+        merits: [
+            { name: "Canopy", cost: [1], summary: "You gain two free points of Haven, to distribute across Haven traits as you choose." },
+            { name: "Garden", cost: [2], summary: "You gain two free points of Domain to spend on Chasse, Lien, or Portillon as you choose. You can add your Domain points to your coterie's, and the entire shared domain counts towards your Lhiannan advantages." },
+            { name: "Evening Glory", cost: [3], summary: "You roll two dice making Rouse checks to rise from slumber in your domain, and use the higher result." },
+            { name: "Seed", cost: [4], summary: "Drawing from the earth and plants themselves, you gain two extra Health levels within your domain. When you leave your domain and the effect ends, remove unmarked Health first." },
+            { name: "Earth's Balm", cost: [5], summary: "If you fall to torpor from Hunger or damage within your domain, treat your humanity as 1 higher for purposes of determining torpor time. You automatically awaken if your torpor period ends." },
+        ]
+    },
+    {
+        title: "The Carpathian Brood",
+        summary: "The Gargoyle Revolt didn't spring out of nowhere. The legend of the Rock Lord - the first of the Grotesques to break free of the masters' yoke - served as a rallying cry for generations of Gargoyles to come. Cells of 'Carpathian Liberators' now flock to areas once dominated by the Warlocks.",
+        source: "Supplement",
+        requirementFunctions: [isClan("Gargoyle")],
+        merits: [
+            { name: "Viscule", cost: [1], summary: "You gain a 2-Die bonus to any Survival or Streetwise pools to identify a Viscule in your immediate area. Such a sanctum counts as a 1-Dot Haven with the Location and Postern Merits." },
+            { name: "No Strings On Me", cost: [2], summary: "Whenever you are subject to a Discipline or other effect that forces you to take an action against your will, once per session you can summon up all your resolve and anger to instantly break free of this control, though at the cost of descending into a Fury Frenzy for the rest of the scene." },
+            { name: "Earthsinger", cost: [3], summary: "You gain a Dot of Blood Sorcery, as well as the 1-Dot Koldunic Sorcery Ritual specifically aspected towards the element of earth. When purchasing new dots of Blood Sorcery, you pay experience costs as though you were purchasing Caitiff Disciplines." },
+            { name: "Tanquam Lapides Vivi", cost: [4], summary: "Every time you take any direct and public actions that sabotage the efforts of the Tremere Clan or their servants, it serves as a rallying cry for your fellow Quasimodos, granting you a temporary 4-Dots of Status among other Gargoyles for the rest of the current story arc." },
+            { name: "As Above, So Below", cost: [5], summary: "Through sorcerous affinity, practiced meditation, or simply some strange quirk of the Embrace, you have managed to unlock that which was thought lost to the Gargoyles in ages past: the power of true flight. Once per session, you can make a Rouse Check to gain the ability to fly for a number of hours equal to your Blood Potency." },
+        ]
+    },
+    {
+        title: "Goblin Marketeer",
+        summary: "The Kiasyd's connection to the true Fair Folk has always been alluded to but never fully understood. They have managed to establish contact with their Changeling 'cousins' and trade for eclectic assortments of baubles, tokens, and stranger things still from beyond the Hedge.",
+        source: "Supplement",
+        requirementFunctions: [isClan("Kiasyd")],
+        merits: [
+            { name: "Scarthistle Seeds", cost: [1], summary: "They resemble little more than a small packet of semi-translucent seeds, but when exposed to blood begin to rapidly sprout into tangles of thorny, crimson vines. Delivering a few into an open wound hinders a creature's ability to restore its flesh as the blood-gutted weeds sprout and infest their very flesh." },
+            { name: "Beggar's Coin", cost: [2], summary: "While you have it on your person, once per session you can buy an item or a service as though you had the equivalent of Resources 3. The only catch is that for every fee you dodge, someone close to you ends up footing the bill." },
+            { name: "Blood Dross", cost: [3], summary: "If placed under the tongue, a bearer can call upon the Blush of Life at will without the need to Rouse the Blood. If they crush the delicate vial between their fangs, they instantly slake all current levels of Hunger, but must make a Willpower Check at Difficulty 5 or succumb to their Clan Compulsion." },
+            { name: "The Curious Paw", cost: [4], summary: "While wearing the amulet on their person, the bearer can stroke it three times to activate its power. If the bearer succeeds on a Wits + Insight roll against an individual that session, they learn one dark secret about said target. However, every time they use this ability they find themselves forgetting things." },
+            { name: "Personal Tetragrammaton", cost: [5], summary: "You stumbled upon your True Name. So long as you have it in your possession, any other vampire or creature that attempts to warp your perceptions or dominate your will through supernatural means must first make a Resolve + Occult roll at Difficulty 5, or else find their efforts foiled." },
+        ]
+    },
+    {
+        title: "Accord of Tizatlan",
+        summary: "No-one expected the Sabbat to be the ones to extend an olive branch to the remnants of the Tlahuelpuchi, but Alvarado of the Night Clan first cemented this alliance. The ancient Accord of Tizatlan still stands - if not out of obligation than out of a classically vampiric sense of opportunism.",
+        source: "Supplement",
+        requirementFunctions: [character => character.clan === "Lasombra" || character.clan === "Tlahuelpuchi"],
+        merits: [
+            { name: "Blood Dowry", cost: [1], summary: "While Blood Bound to another Kindred, you gain access to any Resources, Herd, or Haven merits that individual may possess as though they were your own. While your 'partner' isn't obliged to allow access to these things gratis, the only way to cut off your access is to break the Blood Bond." },
+            { name: "The Fine Print", cost: [2], summary: "You are in possession of a notation or transcription from the original written contract of the Accord. Once per story, you can invoke some arcane stipulation to gain the equivalent of a Major Boon from a single Lasombra or Tlahuelpuchi SPC." },
+            { name: "Tlaxcalan Celebrant", cost: [3], summary: "You are considered a reliable intermediary between the two bloodlines. You gain Status 3 with any Lasombra, Tlahuelpuchi, organizations, or coteries affiliated with either Clan within your local vicinity." },
+            { name: "Lords of Day & Night", cost: [4], summary: "You have uncovered a disturbing secret about the parallel between the Noddist tales of the Antediluvians' rebellion and a similar strife amongst thirteen god-like entities known as the Tonalteucin. You gain a 3-Die bonus to any rolls meant to uncover the subtle manipulations of Kindred older than yourself." },
+            { name: "Shadow In The Flame", cost: [5], summary: "You know the truth: the Accord was more than mere politicking; it was the first omen of a new epoch. You gain a 3-Dot Mawla in the form of a powerful Lasombra or Tlahuelpuchi with whom you share a mutual Level 3 Blood Bond. So long as you act in concert with them, you do not gain Stains from any actions to subjugate or derive control over mortals." },
+        ]
+    },
     // {
     //     title: "Sample",
     //     summary: "Sample",
