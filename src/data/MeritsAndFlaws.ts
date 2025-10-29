@@ -1741,7 +1741,7 @@ export const loresheets: Loresheet[] = [
         title: "Flesh-Eaters",
         summary: "The Nagaraja are flesh-eating Vampires. They are feared by many and often sadistic killers.",
         source: "Blood Gods p223",
-        requirementFunctions: [isClan("Hecata")],
+        requirementFunctions: [isClan("Nagaraja")],
         merits: [
             {
                 name: "Viscus",
@@ -1780,7 +1780,7 @@ export const loresheets: Loresheet[] = [
         summary:
             "The Giovanni are an ancient and respected mafioso family of Vampires. They are the most powerful part of the Hecata clan, and they'll do everything to keep it that way.",
         source: "Blood Gods p225",
-        requirementFunctions: [isClan("Hecata")],
+        requirementFunctions: [isClan("Giovanni")],
         merits: [
             {
                 name: "A Cousin's Ear",
@@ -1817,7 +1817,7 @@ export const loresheets: Loresheet[] = [
         summary:
             "Vampires formerly known as the Samedi. They commonly work as mercenary spies and necromancers, or run secret religious circles practicing vodou magic. The clan curse rots their flesh or, in some cases, exposes raw bone, giving them an even more corpse-like appearance than most vampires.",
         source: "Blood Gods p222",
-        requirementFunctions: [isClan("Hecata")],
+        requirementFunctions: [isClan("Samedi")],
         merits: [
             {
                 name: "CSI Shit",
@@ -2320,6 +2320,585 @@ export const loresheets: Loresheet[] = [
         ],
     },
 
+    // Baali Loresheets
+    {
+        title: "Came Back Wrong",
+        summary: "Baali or Hecata characters only. You died and died again, yet on the brink of Oblivion, something pulled you back - an entity claiming to be Nebiros, Marquis of the dead. With a powerful, eloquent intonation he offered you resurrection in return for your service.",
+        source: "Custom",
+        requirementFunctions: [
+            (character: Character) => character.clan === "Baali" || character.clan === "Hecata"
+        ],
+        merits: [
+            { name: "Fist of the Grave", cost: [1], summary: "Your body and soul writhe with tendrils of finality that wither even the insubstantial matter of Oblivion. When you Blood Surge your physical attacks, they can damage incorporeal beings, such as Wraiths, shadows of Oblivion, or other such entities." },
+            { name: "Death Rite", cost: [2], summary: "Necromantic processions seep into your daysleep dreams. You learn the Oblivion Ceremony Gift of the Blood Pearl, even if you don't have the required Oblivion or Blood Sorcery, and once per Story when you use a Blood Pearl it automatically works with no Ceremony Test required." },
+            { name: "In Nomine Nebiros", cost: [3], summary: "The Marquis tasks you with sending him the souls of those who were touched by the powers of the Outer Dark. Add three dice to any pools made to detect Infernalism in any character. Once per Chronicle, when you destroy a character touched by Infernalism, the lowest of your Stamina, Charisma, or Resolve is increased by 1, up to a maximum of 5." },
+            { name: "House of Skulls", cost: [4], summary: "The location of your resurrection was a secreted place that a cult could operate in. You gain this space as a Haven (●●) with Ward (●). Wraiths who pass into these walls are trapped, and cannot leave without your say so, with some serving as Watchmen (●). However the place is also Haunted (●) by hellish sights." },
+            { name: "Necroschism", cost: [5], summary: "You've learned to manipulate the strength of the infernal anchor that binds your soul to your new flesh. You may take a point of Aggravated Willpower Damage to split your body and soul apart. While a Wraith you are subject to the same rules and powers they are and cannot Rouse the Blood." },
+        ],
+    },
+    {
+        title: "Dealer of Needful Things",
+        summary: "Baali characters only. You've quietly accumulated a stockpile of dangerous relics through trade, discovery, or perhaps more unsavory means. Now it's time to lay down roots and set up a shop for things people need. A mysterious vendor trafficking in strange, useful, forbidden objects.",
+        source: "Custom",
+        requirementFunctions: [isBaali],
+        merits: [
+            { name: "Nicknacks", cost: [1], summary: "You seem to have an endless supply of small trinkets you give away to customers. You can sense when they are within two-hundred yards/meters of you, and those who take them have an inclination to listen to what you have to say, granting you +1 die to your Social pools to persuade them." },
+            { name: "A Store Near You", cost: [2], summary: "The nature of your profession requires that you may need to, abruptly, relocate. Once per Story you can shutter your current location and move to a new one. This second location counts as a Haven (●●). Add one die to any pools made to sell something while in this Haven." },
+            { name: "Devil's Paw", cost: [3], summary: "You always seem to have just the thing to solve a Cainite's problem, though it may come with unforeseen consequences later on. Once per night, provide an object that confers two bonus dice in a Skill towards a problem they wish to solve. However once resolved they suffer a two dice penalty." },
+            { name: "Eclectic Collection", cost: [4], summary: "Your most valuable merchandise; Choose three Artifacts that you have in stock to sell. You can choose three more at the beginning of each Chronicle." },
+            { name: "Cursed Curios", cost: [5], summary: "Everything you've ever sold now has an exceptional curse. At any time you can make a Resolve + Awareness; Difficulty 3 Test to get a brief glimpse of where the object is. While doing this, you may also spend a point of Willpower to provide the holder with a two-dice bonus or penalty to a skill." },
+        ],
+    },
+    {
+        title: "Sacrificial Descent",
+        summary: "Baali characters only. Unlike your dull, reckless Clanmates, your lifeline to mortality isn't some trinket to be discarded in a crude offering. Your sire taught you the importance of sacrifice—that the corruption of what you need into something you can use is a ritual to grant power.",
+        source: "Custom",
+        requirementFunctions: [isBaali],
+        merits: [
+            { name: "Dreams are Fleeting", cost: [1], summary: "You have begun the preparations with one of your Touchstones. Choose which, that Touchstone is Blood Bound to you, and you feel genuine affection for them. When you spend time with this Touchstone, add two dice to your Willpower Pools until the end of the next Session." },
+            { name: "Such Delights to Show You", cost: [2], summary: "The emotional link to your Touchstones is a metaphysical tether, one that you can exploit. You can offer them a Devil's Bargain, if they accept they gain the usual backgrounds from it, and you can also burn your own Willpower to re-roll up to three of their Dice in a pool." },
+            { name: "Prove Your Devotion", cost: [3], summary: "When you convince your Touchstone to perform an act that goes against their own convictions or beliefs, prevent any Stains you would gain from doing so. Additionally, if your Touchstone kills someone for you, you mend Superficial Health Damage appropriate for your Blood Potency, for free." },
+            { name: "Mark of Conviction", cost: [4], summary: "As long as your Touchstone's Humanity is five or lower, their rotting soul opens them to physical corruption and at any time you can gain two Stains to transform them into a Marked One. This can be done even if they are nowhere near you." },
+            { name: "Nooo Not Me!", cost: [5], summary: "The time to harvest the fruits of your corruptive labor has come. You can drain a Touchstone completely. Doing so grants you any Stains typical to harming and killing a Touchstone, however your Blood Potency is increased by 1. If you lose Humanity as a result of Stains gained from doing this, increase a Discipline's level by 1 as well." },
+        ],
+    },
+    {
+        title: "Den of Sin",
+        summary: "Baali characters only. Since time immemorial, certain places have been marked by the calamities of their age. With your blood, now tainted by the might of infernalism, you can chart a path to the outer dark through acts of excess and debauchery.",
+        source: "Custom",
+        requirementFunctions: [isBaali],
+        merits: [
+            { name: "A Taste for Everyone", cost: [1], summary: "Increasing depravity within your den increases the available clientele. You gain your clients as a Herd (●). This Herd's rating is increased by one for each other Background you purchase from this Loresheet." },
+            { name: "It Grows on You", cost: [2], summary: "Your Den of Sin has a strange life of its own, feeding on the withering humanity and growing in size and ability. Once per Session, when someone dies in a gruesome way within the walls of the Den, you gain a free dot to spend on its Haven rating, or an addon of your choice." },
+            { name: "Powered by Damnation", cost: [3], summary: "Your clients unquestionably lose something when partaking in your offerings, but you on the other hand have gained power. Add two dice to your pools to temp others, and when they partake, add an additional die to one of your Discipline Pools for the remainder of the Session." },
+            { name: "Warping Reality", cost: [4], summary: "Your Den of Sin has attained a level of connection with the Outer Dark, allowing you to subtly influence reality as its corruption pours forth. Once per Story you may warp reality within your Den, you may reroll any failed Social or Mental pools within the Den or automatically succeed on a single action involving mortal." },
+            { name: "Patron of your Establishment", cost: [5], summary: "Your den of sin has become a nexus of infernal power and remarkably a lesser demon has manifested on its own accord. Choose a Demonic Entity and gain its mark immediately. It will treat you as its favored, though it also pursues its own strange ambitions." },
+        ],
+    },
+    {
+        title: "Heretic",
+        summary: "Baali characters only. Within the Clan of Devils there exists a group of those who believe the original purpose of the Clan was not to awaken the ancients, but instead to commit any atrocity necessary to keep them asleep, to bar their way, to prevent their incursion into our world.",
+        source: "Custom",
+        requirementFunctions: [isBaali],
+        merits: [
+            { name: "Solemn Temerity", cost: [1], summary: "You have borne witness to, or even spoken directly to, the source of infernal power. Once per Session, you may add 1 die to resist Terror Frenzy, if that Frenzy was triggered by an Infernal power, add 2 dice to resist instead." },
+            { name: "A Task Greater than You or I", cost: [2], summary: "Your duty is a grim one, but one that must be done. Once per Story, when you roll to convince another that what you do, no matter how awful, is done for the good of the world, you may completely re-roll that Dice Pool." },
+            { name: "Confidant", cost: [3], summary: "A fellow Cainite is wholly invested in your aims, having also witnessed the powers of the Outer Dark. They count as a Mawla (3) that will always assist with your Dark Sacrament, however they've drawn the attention of an Infernal Adversary (2)." },
+            { name: "The Victim Soul", cost: [4], summary: "Things in the dark hunger for innocence more than anything. Once per Chronicle you can spend an hour meditating to find a mortal that is entirely pure or heart, spirit, and body. Sacrificing this individual as part of your Dark Sacrament thoroughly satiates a Child of the Outer Dark, and they will nullify the effects of an Blood Ritual or Ceremony of Oblivion outright for the remainder of the Story." },
+            { name: "Dragonfall", cost: [5], summary: "You know of a Nexus of Leylines, bored into the earth by some cosmic fall. You've sworn to protect this site at all costs as Ceremonies and Rituals performed here have their Dice Pools increased by four, and any Infernalist who catches wind of it will use it to herald a powerful demonic incursion." },
+        ],
+    },
+    {
+        title: "Hunter Pawn",
+        summary: "Baali characters only. The will of the outer dark is unknowable and unquestionable. For centuries, your cult has identified those with the potential for true faith and ensured they never unlock that power. Your role is to twist their lives into ones of obsession and hatred.",
+        source: "Custom",
+        requirementFunctions: [isBaali],
+        merits: [
+            { name: "Mind Games", cost: [1], summary: "You understand the minds of those who seek to destroy you. Add one bonus die to Social and Mental pools when you attempt to ascertain their next move." },
+            { name: "Indebted Tempter", cost: [2], summary: "You've ensnared a charming individual who will do anything to escape your grasp. They count as a Gifted Mortal Retainer (●●●●) with high Charisma and at least one Discipline Power. They are free-willed and will actively try to undermine you, however you possess an infernal contract that ensures they can't harm you." },
+            { name: "Ritual of Adversity", cost: [3], summary: "Hate is powerful. By targeting the loved ones of those with divine potential, you draw them into darkness. You can ritualistically kill a loved one of a Storyteller Character with divine potential. This gains you a new Enemy (●●) as a Dark Bargain, allowing you to purchase two dots of advantages." },
+            { name: "Strayed from the Path", cost: [4], summary: "Each corrupt act further molds a Chosen into your tool. Every time you successfully manipulate a Chosen into accumulating corruption or breaking their morals, their Déchéance rating increases. Upon reaching four, the hunter becomes a potent Dyscrasia." },
+            { name: "The Adversary", cost: [5], summary: "The time has come to begin the final steps to usher in the Adversary. Once per chronicle, you may trigger the Chosen's transformation into the Adversary, provided they have committed sufficient atrocity or corruption as deemed by the Storyteller." },
+        ],
+    },
+    {
+        title: "The Lords of Red",
+        summary: "Baali, Malkavian, or Thin-blood characters only. The post WWII era was defined by a massive surge in construction in Boston. Workers began to hear a strange hum resonating through the tunnels, which caught the attention of a Baali, creating the Red House.",
+        source: "Custom",
+        requirementFunctions: [
+            (character: Character) => character.clan === "Baali" || character.clan === "Malkavian" || character.clan === "Thin-blood"
+        ],
+        merits: [
+            { name: "More and More Now", cost: [1], summary: "You are a recognized member of the Red House with some standing. Once per Story you can call an Ally (●) to automatically assist you in anything you require. This Ally's effectiveness rating is increased by one dot for each other Background you purchase from this Loresheet." },
+            { name: "You Want To Dream", cost: [2], summary: "You gain a Thin-blood Mawla (●) who serves the Red House, and can concoct the hallucinogenic drug, Blackburn. Unlike other Cainites who are affected by the drug, the Skill bonuses are not inverted for you. You can get a dose of Blackburn once per Story." },
+            { name: "The Name of the Sound", cost: [3], summary: "You have personally gazed into the Red, the realm of the eponymous Lords, and it has resonated within you, allowing you to sense spiritual vibrations. Add three dice to any pools made to hear, and your powers of Auspex can be performed even if you only hear the target." },
+            { name: "The Thunder Song", cost: [4], summary: "You have listened to the words of the Lords of Red for long enough that you have remembered their strange uttering phrases. You can become their speaker, pouring out their distorted word salad. Doing this for at least two full turns while afflicted with a Compulsion allows you to spread that Compulsion to Cainites who hear you." },
+            { name: "You're in New You", cost: [5], summary: "Your skin has been marked with rippling black geometric patterns, which turn a deep red as your Hunger increases, and they can be used to manifest your powers of Oblivion as if they were shadows. You gain an effect based on your Clan." },
+        ],
+    },
+    {
+        title: "Mitéra Pollón",
+        summary: "Baali characters only. Born from Khohfshiel, known to future occultists as Mitéra Pollón, meaning Mother of Many, her techniques are a fusion of the ancient rites of the First Tribe and more recent teachings of necromancy and thaumaturgy.",
+        source: "Custom",
+        requirementFunctions: [isBaali],
+        merits: [
+            { name: "Flystrike", cost: [1], summary: "Scratches that Mitéra Pollón would inflict would fester and rot. When you Blood Surge an unarmed attack made with your nails, the wound infests with maggots, causing the victim 1 point of Superficial Damage each sunset. On the third sunset, the wound births a Vile Swarm under your command." },
+            { name: "A Gathering of Ills", cost: [2], summary: "The title 'Mother of Many' not only reflected her power over unnatural hordes but also her strange attraction to society's ailing. These unfortunates flock to you as well, granting Herd (●●●). Unlike a typical Herd, they restore every two weeks, even if you kill them, and few will miss them when they're gone." },
+            { name: "Inner Script", cost: [3], summary: "To lend power to her rites of summoning, Mitéra Pollón would peel back her skin and write their words on the inside of her flesh. Once per Chronicle, you may repeat this process and choose a Ritual or Ceremony you don't know that creates a minion with a Stat Block." },
+            { name: "Army of Darkness", cost: [4], summary: "Any creatures created from your Disciplines, Rituals, Ceremonies, or from the Backgrounds on this Loresheet have their Health Tracker increased by your Occult, however all such creatures count as having your Bane." },
+            { name: "Mother Made", cost: [5], summary: "Mitéra Pollón unintentionally achieved demonic apotheosis in the 18th century. You have learned fragments of her ritual. Once per Chronicle, perform the night-long process of wrapping another in layers of your dead flesh, making a Stamina + Resolve or Fortitude; Difficulty 4 Test. On a Win, Cainites become Baali Apostates, while Mortals become Marked Ones that obey your commands." },
+        ],
+    },
+    {
+        title: "Protégé of Laurence Cadwell",
+        summary: "Baali characters only. Laurence Cadwell is infamous in many Baali circles. Seen as an aspiration by some, he is an accomplished Infernalist that has spent centuries scouring the earth for secrets and knowledge, all to achieve Demonhood.",
+        source: "Custom",
+        requirementFunctions: [isBaali],
+        merits: [
+            { name: "Infernal Accolades", cost: [1], summary: "To understand the Pithos is to understand Laurence Cadwell. It tested your mind and resolve and you may telepathically communicate with him via the Pithos with an Intelligence + Occult; Difficulty 3 Test. Also, Difficulties to solve puzzles are reduced by 1 for you." },
+            { name: "Jealous Follower", cost: [2], summary: "You know another follower of Cadwell, something that considers him a Cainite Celebrity, and is likely blood bound to him. Due to you being his protégé, you gain them as a Contact (4), however when you do too well, this Contact becomes jealous, turning into an Enemy (●)." },
+            { name: "Coming Up Roses", cost: [3], summary: "While many may suspect you of foul play or infernalism, you always have a talent for emerging unscathed, just like Cadwell. Once per Story, you can automatically pass a Test to convince a single Cainite of your innocence in regards to Infernalism." },
+            { name: "Whispering Relic", cost: [4], summary: "You can create an artifact that allows you to communicate quietly with whoever is holding it. It can also broadcast your Presence powers. When you speak through this relic, it sounds almost like an internal voice to the one who holds it." },
+            { name: "Demi-Fiend Ascension", cost: [5], summary: "Once per Story you can attempt a complex Ritual that will lead to a partial ascension to Demonhood. This Ritual requires a profane location and passing an Intelligence + Blood Sorcery or Oblivion; Difficulty 12 Test. The difficulty on this Test is reduced by 3 for every catastrophic event that's taken place during the Chronicle." },
+        ],
+    },
+    {
+        title: "The Shadow of Goratrix",
+        summary: "Baali or Tremere characters only. Before the fall of the Vienna Chantry, House Goratrix was despised. Known for delving into forbidden, reviled, and damned spellcraft, they served as intermediaries between the Pyramid and the occult, including the Sabbat and Infernalism.",
+        source: "Custom",
+        requirementFunctions: [
+            (character: Character) => character.clan === "Baali" || character.clan === "Tremere"
+        ],
+        merits: [
+            { name: "Warlock at Heart", cost: [1], summary: "You've frequented occult circles enough that you know the basics of Tremere life. Add two Dice to any pool that allows you to pass for a non-Infernalist Tremere. If one of these Tests ever Fails, you gain the Suspect Flaw (●)." },
+            { name: "Anesidora's Folly", cost: [2], summary: "You have in your possession an unearthly artifact of demonic origin or affiliation. Its hellish properties add Dice to your Ceremony and Ritual Tests while you have it on you, but any Stains gained from those processions are doubled." },
+            { name: "Eyes of Goratrix", cost: [3], summary: "Your relationship with your Mawla has sparked interest from others of the House, and the free Mawla gained from this Loresheet is increased to a four-dot group of Tremere. You also gain Influence (●●) in the local occult scene." },
+            { name: "Lost Canon", cost: [4], summary: "You have a great occult library somewhere. You can learn two three-dot Rituals of your choice for free, even if they exceed your current Blood Sorcery level, and learning new Rituals takes half the time while in this Library." },
+            { name: "The House to Order", cost: [5], summary: "Your services to House Goratrix have become a fundamental part of how they accumulate knowledge and amass standing in the Domain. Once per session, you can spur the House into action to facilitate your success against a rival." },
+        ],
+    },
+    {
+        title: "Shepherd of the Lost Flock",
+        summary: "Baali characters only. Despite whispers of Shaitan stirring and nests fortifying their old holdings, the Clan of Devils has seen little unifying figures in the modern nights. That will change with you. You spread your influence and infernal teachings outwards.",
+        source: "Custom",
+        requirementFunctions: [isBaali],
+        merits: [
+            { name: "The Crook", cost: [1], summary: "You hold sway over the hearts and minds of your cult, guiding them and defending them at your discretion. Add a bonus die when Socially interacting with your cult. Add one more to members who are one of your free Backgrounds gained as part of this sheet." },
+            { name: "Heeler", cost: [2], summary: "There's an especially competent member of your cult that's always there to solve a problem at a moment's notice. They count as an Ally (●●●) that always appears within an hour when called on, however each time they do something for you, you must make a Manipulation + Intimidation or Occult; Difficulty 3 Test to keep them under your thumb." },
+            { name: "In Nomine Ducis", cost: [3], summary: "The demonic patron of your cult has grafted its blessing into your very flesh. When you take this Background choose two from Insight, Intimidation, Leadership, Performance, or Politics. You gain the Specialty 'Cultists' in the chosen Skill and may purchase additional dots in them at two experience per dot." },
+            { name: "Bound in Blasphemy", cost: [4], summary: "Your patron in the Outer Dark has threaded their infernal influence through you and woven it through each of your flock. Choose a Discipline and a power in it that you know. Your cultists gain a dot in that Discipline as well as the power." },
+            { name: "Blessing of the Gerasene", cost: [5], summary: "Your cult isn't a mere extension of your will, it is as much a part of your dead flesh and seared soul as your limbs and fangs. You can enter in a Torpor-like slumber and assume direct control of anyone that's been officially inducted into your cult." },
+        ],
+    },
+    {
+        title: "Touched by Flame",
+        summary: "Baali characters only. Ever since childhood, you have been obsessed with fire. You would spend hours staring into the flames, your makeshift pyres burning higher and brighter with each new attempt. You suspected it wasn't as miraculous as others believed, as you could hear the mad whispers of the flames.",
+        source: "Custom",
+        requirementFunctions: [isBaali],
+        merits: [
+            { name: "Embrace the Flames", cost: [1], summary: "You have always felt more at ease near the flames even as they threaten to consume you. Your Difficulties to resist Frenzy instigated by fire are reduced by two." },
+            { name: "Voice in the Flames", cost: [2], summary: "You've learned to commune with those who have perished in fire, trapping their souls within the flames that took their lives. Once per Story you can Rouse the Blood and ignite the ashes or remnants of a fire that killed someone. Their writhing form manifests in the flames." },
+            { name: "Baleflame Invocation", cost: [3], summary: "The nature of fire has changed in you, and so you can exude that change upon open flame. You can plunge a bare limb into an open flame, taking Aggravated Damage in the process, but turning that flame into Balefire." },
+            { name: "Baptism of Fire", cost: [4], summary: "Just as you were chosen by the flames, you can mark another. Once per Chronicle you can sear a rune to ignite a sacrificial fire. If the building or area succumbs to the flames, only one survivor will emerge, bonded to you by the fire's dark will." },
+            { name: "Wickerman", cost: [5], summary: "You have mastered the art of creating a Wickerman, a construct designed to trap living souls inside. When set ablaze with Balefire, it exerts supernatural control over all flames in the surrounding area. By rousing the blood and making a Manipulation + Occult roll, you can command nearby fire to obey your will." },
+        ],
+    },
+    {
+        title: "The Vessel",
+        summary: "Baali characters only. For centuries, your cult has been dedicated to serving an aspect of the outer dark. You and your fellow cult members nurtured this entity, preparing for the day it would cross into your world. Now the burden falls solely on you as the last remaining vessel.",
+        source: "Custom",
+        requirementFunctions: [isBaali],
+        merits: [
+            { name: "Compulsed to Success", cost: [1], summary: "The demonic creature coils within your skin, capitalizing on failure, and exploiting your will to overcome that failure. While under the effects of a Compulsion, you add an additional die to all pools that aren't penalized by that Compulsion." },
+            { name: "Infernal Critical", cost: [2], summary: "Your Beast struggles for expression and freedom, only to be quelled into silence by something far older. Once per Session, when you get a Messy Critical, you may add an additional number of Successes equal to your Bane Severity, as the demon within triggers a hostile takeover." },
+            { name: "Obedient Reflection", cost: [3], summary: "The glorious being within you is close to reality, and obedience to its demands is rewarded. Follow the demon's chosen obedience—even if it isn't present—by treating a reflection of yourself as if it were the entity. This grants you its Mark until the next night." },
+            { name: "Supernatural Blindness", cost: [4], summary: "Those who attempt to peer behind the veil and know your true intent will find only the demon waiting for them. Anyone who fails an Auspex roll made against you loses access to their powers of Auspex for the rest of the night. Other supernatural entities like Wraiths avoid you outright." },
+            { name: "Demon Manifestation", cost: [5], summary: "The being within you is no longer content to remain hidden. Once per Story, you may manifest your Demonic Patron. While you don't necessarily have direct control over this manifestation, you can choose when and where to employ its presence." },
+        ],
+    },
+    {
+        title: "Wormtongue",
+        summary: "Baali characters only. Never has a member of the Clan of Devils been accused of being earnest or genuine. However, some Baali have perfected the art of subterfuge and manipulation, becoming supernaturally insidious and spreading unease and corruption into the very fabric of the Domains they frequent.",
+        source: "Custom",
+        requirementFunctions: [isBaali],
+        merits: [
+            { name: "Perfidious Sage", cost: [1], summary: "Corruption is to be introduced into the minds of others as a measured act. When someone comes to you for advice or wisdom, add two dice to your Persuasion or Subterfuge pools during that Social exchange." },
+            { name: "Inter-Clan Empathy", cost: [2], summary: "Throughout the history of Cainites, there have always been Baali who preferred and manipulated specific Clans over the others. Choose another Clan, a member of that Clan has become infatuated with you and counts as a Mawla (●●). Your Mental Discipline Powers suffer no penalties when used on the chosen Clan while they are in Frenzy or if you have a Compulsion." },
+            { name: "Persecution Preparation", cost: [3], summary: "The repeated destruction of your Clan has resulted in practices of cultivating groups that can serve as a deflection, or pariah. You gain a group of impressionable Caitiff as a Mawla (●●●). If ever you need a scapegoat for your Infernalism, you can choose to have these clueless Cainites take the fall for you." },
+            { name: "Alluring Form", cost: [4], summary: "Some of your line claim that the Baali were Sired by the Eldest, who tossed his ancient blood upon your ancestor's broken body as a mere afterthought. After slaking at least two Hunger when feeding directly from a victim, you may Rouse the Blood to shift your form to appear as a loved one of that victim for a single scene." },
+            { name: "Crisis of Conviction", cost: [5], summary: "So insidious are your ways, that you can alter the very principles a Cainite lives by. When a Cainite suffers a Stain and they come to you for solace, they add three dice to their Remorse Check, however you can speak a pale whisper into their ear as they lament." },
+        ],
+    },
+
+    // Bloodline Loresheets
+    {
+        title: "Bel-Karash's Tyranny",
+        summary: "Bloodline; Baali or Ventrue characters only. In the time of the first cities, there existed the Ventrue Methuselah, Bel-Karash. Ruling with a draconian order, his laws were righteously enforced without exceptions. Having barely survived a rebellion, Bel-Karash fled and sought forbidden nest of exiles–Baali.",
+        source: "Custom",
+        requirementFunctions: [
+            (character: Character) => character.clan === "Baali" || character.clan === "Ventrue"
+        ],
+        merits: [
+            { name: "Grovel at my Feet", cost: [1], summary: "The first time each Session when someone shows you deference, by means of a bow, salute, or takes a knee, you recover a point of Willpower. If they did so out of genuine fear, recover two points instead." },
+            { name: "Below My Notice", cost: [2], summary: "The slights of the wretches are rarely heard, and even more rarely valid. When your roll ties in Social Combat, you add an automatic Success, breaking the tie. Even when you lose a Contest in Social Combat, you take 1 less point of Willpower Damage before halving, down to a minimum of 1." },
+            { name: "In Nomine Rex", cost: [3], summary: "You've been crowned by the golden god of Kings. Characters who have at least four Aggravated Willpower Damage will obey any command you give them, to the letter, not having the ability to resist. Your Dominate powers can even command those in this state against their very nature." },
+            { name: "A King's Ransom", cost: [4], summary: "Your patron ensures all the small endeavors you make pay out, so long as you pay your respects of course. You have an ancient throne, made of gold. Once per Story you may bring a Character with greater Fame, Status, or Resources than you to its location." },
+            { name: "Tyrant's Decree", cost: [5], summary: "Your blood is rife with a Tyrant's pedigree, and even though it may be weaker than your Elders, it still holds the power to bend them, break them. Once per Chronicle you gain a Level 5 Dominate Power of your Choice. This power automatically Succeeds on anyone who is one of your Backgrounds." },
+        ],
+    },
+    {
+        title: "Children of Huitzilopochtli",
+        summary: "Bloodline; Baali characters only. Descendants of the ancient Baali who took up the mantle and status of the Aztec war god, Huitzilopochtli. These Infernalists used the beliefs and traditions of the Mexica Tribe to entrench themselves as divine agents.",
+        source: "Custom",
+        requirementFunctions: [isBaali],
+        merits: [
+            { name: "Left-handed Mediator", cost: [1], summary: "Huitzilopochtli has sent a shadowy hummingbird to keep tabs on you from night-to-night. This dark creature counts as a Retainer (●●) that can speak and communicate with any other Children of Huitzilopochtli in ancient Nahuatl." },
+            { name: "The Flower War", cost: [2], summary: "As the Aztec Empire began its descent in the face of invaders, famine, and plague, they sought to placate their masters through Ritual Wars. You are a member of the new Flower War called by Huitzilopochtli. Once per story you can call for a confrontation between your Coterie and Allies, and an enemy group." },
+            { name: "Xiuhcoatl", cost: [3], summary: "TLENAMACAC You have been chosen by Huitzilopochtli to become a Fire Priest, and have been gifted an obsidian dagger. QUAUHTECA You have been chosen to become a venerated Eagle Warrior, and have been gifted a wooden sword embedded with obsidian." },
+            { name: "Sacramental Humors", cost: [4], summary: "You know the rite of the four humors, which requires you to remove four hearts, one of each resonance, and offer them to Huitzilopochtli before consuming them. Doing this increases your Blood Sorcery rating by 1, up to 5, and grants you a new power at your new maximum." },
+            { name: "Cuauhocelotl", cost: [5], summary: "A venerated Eagle Knight of your deity has arrived in your City to aid you. It counts as a Retainer (●●●●●) and while it will aid in your efforts, it also has its own instructions and a greater design that you will likely never be privy to." },
+        ],
+    },
+    {
+        title: "Dark Apostasy",
+        summary: "Bloodline; Baali characters only. Not all members of the Baali were Embraced as such to begin with, whether it be through guile or willingly giving into the temptation of infernal power, a Kindred can find themselves 're-Embraced' into the Clan of Devils.",
+        source: "Custom",
+        requirementFunctions: [isBaali],
+        merits: [
+            { name: "Infernal Accolades", cost: [1], summary: "Apostates are considered new blood, a mix up from the main Clan of the Baali, and so they are regarded as being able to approach Infernalism with unconventional insights. Whenever you impress another Infernalist, restore a point of Willpower. However disappointing them invites their wrath." },
+            { name: "Friend from Fool", cost: [2], summary: "A member of your original Clan is completely unaware of your Embrace into the Baali. They count as a Mawla (●●) that trusts you implicitly and will always put their own reputation on the line. Even when given hard evidence of your Infernalism, they will stay by your side." },
+            { name: "In Nomine Primi", cost: [3], summary: "Through diabolic research or infernal intuition, you have learned a single glyph of a demon's True Name. By using your Vitae to inscribe this glyph on the floor of a small space. You may kneel before this glyph and utter your Sire's name, forcing them to make a Willpower Test; Difficulty equal to your Occult to resist being beckoned to the location of the glyph." },
+            { name: "Clans Within Clans", cost: [4], summary: "You know exactly what your previous Clan's desires are, what irks them, what boils their blood. Add an additional Die to any Tests made towards inciting a Fury Frenzy in those of lower Status than you that are a part of your original Clan." },
+            { name: "Advent of New Blood", cost: [5], summary: "The Infernal power of your Blood has become strong enough to beget Childer in your own making. When you Embrace, your Childer inherits your in-Clan Discipline spread as their own, having both your original Clans Bane, as well as the Baali Bane." },
+        ],
+    },
+    {
+        title: "First Born of Gehenna",
+        summary: "Bloodline; Thin-blood characters only. In these modern nights, the Final Nights, the Thin-Bloods are seen by Infernalist Cainites as omens of the world's inevitable destruction. They are drawn into dark tutelage, learning the truths of the Outer Dark.",
+        source: "Custom",
+        requirementFunctions: [
+            (character: Character) => character.clan === "Thin-blood"
+        ],
+        merits: [
+            { name: "Volatile Volantis", cost: [1], summary: "Your blood harbors life, warmth, and the burning dark within it. Using your blood as an ingredient in Thin-Blood Alchemy, Ceremonies, or Rituals, adds an automatic success to the result, however a Critical on that roll is always treated as Messy." },
+            { name: "Saturnian Upheaval", cost: [2], summary: "Limitation, transformation, succession. You are the process made to challenge and change the mundane into glory. You can rally your fellow Thin-Bloods in an attempt to cause a major disruption, such as a blackout or structural collapse." },
+            { name: "In Nomine Veritatis", cost: [3], summary: "There is a truth behind the curtain of reality. You are their antenna, converting the vibrations into true sight. Once per Story, you can perceive any falsehood or a contrivance of Blood Sorcery or Mental Disciplines, adding six dice to resist the effect." },
+            { name: "The Horn of Abraxas", cost: [4], summary: "You have a flute made from strange porous stone. Once per Story, you can blow the horn in the remote wilderness to summon the Black Skulls, a group of Marked Ones that will heed a single command, but require a payment of enough Blackburn for their group, as well as a mortal." },
+            { name: "Infernalis Macula", cost: [5], summary: "You have been stained by the Outer Dark, or something out there somewhere. Baali and other Infernalists will recognize this conceptual bruise immediately upon seeing or hearing you. You gain all Baali as a Mawla (●●●), as well as Fame (●●●) with them." },
+        ],
+    },
+    {
+        title: "Flesh of Chernobog",
+        summary: "Bloodline; Baali or Tzimisce or Gargoyle characters only. The creator of the Tzimisce is frequently referred to simply as 'The Eldest'. Eventually granting the dark gift to a powerful Koldun who would become Byelobog. After his most cherished Priestess was sacrificed to the Outer Dark, The Eldest Embraced the Infernalist, who quickly took the name Chernobog.",
+        source: "Custom",
+        requirementFunctions: [
+            (character: Character) => character.clan === "Baali" || character.clan === "Tzimisce" || character.clan === "Gargoyle"
+        ],
+        merits: [
+            { name: "Shape of the Father", cost: [1], summary: "Your flesh can be slightly altered at will, becoming an obvious breach of the Masquerade, and a pretty clear sign of your Infernal nature to anyone with Occult 4 or higher, but granting +1 die to your Dominate, Blood Sorcery, or Protean pools." },
+            { name: "Reactive Chimera", cost: [2], summary: "The infernal nature of your blood mingles with your protean flesh, causing it to alter in shape to give you whatever transformations you need to resist. Add two dice to your defensive pools in Contests against Physical Pools." },
+            { name: "Defiler of Flesh", cost: [3], summary: "Even without the conscious mastery of Fleshcraft, those of Chernobog's line can make a Rouse the Blood to mold another's flesh with an extended touch to imprint a scar that bores down to their very soul. Those marked by this power treat their Humanity as 1 lower." },
+            { name: "Overblesser", cost: [4], summary: "Chernobog held the shaping of flesh, soul, and mind as a divine act. The penultimate ritual of this doctrine is the Overblesser, a living altar made through the union of five mortals conjoined through thread or Fleshcraft, and force-fed nothing but blood for three consecutive nights." },
+            { name: "Mark of the Black God", cost: [5], summary: "You can peel off a piece of your own skin and graft it to a Mortal. This flesh will grow exponentially into a tumorous mass, conferring a Physical Attribute penalty of -1 that increases by -1 more each night until it's removed, or until the victim becomes immobile." },
+        ],
+    },
+    {
+        title: "Husks of Azaneal",
+        summary: "Bloodline; Baali or Lasombra characters only. Azaneal is a figure of terrible importance within the canon of the Baali. Some claim he is the original Shaitan. What is for certain is that Azaneal rose in the 11th century, claimed himself true Shaitan, and called the Baali to his sovereignty.",
+        source: "Custom",
+        requirementFunctions: [
+            (character: Character) => character.clan === "Baali" || character.clan === "Lasombra"
+        ],
+        merits: [
+            { name: "Targeted Redaction", cost: [1], summary: "Azaneal's Childer were cursed with infertility, however they found a concept, a ritual, a decree of the Outer Dark. What is taken is made yours. You cannot Embrace, and were not Embraced. You were taken into the darkness and what you were was stolen. You only ever roll a single die for your Remorse Tests." },
+            { name: "Different Times", cost: [2], summary: "The Second Inquisition now makes open conflict impossible, forcing you to alter your hunting methods. You gain a bonus based on your Clan, with Lasombra Apostates gaining both benefits. These bonuses are doubled during hunts: BAALI Your specialties in Subterfuge add an additional die. LASOMBRA Your specialties in Stealth add an additional die." },
+            { name: "A Distant Pull", cost: [3], summary: "Your forebears walked the halls below Chorazin, a place so profane that it is said to be closest to Hell. You have a sense for such cursed places, knowing where any are within 1 mile/1.5 kilometers and being able to identify their Décheance rating simply by sight." },
+            { name: "Until Its Return", cost: [4], summary: "In the ancient days, Azaneal bartered occult secrets with the Angellis Ater, a group of Lasombra Infernalists. One such individual has sought you out, and will do any dirty work you request so long as you teach them Infernalism." },
+            { name: "Thin Precipice", cost: [5], summary: "Your war is too dangerous to pursue, but too dangerous to disregard. Once per Chronicle, when you move into overt conflict with another large group, you have access to eight dots to spend on emergency Backgrounds that can aid you. Success or failure, these Backgrounds completely vanish at the start of the next Session." },
+        ],
+    },
+    {
+        title: "Knights of Teeth",
+        summary: "Bloodline; Baali characters only. In the 13th century, the French Crown fell into massive debt to the Templar Knight. King Philip IV of France instead sought to disband the order entirely, accusing them of heresy. A small company of such Knights, hearing the whispers of salvation from the jawbone of a goat, fled across the southern sea to Utica.",
+        source: "Custom",
+        requirementFunctions: [isBaali],
+        merits: [
+            { name: "A Knight's Blood", cost: [1], summary: "Your very blood holds the processions of your origins in it, and you are willing to perform them with brutal efficacy. You add two dice to Rituals and Ceremonies for each Stain they would mark on your Humanity Tracker due to performing them." },
+            { name: "Chaplain of the Damned", cost: [2], summary: "You have a Ghoul chaplain as part of your standing within the Order. Providing you with occult guidance and record keeping, as well as spiritual support when needed. Your chaplain counts as a Average Mortal Retainer (●●) with a rating of four in Academics and Occult." },
+            { name: "The Comfort of Teeth", cost: [3], summary: "When you take this merit, you are given a serrated +3 melee weapon of your forebears, its edge lined with preserved vampire teeth. You gain a specialty in Melee for that weapon and its attacks ignore armor. On a Critical Win, the attack counts as if you had bit the target directly." },
+            { name: "Thou Shalt Not Falter", cost: [4], summary: "Your will and your mind are sharp, even as your drive might wane. Whenever you would make a Willpower Test, you may instead make the Test with your Intelligence or Resolve. This pool cannot receive bonuses of any kind save from those that increase the used Attribute directly." },
+            { name: "Omne Datum Optimum", cost: [5], summary: "The goat-headed patron of your order has sent to you one of its teeth. Placing it at where you perform your Dark Sacrament aligns the path of esoteric influence with the crater in Utica, turning it into a place of power and completely removing it from the notice of mundane mortals." },
+        ],
+    },
+    {
+        title: "The Misbegotten Khofilim",
+        summary: "Bloodline; Baali characters only. Born from Khohfshiel, the supposed son of a mortal woman and a fel-god of the First Tribe, who was later Embraced during the Great Deluge. This Bloodline's main principle is to blaze their own trail beyond the Path of Cinders.",
+        source: "Custom",
+        requirementFunctions: [isBaali],
+        merits: [
+            { name: "Lightbearer", cost: [1], summary: "Knowledge is the path to freedom, a tool of rebellion, an insight into ascension. When you get a Critical Success with a pool that uses Academics, Occult, Science, or Technology, you permanently gain a free specialty in the used Skill associated with the Test." },
+            { name: "Agony of a Miracle", cost: [2], summary: "Pain is an avenue of understanding and power. Anguish igniting hope. While you have total Aggravated Damage, either Health or Willpower, equal to or greater than your Bane Severity, count your Bane Severity as one lower for everything other than this Background." },
+            { name: "In Nomine Libertatis", cost: [3], summary: "A fragment of Khohfshiel's grace has been etched into your soul, filling you with a profound drive for self-governance. Whenever an opponent rolls a Dice Pool to convince you to do something you don't want to do, even through the use of Disciplines, you may choose to automatically resist their pool." },
+            { name: "Temptation Radiant", cost: [4], summary: "Your blood is suffused with the radiant allure of enlightenment and defiance. Subtract 1 die from all Social Pools that don't include Charisma, but your Charisma Attribute is increased by 1, up to a maximum of 5." },
+            { name: "Tyranny of Heaven", cost: [5], summary: "Faith is the foundation of one's self, whether that faith be external, towards others, expressed in the processions of religions, or found inwards towards one's personal growth. Whenever you pass a Remorse Check, you gain True Faith (●) until the end of the Story." },
+        ],
+    },
+    {
+        title: "The Molochim",
+        summary: "Bloodline; Baali characters only. The descendants of Moloch have ever been the most deliberate and systematic of the Clan of Devils. Their Embraces are specific, identifying a number of psychological traits within the chosen Kine over several years before they are tempted with power.",
+        source: "Custom",
+        requirementFunctions: [isBaali],
+        merits: [
+            { name: "Child of Ba'al Hammon", cost: [1], summary: "You are the descendant of Moloch, who was worshiped by the Kine of Carthage as a god. Your powers of Presence are free when used on Mortals without True Faith, and on a Critical Win, can convince them to even cause physical harm to others." },
+            { name: "Persisting Affections", cost: [2], summary: "Moloch and Troile loved one another so deeply, that even as Carthage fell, Moloch stayed with his lover to defend it. You lose a die to resist Persuasion pools made by Brujah, however add an automatic success to your Charisma and Manipulation pools made towards that same Clan." },
+            { name: "Subtle Work", cost: [3], summary: "When you suggest a course of action that makes another character go against their Convictions, they gain an automatic Success in completing the task until the Session ends. If they lose Humanity from this action, they automatically prevent the next Stain from similar actions." },
+            { name: "Cold Methods", cost: [4], summary: "Moloch preferred a measured approach to the profane powers of his Clan. You were Embraced because you showed rationality and pragmatism when it came to applications of power. Once per Story you can automatically pass an uncontested Composure Test." },
+            { name: "Carthage Spawner", cost: [5], summary: "You feel the pull of an ancient resting place somewhere in the world, a kind of Beckoning –but in reverse. The space in which you perform your Dark Sacrament becomes warped by a distant Infernalism, causing the earth to open and spew forth a manifestation of Oblivion, powerful weapon or artifact." },
+        ],
+    },
+    {
+        title: "Orphans of the Undying Pestilence",
+        summary: "Bloodline; Baali characters only. The bloodline of Nergal craves power most of all the Bloodlines of the Clan of Devils. Willing to take any risk, make any show of power, and commit any atrocity to gain demonic potency. Out of all the Baali, they have weaved themselves into the power structures.",
+        source: "Custom",
+        requirementFunctions: [isBaali],
+        merits: [
+            { name: "Left-handed Mediator", cost: [1], summary: "Your blood attracts swarms of flies, rats, cockroaches, and any other manner of nearby scavenger animal or insect when spilled. Once per Story, add your Presence to tests to manipulate these creatures." },
+            { name: "The Devil in the Details", cost: [2], summary: "You intrinsically pick up gossip and secrets. Gain an extra die when overhearing or persuading other Cainites. If you solve a Cainite's problem, you gain them as a one-dot Mawla until the end of the next Story; alternatively, you can always make their problem worse." },
+            { name: "In Nomine Pestilentiae", cost: [3], summary: "Your founder was obsessed with knowing the true names of demons to bolster his already god-like power. You know a fragment of a demon's True Name. Make a Test of Resolve + Occult to speak it, causing a nearby Mortal to become fouled and anemic." },
+            { name: "Folly to Grieve", cost: [4], summary: "Add three dice to your Ceremony Test when reanimating the dead. Fully draining a mortal allows you to reanimate them as a Diseased Corpse by Rousing your Blood and spending a point of Willpower." },
+            { name: "Brood-Spawn Sovereign", cost: [5], summary: "Generations of vermin live and die within you, and you have grown a Hive Queen within your dead flesh. You may expel the Hive Queen, which must seek out a new host at your command, and burrow into their flesh." },
+        ],
+    },
+    {
+        title: "Scions of the Unchristened",
+        summary: "Bloodline; Baali characters only. Third to rise from the hell-pit of corpses that had begotten the profane trinity of Baali Methuselahs, the Nameless was no more, or less, powerful than the others, but was the most insidious, enigmatic, and mindful of weaving a complex obfuscation through the aeons.",
+        source: "Custom",
+        requirementFunctions: [isBaali],
+        merits: [
+            { name: "The Stranger", cost: [1], summary: "Knowledge is power, and so you know that using its absence is a form of power in and of itself. Add 1 Die to any Manipulation, Wits, or Resolve pools when in conflict with someone who doesn't know your name." },
+            { name: "The Third Lover", cost: [2], summary: "Certain legends hold that the Nameless was a lover to either Nergal or Moloch. Whatever the case, this power of 'love' is innate to you as well, and when you have sex with a Touchstone, yours or another Kindred you know, you may transfer one Superficial Health Damage between the group." },
+            { name: "Sine Nomine", cost: [3], summary: "While Nergal obsessed over learning the True Names of demons, your lineage has always found power in the utter lack of a True Name. Once per Chronicle, you can inscribe the voidwrought sigil of the Nameless onto another's forehead, removing the knowledge of your existence from their mind entirely." },
+            { name: "Inscrutable Shift", cost: [4], summary: "Your physical and mental endurance shifts and adapts, churning to ensure that you remain unknowable. Once per story you may switch your ratings in Composure, Resolve, and Stamina between one another. Your Health and Willpower reflects this shift." },
+            { name: "Nameless, Formless, Shapeless", cost: [5], summary: "The true nature of being is to have a name. However the nature of your bloodline is to have no true nature, to have no True Name, and to be unknown. Once per story, you can choose to not exist for a single scene." },
+        ],
+    },
+    {
+        title: "Supplicants of the Lost Elk",
+        summary: "Bloodline; Baali or Gangrel characters only. In the ancient days of the First Cities, the Gangrel hunted not just for sport, but for survival. Amongst their quarry was a mighty Elk, thought to be the familiar of a second generation Cainite. The Elk, driven to near-starvation, collapsed next to a deep pond.",
+        source: "Custom",
+        requirementFunctions: [
+            (character: Character) => character.clan === "Baali" || character.clan === "Gangrel"
+        ],
+        merits: [
+            { name: "Blood of the Sleeper", cost: [1], summary: "Animals that you Ghoul gain Eyes of the Beast as an additional free power. This doesn't provide them with any additional dots in Protean." },
+            { name: "Sacred Parasite", cost: [2], summary: "A Blessed Tick, the size of a melon and fat with the Elk's profane blood, has been granted to you. Affixing this creature to your body requires two Rouse Checks, and grants one of several abilities until its removal: Velvet Eruption, Cervidae Centaurus, or Bellowing Bleat." },
+            { name: "The Ritual", cost: [3], summary: "You can eviscerate a mortal under a full or new moon, and drop a Rouse of your blood in the gutted remains. Carrion animals will swarm the offering, consuming it within an hour. You can read the bones, which will point to a place the Elk has been." },
+            { name: "Blessing of Starvation", cost: [4], summary: "The blessings of Elk are bestowed upon those who are as famished as it was. While at Hunger 4 or higher, your Blood Potency is increased by 1, and you add two dice to your Survival and Awareness pools." },
+            { name: "Waapiti's Wrath", cost: [5], summary: "You can leave the offal of six mortals as an offering to the Lost Elk to gain its favor. During the same night, you may Rouse the Blood and make a Resolve + Occult; Difficulty 3 Test. On a Win a shadowy figment of Lost Elk will manifest and perform a single action." },
+        ],
+    },
+
+    {
+        title: "Abstracts",
+        summary: "Toreador characters only. Those who abandon the Camarilla to chase that ethereal sensation of being free and alive are called the Abstracts—though they would simply say they refuse to die a second time. For many Abstracts, the Anarch Movement offers fertile ground—a place where their obsession and hunger for self-expression cannot and will not be limited by 'good taste,' endless codes of conduct, or the obligations of the Camarilla.",
+        source: "Custom",
+        requirementFunctions: [isClan("Toreador")],
+        merits: [
+            { name: "Provocative Imagery", cost: [1], summary: "You know how to force your audience to feel something. Add an additional die to rolls for using art to influence or provoke a reaction in others. If your work challenges an authority figure or tradition, add two dice instead." },
+            { name: "Blood is Blood", cost: [2], summary: "You have a kindred spirit in another sect. Though ideology divides you, they see you as family, a reckless soul in need of protection. Gain that individual as a Mawla (••). Once per story, you can ask them for the equivalent of a Minor Boon so long as it doesn't actively harm their position. If sect tensions rise too high, this Mawla may be forced to betray you to prove their allegiance to their Sect—but will always give you a subtle warning before doing so." },
+            { name: "Obsession Piece", cost: [3], summary: "You possess the work of a rebel or an abstract that came before you. Whenever you share a scene with it taking the time to admire it you regain 2 Willpower. Additionally, it serves as a source of inspiration for your own creations, halving the cost of purchasing advantages related to your work are halved. However, if this masterpiece is damaged or subjected to a scathing critique, gain a Stain." },
+            { name: "Exhibited", cost: [4], summary: "You have orchestrated a great work, a project, a symbol that lays bare the crime or misgiving of a single kindred, word of what they are, of what they have done is now on the lips of every kindred. Choose one effect: CARICATURE A ruthless mockery anyone who leverages this caricature gains +1 damage to social pools against the target additionally it negates their Status for the night. RALLYING CRY The artwork grants a two dice bonus to social rolls and a free reroll when rallying others to the cause that the work depicts. PROFOUND TRUTH Looking upon the work forces a Willpower; Difficulty 4 Test. On a fail the onlook experiences a profound truth. Kindred gain an appropriate compulsion, while others take two points of non-halved Willpower Damage." },
+            { name: "Change the Narrative", cost: [5], summary: "Through your work and influence, you reshape how the Kindred world perceives someone—either elevating their reputation or turning allies against them as public opinion shifts. Once per Chronicle, choose a Kindred and add or subtract up to six dots across Mawla, Contact, Allies, or Status. This shift lasts until the end of the Story, unless you manage to keep it relevant, otherwise Kindred social circles will tend to abruptly move onto the next scandal, shifting these alliances away elsewhere." },
+        ]
+    },
+    {
+        title: "Aspiring Harpy",
+        summary: "Toreador characters only. Ever since your Embrace, you have been captivated by the callous power that the Harpy holds as judge, tastemaker, and breaker of reputation. You've observed from afar Kindred for the position, so rarely assigned, and instead attained through underhanded, but decisive, methods. Leveraging their social influence, amassing supporters via ruthless tactics that make most mortal bullies look tame.",
+        source: "Custom",
+        requirementFunctions: [isClan("Toreador")],
+        merits: [
+            { name: "The Vibe", cost: [1], summary: "You're on the cutting edge of Kindred opinion in your Domain. Once per session, you can automatically glean a general, public, opinion of the Kindred in your area by simply thinking on background gossip, or conversations you've had within the last few nights. You also have Status (••) with Kindred so long as you aligned with that opinion." },
+            { name: "Popular Opinion", cost: [2], summary: "Your thoughts on matters of Social standing are followed by at least a few other Kindred. Gain a group of no-Status Kindred as Mawla (•) and Fame (•) or Status (•) amongst them. Add an additional free dot to this Fame or Status for each other Background purchased on this sheet." },
+            { name: "The Blacklist", cost: [3], summary: "You've uncovered the Touchstone of another Kindred, giving you leverage over them. At the start of each Story, you may pressure that Kindred to provide you with Allies (•••), Contacts (•••), Retainer (•••), or gain them as a Mawla (••) and add two bonus dice to Social pools made against them, as you leverage their Touchstone. That background lasts until the end of the Story or until used, whichever comes first. These benefits last until the end of the current Story, after which the choice repeats." },
+            { name: "Dirty Secrets", cost: [4], summary: "It's your job to know where people wash their dirty laundry and what skeletons are in their closets. You learn three Dark Secrets. One from someone who owes you a Boon, a second from someone with less Status than you, and finally a third from someone with more Status than you. As long as you keep these secrets add an additional Bonus Die to any pools made in Social Combat with those characters." },
+            { name: "Boons Ungiven", cost: [5], summary: "Your leverage and influence over the local Kindred Domain grows stronger in nightly matters, so much so that you become a keeper of the tradition of prestation–More widely called a Boonkeeper. Upon taking this Background, choose four non-Player Kindred and split them into two groups. The Storyteller chooses one of these groups, and you gain a Major Boon over each Kindred in that group. Repeat this process at the beginning of each Chronicle." },
+        ]
+    },
+    {
+        title: "Copper Sun",
+        summary: "Toreador characters only. The band was an experiment. A handful of daring Kindred who sang of something real—who bled their true nature into lyrics about hunger, addiction, abjection, and the slow, inescapable rot of the damned. Kine and Kindred alike danced to the song of the doomed, their broken melodies sinking into marrow, refusing to be forgotten. But it wasn't supposed to last. The Camarilla smothered them. Anarch warlords took offense at their nihilism and spilled their guts on the club floor. Hunters burned their havens to the ground. The band died, again and again. But the idea of Copper Sun refused to stay buried.",
+        source: "Custom",
+        requirementFunctions: [isClan("Toreador")],
+        merits: [
+            { name: "Sparkling Feedback", cost: [1], summary: "The music you make isn't just meant to send a message, it's a resonating feeling that anyone can relate to, and feeds back positively into you. When an audience is captivated, emotionally moved, or responds positively to your performance as a band, every member restores a point of Willpower. In addition music related specialities add an additional die" },
+            { name: "Copperheads", cost: [2], summary: "A devoted following is always an indication of a band's success, and Copper Sun has always had it. You gain two of Herd in the form of Groupies, well as a band bus that counts as a Haven (•) with Mobile Shelter (•). This bus is large enough to house your bandmates and the fans provided by this Merit." },
+            { name: "Charismatic Impact", cost: [3], summary: "Turning people into fans just takes a certain amount of showmanship, performance, or style. Gain Fame (••) with your fanbase, and once per Session when you happen upon a non-fan that isn't an Enemy or Antagonist, you can attempt to turn them into a fan with a Charisma + Performance or Fame; Difficulty 3 Test. You can also do this to a group, such as a small audience, with Difficulty increased to 5." },
+            { name: "This One Goes Out", cost: [4], summary: "Once per session, when you perform a song publicly, you can choose a Character in the audience to dedicate it to with Charisma + Performance. If you do this with praising intent, that Character adds half the successes, rounded down, to their next Willpower pool that night. If you do it with derision, that character instead takes Superficial Willpower Damage equal to the Successes plus your Fame instead." },
+            { name: "Never Fade Away", cost: [5], summary: "The truth of the matter is that your time's running out. Always has been since you donned the mantle of the Copper Sun, but that doesn't mean you won't go down without a fight. When a Sect or the Second Inquisition has finally had enough of you, you can go down swinging. Any Backgrounds that are also your fans become an equal rating in Allies that will always answer your call until the end of the current Story, providing you with refuge, accouterments, vehicles, and anything else, and will be willing to rally behind you if you move against those that seek to snuff you out. Any Background used this way become damaged until the end of the next Story, however, as they drop off your radar to lay low." },
+        ]
+    },
+    {
+        title: "Echoes of the Beckoned",
+        summary: "Toreador characters only. The Beckoning has been a cataclysmic shift across Kindred society, but for you it's been outright profound. You shared a romantic bond with an Elder, and while others whispered behind your back, claiming you just a tool, toy, or pet, you know in your unbeating heart that it was far more. It had to be. They were as devoted to you, as you to them, and your relationship was made of two halves that fit together to create a whole. It was supposed to last forever.",
+        source: "Custom",
+        requirementFunctions: [isClan("Toreador")],
+        merits: [
+            { name: "Belong to Only One", cost: [1], summary: "You belong only to your lost love, and no one else. When you Blood Surge a pool to resist another's Charisma, Manipulation, or Mental Disciplines, add an additional die. If these pools mean to coax you romantically, add two additional dice to the Surge instead." },
+            { name: "Love's Echoes", cost: [2], summary: "Your love taught you much about the Kindred world, but also was open of their worldly experience at large. Though you lived a life of your own, and have had your number of lifeless nights, the lessons from these intimate moments ring in your mind still. Once per Story, when failing an action, you may take a full turn and make a Test of Intelligence + Resolve; Difficulty 3 to search your memory. On a Win add the margin of Successes to the previously failed pool made again in the same Scene. A failure on this Test results in taking a point of Aggravated Willpower Damage however, as your heart sinks and you realize there might be a hole in your love's experience." },
+            { name: "Cherished Inheritance", cost: [3], summary: "While your love has gone, what they love remains. You've happened across two of your love's Touchstones that tied them to their Humanity. Surely they must be protected at all costs if your love were to ever return. These Touchstones are counted as a Retainer (••) and a Contact (••), and both of them become your Obsession." },
+            { name: "Lonely Legacy", cost: [4], summary: "Your love has left behind many secrets. Information they held dear. Once per Story the Storyteller permanently gives you two-dots in a Background of their choice; A secret library behind a false door, an anonymous benefactor that provides unlikely help, and even a cache of wealth are just some examples. However the Storyteller may also choose to, instead, give you information on up to three dots in another Character's Backgrounds, including flaws such as Dark Secrets, or where they hide their wealth. This information is usually discovered at random, on old notes, by time-release delivery or in some other mysterious manner." },
+            { name: "Bonded by Grief", cost: [5], summary: "Your lover had a sordid past with a previously unknown Childer, who cared deeply for your beckoned lover as well. Wandering at a loss until they found you, they've been requested by your love to watch over you. They count as a Mawla (••••) that will do anything to ensure your safety and when you spend time commiserating, or continuing your love's aims or ambitions, you restore a point of Willpower. Despite this, you serve as an eternal reminder for their lost Sire, and their smothering attachment to you could be for better or worse." },
+        ]
+    },
+    {
+        title: "Exemplars of Aksum",
+        summary: "Toreador characters only. A group of combat-minded Roses, sometimes referred to as 'Thorns' within certain circles of the Camarilla. These Exemplars seek to be the most martially-capable Kindred in their Domain, and usually have an even mix of arrogance and talent, with a mind tempered to consider physical and strategic adversity and strife as a baseline state of undeath. Founded by the Toreador Elder, Lady Meliora Aksum, the Exemplars once consisted solely of her own Bloodline.",
+        source: "Custom",
+        requirementFunctions: [isClan("Toreador")],
+        merits: [
+            { name: "Death Dealer", cost: [1], summary: "Exemplars pride themselves not just in their ability to hunt Kine and Kindred, but to bring down other threats to the Domains of their home. Choose a type of non-Kindred monstrous opponent that isn't broadly applicable, such as Infernalists, Shapeshifters, Wraiths, Szlachtas, etc. You gain the chosen creature as a Specialty in Athletics, Brawl, Firearms, or Melee, and also in both Intimidation and Academics." },
+            { name: "Wet van Orde", cost: [2], summary: "Law and order are foremost in the Exemplar's conduct. You have Status (•••) with the local Kindred enforcers of order in the city, including figures such as the Hounds, Sheriff, Scourge, Praetorian, or even an Archon. When they need another hand, you're the first they call on for assistance, additionally if such a position opens, you're likely on the shortlist of considered Kindred." },
+            { name: "War-Time Leader", cost: [3], summary: "Combat is always around the corner, and you're talented at group tactics needed for victory. You have two Ghouled Retainers (•• each) that are adept at combat. When you know a specific conflict is on the horizon, you can spend at least a night practicing tactics with them, if you do, add an additional die to any Teamwork pools made between the three of you during that specific conflict." },
+            { name: "Sum Meliora", cost: [4], summary: "You aim to embody the same reputation as Lady Meliora herself. Whenever you take down an opponent from another Sect, increase your Fame by one dot, or two if they were Bloodhunted, up to a maximum of four. However if you're defeated by an opponent this Fame is lost, and you must build it back again. Once per Story you may add this Fame to pools made to coerce, lead, or inspire another Kindred." },
+            { name: "Spina Bellorum", cost: [5], summary: "You've been given the rank of War Master, and it falls upon you to protect the Domain from external threats, usually of a Kindred nature, though there are a great number of terrible things that go bump in the night. You have a fortified Haven (••••) with Hidden Armory (••) that serves as your command center. During times of open conflict with Anarchs, Sabbat, Hecata, Atavists, or any manner of other supernatural group that threatens the safety of the City, the Kindred look to you for strategic advice and wisdom to maintain the sanctity and order of their Domains." },
+        ]
+    },
+    {
+        title: "Philistine",
+        summary: "Toreador characters only. Once a derogatory term given to Toreador who resisted the Clan's artistic inclinations, it has now become a moniker for members who are frustrated by the hedonism and trivial pursuits of their clan. The term now encapsulates a broader segment of Toreador, from perfectionists who believe that the pursuit of art distracts from skills applicable to the accruing of power, to younger Toreador dejected by artistic standards they cannot ever hope to meet.",
+        source: "Custom",
+        requirementFunctions: [isClan("Toreador")],
+        merits: [
+            { name: "Petty Spite", cost: [1], summary: "When you would gain the Toreador Clan Compulsion Obsession (VtM Core Rulebook, Pg. 210), you instead gain Denigrade, which confers a -3 Dice penalty to Charisma and Insight pools until you attack someone's taste in art, or until the scene ends. Whenever you successfully rid yourself of this compulsion by acting in an appropriate fashion, you recover three Willpower." },
+            { name: "Utilitarian Perfectionist", cost: [2], summary: "Useful talents are what matters most, and you've honed talents in such areas in your spare time. Art-related Specialties cost you five experience to purchase instead of three, however you gain two non-Art Specialties in Skills of your choice. Your Retainers also have these gained Specialties." },
+            { name: "Will of Crete", cost: [3], summary: "In the ancient days your Clan was worshiped as gods. Tribute was a means of control, art was meant to inspire obedience, and beauty a manipulative tool with no deeper purpose. While under the effects of your Bane your suffer no penalty to any pools that include Manipulation or Leadership." },
+            { name: "Prune the Rose", cost: [4], summary: "You've spent enough time among your fellow Kindred that you've not only identified what their artistic preferences are, but know what mechanisms they employ to enjoy them. You know these preferences, even amongst non-Toreador, and can exploit them. Add two dice to any pools made towards manipulating people via their preferences, and once per Story you may damage two dots in your Backgrounds to automatically damage an equal amount in another's Fame or Status circles until the end of the Chronicle." },
+            { name: "Adversity from Art", cost: [5], summary: "Frivolous expressions are your anathema, and you can cultivate this opinion amongst the other local Kindred, even in other Clans. Once per Chronicle, you can outright destroy a piece of art, such as a treasured artifact, renowned gallery, the iconic statue at the center of the city, etc. and you will receive nothing but total support for doing so. This act strikes such a quaking blow to the local Toreador that they fall into in-fighting and blame-shifting in their attempts to fix it, or overcome the loss of the piece at least until the end of the next Story." },
+        ]
+    },
+    {
+        title: "The Scarlet Thread Society",
+        summary: "Toreador characters only. Founded by Jasmine Bertin after her Embrace into the Toreador, in life she belonged to a family of merchants that designed and sold fashionable textiles and clothing, specializing in both practical and high fashion of the day. After her Embrace, by a Kindred client, Jasmine's talents were made to be eternal. However she quickly found the Courts of Kindred to be strict, suffocating, and overly polite, to the point of stagnation.",
+        source: "Custom",
+        requirementFunctions: [isClan("Toreador")],
+        merits: [
+            { name: "Boutique", cost: [1], summary: "You own and operate your own personal shop that sells clothing and jewelry. Various Kindred will approach your shop for couture fashion, and your Craft specialties add two dice instead of one while working within your boutique. Additionally Projects launched and Tests made toward crafting fashionable attire have their pools increased by one more." },
+            { name: "Threaded Wear", cost: [2], summary: "The work of the Scarlet Thread has spread enough that various members of the local Kindred court can communicate via what they wear and when. These Kindred count as a Mawla (•••) and come to you for clothing that spreads specific messages, ones you will always know, and will remain discrete outside of your circle. They can even spread your personal messages without knowing to others within the Society, however this Mawla group will likely refrain from helping in other ways." },
+            { name: "Stunning Garb", cost: [3], summary: "You have a hand-made work that stuns onlookers to the point that it counts as the wearer having the Stunning (••••) Looks Merit. This counts even for Nosferatu and other individuals who can't normally gain such Merits, as the outfit itself gives them the mental and physical confidence to ignore even a Bane. This effect lasts a single evening, and the next time it's worn it confers no bonuses. You can launch a Project to create a new outfit of such quality whenever you wish, however it must always be made for a specific character." },
+            { name: "Scarlet Hall", cost: [4], summary: "Several members have organized to create a Guildhall for your private organization. You gain six dots to spend across Contacts, Haven, Haven Addons, Resources, and Status, however this guild has placed you as the local head, deferring to you for any complications." },
+            { name: "Jasmine Needlework", cost: [5], summary: "All your passion and technique have been poured into this singular creation—a Masterwork (•••••) of unmatched craftsmanship. Designed for a specific setting, it functions as a Mask (••), allowing the wearer to blend seamlessly into that world. They feel compelled to wear it when appropriate. If the wearer has no Status, they gain •• while adorned in this piece. The creator is always considered one dot lower in Status than the wearer, recognized as their tailor or architect. Your name is whispered in the wake of their rise" },
+        ]
+    },
+    {
+        title: "Progeny of Madam Thorne",
+        summary: "Toreador characters only. Troubled is the tale of Vanessa Thorne, whose mortal life was plagued by poverty and ever-demanding means of pragmatism and cunning to survive in the seedy underbelly of L.A. and was embraced by a duped lover within the Clan of the Rose. As a member of the Anarch Free State of Venice, just south of Santa Monica, Thorne became known as the Black Rose, and accrued a great deal of wealth and influence puppeting mortal and Kindred alike.",
+        source: "Custom",
+        requirementFunctions: [isClan("Toreador")],
+        merits: [
+            { name: "Deceiver of Fools", cost: [1], summary: "A lie is a truth until proven wrong, and you're good at twisting the truth. You gain three dots to spend across two of your choice amongst Allies, Contacts, or Mawla, and further purchases in such backgrounds cost two experience per dot, rather than three. However, one of those Backgrounds is always aware when you lie to them." },
+            { name: "Tech Noir", cost: [2], summary: "Your late Sire had a shadowy club that counts as a Haven (••) with Luxury (•) and Security (•). Once per Story you can ensure any deal that goes down here won't get out, ever, unless you or one of the participants has loose lips. However local authorities are constantly casing the joint, looking for any reason to rummage through it and take it from you." },
+            { name: "Thorns of the Past", cost: [3], summary: "While defending in Social Combat, you can imply that you're the Childe of the Black Rose of Venice Beach. If you do your attacker takes a point of Willpower Damage and you suffer no Compulsions from Bestial Failures. You can do this once per Story." },
+            { name: "Fangs of an Old Wolf", cost: [4], summary: "A handsome devil, a murder, a mystery. Evidence of who killed your Sire has fallen into your lap providing you with Resources (••) and Contacts (••), but all of it points to the dangerous Gangrel, Inspector Wolfe. However even a cursory glance of this evidence looks like a set up for Wolfe. Hiring him to find the real killer will cost the Resources and Contacts provided by this Background, however finding who dunnit will solve a legendary murder case, awarding you Status (••) and a waterfront Haven (••) with Security (•••)." },
+            { name: "The Cold Comfort of Monsters", cost: [5], summary: "You've been entangled in the lives and unlives of the city long enough now to know the talents and occupations of all the biggest players, as long as they aren't operating against their usual business, you know what it is that they do and how good they are doing it, and if you don't, you know who you can manipulate into telling you. When you need someone to get something done, and do it quietly and perfectly, you can roll Manipulation + Contacts; Difficulty 5 to find the perfect person for the job, however if it's a big ask, they'll refuse you without proper compensation. However, as long as they're happy, it'll always go off without a hitch..." },
+        ]
+    },
+    {
+        title: "Guild of the Watchers",
+        summary: "Toreador characters only. The only conflict that should be pursued is the conflict between the interests of the Camarilla, and that of the Toreador. The Watchers are an guild of Toreador that was created with the advent of the Camarilla, their sole aim to ensure the interests, control, and power of the Clan of the Rose remains a constant. That the Rose's place is secure, and not throttled by the vines of others in their own garden.",
+        source: "Custom",
+        requirementFunctions: [isClan("Toreador")],
+        merits: [
+            { name: "Midnight Encounter", cost: [1], summary: "You have a Mask (••) specifically for Kindred society, one that stands up under the scrutiny of a Sect of your choosing. If this mask becomes compromised due to being affiliated with a breaking of the Traditions, or any other local Kindred laws, you can pin the Mask on another Kindred entirely, but you lose it forever." },
+            { name: "Garden Variety Nepotism", cost: [2], summary: "As a member of the Watchers, your duty is to get members of your own Clan into key positions. Each time you manage to raise the clout of another Toreador, including getting them into a titled position or raising their Status, Fame, or Influence, they become part of a group of Mawlas (•••) for you." },
+            { name: "A Useful Fool", cost: [3], summary: "You have either managed to get a relative moron from another Clan into a prominent position, or know such an individual with a great deal of pull in the local politics. They're easily influenced, to the point that you add three dice to any Manipulation pools made towards them, making them a useful puppet." },
+            { name: "Zhdanov Doctrine", cost: [4], summary: "Art is culture, and the Watchers maintain a discerning control over both. Once per Story you can blast an artist as undesirable, reducing the rating of all of their Masterworks to two dots, at the same time praising another artist, counting their Masterworks as two dots higher. This lasts until the end of the current story and only affects the local scene, or groups you have Status in." },
+            { name: "Catastrophic Fall", cost: [5], summary: "A city is always beset by peril, by adversity, or by some other circumstance of scandal. Once per Chronicle you can call on other Watchers to orchestrate a calamitous event that will destroy the reputation of an entire Clan in your City. From that point on, no member of that Clan can have their Status with the Camarilla, or anyone directly affiliated with them, raised above two dots and any titles they hold will be ceremonial at best." },
+        ]
+    },
+    {
+        title: "Ivory Mask",
+        summary: "Toreador characters only. A guild created by Rafael de Corazon mere months after the Inner Circle was formed. The Ivory Mask was created to safeguard the Ivory Tower's interests outside its spheres of influence. While Brujah scream for revolution and Venture wield their economic sovereignty as a sceptre, the Roses in the Ivory Mask operate with subtlety and elegance, acting as ambassadors who whisper the right words in the wrong ears to ensure the Camarilla's interests.",
+        source: "Custom",
+        requirementFunctions: [isClan("Toreador")],
+        merits: [
+            { name: "Sect Tutelage", cost: [1], summary: "You have been trained in the political intricacies of Sects. Gain a free Specialty in Politics (Camarilla, Anarchs, or Independent Kindred). That specialty adds an additional die to pools made towards getting information on the secret meeting places of that Sect." },
+            { name: "Court of Whispers", cost: [2], summary: "You have a network of useful people that have an eye to the sky and an ear to the ground. Take this network as a Mawla (••) that has an idea of rumors and recent events that few others do. When you stake them on projects to sabotage, manipulate, or strengthen relationships between any two Sects, they add an additional two dice to the Launch roll." },
+            { name: "Compromised Solution", cost: [3], summary: "You've created a Mask (••) with Zeroed (•) specifically used to communicate anonymously. Once per Story, when using this Mask, you may provide another Kindred with false information that seems completely legitimate, only for it to collapse into utter nonsense when it would best suit you." },
+            { name: "Opportunistic Dilemma", cost: [4], summary: "Once per Story, a desperate Kindred from another Sect approaches you with a problem. Whether it's smuggling assets, securing a secret meeting, or eliminating an obstacle, they need your help—and you are willing to provide this aid if indirectly. Add two bonus dice to Social pools made to convince your Background to solve the problem for you. This keeps you hands clean if things go wrong, and once the issue is resolved, that Kindred will be in your debt, a dangerous position to be in." },
+            { name: "Diplomatic Impunity", cost: [5], summary: "You have the full authority of your Prince and act as their voice when they're not present. To harm or disrespect you is to insult the Camarilla itself. While acting in the Ivory Mask's, or the Camarilla's, best interest, you may treat your Status as equal to your Prince's in regards to other members of the Camarilla. When you call on this Status in conversation with those outside of your Sect, you can add it to your Intimidation pools to cow them into silence, putting fear enough in them that they'll keep their mouth shut, while within the Camarilla itself you can use it to override the objections of an Kindred with less Status than you, automatically." },
+        ]
+    },
+    {
+        title: "The Crimson Angels",
+        summary: "Bloodline; Toreador characters only. Art requires a certain form of cruelty. The Toreador have always claimed to be the closest to humanity, using it as a way to portray themselves as moral—but that also means reflecting its darker hues. The fascination with the morbid, the curiosity of how a body is torn apart on the train tracks, or how a head bursts like a firework when the trigger is pulled. The crescendo of a stalked victim, killed at the perfectly dramatic moment. These darker inclinations have always lurked within the Toreador, mingling with the inhumanity of the Beast. The crimson angels, unlike the others, embrace it.",
+        source: "Custom",
+        requirementFunctions: [isClan("Toreador")],
+        merits: [
+            { name: "Bloody Indulgence", cost: [1], summary: "You derive pleasure from the act of artful killing. When you go for the killing blow you may use Performance in place of another skill. If the kill is successful, you restore a point of Willpower. If it was a Critical Success, you may restore a point of Aggravated Willpower Damage." },
+            { name: "Play With Your Food", cost: [2], summary: "At the start of each Story, choose a mortal Obsession. Any Stains gained from violent acts while chasing or hunting your Obsession are reduced by one and you add a bonus die to any pools made to attack others Mortals on your path. You gain no Stains if your Obsession dies by your own actions. If you do not feed on your Obsession by the end of the Story, you receive a point of Aggravated Willpower Damage." },
+            { name: "Strings of Fixation", cost: [3], summary: "At the start of each Story you fixate on a Mortal Storyteller Character, making them your Vendetta. You study your target, getting to know others in their life and their daily routines. These people count as Herd (•••) and Contacts (••). However at the end of each Story, if your Vendetta still lives, you take a point of Aggravated Willpower Damage." },
+            { name: "Sublime Terror", cost: [4], summary: "Your Bloodline has warped Obfuscate into a terrifying power. Once per Story, you may add your Obfuscate to any pools that would invoke fear in a target. A Win rattles the victim to the core, causing non-halved Willpower Damage equal to the margin of Success. Mortals who take Aggravated Willpower Damage from this collapse into paralytic terror, while Kindred must Test for Terror Frenzy; Difficulty equal to the damage taken." },
+            { name: "Death Mask Production", cost: [5], summary: "You've become something of a legend, gaining Fame (••) in the underground horror media and fiction scene, and now Death Mask Productions, the infamous snuff film distributor, has taken notice counting as a Contact (••). Once per Story, you may release a recording, evidence, or a recreation of a kill to gain three dots of Backgrounds across Retainer or Resources that last until the end of the current Story. These come in the form of admirers that offer themselves or wealthy buyers and collectors willing to pay for your work. At any time you can choose to make the 'Final Cut', draining the head of Death Mask Productions, losing them as a Contact and instead gaining a Dyscrasia of the Storyteller's choice, and creating a recording of the deed that counts as a Masterwork (••) with the addons Exposure( •) and Erie Flaw( •)." },
+        ]
+    },
+    {
+        title: "Pride of Ishtar",
+        summary: "Bloodline; Toreador characters only. This Legacy lineage of the Toreador claims direct lineage to Babylonian goddess, the Queen of Heaven herself, Ishtar. Unlike the other Legacies of the Laibon, the Ishtarri lack a definitive origin in Africa, but none-the-less have become an intrinsic piece of the culture across the continent, specializing in socializing and networking between groups that are normally partitioned from one another, most especially Mortals and the Undead.",
+        source: "Custom",
+        requirementFunctions: [isClan("Toreador")],
+        merits: [
+            { name: "Love & Vice", cost: [1], summary: "You keep in your company a pair of Retainers (• each), who even without a Blood Bond, adore you above all others. Each of these mortals has the Beautiful (••) and High Functioning Addict (•) Merits, as well as the Hopeless Addiction (••) Flaw (Vampire the Masquerade Core Rulebook, Pg. 179)." },
+            { name: "Lioness of War", cost: [2], summary: "Ishtar was a goddess of conflict and power. These Laibon have favorably compared themselves to Lions, and when pressed into physical fights show why. Once per Story, you can make a Rouse Check to call upon this fierceness, rolling seven dice to attack in place of other Attributes or Skills. This attack suffers no Minor Action Penalty to close short distances, and has a +2 Damage Modifier regardless of what's used." },
+            { name: "Wealth in a Life of Death", cost: [3], summary: "Even more than the rest of their Clan, the Ishtarri interface with mortals on a nightly basis, navigating mortal society with uncanny ability and grace. You gain five dots to spend across Allies and Contacts. At any point you may kill these individuals for their wealth and belongings, immediately granting you that many dots in temporary Resources that last until the end of the current Story." },
+            { name: "House of Heaven", cost: [4], summary: "The Ishtarri differ from other Roses due to their need to be directly involved with humans, to belong and be accepted by them –And to a As many of them as they can. This runs strong in your blood, in your Beast. You've managed to create a safe Haven (••) with Luxury (•) and Herd (•), symbolizing humans who languish in your den of indulgences. At the end of each Story, so long as this Haven persists and remains secure, increase the Herd rating that lives there by one dot. This Herd cannot exceed five dots, however you can send the excess members to another one of your Havens, if you have more." },
+            { name: "Swallowed by Vice", cost: [5], summary: "The Ishtarri have only ever been their own undoing as they strive to bury themselves under a mountain of their indulgences. At the start of each Story, pick a vice that negatively impacts you. Whenever you're able to spend a full scene deeply indulging in that vice, you may restore any amount of your Superficial or Aggravated Willpower Damage, however the indulgence is so tectonic that it damages one of your other Backgrounds." },
+        ]
+    },
+    {
+        title: "Leucosianites, the Sorrowful Sirens",
+        summary: "Bloodline; Toreador characters only. The Sirens are a bloodline rumored to come from a Toreador named Leucosia fell deeply in love with a thracian king but the Thracian king only feigned his adoration hoping that she would give him the embrace that he may save his true love from death, when Leucosia gave him her greatest possession her blood. The king abandoned her, this broke Leucosia who filled with betrayal and rage snuck into his palace and broke his bones and drained his true love in front of him, so that he may feel to have what they love taken away.",
+        source: "Custom",
+        requirementFunctions: [isClan("Toreador")],
+        merits: [
+            { name: "Passionate Appetite", cost: [1], summary: "Legend holds that Leucosia drew sustenance from heightened emotions, which subdued her very Beast. Once per Story when you slake at least one Hunger from a victim with an Intense or Acute Resonance, you may remove that Resonance to Slake any additional point of Hunger, this cannot reduce your Hunger to zero. If multiple effects would cause you to reduce additional Hunger, choose one and ignore the rest." },
+            { name: "What Lies Beneath", cost: [2], summary: "Your bloodline has developed a keen sense for rooting out the deep seated passions of those around you as you beast craves for that emotional high. You can make a Rouse Check to automatically pierce another character's façade and see how they truly feel, however you gain the Toreador Clan Compulsion (Vampire the Masquerade Core Rulebook, Pg. 210) with that Character serving as the subject of their fixation." },
+            { name: "The One Who Stayed", cost: [3], summary: "You've made mistakes in the past, gotten too close to Kine and your Beast lashed out. In at least one case, you've kept close to a Kindred that had been close to a Kine you hurt, whether out of sympathy or opportunity, providing them with emotional stability and they with you. You gain them as a Mawla (••) and when either of you comforts the other, you restore a point of Aggravated Willpower Damage. Add an additional die to Disciplines you use against them, but if they ever find out what you did, your unmarked Humanity is filled with Stains." },
+            { name: "Leucosia Vengeance", cost: [4], summary: "Your blood stirs and lashes out and tears at yourself in a vengeful fashion, akin to Leucosia herself when she was betrayed. When a Contact, Retainer, Ally, Mawla, or Obsession betrays you in some way, they become your Vendetta. Add three dice to any Discipline Pools used against them. Additionally, Vendetta addons you purchase cost two experience per dot, rather than three." },
+            { name: "Siren Song", cost: [5], summary: "Your Bloodline's namesake isn't mere suggestion, they were masterful makers of thralls and fools that served them. Once per story, when you successfully seduce a mortal, they become a Retainer with dots appropriate to their usefulness, if that mortal is your Obsession, add your Hunger in bonus dice to any rolls made towards seducing them for the remainder of the scene and they remain your Obsession until the end of the next Story even if another effect would cause you to gain a different one. Your Dominate and Presence add twice their dice against Retainers gained from this Background. These Retainers last until the end of the Chronicle, and can be purchased as permanent Retainers at a cost of 2 experience per dot." },
+        ]
+    },
+    {
+        title: "Blood Knights of Lady Sabella",
+        summary: "Bloodline; Toreador characters only. Bloodline with origins amongst the Order of the Blood of Sabella. These chivalric Kindred are rare in the modern age, Embraced only from Kine who are willing to put their lives on the line for those they care for, namely the biological descendants of Lady Sabella herself. These descendants have since spread across the world, causing this Bloodline to expand in a similar breadth, as each Embraced into this line are done so specifically to guard such a descendant, and who were likely close to them in life.",
+        source: "Custom",
+        requirementFunctions: [isClan("Toreador")],
+        merits: [
+            { name: "A Knight's Ward", cost: [1], summary: "The cornerstone of your order is that each Knight has a Charge, whom they share a deep protective bond with. Your Charge is also your Obsession, you gain the Humanity Shield (••) Merit and the Until Death (•) Flaw. Additionally, add a bonus die to your Stamina pools while in the presence of your Charge." },
+            { name: "Peace and Lavender", cost: [2], summary: "The Lady Sabella refrained from ever giving into her Hunger, instead choosing eternal torpor amongst the lavender and roses of her family tomb. Her resolve and poise runs in your blood, and once per Story, you may forgo making a Rouse Check and instead spend two points of Willpower. In the presence of your Charge, this cost is reduced to a single point of Willpower." },
+            { name: "Valiant Guard", cost: [3], summary: "Your forebears forsook selfish aims as part of their oath to defend their Charge, using shields as their primary implements in combat. While wielding a shield, add an additional bonus die when you make an All-Out Defense and anyone standing on the opposite side of you from attackers count as having full cover. In modern nights, anything large enough to cover your upper body, durable enough to take a hit, and light enough for you to carry, counts as a shield. Contemporary Knights have used everything from ballistic shields, to soldered hub caps with a grip on the back." },
+            { name: "Thou Shalt Not Forsake", cost: [4], summary: "Though your Bloodline lacks the inherent talent for supernatural senses and divination, a glimpse of that ability can still be called on, though only in regards to those important to you. At any time you may take a full turn to concentrate with your eyes closed, visualizing your Charge, a Touchstone, member of your Herd, or your Obsession, and roll a number of dice equal to your Humanity; Difficulty 3. On a Win you see a still image of the chosen individual and what state they're currently in, a Critical Win also allows you to see their immediate surroundings. Individuals with Auspex or similar abilities will always know they're being watched." },
+            { name: "The Mortal Gifts", cost: [5], summary: "Your Charge has begun to manifest strange supernatural gifts. Becoming a Gifted Mortal with two dots in one Discipline, and one in another. These Disciplines are not vampiric in origin, and should be treated as inherent abilities due to some unique condition or previously unknown heritage. These new abilities have attracted the attention of a Kindred or another supernatural threat in the form of a supernatural Enemy (•••) or Adversary (•••), who seeks to harm or take your Charge from you." },
+        ]
+    },
+    {
+        title: "Scriveners of the Dark",
+        summary: "Bloodline; Toreador characters only. A shadowy bloodline with a bleak fixation spiralling through their minds. These darkly-blooded Kindred descend from the enigmatic Scrivener of the Dark, a Toreador poet who became seduced by darkness and the dread that came with it, treading abyssal waters to craft alien fiction and painted with ever darker pigments. Many of this line live their existence without ever really knowing what they are.",
+        source: "Custom",
+        requirementFunctions: [isClan("Toreador")],
+        merits: [
+            { name: "Creator's Dilemma", cost: [1], summary: "Reality is a mere fabric, overlaying a vast ocean of night, and your creative power can send out ripples to alter its shape. Once per Story, you may spend a scene creating a piece of fine art that portrays your current Desire (VtM Core Rulebook, Pg. 174). For the rest of the Story, add two bonus dice to any pools to obtain that Desire within the current Scene, and such pools suffer no penalties from Compulsions. However your Dice Pools made to avoid that Desire suffer a two-dice penalty." },
+            { name: "Dark Disquiet", cost: [2], summary: "A constant unease lay at the back of your mind and in your blood, so when instances of tension, fear, or anxiety occur, you're poised to keep from looking away. When you resist a fear response, including provoked Frenzy, it must beat a difficulty equal to your Marked Willpower.You cannot use this Background if you are Mentally Impaired." },
+            { name: "The Poet's Muse", cost: [3], summary: "Your Bloodline was born from the seductive dark. Whenever you attempt to understand something that usually requires an Academics or Occult roll, you may instead spend a scene creating fine art of any kind and use that art's creative pool instead, allowing the darkness itself to drip-feed you understanding. When you do this, pin one of your Hunger Dice to an automatic 10, setting it aside and rolling the remainder of the pool. A Win on the Test grants you understanding, and you gain a free specialty in your used Skill in regards to it, however a Messy Critical causes you to take non-halved Superficial Willpower Damage equal to the Successes, in addition to any other repercussions." },
+            { name: "Herald of Darkness", cost: [4], summary: "The abyssal depths scratches from within. Gain one free dot in the Oblivion Discipline and it's counted as in-Clan for the purposes of purchasing additional dots with experience. However a 1 or 10 on a Rouse Check made when activating a power or ceremony of Oblivion causes the Abyss to spring forth into reality, manifesting as a dark doppelganger that actively works against you. This dark twin has all your Attributes, Skills, Disciplines, and Secondary Stats, however as a manifestation of Oblivion it suffers Aggravated Damage from direct bright light, and Superficial Damage from other light sources." },
+            { name: "Children of the Elder God", cost: [5], summary: "The Scrivener's Manuscript sent ripples out into the sea of night, attracting the Ascetics of the Dark, a group of Lasombra practicing primordial mysticism. You have three pages of the Scrivener's Manuscript, counting as a Masterwork (•••). You also gain an Ascetic of the Dark as a Mawla (•••). You can give any number of these pages to the Ascetic, reducing the rating of the Masterwork by one dot, and they will repay you in equal Backgrounds of your choice, or perform a Power or Ceremony of Oblivion for you, even in combat. Alternatively, the value of these pages increases if you hold on to them, as per any Masterwork." },
+        ]
+    },
+    {
+        title: "Bacchic Enthrallers",
+        summary: "Bloodline; Toreador characters only. The Bacchic dancers are beings of primal revelry, obsessed with life and indulging deeply in its pleasures. Originating in Greece as a Dionysian cult, they expressed their devotion through drug-fueled ecstasy and frenzied dances that often ended in sacrificial offerings. These rituals burned away the hardship of their worshipper's lives, transforming them into devout followers reborn in the dancer's image.",
+        source: "Custom",
+        requirementFunctions: [isClan("Toreador")],
+        merits: [
+            { name: "The Invitation", cost: [1], summary: "The Bacchic Dancer's allure is subtle: a whispered invitation, a knowing look, a perfectly extended hand, coaxing others to abandon their burdens—if only for a night. Add a bonus die to your Persuasion and Subterfuge pools when urging someone to act spontaneously or indulge in something long denied. On a Win, you both recover a point of Superficial Willpower." },
+            { name: "On the Pulse", cost: [2], summary: "You know every shadow, every heartbeat, every shifting body in your chosen venue. Here, you gain Status (••) when dealing with Kine as your reputation and a two dice bonus to evasive pools when slipping effortlessly through the crowd. Once per story you may pick a nameless mortal who has locked eyes with you, danced too close, or tasted something they shouldn't have. For the rest of the session, they become your Retainer (•), caught in your wake, willing to do as you ask—until they wake up the next day with only a fading dream of you." },
+            { name: "Step to My world", cost: [3], summary: "Once someone joins the dance, their resistance begins to slip as the motion amplifies your supernatural powers. Add a bonus Die to Presence and Dominate pools made to convince someone to dance with you. Double that bonus in regards to people dancing with you already." },
+            { name: "Dionyisian Release", cost: [4], summary: "You exude a pheromone-like pull, lowering inhibitions and stirring the Beast of others. Once per Story, when another Character becomes mentally impaired due to your actions, you can make a Rouse Check to force them into a state of ecstatic abandon—where they confess their deepest desires and act without hesitation for the remainder of the Scene. Unlike Frenzy, this is not rage, hunger, or fear of the Beast—it is surrender, indulgence, and reckless want. While they're in this state, add three bonus Dice to your Charisma and Manipulation pools made against them." },
+            { name: "The Bacchanalia", cost: [5], summary: "You can host an extravagant Bacchanalia, drawing crowds from across the city and beyond. The revelry attracts Herd (•••••) with Intense or better Resonances, as Mortals spontaneously provide music, food, drink, and entertainment. Attendees enter a euphoric haze, remembering only their feelings, while Kindred freely gain the Blush of Life, savoring Mortal pleasures such as food, drink, and sex. Kindred can extend the party with a Difficulty 3 Willpower Test each hour past sunrise. Those who declined the invite suffer a one-dot damage to their Status until the end of the current Story. A Bacchanalia cannot be held again until after the end of the next Story." },
+        ]
+    },
+    {
+        title: "The Aberrant Volgirre",
+        summary: "Bloodline; Toreador characters only. An obscure group of Toreador whose lineage stems from the Methuselah Philippe Volgirre, a French Baron that had already lived a long miserable unlife by the War of Princes at the start of the 13th century. Volgirre was mired in a deep cynicism, and dwelled on the artistic pursuits of petty spite or outright agony, even fostering such preferences in his own Childer, who existed in a state of misery as his muses, or under his cruel tutelage.",
+        source: "Custom",
+        requirementFunctions: [isClan("Toreador")],
+        merits: [
+            { name: "Alla Prima", cost: [1], summary: "Baron Volgirre's fascination with pain was complimented by a talent in fleshcraft, something usually seen only amongst the Tzimisce. You may purchase the powers of Vicissitude and Fleshcrafting using levels in Auspex as the required Amalgam in place of Dominate. This can affect other such powers at the Storyteller's discretion." },
+            { name: "Pittura dal Vivo", cost: [2], summary: "Vestiges of precision and grace still linger in fleeting bursts somewhere in your rosy blood. When taking this Background, choose a Level 1 Celerity Power. You can make a Rouse Check to gain that power for a Scene, treating it as if you had one dot in Celerity for its pools and other mechanics if you have none. You must still pay any other costs associated with using it." },
+            { name: "Intaglio", cost: [3], summary: "Your Bloodline's defection from the Sabbat came with a number of promises and perks from the Ivory Tower as part of the deal. The local Camarilla authority has provided you with a Mask (••) that gives you a false name and lineage, as well as a Haven (••). The details of these backgrounds are fully known by who provided them so snubbing or betraying them may damage or remove one or both backgrounds until you make amends." },
+            { name: "Vieux Amis", cost: [4], summary: "While the Volgirre have been a secret addition to the Camarilla for almost two decades, their former peers amongst the Lasombra are rather new ones. You and a Lasombra who has recently joined the Camarilla are in a mutual level three blood bond due to a Sabbat blood rite. This same rite has ensured that this bond will never fade, but has the benefit of making you unbondable to all others." },
+            { name: "Arte Vivente", cost: [5], summary: "Part of why your Bloodline was welcomed into the fold of the Camarilla was due to the Volgirre having almost six centuries of unique art. Much of this art was the result of your Bloodline's ability to mold flesh and bone. You have a Ghouled Retainer (••••) that has been either passed down to you by your Sire, or simply gifted to you by another of your line. This Retainer is a work of living art, whose body was used as canvas. They have Stunning (••••) and count as a Masterwork (••) that you and one other Toreador is Utterly Enthralled (••) with." },
+        ]
+    },
     // {
     //     title: "Sample",
     //     summary: "Sample",
