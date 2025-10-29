@@ -68,7 +68,9 @@ export const clans: Record<ClanName, Clan> = {
         "Survival Instincts - Subtract dice equal to the Bane Severity in any roll to resist fear Frenzy. The pool cannot be below one die."
     ],
         compulsions: [
-            "Feral Impulses: For one scene, take three-dice penalty to Manipulation and Intelligence. Can only speak one-word sentences."
+            "Feral Impulses: For one scene, take three-dice penalty to Manipulation and Intelligence. Can only speak one-word sentences.",
+            "Zoochosis: Modern life is closing in around you. Streets packed with loud vehicles, narrow alleyways reeking of rot and garbage, the cries and constructions of unnatural society layered onto itself. When this compulsion manifests you tend to revert to a more primitive mental state; Repeating monotonous tasks, scratching the surface of your desk into a groove, or grinding your teeth. These effects confer a -2 Dice penalty to Social Pools until you can manage to find an open and more natural locale or speak with someone who understands your mental state.",
+            "Co-Survivor: The pack is as strong as its weakest link, and failure out here in the wilderness means death. This compulsion tends to manifest when both you and another utterly fail in succession. You get a -2 penalty on all pools until you, or someone you're helping, succeeds on a Teamwork Dice Pool."
         ],
         nativeDisciplines: ["animalism", "fortitude", "protean"],
     },
@@ -131,7 +133,11 @@ export const clans: Record<ClanName, Clan> = {
         // Variant Bane
         "Agonizing Empathy - Whenever their feeding causes Aggravated damage to a mortal, the vampire suffers the same damage in return but cannot receive more than their Bane Severity. This damage is generally Aggravated. The damage itself is reflected as vivid bruising wherever they bit their victim as internal bleeding takes place."
     ],
-        compulsions: ["Obsession: Become fixated with something in the scene. Take a two-dice penalty on any actions that aren't directly related to that thing. Lasts until you can't perceive the thing or scene ends."],
+        compulsions: [
+            "Obsession: Become fixated with something in the scene. Take a two-dice penalty on any actions that aren't directly related to that thing. Lasts until you can't perceive the thing or scene ends.",
+            "Entranced: Something has caught your eye. A marvel of display, an earworm that you hummed in a dream, or likely some other form of high art that you need again. Until you experience or see what's entranced you again, your resolve is so withered that you cannot spend Willpower to re-roll dice. This compulsion lasts until you are in the presence of what's entranced you; you see it again or experience it once more, or until you've had it for a number of scenes equal to your Bane severity.",
+            "Fading Starlet: Your light is going out. Your intensity is waning and being drowned out in distance, even amongst others, so you must ignite it once more and be seen. You suffer a -3 dice penalty to any pools made to hide yourself from others. This compulsion lasts until you garner as much attention as possible from at least two other characters, preferably people outside your coterie, or until the scene ends."
+        ],
         nativeDisciplines: ["auspex", "celerity", "presence"],
     },
 
