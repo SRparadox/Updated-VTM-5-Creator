@@ -6,6 +6,7 @@ import celerityLogo from "../resources/Rombo_Disciplines/rombo_Celerity.svg"
 import deliriumLogo from "../resources/Rombo_Disciplines/rombo_Delirium.svg"
 import dominateLogo from "../resources/Rombo_Disciplines/rombo_Dominate.svg"
 import fortitudeLogo from "../resources/Rombo_Disciplines/rombo_Fortitude.svg"
+import metamorphoseLogo from "../resources/Rombo_Disciplines/rombo_Metamorphosis.svg"
 import obfuscateLogo from "../resources/Rombo_Disciplines/rombo_Obfuscate.svg"
 import potenceLogo from "../resources/Rombo_Disciplines/rombo_Potence.svg"
 import presenceLogo from "../resources/Rombo_Disciplines/rombo_Presence.svg"
@@ -756,6 +757,26 @@ export const disciplines: Record<DisciplineName, Discipline> = {
             { name: "Hide of Granite", description: "Immunity to natural damage and great durability. (Amalgam: Protean 2)", rouseChecks: 2, amalgamPrerequisites: [{ discipline: "protean", level: 2 }], summary: "Immunity to natural damage and great durability.", dicePool: "Stamina + Fortitude", level: 5, discipline: "fortitude" },
             { name: "Flesh of Marble", description: "Ignore one source of damage per turn.", rouseChecks: 2, amalgamPrerequisites: [], summary: "Ignore one source of damage per turn.", dicePool: "Stamina + Fortitude", level: 5, discipline: "fortitude" },
             { name: "Prowess from Pain", description: "Add physical damage to attributes.", rouseChecks: 2, amalgamPrerequisites: [], summary: "Add physical damage to attributes.", dicePool: "Stamina + Fortitude", level: 5, discipline: "fortitude" },
+        ],
+    },
+    metamorphose: {
+        clans: [
+            "Tzimisce", "Caitiff"
+        ],
+        summary: "Reshape flesh and bone through supernatural control over physical form",
+        logo: metamorphoseLogo,
+        powers: [
+            // Level 1
+            {
+                name: "Malleable Flesh",
+                description: "The foundation of all fleshcrafting powers of Metamorphose, Malleable Flesh allows the vampire to manipulate their own or another's physical form, molding flesh, bone, cartilage, and blood as if it were clay. The vampire can reshape skin, hair, tendons, and even internal organs.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Basic fleshcrafting power that allows reshaping of bodies, evolving with discipline level",
+                dicePool: "Resolve + Metamorphose",
+                level: 1,
+                discipline: "metamorphose"
+            },
         ],
     },
     obfuscate: {

@@ -201,7 +201,7 @@ export const clans: Record<ClanName, Clan> = {
         "Cursed Courtesy - If they wish to enter a place of residence uninvited they must spend Willpower equal to their Bane Severity, this penalty also applies to their Discipline pools while they are there. The invitation inside can only be made by someone who lives there and this does not occur in uninhabited homes or public places. Tzimisce with this Bane cannot take the uninvited Folkloric Block."
     ],
         compulsions: ["Covetousness: Become obsessed with possessing something in the scene. Any action not taken toward this purpose incurs two-dice penalty. Persists you own it or ownership becomes impossible."],
-        nativeDisciplines: ["animalism", "dominate", "protean"],
+        nativeDisciplines: ["animalism", "dominate", "protean", "metamorphose"],
     },
     Hecata: {
         name: "Hecata",
@@ -289,6 +289,7 @@ export const clans: Record<ClanName, Clan> = {
             "celerity",
             "dominate",
             "fortitude",
+            "metamorphose",
             "obfuscate",
             "potence",
             "presence",
