@@ -337,6 +337,121 @@ export const disciplines: Record<DisciplineName, Discipline> = {
                 level: 5,
                 discipline: "animalism",
             },
+            {
+                name: "Beast Surge",
+                description: "The vampire taps into the raw, untamed power of the Beast within, momentarily enhancing their physical prowess. However, calling on this primal force comes with great risk, as it may provoke the Beast to rise, threatening the vampire's control.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Adds Animalism dice to physical actions but requires Terror Frenzy check",
+                dicePool: "Terror Frenzy resistance roll",
+                level: 1,
+                discipline: "animalism",
+            },
+            {
+                name: "Test the Road",
+                description: "Originally developed by adherents of the Road of the Beast in the Dark Ages, Test the Road allowed them to discern the sincerity of pilgrims visiting their feral sanctuaries. Over time, the Sabbat adopted this power, using it as a tool for assessing the motives of potential converts.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "auspex",
+                        level: 2
+                    }
+                ],
+                summary: "Reveals target's Road alignment, rating, and philosophical leanings",
+                dicePool: "Resolve + Animalism vs Road Rating",
+                level: 2,
+                discipline: "animalism",
+            },
+            {
+                name: "Wintering",
+                description: "In the long, dark winters of Scandinavia, animals often conserve their energy by sleeping through the harshest months when food is scarce. Vampires of the Northern Hemisphere have learned to mimic this survival tactic by entering a state of voluntary torpor.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "fortitude",
+                        level: 2
+                    }
+                ],
+                summary: "Enter extended voluntary torpor to conserve blood during harsh periods",
+                dicePool: "Stamina + Animalism (for extension)",
+                level: 3,
+                discipline: "animalism",
+            },
+            {
+                name: "Predator's Communion",
+                description: "Used by Sabbat scouts in hostile territories, this ability sharpens a vampire's senses to detect the presence of any nearby vampires or ghouls. It allows the user to estimate the number of potential enemies and pinpoint their gathering places.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "auspex",
+                        level: 3
+                    }
+                ],
+                summary: "Detects all nearby vampires and ghouls within extended range",
+                dicePool: "Resolve + Animalism",
+                level: 3,
+                discipline: "animalism",
+            },
+            {
+                name: "Territorial Dominion",
+                description: "The vampire marks their surroundings with an intangible aura of dominance. Within this space, all creatures, including other vampires, instinctively feel they are in the vampire's domain.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Creates territorial zone that imposes penalties on challengers to vampire's authority",
+                dicePool: "Charisma + Animalism",
+                level: 3,
+                discipline: "animalism",
+            },
+            {
+                name: "Predator's Gaze",
+                description: "The vampire taps into their primal connection with the Beast to subdue and dominate any creature that possesses a similar inner predator. This power works on vampires, Lupines, Wraiths, predatory animals, and even humans with a Humanity score of 3 or lower.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Compels obedience through fear in creatures with predatory nature",
+                dicePool: "Manipulation + Animalism vs Composure + Resolve",
+                level: 4,
+                discipline: "animalism",
+            },
+            {
+                name: "Cloak the Beast",
+                description: "Even vampires who struggle to control their Beast can learn to hide their inner savagery from prying eyes. With this ability, a vampire can expertly mask the strength of their Beast and conceal their true Road, projecting an image of stability and conformity.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "obfuscate",
+                        level: 3
+                    }
+                ],
+                summary: "Hides true nature of Beast and Road from detection powers",
+                dicePool: "Manipulation + Animalism",
+                level: 5,
+                discipline: "animalism",
+            },
+            {
+                name: "Unyielding Hunger",
+                description: "When cornered, the vampire can draw strength from their own unrelenting hunger, transforming desperation into raw power. This ability allows the vampire to convert Hunger into physical strength, temporarily sacrificing control over their Beast to survive.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Converts Hunger levels into temporary Strength bonuses with Frenzy penalties",
+                dicePool: "Stamina + Animalism",
+                level: 5,
+                discipline: "animalism",
+            },
+            {
+                name: "Domitor's Web",
+                description: "By tapping into their primal connection with the Blood Bond, the vampire forms a telepathic hive-mind with all of their Bound ghouls within range. This connection allows the vampire to coordinate their ghouls seamlessly, directing them as a collective.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "auspex",
+                        level: 5
+                    }
+                ],
+                summary: "Creates telepathic hive-mind control over bound ghouls within range",
+                dicePool: "Resolve + Animalism",
+                level: 5,
+                discipline: "animalism",
+            },
         ],
     },
     auspex: {
@@ -388,6 +503,196 @@ export const disciplines: Record<DisciplineName, Discipline> = {
             { name: "Possession", description: "Possess a human.", rouseChecks: 2, amalgamPrerequisites: [{ discipline: "dominate", level: 3 }], summary: "Possess a human.", dicePool: "Resolve + Auspex", level: 5, discipline: "auspex" },
             { name: "Telepathy", description: "Read minds and project thoughts.", rouseChecks: 2, amalgamPrerequisites: [], summary: "Read minds and project thoughts.", dicePool: "Wits + Auspex", level: 5, discipline: "auspex" },
             { name: "Unburdening the Bestial Soul", description: "Remove/shield against Stains, make Dominate easier, restore Humanity.", rouseChecks: 2, amalgamPrerequisites: [{ discipline: "dominate", level: 3 }, { discipline: "auspex", level: 2 }], summary: "Remove/shield against Stains, make Dominate easier, restore Humanity.", dicePool: "Resolve + Auspex", level: 5, discipline: "auspex" },
+            {
+                name: "Rite of Enigmas",
+                description: "By immersing themself in an intense study of riddles and mysteries, the Malkavian is able to temporarily subvert the effects of their clan's madness.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "delirium",
+                        level: 1
+                    }
+                ],
+                summary: "Suppresses clan bane and gains bonuses to riddles, but penalties to Auspex/Delirium.",
+                dicePool: "Resolve + Auspex",
+                level: 2,
+                discipline: "auspex",
+            },
+            {
+                name: "Eye of Madness",
+                description: "By briefly addressing the mystai, the deacon implants a suggestion into their mind, that manifests to the mystai as if their madness is coalescing into hundreds of eyes, all buried beneath their skin.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "delirium",
+                        level: 2
+                    }
+                ],
+                summary: "Forces the target to harm themselves, risking Frenzy or epiphany.",
+                dicePool: "Charisma + Auspex vs Composure + Wits",
+                level: 3,
+                discipline: "auspex",
+            },
+            {
+                name: "Drink the Mind",
+                description: "Through the dark art of Diablerie, the Kyasid has learned to not only consume the soul of their victim but also to extract valuable memories and knowledge. This rare and powerful ability allows the Kyasid to inherit the skills and insights of the devoured Cainite.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "dominate",
+                        level: 3
+                    }
+                ],
+                summary: "During Diablerie, absorb memories and skills instead of vampiric powers",
+                dicePool: "None (used during Diablerie)",
+                level: 3,
+                discipline: "auspex",
+            },
+            {
+                name: "Riddle Phantastique",
+                description: "The Kyasid, delving into forbidden knowledge from the Abyss, weaves an impenetrable and maddening riddle, forcing their victim's mind to wrestle with unsolvable truths. This enigmatic puzzle occupies the victim completely, driving them to obsession and potentially madness.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "dominate",
+                        level: 4
+                    }
+                ],
+                summary: "Traps victim's mind with an unsolvable riddle, causing obsession and potential madness",
+                dicePool: "Wits + Auspex vs Intelligence + Resolve",
+                level: 5,
+                discipline: "auspex",
+            },
+            {
+                name: "Detect Authority",
+                description: "By tapping into their primal instincts, the vampire can intuitively discern the social hierarchy within any group of living or undead creatures. The Beast within senses the authority and influence of those present.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "animalism",
+                        level: 2
+                    }
+                ],
+                summary: "Reveals social hierarchy and power dynamics within observed groups",
+                dicePool: "Wits + Auspex",
+                level: 3,
+                discipline: "auspex",
+            },
+            {
+                name: "Primal Memory",
+                description: "The Gangrel taps into the genetic and instinctual memory of their Beast, allowing them to draw upon ancestral knowledge from their bloodline or even ancient predators. This power allows the vampire to gain insights into unfamiliar situations.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "animalism",
+                        level: 3
+                    }
+                ],
+                summary: "Accesses ancestral predatory memories for knowledge and survival insights",
+                dicePool: "Resolve + Animalism",
+                level: 3,
+                discipline: "auspex",
+            },
+            {
+                name: "Eyes of a Thousand Shades",
+                description: "The vampire is able to perceive through the senses of a nearby Wraith, as if they were using their own eyes or ears. The vampire must be aware of a nearby ghost is nearby in order to borrow its senses, and if it is unable to perceive for some reason, this power does not work.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "oblivion",
+                        level: 3
+                    }
+                ],
+                summary: "Perceive through the senses of nearby wraiths and ghosts",
+                dicePool: "Resolve + Auspex",
+                level: 5,
+                discipline: "auspex",
+            },
+            {
+                name: "Arcane Sight",
+                description: "The vampire can perceive residues of Blood Sorcery on items and people. By focusing upon an object of person for a turn, the vampire is able to perceive, understand, and even analyze the effects of Blood Sorcery powers upon the object or person they are observing.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "blood sorcery",
+                        level: 1
+                    }
+                ],
+                summary: "Detects and analyzes Blood Sorcery effects on objects and people",
+                dicePool: "Intelligence + Auspex",
+                level: 1,
+                discipline: "auspex",
+            },
+            {
+                name: "Chaos Rhythm",
+                description: "The vampire taps into the unpredictable flow of the world, allowing them to anticipate an opponent's actions with uncanny precision. Rather than reading thoughts or glimpsing the future, Chaos Rhythm enables the vampire to discern the hidden patterns in their opponent's behavior.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Gains combat bonuses by observing and predicting an opponent's patterns",
+                dicePool: "None (observation required)",
+                level: 2,
+                discipline: "auspex",
+            },
+            {
+                name: "Soul's Echo",
+                description: "The vampire touches the soul of a subject, briefly accessing fragments of their emotional and psychic history. This power allows the vampire to glimpse the target's greatest fears, hopes, or unresolved trauma.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "delirium",
+                        level: 2
+                    }
+                ],
+                summary: "Reads target's emotional history for social manipulation bonuses",
+                dicePool: "Resolve + Auspex vs Composure + Intelligence",
+                level: 3,
+                discipline: "auspex",
+            },
+            {
+                name: "Sense Vitality",
+                description: "The vampire can instinctively read the target's physical and mental state, discerning any injuries, illnesses, or other afflictions with a touch. While the Salubri Healers use this ability to mend the suffering of others, the Warriors employ it to assess their enemy's weaknesses.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "fortitude",
+                        level: 1
+                    }
+                ],
+                summary: "Reads target's complete physical and mental health status through touch",
+                dicePool: "None (automatic)",
+                level: 1,
+                discipline: "auspex",
+            },
+            {
+                name: "Dispel",
+                description: "When the vampire uses their heightened perception to pierce through a supernatural illusion or obscurement, they can employ this power to forcibly unravel it, revealing the truth to everyone around them rather than just themselves.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "presence",
+                        level: 3
+                    }
+                ],
+                summary: "Violently dispels illusions and reveals truth to all nearby observers",
+                dicePool: "Strength + Auspex vs Manipulation + Subterfuge",
+                level: 5,
+                discipline: "auspex",
+            },
+            {
+                name: "Record Sensation",
+                description: "The vampire with this power can imprint a physical sensation—anything from the ecstasy of passion to the torment of pain—into the muscle memory of someone they touch, including themselves. This stored sensation can be triggered later.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "metamorphose",
+                        level: 2
+                    }
+                ],
+                summary: "Stores physical sensations in body memory for later replay",
+                dicePool: "Resolve + Auspex vs Composure + Stamina",
+                level: 4,
+                discipline: "auspex",
+            },
         ],
     },
     celerity: {
@@ -431,6 +736,46 @@ export const disciplines: Record<DisciplineName, Discipline> = {
             { name: "Fastigum", description: "Perform two separate actions via speed.", rouseChecks: 2, amalgamPrerequisites: [{ discipline: "celerity", level: 3 }], summary: "Perform two separate actions via speed (Requires Preeminence).", dicePool: "Dexterity + Celerity", level: 5, discipline: "celerity" },
             { name: "Lightning Strike", description: "Make melee attacks at Difficulty 1.", rouseChecks: 2, amalgamPrerequisites: [], summary: "Make melee attacks at Difficulty 1.", dicePool: "Dexterity + Melee", level: 5, discipline: "celerity" },
             { name: "Split Second", description: "Retcon the ST's narration of events.", rouseChecks: 2, amalgamPrerequisites: [], summary: "Retcon the ST's narration of events.", dicePool: "Wits + Celerity", level: 5, discipline: "celerity" },
+            {
+                name: "Retaliation Instinct",
+                description: "Vampires with Celerity possess reflexes far beyond those of ordinary Cainites. This heightened reaction time allows them to retaliate instantly when ambushed or surprised, countering their attackers with blinding speed before the foe can capitalize on their advantage.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Instantly counterattack when ambushed or surprised",
+                dicePool: "Attack roll at Difficulty 1",
+                level: 1,
+                discipline: "celerity",
+            },
+            {
+                name: "Quickened Beasts",
+                description: "The vampire can share a portion of their unnatural speed with the animals under their influence, enhancing their swarms or beasts with a nearly vampiric agility. The animals gain additional Dexterity equal to the vampire's dots in Celerity.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "animalism",
+                        level: 1
+                    }
+                ],
+                summary: "Enhances animals' speed with vampire's Celerity rating",
+                dicePool: "Dexterity + Animalism",
+                level: 2,
+                discipline: "celerity",
+            },
+            {
+                name: "Limited Flight",
+                description: "Gangrel are often seen as creatures of the earth, but some among them have mastered the art of attuning their bodies to the sky and winds. The vampire can temporarily lighten their form, making their movements lighter, faster, and even allowing them to leap vast distances.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "protean",
+                        level: 2
+                    }
+                ],
+                summary: "Reduces gravity's effect allowing enhanced leaping, gliding, and safe falling",
+                dicePool: "Dexterity + Protean",
+                level: 4,
+                discipline: "celerity",
+            },
         ],
     },
     delirium: {
@@ -449,6 +794,176 @@ export const disciplines: Record<DisciplineName, Discipline> = {
                 summary: "Overwhelms target's senses, causing penalties or complete loss of a sense",
                 dicePool: "Charisma + Delirium vs Wits + Resolve",
                 level: 1,
+                discipline: "delirium",
+            },
+            {
+                name: "Ghost Cloak",
+                description: "With Ghost Cloak, the Malkavian subtly distorts reality around them, warping the perceptions of anyone who attempts to observe or interact with them. Whispers, strange shadows, and fleeting glimpses of the unreal invade the senses of onlookers, distracting and unsettling them.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "obfuscate",
+                        level: 1
+                    }
+                ],
+                summary: "Distorts perceptions of observers, causing penalties to actions against the vampire",
+                dicePool: "Manipulation + Delirium vs Wits + Resolve",
+                level: 1,
+                discipline: "delirium",
+            },
+            {
+                name: "Synesthesia",
+                description: "Synesthesia allows the Malkavian to rewire their neural pathways, distorting how their senses process the world around them. By redirecting stimuli to alternative senses, the vampire can perceive their surroundings in unique ways, such as seeing sounds or tasting colors.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "auspex",
+                        level: 1
+                    }
+                ],
+                summary: "Redirects sensory perception, allowing perception through alternate senses",
+                dicePool: "Resolve + Delirium",
+                level: 1,
+                discipline: "delirium",
+            },
+            {
+                name: "Haunting",
+                description: "The Malkavian can stir deep-seated fears, traumas, and regrets within their victim, manifesting these buried horrors as vivid sensory hallucinations. Victims are plagued by sounds, scents, disturbing emotions, and troubling visions that unearth their hidden fears.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Creates personal nightmare hallucinations based on victim's fears and traumas",
+                dicePool: "Manipulation + Delirium vs Composure + Intelligence",
+                level: 2,
+                discipline: "delirium",
+            },
+            {
+                name: "Eyes of Chaos",
+                description: "The Malkavian Madness Network, known as the Cobweb, is an ever-present web of shared connection between those who carry Malkav's blood. With Delirium, a Malkavian can fish secrets from this chaotic sea of thoughts and visions, gaining cryptic insights into the machinations of Cainite politics.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "auspex",
+                        level: 2
+                    }
+                ],
+                summary: "Accesses the Malkavian Cobweb for cryptic insights and prophetic visions",
+                dicePool: "Resolve + Delirium",
+                level: 2,
+                discipline: "delirium",
+            },
+            {
+                name: "Gift of the Brother",
+                description: "The vampire taps into the essence of Delirium to silence the Beast's influence and unravel the psychic bonds imposed by mental Disciplines. This secret Malkavian power allows its user to end a single ongoing mental Discipline effect afflicting their target.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Removes ongoing mental discipline effects and natural compulsions",
+                dicePool: "Charisma + Delirium",
+                level: 2,
+                discipline: "delirium",
+            },
+            {
+                name: "Repressed Desires",
+                description: "The vampire, through a brief yet meaningful conversation, can unearth the deepest, most hidden desires of their victim. These desires may have been suppressed, denied, or not fully acknowledged by the victim, lurking in the recesses of their psyche.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Forces victim to act on their deepest hidden desires regardless of consequences",
+                dicePool: "Manipulation + Delirium vs Intelligence + Composure",
+                level: 3,
+                discipline: "delirium",
+            },
+            {
+                name: "Passion",
+                description: "The vampire manipulates the target's dominant emotional state, either magnifying it to overwhelming intensity or stifling it into near non-existence. Passion can significantly alter how a target reacts to the world, from their emotional responses to their actions.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Amplifies or suppresses target's dominant emotion to extremes",
+                dicePool: "Charisma + Delirium vs Composure + Resolve",
+                level: 3,
+                discipline: "delirium",
+            },
+            {
+                name: "Subliminal Axiom",
+                description: "The vampire can implant a subtle idea or belief into the target's subconscious through calm conversation, subtly influencing their actions based on that idea. This power is frequently employed by Sabbat infiltrators to destabilize Camarilla domains.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "obfuscate",
+                        level: 2
+                    }
+                ],
+                summary: "Implants subconscious beliefs that influence the target's actions and decisions",
+                dicePool: "Resolve + Delirium vs Intelligence + Composure",
+                level: 3,
+                discipline: "delirium",
+            },
+            {
+                name: "Voice of Madness",
+                description: "The Malkavian can unleash a torrent of chaotic, maddening energy through their voice, plunging their victim into a frenzied state. The target is overwhelmed by either uncontrollable rage or sheer terror, bypassing all conventional means to resist Frenzy.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Forces target into unavoidable Fury or Terror Frenzy through maddening voice",
+                dicePool: "Charisma + Delirium vs Composure + Resolve",
+                level: 4,
+                discipline: "delirium",
+            },
+            {
+                name: "Psyche Reversal",
+                description: "The vampire can compel a victim to act in direct opposition to their Tenets and Convictions, twisting their moral compass and pushing them toward erratic, self-destructive behavior. For the duration of this power, the target is driven by a Compulsion to violate their core beliefs.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Compels victim to act against their core beliefs and moral convictions",
+                dicePool: "Resolve + Delirium vs Wits + Composure",
+                level: 4,
+                discipline: "delirium",
+            },
+            {
+                name: "Phantasmal Confession",
+                description: "Through a subtle manipulation of the victim's psyche, the vampire draws out the darkest secrets buried deep within their target's mind. This power compels the victim to confess their personal sins, misdeeds, and regrets.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "dominate",
+                        level: 2
+                    }
+                ],
+                summary: "Forces victim to confess their darkest secrets and personal transgressions",
+                dicePool: "Manipulation + Delirium vs Wits + Composure",
+                level: 4,
+                discipline: "delirium",
+            },
+            {
+                name: "Psychomemoria",
+                description: "With Psychomemoria, the vampire can force a victim to relive memories linked to a specific emotion. This power creates an emotional and sensory link, allowing the vampire to experience the target's memories, thoughts, feelings, and sensations as if they were their own.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Forces victim to relive emotional memories while vampire experiences them too",
+                dicePool: "Charisma + Delirium vs Wits + Subterfuge",
+                level: 5,
+                discipline: "delirium",
+            },
+            {
+                name: "Psychosis",
+                description: "Through subtle and calculated manipulation, the vampire can trigger a rapid and terrifying decline in the victim's mental state, causing them to display symptoms of various neurological or psychological disorders.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Inflicts temporary psychological flaws and compulsions on the victim",
+                dicePool: "Manipulation + Delirium vs Composure + Intelligence",
+                level: 5,
+                discipline: "delirium",
+            },
+            {
+                name: "Babble",
+                description: "With this unsettling yet potent power, the vampire can link the souls of a group, allowing them to communicate telepathically over vast distances. Only the vampire who initiates the link can use true Telepathy to speak silently with all members.",
+                rouseChecks: 2,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "auspex",
+                        level: 5
+                    }
+                ],
+                summary: "Creates telepathic group communication link over vast distances",
+                dicePool: "Resolve + Delirium",
+                level: 5,
                 discipline: "delirium",
             },
         ],
@@ -702,6 +1217,151 @@ export const disciplines: Record<DisciplineName, Discipline> = {
                 level: 5,
                 discipline: "dominate",
             },
+            {
+                name: "Abyssal Voice",
+                description: "This power allows the Abyss Mystic to use their Dominate powers on wraiths, ghosts, and Abyssal creatures, that are not bound to them via a ritual or a fetter. Their voice resonates filled the weight of the Abyss.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "oblivion",
+                        level: 1
+                    }
+                ],
+                summary: "Dominate can affect ghosts and abyssal creatures.",
+                dicePool: "As per chosen Dominate power",
+                level: 2,
+                discipline: "dominate",
+            },
+            {
+                name: "Commanding Darkness",
+                description: "Harnessing the terrifying essence of Oblivion, the vampire gains the ability to bypass the need for eye contact or even direct speech to use their Dominate powers. By addressing a target's shadow, the vampire can issue commands.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "oblivion",
+                        level: 3
+                    }
+                ],
+                summary: "Dominate can be issued to a target's shadow instead of direct eye contact.",
+                dicePool: "As per chosen Dominate power",
+                level: 3,
+                discipline: "dominate",
+            },
+            {
+                name: "Dreamstalker",
+                description: "The Kyasid, masters of manipulating the boundaries between dreams and reality, can wield their vampiric powers within the dream world. By stepping into the dreams of mortals, they are able to exert their supernatural abilities as if they were still in the waking world.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "oblivion",
+                        level: 3
+                    }
+                ],
+                summary: "Manifest Disciplines within the dream world, limited by Blood Potency.",
+                dicePool: "None",
+                level: 4,
+                discipline: "dominate",
+            },
+            {
+                name: "Dread Vessel",
+                description: "Those Malkavians who know the Dread Vessel power are masters of spreading fear and paranoia with subtlety. By implanting dread into a single, unwitting subject, they unleash a ripple of terror that can spread unchecked through a population.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "delirium",
+                        level: 2
+                    }
+                ],
+                summary: "Creates contagious fear that spreads from target to nearby individuals",
+                dicePool: "Resolve + Dominate vs Composure + Intelligence",
+                level: 3,
+                discipline: "dominate",
+            },
+            {
+                name: "Disassociative Command",
+                description: "The Malkavian can give a command that causes the target to dissociate from reality. The victim follows the order, but their mind fractures, making them lose track of their actions and disassociate from the consequences.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "delirium",
+                        level: 2
+                    }
+                ],
+                summary: "Commands target while causing dissociation from moral consequences",
+                dicePool: "Manipulation + Dominate vs Resolve + Intelligence",
+                level: 3,
+                discipline: "dominate",
+            },
+            {
+                name: "Guardian's Ward",
+                description: "This power allows the vampire to protect themselves and their allies by instilling a primal fear in anyone who dares to approach. The vampire's Beast exerts an overwhelming presence that prevents others from closing in, creating a zone of safety around them.",
+                rouseChecks: 2,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "presence",
+                        level: 2
+                    }
+                ],
+                summary: "Creates 3-meter fear zone that prevents approach to vampire and allies",
+                dicePool: "Strength + Dominate vs Resolve + Composure",
+                level: 3,
+                discipline: "dominate",
+            },
+            {
+                name: "Inert Vitae",
+                description: "By channeling the power of Dominate into their target's body, the vampire can temporarily deaden their victim's vitae, rendering it inert. This terrifying ability prevents the target from making any Rouse Checks or using any powers that require Rousing the Blood.",
+                rouseChecks: 2,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "fortitude",
+                        level: 4
+                    }
+                ],
+                summary: "Prevents target from making Rouse Checks or using blood-based powers",
+                dicePool: "Stamina + Dominate vs Composure + Occult",
+                level: 5,
+                discipline: "dominate",
+            },
+            {
+                name: "Leader's Mentality",
+                description: "The vampire's predatory skills make them an expert at manipulating others or impressing them with their innate dominance over the crowd.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Adds Dominate rating to Manipulation, Leadership, and Subterfuge rolls",
+                dicePool: "Intelligence + Resolve vs Manipulation + Dominate (to resist)",
+                level: 1,
+                discipline: "dominate",
+            },
+            {
+                name: "Dignity of Blood",
+                description: "Vampires learn this discipline to protect their minds from the effects of Dominate. This power allows the user to ignore all Dominate attempts, if the one who is attempting that is of a lower Generation.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "fortitude",
+                        level: 3
+                    }
+                ],
+                summary: "Immune to Dominate from vampires of higher generation",
+                dicePool: "None (passive immunity)",
+                level: 3,
+                discipline: "dominate",
+            },
+            {
+                name: "Paladin's Example",
+                description: "The paladins of the Sabbat developed this power to support their allies and lieges. A paladin knight with the mystic presence of this power inspires bravery and renewed strength among their fellow warriors.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "presence",
+                        level: 2
+                    }
+                ],
+                summary: "Grants Dominate bonus to allies' Melee and Brawl rolls within 300 meters",
+                dicePool: "Charisma + Dominate",
+                level: 4,
+                discipline: "dominate",
+            },
         ],
     },
     fortitude: {
@@ -757,6 +1417,81 @@ export const disciplines: Record<DisciplineName, Discipline> = {
             { name: "Hide of Granite", description: "Immunity to natural damage and great durability. (Amalgam: Protean 2)", rouseChecks: 2, amalgamPrerequisites: [{ discipline: "protean", level: 2 }], summary: "Immunity to natural damage and great durability.", dicePool: "Stamina + Fortitude", level: 5, discipline: "fortitude" },
             { name: "Flesh of Marble", description: "Ignore one source of damage per turn.", rouseChecks: 2, amalgamPrerequisites: [], summary: "Ignore one source of damage per turn.", dicePool: "Stamina + Fortitude", level: 5, discipline: "fortitude" },
             { name: "Prowess from Pain", description: "Add physical damage to attributes.", rouseChecks: 2, amalgamPrerequisites: [], summary: "Add physical damage to attributes.", dicePool: "Stamina + Fortitude", level: 5, discipline: "fortitude" },
+            {
+                name: "Morphean Touch",
+                description: "The vampire channels their Fortitude outwardly to put a target into a deep, forced sleep with a mere touch. By interrupting the target's energy flow, the vampire can render them unconscious temporarily.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Forces target into deep sleep through touch, removes pain for vampires",
+                dicePool: "Intelligence + Fortitude vs Stamina + Resolve",
+                level: 2,
+                discipline: "fortitude",
+            },
+            {
+                name: "Burning Touch",
+                description: "The vampire has refined the ability they learned from Morphean Touch—turning a gentle, calming touch into one that inflicts excruciating pain. Instead of soothing pain, the vampire now channels it directly into their victim.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "celerity",
+                        level: 2
+                    }
+                ],
+                summary: "Inflicts overwhelming pain through touch, causing incapacitation",
+                dicePool: "Resolve + Fortitude vs Stamina + Resolve",
+                level: 3,
+                discipline: "fortitude",
+            },
+            {
+                name: "Martyr's Resilience",
+                description: "The vampire, through their deep connection with others via the blood bond, gains the ability to protect those bound to them by absorbing damage on their behalf. Whether through a blood bond or Vinculum, the vampire can act as a shield.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "auspex",
+                        level: 3
+                    }
+                ],
+                summary: "Absorbs damage intended for blood-bonded allies within line of sight",
+                dicePool: "None (passive)",
+                level: 4,
+                discipline: "fortitude",
+            },
+            {
+                name: "Armor of Fury",
+                description: "The vampire summons a protective shield of crimson light, surrounding themselves with an aura of resilience that not only shields against physical harm but also strengthens their resistance to Frenzy.",
+                rouseChecks: 2,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "auspex",
+                        level: 4
+                    }
+                ],
+                summary: "Creates damage-absorbing armor that provides Frenzy resistance",
+                dicePool: "None (automatic)",
+                level: 5,
+                discipline: "fortitude",
+            },
+            {
+                name: "Sculpting the Wound",
+                description: "The vampire can accelerate their healing by concentrating and willing the flesh back into its original form.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Heals Superficial damage based on Metamorphose rating, once per night",
+                dicePool: "None (automatic)",
+                level: 1,
+                discipline: "fortitude",
+            },
+            {
+                name: "Vitae Bloat",
+                description: "The vampire is able to store more Blood in their body, able to consume it at a later time. The user must be at their minimum Hunger that they can reach without draining a mortal or below it to store additional Blood.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Store extra blood for later consumption based on Protean/Metamorphose ratings",
+                dicePool: "None (automatic)",
+                level: 2,
+                discipline: "fortitude",
+            },
         ],
     },
     metamorphose: {
@@ -776,6 +1511,161 @@ export const disciplines: Record<DisciplineName, Discipline> = {
                 dicePool: "Resolve + Metamorphose",
                 level: 1,
                 discipline: "metamorphose"
+            },
+            {
+                name: "Unity of Flesh",
+                description: "The true master of the flesh does not simply mimic life — they transcend it. This power represents the pinnacle of the Metamorphosist's craft, allowing them to reshape not only humanoid forms but those of creatures far removed from mammal kingdom.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Extends Malleable Flesh to various animal categories (arthropods, jellies, etc.)",
+                dicePool: "None (passive extension)",
+                level: 2,
+                discipline: "metamorphose",
+            },
+            {
+                name: "Liquefy the Earthly Coil",
+                description: "This gruesome power was originally developed to discretely dispose of corpses left behind from unholy experiments, ensuring that no trace remains to implicate the fleshcrafter. By touching a living being, the vampire can dissolve their flesh and bone into a soupy mass of blood.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "fortitude",
+                        level: 2
+                    }
+                ],
+                summary: "Dissolves body parts into blood, causing massive damage and creating vitae",
+                dicePool: "Resolve + Metamorphose vs Stamina + Resolve",
+                level: 2,
+                discipline: "metamorphose",
+            },
+            {
+                name: "Body Arsenal",
+                description: "When the vampire activates this power, they reflexively bend, break and shift tissues in their body, allowing for violent and instantaneous formation of weapons and tools from within. These weapons are formed from their own flesh and bone.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Forms melee weapons from own flesh and bone, dealing aggravated damage to mortals",
+                dicePool: "Strength + Metamorphose",
+                level: 2,
+                discipline: "metamorphose",
+            },
+            {
+                name: "Horrid Form",
+                description: "The Horrid Form of Protean is originally inspired by the Metamorphosists. This form warps the vampire's body into a grotesque figure of unparalleled terror. The vampire's height increases by nearly two meters, their body sprouting jagged claws, elongated fangs, and distorted features.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Transforms into monstrous form with standard Horrid Form benefits plus modifications",
+                dicePool: "None (automatic)",
+                level: 3,
+                discipline: "metamorphose",
+            },
+            {
+                name: "Body Impolitic",
+                description: "The vampire can detach and animate a part of their own body, imbuing it with a fragment of their sentience and will. This gruesome power allows the vampire to command severed body parts to act independently.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "dominate",
+                        level: 3
+                    }
+                ],
+                summary: "Detaches and animates body parts with independent sentience and mobility",
+                dicePool: "Resolve + Metamorphose",
+                level: 3,
+                discipline: "metamorphose",
+            },
+            {
+                name: "Slow Decay",
+                description: "With a mere touch and a few spoken words, the vampire initiates a slow, insidious transformation within their victim. The metamorphosis starts subtly, taking days to manifest, and its effects steadily worsen.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "delirium",
+                        level: 2
+                    }
+                ],
+                summary: "Implants delayed grotesque transformations that manifest after several nights",
+                dicePool: "Resolve + Metamorphose vs Stamina + Resolve",
+                level: 3,
+                discipline: "metamorphose",
+            },
+            {
+                name: "Bloodform",
+                description: "This rare power lets the vampire take the form of an amorphous mass of blood, or to turn only part of their form to animate vitae.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Transform into blood form, can be used on detached body parts",
+                dicePool: "None (automatic)",
+                level: 4,
+                discipline: "metamorphose",
+            },
+            {
+                name: "Impolitic Mastery",
+                description: "The vampire's mastery over their flesh extends to such an impolitic degree that even detached body parts maintain a connection to their will, allowing them to channel Disciplines through these extensions of themselves without risk of weakening the part itself.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Channel disciplines through detached body parts without damaging them",
+                dicePool: "None (passive)",
+                level: 4,
+                discipline: "metamorphose",
+            },
+            {
+                name: "Restructure the System",
+                description: "This advanced power of Metamorphose allows the vampire to alter and repurpose the internal organs and biological systems of their own body or others in extraordinary ways. The vampire can reshape, modify, or outright destroy internal organs, reroute blood flow, or expel fluids.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Advanced internal organ manipulation for complex biological modifications",
+                dicePool: "Intelligence + Metamorphose",
+                level: 4,
+                discipline: "metamorphose",
+            },
+            {
+                name: "Flesh of Wind and Water",
+                description: "For a vampire with this power, the limitations of time and physical manipulation no longer apply. The vampire's flesh ripples and shifts as swiftly and fluidly as wind and water, allowing for near-instantaneous transformations that would typically take far longer to achieve.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "celerity",
+                        level: 2
+                    }
+                ],
+                summary: "Accelerates personal metamorphose transformations to complete in one turn",
+                dicePool: "None (passive acceleration)",
+                level: 4,
+                discipline: "metamorphose",
+            },
+            {
+                name: "Cocoon",
+                description: "The vampire secretes blood, forming an opaque, protective cocoon around their body. This cocoon shields the vampire from external threats, including sunlight, and provides a fortified layer of defense.",
+                rouseChecks: 2,
+                amalgamPrerequisites: [],
+                summary: "Creates protective blood cocoon that blocks sunlight and reduces damage",
+                dicePool: "None (automatic)",
+                level: 5,
+                discipline: "metamorphose",
+            },
+            {
+                name: "The Marauder Form",
+                description: "Through further mastery of Metamorphose, the vampire's Horrid Form becomes an even more terrifying and lethal weapon, pushing the limits of their monstrous transformation.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Enhanced Horrid Form with +3 to all Physical Attributes and mythical abilities",
+                dicePool: "None (passive enhancement)",
+                level: 5,
+                discipline: "metamorphose",
+            },
+            {
+                name: "A Curse on the Mind",
+                description: "Mastering manipulation of body and mind, the cainite speaks to the flesh of the insane, driving it into a broiling frenzy and forcing it to rebel against its owner. The cainite's words hold no sway or control over the extent to which the victim is affected.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "delirium",
+                        level: 4
+                    }
+                ],
+                summary: "Causes victim's body to violently transform based on existing Delirium effects",
+                dicePool: "Manipulation + Metamorphose vs Willpower",
+                level: 5,
+                discipline: "metamorphose",
             },
         ],
     },
@@ -829,6 +1719,76 @@ export const disciplines: Record<DisciplineName, Discipline> = {
             // Level 5
             { name: "Cloak the Gathering", description: "Affect groups with Obfuscate.", rouseChecks: 2, amalgamPrerequisites: [], summary: "Affect groups with Obfuscate.", dicePool: "Wits + Obfuscate", level: 5, discipline: "obfuscate" },
             { name: "Imposter's Guise", description: "Appear as a specific individual. (Amalgam: Mask of 1000)", rouseChecks: 2, amalgamPrerequisites: [{ discipline: "obfuscate", level: 3 }], summary: "Appear as a specific individual.", dicePool: "Manipulation + Obfuscate", level: 5, discipline: "obfuscate" },
+            {
+                name: "Mask of the Beast",
+                description: "With this power, the vampire can make others believe they are nothing more than an ordinary animal. To activate Mask of the Beast, the vampire must first come into contact with an animal of the species they wish to mimic.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "animalism",
+                        level: 2
+                    }
+                ],
+                summary: "Creates illusion of being a specific animal after communion with that species",
+                dicePool: "None (automatic after communion)",
+                level: 2,
+                discipline: "obfuscate",
+            },
+            {
+                name: "Cage of Secrets",
+                description: "A dark and intricate blend of Delirium and Obfuscate allows the vampire to shield their mind from the probing or manipulation of others. Those who dare attempt to control or invade the vampire's psyche suffer cruel retaliation.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "delirium",
+                        level: 3
+                    }
+                ],
+                summary: "Blocks mental disciplines and punishes attackers with Delirium backlash",
+                dicePool: "None (defensive)",
+                level: 4,
+                discipline: "obfuscate",
+            },
+            {
+                name: "Twin Mirage",
+                description: "With this advanced power, the vampire creates an illusory copy of themselves while simultaneously vanishing from view, combining the powers of Unseen Passage and Fata Morgana. The illusion is a convincing duplicate, capable of speech and mimicking actions.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Creates illusory double while becoming invisible for misdirection",
+                dicePool: "Manipulation + Obfuscate vs Composure + Wits",
+                level: 4,
+                discipline: "obfuscate",
+            },
+            {
+                name: "Maya",
+                description: "Maya is a potent illusionary power mastered by the Romuva Ravnos, allowing them to create not only vivid hallucinations but ones that feel entirely real to the senses, creating a reality that traps both the mind and body.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "presence",
+                        level: 5
+                    }
+                ],
+                summary: "Creates area illusions so real they cause physical and psychological effects",
+                dicePool: "Charisma + Obfuscate vs Resolve + Wits",
+                level: 5,
+                discipline: "obfuscate",
+            },
+            {
+                name: "Horrid Reality",
+                description: "This terrifying power allows the vampire to focus their illusory powers onto a single target, creating a deeply personal and believable illusion that can cause psychological and physical damage, if left untreated.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "auspex",
+                        level: 2
+                    }
+                ],
+                summary: "Creates personal nightmare illusion that causes real damage to single target",
+                dicePool: "Manipulation + Obfuscate vs Composure + Intelligence",
+                level: 5,
+                discipline: "obfuscate",
+            },
         ],
     },
     potence: {
@@ -931,6 +1891,76 @@ export const disciplines: Record<DisciplineName, Discipline> = {
             { name: "Fervor of A Captured Heart", description: "Utterly capture a target's heart.", rouseChecks: 2, amalgamPrerequisites: [], summary: "Utterly capture a target's heart.", dicePool: "Charisma + Presence", level: 5, discipline: "presence" },
             { name: "Majesty", description: "Prevent all opposition and aggression.", rouseChecks: 2, amalgamPrerequisites: [], summary: "Prevent all opposition and aggression.", dicePool: "Charisma + Presence", level: 5, discipline: "presence" },
             { name: "Star Magnetism", description: "Presence works through technology.", rouseChecks: 2, amalgamPrerequisites: [], summary: "Presence works through technology.", dicePool: "Charisma + Presence", level: 5, discipline: "presence" },
+            {
+                name: "Weak in the Knees",
+                description: "By touching someone, the vampire makes their target feel so overwhelmed by their presence that the subject becomes weaker and clumsier while in close vicinity of the vampire.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Imposes dice penalties and can block Physical discipline usage",
+                dicePool: "Charisma + Presence vs Composure + Resolve",
+                level: 2,
+                discipline: "presence",
+            },
+            {
+                name: "Soul Stain",
+                description: "By standing briefly in their victim's shadow, the vampire may give it a voice, making it capable of whispering all of the victim's darkest desires in their ear as they go about their normal business. The shadow continues to whisper in their ear until the sun rises.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "oblivion",
+                        level: 2
+                    }
+                ],
+                summary: "Victim's shadow whispers dark temptations, compelling them toward vice",
+                dicePool: "Manipulation + Presence vs Composure + Intelligence",
+                level: 3,
+                discipline: "presence",
+            },
+            {
+                name: "Friend to Foe",
+                description: "The vampire can twist an emotional connection into a potent but imprecise experience of terror. By affecting a mortal, ghoul or Cainite with this fearsome power, the vampire plants a bomb of terror into their subject's mind, which goes off when an appropriate loved one or cohort draws near.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "obfuscate",
+                        level: 3
+                    }
+                ],
+                summary: "Plants terror triggered by specific relationships, causing fear or frenzy",
+                dicePool: "Manipulation + Presence vs Wits + Intelligence",
+                level: 4,
+                discipline: "presence",
+            },
+            {
+                name: "Whisper of the Old Gods",
+                description: "By summoning the power of ancient spirits, the Romuva Ravnos can implant whispers into the minds of others, leading them astray or driving them toward a specific action. These whispers echo in the target's mind, compelling them to follow the vampire's desired path.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "obfuscate",
+                        level: 2
+                    }
+                ],
+                summary: "Implants compelling whispers perceived as divine guidance",
+                dicePool: "Manipulation + Presence vs Composure + Intelligence",
+                level: 3,
+                discipline: "presence",
+            },
+            {
+                name: "Mystical Veil",
+                description: "The Romuva Ravnos have mastered the art of weaving their Obfuscate illusions with Presence to create mystical auras that affect both perception and technology. Mystical Veil allows the vampire to wrap themselves in a shroud of otherworldly influence.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [
+                    {
+                        discipline: "obfuscate",
+                        level: 4
+                    }
+                ],
+                summary: "Creates divine aura that enhances social interactions and scrambles technology",
+                dicePool: "Manipulation + Presence vs Composure + Wits",
+                level: 5,
+                discipline: "presence",
+            },
         ],
     },
     protean: {
@@ -1067,6 +2097,13 @@ export const disciplines: Record<DisciplineName, Discipline> = {
             // Level 5 - Added
             { name: "Clot the Earth's Veins", description: "Inflict drastic, destructive change on the environment within 5m. Cost: 2 Rouse Checks. Dice Pools: Resolve + Blood Sorcery (Diff 8). System: Concentrate for a turn, roll Resolve + Blood Sorcery at Diff 8. On failure, take Aggravated Willpower damage equal to margin; on success, take 1 Aggravated Willpower. Can cause landslides, collapse structures, redirect rivers, etc. Always causes collateral damage and may inflict Stains. Special: Can permanently seal a Furcus if used at such a site. Duration: Instant.", rouseChecks: 2, amalgamPrerequisites: [], summary: "Inflict drastic, destructive change on the environment.", dicePool: "Resolve + Blood Sorcery (Diff 8)", level: 5, discipline: "blood sorcery" },
             { name: "Cascade the Sanguine Sacrament", description: "Wield blood from up to five sources at once, using Shape the Sanguine Sacrament and Wield the Sanguine Sacrament simultaneously. Cost: 2 Rouse Checks (1 full turn to activate). Dice Pools: Intelligence + Blood Sorcery. System: Use both abilities a number of times per turn equal to sources drawn from. If using mortals, take a Stain and mortals take Aggravated damage. Duration: Until blood is expended or user stops concentrating. Prerequisite: Wield the Sanguine Sacrament.", rouseChecks: 2, amalgamPrerequisites: [{ discipline: "blood sorcery", level: 2 }], summary: "Wield blood from up to five sources at once.", dicePool: "Intelligence + Blood Sorcery", level: 5, discipline: "blood sorcery" },
+            { name: "Rain of Blood", description: "The sorcerer causes a crimson downpour to fall over a wide area, turning the ground slick and red and causing panic among mortals. All mortals in the area must make a Composure + Resolve test (Difficulty 4) or flee in terror. The blood makes all movement treacherous, imposing a -2 dice penalty to all Physical tests involving movement. The rain lasts for one scene.", rouseChecks: 1, amalgamPrerequisites: [], summary: "Cause a crimson downpour that terrifies mortals and hampers movement.", dicePool: "Manipulation + Blood Sorcery", level: 5, discipline: "blood sorcery" },
+            { name: "Blood Scrying", description: "By gazing into a pool of blood, the sorcerer can view distant locations or people with whom they have a sympathetic connection. The caster must have either been to the location recently or possess something that belonged to the target within the last month. The vision lasts for one scene and shows events as they currently unfold.", rouseChecks: 1, amalgamPrerequisites: [], summary: "View distant locations or people through blood scrying.", dicePool: "Resolve + Blood Sorcery", level: 2, discipline: "blood sorcery" },
+            { name: "Crimson Ward", description: "The sorcerer creates a protective barrier of swirling blood that deflects attacks. For the remainder of the scene, the caster gains +2 dice to Defense against all attacks. Additionally, any attacker who strikes the ward with a melee attack takes one point of Superficial Health damage as the blood lashes back at them.", rouseChecks: 1, amalgamPrerequisites: [], summary: "Create a protective barrier of blood that enhances defense.", dicePool: "Stamina + Blood Sorcery", level: 3, discipline: "blood sorcery" },
+            { name: "Sanguine Puppet", description: "The sorcerer animates a corpse using their own Blood, creating a mindless servant. The corpse has the Physical Attributes it possessed in life but no Mental or Social Attributes above 1. It follows simple commands and lasts until sunrise. If the corpse is destroyed, the sorcerer takes one level of Aggravated Health damage.", rouseChecks: 2, amalgamPrerequisites: [], summary: "Animate a corpse as a blood-powered servant.", dicePool: "Manipulation + Blood Sorcery", level: 4, discipline: "blood sorcery" },
+            { name: "Heart's Blood", description: "The sorcerer can extract the most potent blood directly from a victim's heart, making it incredibly nourishing. If the sorcerer feeds directly from a mortal's heart (requiring them to be restrained or willing), they gain twice the normal amount of Hunger satisfaction from the feeding. However, this invariably kills the mortal.", rouseChecks: 1, amalgamPrerequisites: [], summary: "Extract supremely nourishing blood directly from a victim's heart.", dicePool: "Dexterity + Blood Sorcery", level: 3, discipline: "blood sorcery" },
+            { name: "Another's Burden", description: "The vampire can lessen the pain of another by taking some or all of his suffering onto herself.", rouseChecks: 1, amalgamPrerequisites: [], summary: "Transfers dice penalties from target to caster to reduce their suffering.", dicePool: "Resolve + Blood Sorcery", level: 2, discipline: "blood sorcery" },
+            { name: "Burden Another", description: "The caster may reduce his own pain by inflicting it upon another.", rouseChecks: 1, amalgamPrerequisites: [], summary: "Transfers caster's dice penalties to unwilling target.", dicePool: "Manipulation + Blood Sorcery vs Composure + Resolve", level: 4, discipline: "blood sorcery" },
         ],
     },
     oblivion: {
@@ -1084,6 +2121,8 @@ export const disciplines: Record<DisciplineName, Discipline> = {
             { name: "Rapacious Communion", description: "Sacrifice the Blood Resonance of a victim, making them lack one.", rouseChecks: 1, amalgamPrerequisites: [], summary: "Sacrifice the Blood Resonance of a victim.", dicePool: "Stamina + Oblivion", level: 1, discipline: "oblivion" },
             { name: "Lambet Dark", description: "Supernatural darklight bypasses all mortal perception. (Amalgam: Auspex 1)", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "auspex", level: 1 }], summary: "Supernatural darklight bypasses all mortal perception.", dicePool: "Wits + Oblivion", level: 1, discipline: "oblivion" },
             { name: "Oblivion's Sight", description: "See in darkness and perceive ghosts.", rouseChecks: 0, amalgamPrerequisites: [], summary: "See in darkness and perceive ghosts.", dicePool: "Wits + Oblivion", level: 1, discipline: "oblivion" },
+            { name: "Blood from Bone", description: "Vampires with this power can draw sustenance from the residual mystic power that pools, calcifies and stagnates in a creature's bones. With this power, the vampire can slake some Hunger even from rotten corpses.", rouseChecks: 0, amalgamPrerequisites: [], summary: "Feeds on mystical essence from bones to slake Hunger from corpses.", dicePool: "None (automatic with Willpower cost)", level: 1, discipline: "oblivion" },
+            { name: "Moonlit Preservation", description: "The vampire can mystically halt the effects of decomposition in a dead body and preserve it in a suitable state for other uses. A recently deceased body can be perfectly preserved for a period of time without need of chemicals.", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "fortitude", level: 1 }], summary: "Preserves corpses from decomposition for use in rituals and ceremonies.", dicePool: "None (automatic)", level: 1, discipline: "oblivion" },
 
             // Added Level 1
             { name: "Incorruptibility", description: "Preserve a Kindred corpse or body part from decomposing into ash for hours. Cost: 1 Rouse Check. Dice Pool: Stamina + Oblivion (Diff 2 + target's Blood Potency). On success, prevents decay for hours equal to margin of success (min 1); critical success lasts until sunrise. Failure reduces flesh to ash. Preserved flesh cannot be diablerized but retains vitae for rituals.", rouseChecks: 1, amalgamPrerequisites: [], summary: "Preserve Kindred corpses for experimentation.", dicePool: "Stamina + Oblivion (Diff 2 + BP)", level: 1, discipline: "oblivion" },
@@ -1115,6 +2154,8 @@ export const disciplines: Record<DisciplineName, Discipline> = {
             { name: "Dread Roil", description: "A power of abyssal mysticism that pressurizes the density of a shadow, then releases it as a wave of darkness that travels along surfaces in a fixed trajectory, leaving a trail of abyssal dark in its wake. The user concentrates on a dark spot in their line of sight for a full turn, then activates this power, sending a two-dimensional wave of pitch-black darkness flowing in a straight line. This wave is 2 yards/meters wide, and can travel a distance of up to three times the user's Oblivion rating in yards/meters before vanishing. Characters that come into contact with the wave become drenched in darkness, chilling them to their core and conferring a -2 die penalty to their Stamina pools.", rouseChecks: 1, amalgamPrerequisites: [], summary: "Send wave of darkness that chills and debuffs victims.", dicePool: "Resolve + Oblivion", level: 2, discipline: "oblivion" },
             { name: "Legion", description: "This signature power of the Angellis Ater allows them to momentarily rip open the separating shroud between the earthly realm and a hellish one. While this tear lasts only the briefest of moments, it allows a creature of the Abyss to erupt into our world and exact a terrible, alien, violence upon the night. When activating this power, the user chooses a shadow in their line of sight and rolls their Intelligence + Oblivion. The user then chooses a creature of Oblivion whose greater of the two General Difficulty ratings is equal to or less than the number of successes on the roll. The chosen creature then erupts from the chosen shadow to perform a single action of the user's choice, using its own Stat Block.", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "dominate", level: 2 }], summary: "Summon creature from the Abyss to perform one action.", dicePool: "Intelligence + Oblivion", level: 2, discipline: "oblivion" },
             { name: "Gnashing of Teeth", description: "This technique uses Hunger as a fulcrum to conjure a fragment of the Grand Maw to viciously masticate victims. Upon activation, the user chooses a shadow at least 2 yards/meters across and rolls their Wits + Oblivion to manifest a huge shadowing maw with a radius of 2 yards/meters. Victims may roll their Dexterity + Athletics to evade. Anyone bitten by these teeth take piercing Superficial Damage equal to the user's current Hunger and are immobilized for the rest of the current turn. Victims can attempt to free themselves with a Test of Strength + Brawl; Difficulty equal to the user's Hunger. On a Critical Win, victims take a point of Aggravated Health Damage instead of any Superficial and one of their limbs is mangled beyond use.", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "animalism", level: 2 }], summary: "Manifest shadow maw that bites and immobilizes victims.", dicePool: "Wits + Oblivion", level: 2, discipline: "oblivion" },
+            { name: "Dreams of the Many", description: "As vampires are active during the night, dreams of mortals are a constant subconscious flood around them that is ignored by most of them. The Kyasid has a sort of sixth sense about the dreams of sleepers around them, allowing them to attune to dreams of only people who are asleep close enough to them.", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "auspex", level: 1 }], summary: "Attune to dreams of mortals to glean symbolic insights or prophecies.", dicePool: "Wits + Oblivion vs Resolve + Intelligence", level: 2, discipline: "oblivion" },
+            { name: "Halo of the Damned", description: "The vampire channels Oblivion spiritually rather than physically, and creates a cloud of spiritual darkness that clings only to the auras of the Children of Caine. In this way, the vampire can detect the presence of individual vampires in large crowds.", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "auspex", level: 2 }], summary: "Reveals nearby vampires with black auras but impairs mortal interactions.", dicePool: "None (automatic detection)", level: 2, discipline: "oblivion" },
 
             // Level 3
             { name: "Aura of Decay", description: "Decay everything around.", rouseChecks: 1, amalgamPrerequisites: [], summary: "Decay everything around.", dicePool: "Stamina + Oblivion", level: 3, discipline: "oblivion" },
@@ -1137,6 +2178,10 @@ export const disciplines: Record<DisciplineName, Discipline> = {
             { name: "Sensory Deprivation", description: "By tapping their victim's senses directly into the Abyss, the vampire can deprive them of taste, touch, smell, hearing, and sight. To activate this power, the target must be in the user's line of sight. The user makes a Resolve + Oblivion test against a Difficulty equal to three plus the number of senses they wish to disable. Kindred and other supernatural beings have a chance to shrug off this effect before it even sets in by rolling Intelligence + Awareness against the user's Manipulation + Presence. Those who succumb to this power become deprived of the chosen senses for the rest of the scene. For every three successes in the margin, the user can choose to disable one of those senses permanently.", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "presence", level: 2 }], summary: "Deprive victims of senses by tapping them into the Abyss.", dicePool: "Resolve + Oblivion", level: 3, discipline: "oblivion" },
             { name: "Sink into Oblivion", description: "The vampire instantaneously sinks into their own shadow to evade detection or harm, reemerging in the exact same spot moments later. The user rolls Composure + Oblivion against Difficulty 3 when using this power to blink from existence for just a few seconds. Remaining submerged longer increases the Difficulty at the Storyteller's discretion. On a win, the user returns unscathed, ready to act on the following turn. On a loss, they incur Stains equal to the difference between the Difficulty and their successes. On a bestial failure, the user becomes lost in the Labyrinth, remaining trapped for the rest of the scene. When they return, they are in shambles and gain Stains equal to the number of empty boxes on their Humanity track.", rouseChecks: 1, amalgamPrerequisites: [], summary: "Sink into shadow to evade harm, but risk getting lost in the Abyss.", dicePool: "Composure + Oblivion", level: 3, discipline: "oblivion" },
             { name: "Queen's Reach", description: "An advanced form of Abyssal manifestation that conjures sinuous tendril of dark from the wielder's arm. These tendrils erupt outwards in a chosen direction and adhere to whatever they impact, then pull taught. This allows them to function like a rope or grappling hook. The user projects a sinuous tendril of darkness that sticks to the first thing it hits. This tendril's maximum range is twice the user's Oblivion rating in yards/meters. Immediately after impact the tendril will pull tight, pulling the user to any object with a greater weight than theirs or pull an object with a weight lower. Using this power on another Character is counted as a Wits + Oblivion ranged attack. On a successful hit, the characters enter into a Strength + Athletics Contest, with the loser being pulled to the winner.", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "potence", level: 2 }], summary: "Project shadow tendril that acts as grappling hook or weapon.", dicePool: "Resolve + Oblivion", level: 3, discipline: "oblivion" },
+            { name: "Fear of Hell", description: "Afflicts a victim with an overwhelming fear of darkness, causing panic or Frenzy when in dark places.", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "presence", level: 2 }], summary: "Instills fear of the dark; targets panic when not in light.", dicePool: "Resolve + Oblivion vs Composure + Intelligence", level: 3, discipline: "oblivion" },
+            { name: "Fortified Shadows", description: "The powers of Oblivion are known for their vulnerability to bright light, which can easily dispel summoned shadows and weaken the spirits and entities drawn from the Abyss. With this power, the vampire can protect their Oblivion manifestations.", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "fortitude", level: 2 }], summary: "Shadows and summoned entities resist light disruption for a scene.", dicePool: "None", level: 3, discipline: "oblivion" },
+            { name: "Lucid Dreams", description: "The Kyasid, masters of navigating the subconscious and dream realms, can extend their awareness into a sleeping target's mind, subtly weaving themselves into the fabric of the dream. While they may appear as a friendly figure within the dreamscape, the Kyasid's very presence distorts the dream.", rouseChecks: 0, amalgamPrerequisites: [], summary: "Enter and interact within a target's dream as a participant.", dicePool: "Wits + Occult (for disguise)", level: 3, discipline: "oblivion" },
+            { name: "Tempest Strike", description: "The vampire can direct destructive Oblivion energies toward the living, unliving, and even the spirits. By reaching out their hand, a stream of decaying Oblivion energies right from the Labyrinth emanates from the vampire's palm, causing anything in its way to rot, decay and break apart.", rouseChecks: 1, amalgamPrerequisites: [], summary: "Ranged decay attack that affects living, undead, and spiritual beings.", dicePool: "Resolve + Oblivion", level: 3, discipline: "oblivion" },
 
 
             // Level 4
@@ -1155,6 +2200,13 @@ export const disciplines: Record<DisciplineName, Discipline> = {
             { name: "Ravenous Abyss", description: `Feed through shadows, inflicting aggravated damage and draining blood at a distance. Cost: 1+ Rouse Checks. System: When using an Oblivion Power to attack, make an extra Rouse Check to feed on a target, dealing 2 Aggravated Damage and feeding up to half Oblivion rating. Blood loses qualities. Duration: That turn (can extend with more Rouse Checks).`, rouseChecks: 1, amalgamPrerequisites: [{ discipline: "potence", level: 3 }], summary: "Feed through shadows, inflicting aggravated damage and draining blood.", dicePool: "N/A", level: 4, discipline: "oblivion" },
             { name: "Exquisite Corpse", description: "Become immune to sunlight while in daysleep, appearing as a corpse. Amalgam: Fortitude 3 (Defy Bane). Cost: 2 Rouse Checks. System: Make 2 Rouse Checks before daysleep; immune to sunlight until awakening. Only Intelligence + Occult (Diff 5) reveals the body is not a true corpse. If in Hunger Torpor, effect persists. Duration: Until awakening from daysleep or torpor.", rouseChecks: 2, amalgamPrerequisites: [{ discipline: "fortitude", level: 3 }], summary: "Immune to sunlight while in daysleep, appear as a corpse.", dicePool: "N/A", level: 4, discipline: "oblivion" },
             { name: "Draught of Entropy", description: "Some Lasombra's blood runs so deep with dark that it confers a talent in such powers to those who drink it. Drinking a Rouse Check's worth of Blood directly from the user gifts the drinker with temporary Oblivion equal to half the Oblivion dots (rounded down) of the donor. Drinkers also lose, and cannot gain, Blood Resonance of any kind. If a drinker would gain a Stain from a 1 or a 10 on a Rouse Check, they gain an additional Stain, as the alien powers of infinite nothing wrack their unprepared souls. Unlike other 'Draught' powers, Draught of Entropy allows the drinker to choose their own powers of Oblivion up to the gained level when they partake from the donor. The donor also gains the ability to manipulate the drinker's shadow through their powers of Oblivion as if it were their own.", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "dominate", level: 2 }], summary: "Grant temporary Oblivion powers through blood, but cause additional Stains.", dicePool: "", level: 4, discipline: "oblivion" },
+            { name: "Shadow Prison", description: "Trap a target within their own shadow, rendering them immobile and helpless. The victim becomes bound by tendrils of darkness that emerge from their shadow. They cannot move, speak, or take any actions while imprisoned. The prison lasts for one scene or until the vampire releases the victim.", rouseChecks: 2, amalgamPrerequisites: [], summary: "Trap a target within their own shadow, rendering them immobile.", dicePool: "Manipulation + Oblivion", level: 4, discipline: "oblivion" },
+            { name: "Abyssal Communion", description: "Communicate with entities from the Abyss, gaining forbidden knowledge or requesting their aid. This power allows the vampire to speak with demons, wraiths, and other creatures of darkness. The information gained is often cryptic and may come at a price.", rouseChecks: 2, amalgamPrerequisites: [], summary: "Communicate with entities from the Abyss for knowledge or aid.", dicePool: "Intelligence + Oblivion", level: 4, discipline: "oblivion" },
+            { name: "Entropic Shield", description: "Surround yourself with a barrier of pure entropy that deflects attacks and weakens enemies. Physical attacks have reduced effectiveness, and supernatural powers are diminished when used against the vampire. The shield also slowly drains the life force of anyone who remains too close for extended periods.", rouseChecks: 2, amalgamPrerequisites: [], summary: "Create a barrier of entropy that deflects attacks and weakens enemies.", dicePool: "Stamina + Oblivion", level: 4, discipline: "oblivion" },
+            { name: "Mark of Damnation", description: "Draws all corruption in a mortal's heart to the surface, making them appear monstrously evil to all who see them.", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "dominate", level: 2 }], summary: "Causes mortals to appear as vile monsters; others are compelled to attack or flee.", dicePool: "Manipulation + Oblivion", level: 4, discipline: "oblivion" },
+            { name: "Endymion's Sleep", description: "The Kyasid, as travelers between the realms of dreams and reality, possess the ability to guide others into the peaceful slumber of mortals or the sluggish haze of the day for fellow Cainites. This power allows the user to bridge the gap between wakefulness and sleep.", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "dominate", level: 4 }], summary: "Forces mortals into deep sleep or vampires into daylight lethargy.", dicePool: "Manipulation + Oblivion vs Resolve + Stamina", level: 4, discipline: "oblivion" },
+            { name: "Spirit Guide", description: "The Kyasid's mastery over dreams extends beyond mere observation, allowing them to manipulate and shape the dreams of their targets with precision. Through this power, the vampire takes on the role of a 'guide' within the dream, influencing the dreamer's perceptions.", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "dominate", level: 3 }], summary: "Enhanced dream manipulation with social bonuses and dream reshaping abilities.", dicePool: "Manipulation + Oblivion vs Intelligence + Composure", level: 4, discipline: "oblivion" },
+            { name: "Shadow Parasite", description: "The vampire reaches out to the darkness within their victims, the permanent shadows inside lungs or surrounding organs; and as they do so, the shadows begin to grow in a writhing, wriggling tentacle of semi-sentient darkness, that is much like snakes.", rouseChecks: 2, amalgamPrerequisites: [{ discipline: "auspex", level: 3 }], summary: "Animates internal shadows to cause damage culminating in violent eruption.", dicePool: "Composure + Oblivion vs Stamina + Occult", level: 4, discipline: "oblivion" },
 
             // Level 5
             { name: "The Darkness Within", description: "Animate someone's shadow to attack.", rouseChecks: 2, amalgamPrerequisites: [], summary: "Animate someone's shadow to attack.", dicePool: "Strength + Oblivion", level: 5, discipline: "oblivion" },
@@ -1168,6 +2220,14 @@ export const disciplines: Record<DisciplineName, Discipline> = {
             // Added Level 5
             { name: "Acheron Vortex", description: "Tear open a rift into the Tempest, banishing Wraiths within 50ft. Cost: 2 Rouse Checks, 1 Stain. Dice Pool: Resolve + Oblivion. Wraiths must make Willpower checks vs. user's roll or be sucked in. Mortals/Kindred must also roll Willpower; mortals take Aggravated Willpower damage, Kindred risk Fear Frenzy. Duration: One scene.", rouseChecks: 2, amalgamPrerequisites: [], summary: "Tear open a rift into the Tempest, banishing Wraiths.", dicePool: "Resolve + Oblivion", level: 5, discipline: "oblivion" },
             { name: "Deluge", description: "Expertise in Oblivion such as this is wielded by masters of Obtenebration and Old Mortis both, and has long served as an example of those Discipline's convergent powers over the waves of the far shore. When used this power uses those waves to beat upon the crumbling beaches of reality, calling forth a deluge from the primordial Abyss or a screaming black sea of death. The user must be completely concealed by darkness to activate this power. Upon activation, every shadow within 30 yards/meters of the user takes on the properties of three yards/meters deep water. Characters must swim through this liquid darkness as if moving through a body of water, forcing them to make basic Stamina + Athletics; Difficulty 2 Tests as needed. Those who can't swim will sink to the bottom of a shadow, where they will remain until the effect ends or they are lent assistance by another.", rouseChecks: 2, amalgamPrerequisites: [], summary: "Turn all shadows within 30 yards into liquid darkness that must be swum through.", dicePool: "", level: 5, discipline: "oblivion" },
+            { name: "Exsanguinate", description: "Drain all blood from a target, causing instant death to mortals and potentially destroying vampires. The target must be grappled or restrained. Roll Resolve + Oblivion vs target's Stamina + Resolve. If successful against a mortal, they die instantly. Against vampires, they take aggravated damage equal to their Blood Potency and must make a Stamina + Resolve roll vs difficulty 6 or enter torpor.", rouseChecks: 3, amalgamPrerequisites: [], summary: "Drain all blood from a target, potentially killing them instantly.", dicePool: "Resolve + Oblivion vs Stamina + Resolve", level: 5, discipline: "oblivion" },
+            { name: "Shadowmend", description: "Use shadows to repair damaged objects or heal aggravated wounds. The vampire can restore Structure to objects or mend aggravated damage on themselves or others. Each success on Intelligence + Oblivion restores one point of Structure to an object or one level of aggravated damage. This process takes several minutes of concentration.", rouseChecks: 2, amalgamPrerequisites: [], summary: "Use shadows to repair objects or heal aggravated wounds.", dicePool: "Intelligence + Oblivion", level: 4, discipline: "oblivion" },
+            { name: "Void Walk", description: "Step into the Abyss and emerge from any shadow within several miles. The vampire disappears into a shadow and can emerge from any shadow they have seen before within a number of miles equal to their Oblivion rating. The journey through the Abyss is harrowing and may attract unwanted attention from entities dwelling there.", rouseChecks: 2, amalgamPrerequisites: [], summary: "Travel through the Abyss to emerge from distant shadows.", dicePool: "Wits + Oblivion", level: 5, discipline: "oblivion" },
+            { name: "Soul Burn", description: "Channel the destructive power of the Abyss to burn away a target's very essence. This power can permanently reduce a target's attributes or even destroy their soul entirely. Against mortals, it can cause instant death. Against supernatural beings, it inflicts terrible spiritual wounds that heal very slowly.", rouseChecks: 3, amalgamPrerequisites: [], summary: "Burn away a target's essence, potentially destroying their soul.", dicePool: "Resolve + Oblivion", level: 5, discipline: "oblivion" },
+            { name: "Abyss Gate", description: "Tear open a permanent portal to the Abyss, allowing creatures of darkness to enter the mortal world. This power requires enormous effort and comes with great risk, as the vampire cannot fully control what emerges from the gate. The portal remains open until the vampire falls unconscious or chooses to close it.", rouseChecks: 3, amalgamPrerequisites: [], summary: "Create a permanent portal to the Abyss with uncontrollable consequences.", dicePool: "Resolve + Oblivion", level: 5, discipline: "oblivion" },
+            { name: "Master of Shadows", description: "Gain absolute control over all shadows within a wide area, able to animate them, shape them, and use them as extensions of your will. Shadows can become solid to interact with objects, hide allies, attack enemies, or create complex constructs. This power effectively makes the vampire lord of all darkness in their domain.", rouseChecks: 3, amalgamPrerequisites: [], summary: "Gain absolute control over all shadows in a wide area.", dicePool: "Wits + Oblivion", level: 5, discipline: "oblivion" },
+            { name: "Oblivion's Embrace", description: "Temporarily merge with the Abyss itself, becoming a living embodiment of entropy and destruction. In this state, the vampire is immune to most forms of harm, can pass through solid matter, and their very presence causes decay and despair. However, each moment spent in this form risks permanent loss of humanity.", rouseChecks: 3, amalgamPrerequisites: [], summary: "Merge with the Abyss, becoming immune to harm but risking humanity.", dicePool: "Stamina + Oblivion", level: 5, discipline: "oblivion" },
+            { name: "Tenebrous Armor", description: "The vampire shrouds themselves in a living cloak of shadows that absorb and cushion impacts, deflecting strikes and attacks as if encased in an otherworldly armor.", rouseChecks: 2, amalgamPrerequisites: [], summary: "Grants shadow armor absorbing damage and intimidating mortals.", dicePool: "Charisma + Intimidation (with bonus) vs Composure + Resolve (for mortals)", level: 5, discipline: "oblivion" },
         ],
     },
     "thin-blood alchemy": {
@@ -1311,7 +2371,24 @@ export const Ceremonies: Ceremony[] = [
     { name: "Anxious Designs", summary: "Tattoos knowledge of ceremonies, rituals, or specialties onto a ghoul, allowing others to learn from them (lambent dark)", rouseChecks: 1, requiredTime: "1 hour", dicePool: "Resolve + Oblivion; Difficulty 3", ingredients: "Lead and cinnabar-based ink, or ink made via the poet's prose Ceremony. A tattooing implement", level: 2 },
     { name: "The Circumscribed Void", summary: "Tattoos a glyph that doubles the range and/or radius of a chosen Oblivion power or ceremony (queen's reach or lambent dark)", rouseChecks: 1, requiredTime: "1 hour", dicePool: "Resolve + Oblivion; Difficulty 4", ingredients: "Fish or whale oil, octopus ink, a sharp bone", level: 3 },
     { name: "Evulsion Print", summary: "Marks a mortal so that anyone other than the caster who bites them risks having their fangs violently torn out (rapacious communion or touch of oblivion)", rouseChecks: 1, requiredTime: "1 hour", dicePool: "Resolve + Oblivion; Difficulty 5+", ingredients: "Squid ink or ink made via the poet's prose Ceremony", level: 4 },
-    { name: "The Poet's Tormentors", summary: "Summons unpredictable Blatherskites from dark spots identified through area scouting (stygian shroud or dread roil)", rouseChecks: 1, requiredTime: "1 hour", dicePool: "Resolve + Oblivion; Difficulty 6", ingredients: "Nothing", level: 5 }
+    { name: "The Poet's Tormentors", summary: "Summons unpredictable Blatherskites from dark spots identified through area scouting (stygian shroud or dread roil)", rouseChecks: 1, requiredTime: "1 hour", dicePool: "Resolve + Oblivion; Difficulty 6", ingredients: "Nothing", level: 5 },
+
+    // New Oblivion Ceremonies
+    { name: "Marked for Death", summary: "Divines locations of those the death god wishes to claim for sacrifice", rouseChecks: 1, requiredTime: "1 hour", dicePool: "Intelligence + Oblivion", ingredients: "A water bowl, an iron cauldron, a paper map of the area to be scoured, a piece of flesh from the type of target, a Rouse checks worth of the caster's blood", level: 3 },
+    { name: "Consecration in the Shadows", summary: "Doubles temple bane range and grants dice bonuses to cult rituals", rouseChecks: 1, requiredTime: "1 hour", dicePool: "Intelligence + Oblivion", ingredients: "A sacrifice that was Marked for Death (Level 3 Ceremony)", level: 4 },
+    { name: "Death God's Blessing", summary: "Imbues a Cainite with the Death God's power, granting massive attribute and discipline bonuses", rouseChecks: 5, requiredTime: "1 hour", dicePool: "Intelligence + Oblivion", ingredients: "Five Rouse Checks worth of caster's blood, ash made from yew branches, five sacrifices Marked for Death, a Temple that has been Consecrated in Shadows", level: 5 },
+    { name: "Weirdling Ward", summary: "Creates disorienting ward sigils that confuse and disorient intruders", rouseChecks: 1, requiredTime: "10 minutes", dicePool: "Intelligence + Oblivion", ingredients: "A silver cup filled with Kyasid's blood, a bone brush with animal fur", level: 2 },
+    { name: "Lure of Arcadia", summary: "Traps sleeping vampires in fae-induced dreams, potentially providing cryptic insights", rouseChecks: 1, requiredTime: "10 minutes", dicePool: "Intelligence + Oblivion", ingredients: "A piece of silver", level: 4 },
+    { name: "Sacrifice to the Nightmare", summary: "Sacrifices a victim to the Abyss, ensuring their complete destruction", rouseChecks: 1, requiredTime: "1 hour", dicePool: "Intelligence + Oblivion", ingredients: "Same as Weirdling Ward, pitch black chamber, and a sacrifice", level: 5 },
+    { name: "Summon Epiales", summary: "Summons a Living Nightmare from a dreamer's fears into the physical world", rouseChecks: 2, requiredTime: "1 scene", dicePool: "Intelligence + Oblivion", ingredients: "Physical contact with the dreamer", level: 5 },
+    { name: "Light Within the Shadows", summary: "Grants Oblivion's Sight to caster and others who gaze into summoned sphere", rouseChecks: 1, requiredTime: "5 minutes", dicePool: "Intelligence + Oblivion", ingredients: "None", level: 1 },
+    { name: "Abyssal Candle", summary: "Creates a candle that enables telepathic communication with other candle holders", rouseChecks: 1, requiredTime: "1 hour", dicePool: "Intelligence + Oblivion", ingredients: "A foot-long wick of pure cotton, soaked in human blood for 24 hours", level: 1 },
+    { name: "Walk the Abyss", summary: "Accelerates travel through the Abyss when used with Ex Nihilo", rouseChecks: 1, requiredTime: "10 minutes", dicePool: "Intelligence + Oblivion", ingredients: "The caster's blood", level: 1 },
+    { name: "Ahriman's Servants", summary: "Summons small Abyssal entities to serve as spies and servants", rouseChecks: 1, requiredTime: "10 minutes", dicePool: "Intelligence + Oblivion", ingredients: "A burning candle, the caster's blood", level: 2 },
+    { name: "Transubstantiation of Essence", summary: "Heals Aggravated damage by consuming Abyssal essence, but at a cost", rouseChecks: 1, requiredTime: "10 minutes", dicePool: "Intelligence + Oblivion", ingredients: "None", level: 2 },
+    { name: "Drinking the Blood of Ahriman", summary: "Transforms the vampire's body with Abyssal power, enhancing physical attributes", rouseChecks: 1, requiredTime: "30 minutes", dicePool: "Intelligence + Oblivion", ingredients: "A knife that has never tasted blood", level: 3 },
+    { name: "Calling the Hungry Shade", summary: "Summons a powerful Hungry Shade to serve the caster", rouseChecks: 1, requiredTime: "1 hour", dicePool: "Intelligence + Oblivion", ingredients: "The caster's vitae, a silver knife, a secluded space", level: 4 },
+    { name: "Whispers in the Dark", summary: "Communes with the Abyss to gain forbidden knowledge, risking eternal torpor", rouseChecks: 1, requiredTime: "Variable", dicePool: "Intelligence + Oblivion", ingredients: "None", level: 5 }
 ]
 
 export const Rituals: Ritual[] = [
@@ -1461,7 +2538,38 @@ export const Rituals: Ritual[] = [
     { name: "Warding Circle against Cainites", summary: "Create a warding circle against vampires", rouseChecks: 1, requiredTime: "1 hour", dicePool: "Intelligence + Blood Sorcery", ingredients: "", level: 5 }
 ,
 // Level 4 Rituals (Added)
-{ name: "Warding Circle Against Magic", summary: "Prevents all Blood Sorcery, Oblivion, Rituals, and Ceremonies within the circle. Anyone attempting to use such powers against someone inside must contest Willpower vs. the caster's Intelligence + Blood Sorcery. Also defends against non-vampiric magic.", rouseChecks: 1, requiredTime: "1 hour", dicePool: "Intelligence + Blood Sorcery vs. Willpower (see V5 Corebook pg. 275)", ingredients: "Circle inscribed with the same blade used to draw the caster's vitae.", level: 4 }
+{ name: "Warding Circle Against Magic", summary: "Prevents all Blood Sorcery, Oblivion, Rituals, and Ceremonies within the circle. Anyone attempting to use such powers against someone inside must contest Willpower vs. the caster's Intelligence + Blood Sorcery. Also defends against non-vampiric magic.", rouseChecks: 1, requiredTime: "1 hour", dicePool: "Intelligence + Blood Sorcery vs. Willpower (see V5 Corebook pg. 275)", ingredients: "Circle inscribed with the same blade used to draw the caster's vitae.", level: 4 },
+
+// New Blood Sorcery Rituals - Level 1
+{ name: "Incantation of the Shepherd", summary: "Mystically locate all members of the caster's herd or mortals fed from repeatedly", rouseChecks: 1, requiredTime: "1 turn", dicePool: "Intelligence + Blood Sorcery", ingredients: "Glass object the size of an eye", level: 1 },
+{ name: "Spring Sanctification", summary: "Sanctifies a white heifer to provide enhanced blood that can slake any vampire's hunger", rouseChecks: 2, requiredTime: "1 hour", dicePool: "Intelligence + Blood Sorcery", ingredients: "One flawless white heifer, two Rouse checks worth of blood", level: 1 },
+
+// New Blood Sorcery Rituals - Level 2
+{ name: "Sigil of Authority", summary: "Creates a mystical sigil linking bearer to Crimson Curia authority", rouseChecks: 1, requiredTime: "1 hour", dicePool: "Intelligence + Blood Sorcery", ingredients: "Silver tipped blade, blood of the Sigil Investor (a Bishop from the Crimson Curia)", level: 2 },
+{ name: "Blood Mead", summary: "Creates intoxicating mead that grants temporary health levels", rouseChecks: 2, requiredTime: "1 hour", dicePool: "Intelligence + Blood Sorcery", ingredients: "Honey mead (up to 5 gallons), two Rouse checks worth of caster's blood, a ceramic container decorated with chthonic sigils and verses praising Zagreus", level: 2 },
+{ name: "Skull of Warning", summary: "Enchanted skull that screams when intruders enter protected room", rouseChecks: 1, requiredTime: "1 hour", dicePool: "Intelligence + Blood Sorcery", ingredients: "A skull, vitae of the caster", level: 2 },
+{ name: "Amulet of Misfortune", summary: "Creates cursed amulet that reduces all dice pools for specific target", rouseChecks: 1, requiredTime: "1 hour", dicePool: "Intelligence + Blood Sorcery", ingredients: "Small item, body sample from recipient, vitae, poisonous herbs", level: 2 },
+{ name: "Blood Wine Distillation", summary: "Preserves blood with supernatural properties for extended periods", rouseChecks: 1, requiredTime: "1 hour", dicePool: "Intelligence + Blood Sorcery", ingredients: "Silver basin, bone knife, dark glass bottle, wax, caster's blood", level: 2 },
+
+// New Blood Sorcery Rituals - Level 3
+{ name: "Flesh of Fiery Touch", summary: "Causes the caster's skin to burn anyone who touches it", rouseChecks: 1, requiredTime: "1 turn", dicePool: "Intelligence + Blood Sorcery", ingredients: "A small piece of wood, coal or other common fuel source, which can be ignited", level: 3 },
+{ name: "Faerie Wine", summary: "Creates psychedelic wine that enhances Auspex and Delirium but impairs mental faculties", rouseChecks: 2, requiredTime: "1 hour", dicePool: "Intelligence + Blood Sorcery", ingredients: "Nightshade brew (up to five gallons), Morning Glory extract, two Rouse checks worth of caster's blood, a ceramic container decorated with chthonic sigils", level: 3 },
+{ name: "Talisman of Protection", summary: "Creates protective talisman that aids resistance against hostile magic", rouseChecks: 1, requiredTime: "1 hour", dicePool: "Intelligence + Blood Sorcery", ingredients: "Small item, body sample from recipient, vitae, protective herbs", level: 3 },
+{ name: "Eye of the Norn", summary: "Shows the face of the person the caster should confront or deal with most urgently", rouseChecks: 1, requiredTime: "1 hour", dicePool: "Intelligence + Blood Sorcery", ingredients: "One mirror with a silver frame, the caster's blood, a silver needle", level: 3 },
+{ name: "Claimed by Teliavelis", summary: "Converts Tremere to Telyav bloodline, changing disciplines and banes", rouseChecks: 1, requiredTime: "3 hours", dicePool: "Intelligence + Blood Sorcery", ingredients: "Earth from fulcrum, vitae from three Telyav, red moss from Estonia/Latvia bogs", level: 3 },
+{ name: "Rite of Incarnation", summary: "Creates spiritual decoy using torpored vampire vessel for deception", rouseChecks: 4, requiredTime: "All night ritual in Shadow Temple", dicePool: "Intelligence + Blood Sorcery", ingredients: "Torpored vampire vessel of same clan, four Rouse checks of blood, soil from birthland, red moss", level: 3 },
+{ name: "Scorpion's Curse", summary: "Ward that triggers Scorpion's Touch on anyone who touches the protected item", rouseChecks: 1, requiredTime: "1 hour", dicePool: "Intelligence + Blood Sorcery", ingredients: "Rowan wand, mixture of ash and caster's Blood", level: 3 },
+
+// New Blood Sorcery Rituals - Level 4
+{ name: "Lunar Ale", summary: "Creates intoxicating ale that removes inhibitions and reduces Stains gained", rouseChecks: 2, requiredTime: "1 hour", dicePool: "Intelligence + Blood Sorcery", ingredients: "Spring water (up to five gallons), dandelion brew (two liters), two Rouse checks worth of caster's blood, a ceramic container decorated with chthonic sigils", level: 4 },
+{ name: "Witch's Familiar", summary: "Enchants small animal to steal Willpower from sleeping victims", rouseChecks: 1, requiredTime: "10 minutes", dicePool: "Intelligence + Blood Sorcery", ingredients: "A small animal, vitae of the caster", level: 4 },
+{ name: "Craft the Needle of Mind's Eye", summary: "Creates enchanted needle required for astral projection ritual", rouseChecks: 1, requiredTime: "1 hour", dicePool: "Intelligence + Blood Sorcery", ingredients: "Wood or bone, fine carving instrument", level: 4 },
+{ name: "Blood Essence", summary: "Distills victim's essence into consumable heart's blood for diablerie", rouseChecks: 2, requiredTime: "Extended diablerie process", dicePool: "Resolve + Blood Sorcery", ingredients: "Victim's complete vitae", level: 4 },
+{ name: "Refine the Cocktail", summary: "Creates powerful blood cocktails that grant temporary attribute or discipline bonuses", rouseChecks: 1, requiredTime: "1 hour", dicePool: "Intelligence + Blood Sorcery", ingredients: "Silver basin, donor blood, caster's blood, bone brush with animal fur, magical herbs", level: 4 },
+
+// New Blood Sorcery Rituals - Level 5
+{ name: "Walk the Spirit Plains", summary: "Astral projection to various spirit realms using enchanted needle", rouseChecks: 1, requiredTime: "Self-stabbing with needle", dicePool: "Intelligence + Blood Sorcery", ingredients: "Needle of the Mind's Eye", level: 5 },
+{ name: "Sacrifice of Odin", summary: "Sacrifice a body part for enhanced willpower effects and temporary bonuses", rouseChecks: 1, requiredTime: "1 turn", dicePool: "Intelligence + Blood Sorcery", ingredients: "One silver tipped knife", level: 5 }
 ];
 
 export const powerIsRitual = (p: Power | Ritual | Ceremony): p is Ritual | Ceremony => {
