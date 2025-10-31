@@ -3,6 +3,7 @@ import { z } from "zod"
 import animalismLogo from "../resources/Rombo_Disciplines/rombo_Animalism.svg"
 import auspexLogo from "../resources/Rombo_Disciplines/rombo_Auspex.svg"
 import celerityLogo from "../resources/Rombo_Disciplines/rombo_Celerity.svg"
+import deliriumLogo from "../resources/Rombo_Disciplines/rombo_Delirium.svg"
 import dominateLogo from "../resources/Rombo_Disciplines/rombo_Dominate.svg"
 import fortitudeLogo from "../resources/Rombo_Disciplines/rombo_Fortitude.svg"
 import obfuscateLogo from "../resources/Rombo_Disciplines/rombo_Obfuscate.svg"
@@ -429,6 +430,26 @@ export const disciplines: Record<DisciplineName, Discipline> = {
             { name: "Fastigum", description: "Perform two separate actions via speed.", rouseChecks: 2, amalgamPrerequisites: [{ discipline: "celerity", level: 3 }], summary: "Perform two separate actions via speed (Requires Preeminence).", dicePool: "Dexterity + Celerity", level: 5, discipline: "celerity" },
             { name: "Lightning Strike", description: "Make melee attacks at Difficulty 1.", rouseChecks: 2, amalgamPrerequisites: [], summary: "Make melee attacks at Difficulty 1.", dicePool: "Dexterity + Melee", level: 5, discipline: "celerity" },
             { name: "Split Second", description: "Retcon the ST's narration of events.", rouseChecks: 2, amalgamPrerequisites: [], summary: "Retcon the ST's narration of events.", dicePool: "Wits + Celerity", level: 5, discipline: "celerity" },
+        ],
+    },
+    delirium: {
+        clans: [
+            "Malkavian", "Caitiff"
+        ],
+        summary: "Distort perception and manipulate reality through madness",
+        logo: deliriumLogo,
+        powers: [
+            // Level 1
+            {
+                name: "Sensory Overload",
+                description: "With Sensory Overload, the Malkavian can magnify the sensory perception of their target to debilitating levels. A mere word is enough to plunge their victim into a world of overwhelming stimuli, where the faintest noise becomes deafening or the lightest touch feels like searing pain.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Overwhelms target's senses, causing penalties or complete loss of a sense",
+                dicePool: "Charisma + Delirium vs Wits + Resolve",
+                level: 1,
+                discipline: "delirium",
+            },
         ],
     },
     dominate: {

@@ -46,6 +46,7 @@ export const disciplineNameSchema = z.union([
     z.literal("animalism"),
     z.literal("auspex"),
     z.literal("celerity"),
+    z.literal("delirium"),
     z.literal("dominate"),
     z.literal("fortitude"),
     z.literal("obfuscate"),

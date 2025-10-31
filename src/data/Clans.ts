@@ -99,7 +99,7 @@ export const clans: Record<ClanName, Clan> = {
         compulsions: [
             "Delusion: Two-dice penalty to Dexterity, Manipulation, Compusre and Wits as well as resists to terror frenzy for one scene."
         ],
-        nativeDisciplines: ["auspex", "dominate", "obfuscate"],
+        nativeDisciplines: ["auspex", "dominate", "obfuscate", "delirium"],
     },
     Tremere: {
         name: "Tremere",
@@ -295,6 +295,7 @@ export const clans: Record<ClanName, Clan> = {
             "protean",
             "blood sorcery",
             "oblivion",
+            "delirium",
         ],
     },
     "Thin-blood": {
