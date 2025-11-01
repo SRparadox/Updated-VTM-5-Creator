@@ -5660,7 +5660,7 @@ export const disciplines: Record<DisciplineName, Discipline> = {
                 name: "Moon Kissed Blades", 
                 description: "The user coats a blade in his own vitae. Any nick or cut inflicted causes visions of madness to haunt the victim. If successful, the user smears a blade with his blood. For the rest of the evening, any individual injured by the blade will develop the same Mental Derangement the user possesses and will be unable to shake it for the next 3 nights. This form of madness also marks the victim within the Madness Network and the user can instinctively trace down his target, regardless of the distance between them.", 
                 rouseChecks: 1, 
-                amalgamPrerequisites: [{ discipline: "Delirium", level: 3 }], 
+                amalgamPrerequisites: [{ discipline: "delirium", level: 3 }], 
                 summary: "Coat blade with vitae to inflict madness and enable tracking of victims.", 
                 dicePool: "Quietus + Delirium", 
                 level: 3, 
