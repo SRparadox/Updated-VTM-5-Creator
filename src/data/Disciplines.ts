@@ -4566,6 +4566,38 @@ export const disciplines: Record<DisciplineName, Discipline> = {
             { name: "Heart's Blood", description: "The sorcerer can extract the most potent blood directly from a victim's heart, making it incredibly nourishing. If the sorcerer feeds directly from a mortal's heart (requiring them to be restrained or willing), they gain twice the normal amount of Hunger satisfaction from the feeding. However, this invariably kills the mortal.", rouseChecks: 1, amalgamPrerequisites: [], summary: "Extract supremely nourishing blood directly from a victim's heart.", dicePool: "Dexterity + Blood Sorcery", level: 3, discipline: "blood sorcery" },
             { name: "Another's Burden", description: "The vampire can lessen the pain of another by taking some or all of his suffering onto herself.", rouseChecks: 1, amalgamPrerequisites: [], summary: "Transfers dice penalties from target to caster to reduce their suffering.", dicePool: "Resolve + Blood Sorcery", level: 2, discipline: "blood sorcery" },
             { name: "Burden Another", description: "The caster may reduce his own pain by inflicting it upon another.", rouseChecks: 1, amalgamPrerequisites: [], summary: "Transfers caster's dice penalties to unwilling target.", dicePool: "Manipulation + Blood Sorcery vs Composure + Resolve", level: 4, discipline: "blood sorcery" },
+
+            // Additional Amalgam Powers
+            { name: "Crimson Calligraphy - Path of Blood", description: "Blood runs in strange ways and forms esoteric symbols on behalf of its master. This power acts both as an Upgrade and a Ritual. When used as an Upgrade, the user can simply manipulate blood to make interesting patterns or even write messages around them. Aside from the theatrical display, this ability is useful when conjuring rituals. It grants the user a 1 dice bonus whenever manifesting any Rituals found under Blood Sorcery. When used as a Ritual the user can remotely manipulate blood near a target to form words and deliver messages over great distances.", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "auspex", level: 1 }], summary: "Manipulate blood into patterns and symbols, or send messages through blood at great distances.", dicePool: "None", level: 1, discipline: "blood sorcery" },
+            { name: "Disciplinary Identification - Path of Blood", description: "Through their knowledge of the blood, the user can home in on the subtle emanations vitae makes. This power can be activated whenever the Warlock suspects a target to be using a Disciplinary power (of any Type). The Rouse Check is also the Test roll for this power. If the Rouse Check fails nothing happens. If it is a success the user can accurately identify the Discipline a target is currently using, provided they read about it or seen it in action before.", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "auspex", level: 1 }], summary: "Identify what Discipline a target is currently using.", dicePool: "Rouse Check", level: 1, discipline: "blood sorcery" },
+            { name: "Thaumaturgic Expediency", description: "The user had enhanced his normal Blood Sorcery Rituals with Celerity's expediency. The user halves the time it takes to perform Rituals for all powers found under Blood Sorcery.", rouseChecks: 0, amalgamPrerequisites: [{ discipline: "celerity", level: 1 }], summary: "Upgrade: Halve the time required to perform Blood Sorcery rituals", dicePool: "None", level: 1, discipline: "blood sorcery" },
+            { name: "Death Pulse", description: "The user unleashes an invisible spiritual wave of deathly energy. If successful, the user releases a potent amount of deathly energy drawn from the Shadowlands. While not powerful enough to do any lasting harm to anyone or anything the pulse is extremely unpleasant for the living and can momentarily interfere with technology. It will cause all Mortals and Enhanced Mortals, who are not yet undead in any manner, to flinch, as though a cold shiver had run down their spine. They count as being stunned for 1 Round. Lights will slightly flicker and technological devices will have a momentary disturbance.", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "necromancy", level: 1 }], summary: "Pulse that stuns mortals and briefly disrupts technology", dicePool: "Blood Sorcery + Necromancy", level: 1, discipline: "blood sorcery" },
+            { name: "The Sleepers Tale", description: "The research of dreams is a fascinating if niche subject for some. The user begins the ritual by silently whispering to a sleeping target. If successful, the victim will enter a deep slumber and will not be woken up by sound, smell, or visual disturbances. Instead, they will remain in a deep slumber unless physically touched. Once the initial words are whispered the user's hand will hover above the victim's brow while they focus. As they do so the area around the user will be overtaken by an illusionary bubble that will project the target's dreams.", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "chimestry", level: 1 }], summary: "Ritual: Induce deep sleep and project target's dreams as illusions", dicePool: "Blood Sorcery + Chimestry", level: 1, discipline: "blood sorcery" },
+            { name: "Curse Of Lycos", description: "Named after a cursed Greek king, this power subjects the victim to a terrible, if temporary fate. If successful, the user inflicts a curse to any victim they bite. The victim will, over the course of a week, develop animalistic features (usually those most closely associated with the user) and feel a strong preference towards raw or bloody meat. The physical mutations will slowly disappear after the following week without any lasting harm brought upon the victim. Kindred use this power as a form of blackmail on helpless mortals who have no idea the effects are only temporary.", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "protean", level: 1 }], summary: "Bite curse causing week-long animalistic transformation in victim.", dicePool: "Blood Sorcery + Protean", level: 1, discipline: "blood sorcery" },
+            { name: "Judgment Of The Fallen", description: "A pact made between the dead and the undying to bring a killer to justice. To complete this Ritual the user must drink a mixture of blood and ashes. The ashes in question need to belong to a victim of the target. If successful the spirit of the victim forms a pact with the user, to assist them in killing the individual who murdered them (the target). The spirit acts as an ethereal adviser and the user adds 1 dice for all tests related to tracking down and killing the spirit's killer.", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "oblivion", level: 1 }], summary: "Ritual: Form pact with murder victim's spirit for revenge guidance.", dicePool: "Blood Sorcery + Oblivion", level: 1, discipline: "blood sorcery" },
+            { name: "Call The Adept", description: "Using a variation of a Garou ritual, meant to find werewolves who had not yet awoken to their true nature, this power allows the user to call those mortals who possess a magical potential. If successful, then the user lures those with magical potential to himself while placing an obstacle in the way of those attempting to meet them. The obstacle can come in many forms, it could be a locked door, a labyrinth, a puzzle or whatever would reasonably separate the user from their would-be target (left to the player's imagination). Those lured to the user do not have to be mages but could be their descendants, they could be members of a bloodline which used Cainite Sorcery, Garou kinfolk, Fey-touched individuals and more. Regardless of their origin, only individuals who belong to a Koldunic bloodline will be able to pass through or solve the obstacle (so a locked door would open automatically for them, while a puzzle would seemingly solve itself).", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "presence", level: 1 }], summary: "Ritual: Lure magical mortals, only Koldunic bloodline can pass obstacles.", dicePool: "Blood Sorcery + Presence", level: 1, discipline: "blood sorcery" },
+            { name: "Obey The Pyramid", description: "The Tremere control over their members is unconditional and tyrannical. If successful, the user can automatically use and pass any Dominate powers on the victim of this ritual. The target automatically counts as failing all Resistance Rolls against it and the user only has to make the necessary Rouse Checks (if any) for their powers to succeed.", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "dominate", level: 1 }], summary: "Ritual: Automatic success on all Dominate powers against Tremere/Blood Sorcery users.", dicePool: "Blood Sorcery + Dominate", level: 1, discipline: "blood sorcery" },
+
+            // Level 2 Amalgam Powers
+            { name: "Abyssal Pilfering", description: "The manifestation of this power can often go unnoticed for hours or even days after it has occurred. If successful the victim loses their shadow for 1 day, per the user's rating in Obtenebration (or Oblivion if you are not using the rest of the Remastered series). Individuals who lost their shadows feel uneasy, like something essential had been stolen from them. They cannot use Obtenebration and Oblivion while without a shadow and mortals who do not possess a shadow will be terrified of sunlight, feeling as though they are on fire when it makes contact with their skin. Luckily, while the pain is very real, no actual physical damage occurs. The user himself is, on the other hand, empowered by the theft and adds 1 dice to all Obtenebration & Oblivion rolls.", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "obtenebration", level: 2 }], summary: "Steal target's shadow, empowering your own shadow powers while debilitating them.", dicePool: "Blood Sorcery + Obtenebration", level: 2, discipline: "blood sorcery" },
+            { name: "Simmering Revolt", description: "This poison emboldens those lingering under the tyranny of their Cainite masters and allows them to break the chains of servitude, often at the cost of their own lives. If successful, the user's blood is laced with a poison that alters the drinker's perception of reality. Those who drink from the user will start to become antagonistic when in the presence of their true master(s) (in the case of Ghouls) or those who originally blood-bonded them. Worse still they are capable of transmitting this poison to others who drink from them in turn. Initially, the effect manifests itself as discomfort, progressing to anger & hatred and finally a full break occurs wherein the victim enters a Frenzy and attacks their supposed master(s).", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "animalism", level: 2 }], summary: "Blood poison causing ghouls/blood bonded to frenzy against masters.", dicePool: "Animalism + Blood Sorcery", level: 2, discipline: "blood sorcery" },
+            { name: "The Specter Of Justice", description: "The victim is haunted by a spirit only he can see. Although ever present, the spirit only materializes to its victim when they are about to commit an act which is considered morally wrong. If successful, a spirit will materialize in front of the victim every time they are about to commit an act which the Storyteller considers morally wrong. The spirit itself is just a trick and is completely conjured by the mind of the victim (an echo of their subconscious morality). Nobody else can see the spirit or interact with it. The spirit itself is terrifying to the victim and keeps them in check while the power lasts. Mechanically speaking the victim applies a 2 dice penalty to any roll associated with an action that the Storyteller deems morally wrong.", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "dominate", level: 2 }], summary: "Ritual: Haunting spirit that penalizes morally wrong actions.", dicePool: "Blood Sorcery + Dominate", level: 2, discipline: "blood sorcery" },
+            { name: "Kupala's Auspice", description: "Kolduns are often forced to face powerful elemental spirits in a bid to dominate the energies of the land itself. If successful, the Kindred can choose to be resilient against one of the 4 elements. They may select ONE of the following bonuses, for each Rouse Check they make, when the test for the Ritual is passed: Earth: The user is resilient to any blunt force trauma (being struck by a blunt weapon, fists, hit by a car etc....) and halves damage from such sources twice (rounding down). Aggravated damage cannot be halved. Air: The user is resilient to any cuts or bladed weapons (blades, arrows, teeth and claws all fall under this category) and reduces damage from all such sources by 2 points (to a minimum of 1). Water: The user is resilient to the effects of poisons and doubles their dice pool for any Resistance Roll against them or, if there is no Resistance Roll available, they must pass a Stamina + Strength test (3) to resist its effects. Fire: The user can ignore the very first instance of fire-based damage received after this power is used. After this bonus is used once it is lost until the Ritual is cast again.", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "fortitude", level: 2 }], summary: "Ritual: Choose elemental resistance - Earth/Air/Water/Fire with specific bonuses.", dicePool: "Blood Sorcery + Fortitude", level: 2, discipline: "blood sorcery" },
+            { name: "Seek The World Vein", description: "The user enters a deep trance and is guided by spirits to a location of significant spiritual power. This power works as an Upgrade and an Ability. As an Upgrade, the user can sense and see Ley Lines when near them (within 10 meters or 30 feet). As an Ability, the user enters a trance-like state in which he will move to a location where a Ley Line can be accessed. When in such a trance they will still be able to operate vehicles, avoid obvious dangers (like walking into traffic) and retain the bare basic communication skills. This trance is broken if the user is attacked, or they reach their desired destination. Once the trance breaks the user will have no memory of their travel to the location and will likely not recognize their new surroundings. Regardless, they are, for all intents and purposes, now standing in front of an active Ley Line.", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "auspex", level: 2 }], summary: "Ritual: Trance-guided travel to nearest Ley Line, can sense Ley Lines.", dicePool: "Auspex + Blood Sorcery", level: 2, discipline: "blood sorcery" },
+            { name: "The King In Crimson", description: "Some Blood Sorcery users have consumed such an unfathomable amount of occult knowledge that the forbidden wisdom they possess is reflected in their very souls. The user adds 1 dice to all Social rolls when targeting other Blood Sorcery users (Necromancy and koldunic users are unaffected unless they also use Blood Sorcery), adds 1 dice to all Occult and Academic rolls related to Blood Sorcery and can, once per Session, add 2 automatic successes to any Test or Resistance Roll related to Blood Sorcery.", rouseChecks: 0, amalgamPrerequisites: [{ discipline: "presence", level: 2 }], summary: "Upgrade: +1 dice Social vs Blood Sorcery users, +1 dice Blood Sorcery rolls, once per session +2 successes.", dicePool: "None", level: 2, discipline: "blood sorcery" },
+            { name: "Binding Ring", description: "This crimson piece of jewellery often comes in the form of a ring. When worn it makes its wearer susceptible to mental influences or completely at the whims of others. If successful, the user creates a ring or similar piece of jewellery. The ring affects its wearers differently depending on who they are. If worn by a Mortal or Enhanced Mortal, the wearer finds it impossible to refuse the request of another Kindred. The effect is similar to being impacted by Compel or Awe and the wearer will still have enough willpower to not put themselves into situations which would obviously lead to injury and cannot be forced to injure their loved ones. If worn by a Kindred, they automatically fail any Resistance Rolls against Supernatural Mental Manipulation (aside from the one listed under this power) and lose any benefit granted to them by Disciplines or Generational advantage. If worn by other Supernatural Creatures the effects are unknown but it could be guessed that the creature will be easier to manipulate.", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "presence", level: 2 }], summary: "Ritual: Create ring that makes wearer susceptible to mental control, lasts 1 month.", dicePool: "Blood Sorcery + Presence", level: 2, discipline: "blood sorcery" },
+            { name: "Blood Tremor", description: "The user slashes their wrist and wills the blood to gather into a crimson ball in the palm of their hands. The blood starts to glow a faint red and as the user slams it down onto the ground a flash of red momentarily pulses out. If successful, the user cuts their wrist and strikes the ground. A red flash is momentarily seen and all Kindred in the vicinity feel as though their hearts skipped a beat (an odd sensation for creatures whose hearts do not beat at all). All Disciplines currently being conjured or active immediately cease. Upgrades cease to function and any victims under Dominate, Presence or Clan Compulsion effects are immediately snapped out of them. Curses and Poisons already impacting a victim are not affected. The user himself however is impacted even more severely and cannot call upon the powers of the blood for the rest of the Scene.", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "potence", level: 2 }], summary: "Ritual: Disrupt all active Disciplines in 100-foot radius, disable your own powers for the scene.", dicePool: "Blood Sorcery + Potence", level: 2, discipline: "blood sorcery" },
+            { name: "Elemental Form", description: "Most Protean users are limited to manifesting purely animalistic aspects. Those who mastered both Koldunism and Protean however can tap into more exotic forms. When manifesting their War Form the user can incorporate elemental aspects into it. If you're not using the remastered series, this upgrade simply adds a 2 dice bonus to any rolls made while in your war form. If you are using Protean Remastered then you can modify your War Form using additional elemental options.", rouseChecks: 0, amalgamPrerequisites: [{ discipline: "protean", level: 2 }], summary: "Upgrade: Add elemental aspects to War Form or +2 dice to War Form rolls.", dicePool: "None", level: 2, discipline: "blood sorcery" },
+
+            // Level 3 Amalgam Powers
+            { name: "Chain the Generation - Path of Blood", description: "Clan Tremere cannot blood bond under normal circumstances, a weakness they are eager to erase. Luckily some of their experimentations have yielded interesting results. From this point on, all powers from Dominate succeed automatically when targeting the users childer or those of their bloodline whose generation is higher than their own. This automatic success overrules any form of supernatural resilience the target might have against mental manipulation.", rouseChecks: 0, amalgamPrerequisites: [{ discipline: "dominate", level: 1 }], summary: "Dominate powers automatically succeed against descendants of your bloodline.", dicePool: "None", level: 3, discipline: "blood sorcery" },
+            { name: "Obscure The Sigil", description: "Thaumaturgy often relies on a plethora of occult symbols, usually drawn in blood, to perform its rituals. These arcane marks often lead to some uncomfortable questions when discovered by mortals and endanger the Masquerade as a whole. Over the years it became imperative for some Warlocks to find a way to quickly obscure signs of their craft. The user can voluntarily prolong a Ritual by another minute to work in a subtle addition to it. If this is done then any mark, symbol or sigil the user had drawn during the Ritual is permanently obfuscated and can only be seen by those who possess supernatural senses. Once the power of the Ritual fades, the symbol itself will also fade as the last portion of the user's alteration to the Ritual plays out, covering their tracks completely.", rouseChecks: 0, amalgamPrerequisites: [{ discipline: "obfuscate", level: 3 }], summary: "Add concealment to rituals, hiding symbols from mundane view.", dicePool: "None", level: 3, discipline: "blood sorcery" },
+            { name: "Find The Magos", description: "Since the fall of Vienna, clan Tremere had lost many of its members to desertion. Over time it became apparent that these traitors would need to be hunted down to preserve the clan's secrets, thus a special elixir was created. For this power to work the user must recover an item from a ritual site. This could be a used vial, ash, dirt, blood, the remains of victims, or whatever might have been left behind, used or impacted by the ritual. Afterwards, the item they recovered is crushed and mixed with a healthy dose of the user's own vitae. If successful, the user will create enough elixir for up to 3 separate uses. Those who consume the drink will see a faint strand of red twisting and shifting through the air. If they follow the strand, it will lead them to the individual who cast the original Ritual. The strand bypasses all attempts at supernatural obfuscation or illusions and functions even on other Supernatural Creatures (Garou, Mages, Mummies etc.), as long as they perform a ritual they can be tracked.", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "auspex", level: 3 }], summary: "Ritual: Create tracking elixir from ritual site remnants, creates visible strand leading to original caster.", dicePool: "Auspex + Blood Sorcery", level: 3, discipline: "blood sorcery" },
+
+            // Level 4 Amalgam Powers
+            { name: "The Unremembrance", description: "Through a blood ritual the user disappears from all living memory. If successful, the user or an individual willingly participating in the Ritual, will disappear from all living memory. In essence any Mortal or Enhanced Mortal will forget the user's/individual's name, what they looked like and any memories they shared with them or even have their memories altered to fit this new narrative. This ritual does not affect physical documentation, recordings or pictures. The power also does not obliterate memories entirety but rather buries them deep into one's subconscious meaning there is a chance those affected can remember provided enough evidence of their past experiences with the user/individual is on hand. This is an uphill struggle and any rolls associated with convincing someone of such forgotten memories should have a test difficulty of 8, with any physical evidence lowering this difficulty.", rouseChecks: 2, amalgamPrerequisites: [{ discipline: "obfuscate", level: 4 }], summary: "Ritual: Disappear from all living memory, affects mortals and enhanced mortals only.", dicePool: "Blood Sorcery + Obfuscate", level: 4, discipline: "blood sorcery" },
+            { name: "Shadowland Chantry", description: "Whether Tremere Chantry or Giovanni mansion, the structure only superficially exists in the physical world. This ritual can only be cast on a single structure. The structure itself can be large; a cathedral, a skyscraper, a mansion etc. The structure remains unchanged on the outside and during the day, nothing seems out of the ordinary on the interior either. At night, however, the inside of the building changes drastically as the energies of the Shadowlands seep through. Walls might become mouldy; spectres can be seen moving about at random and haunting echoes are heard in the distance. Those inside the building benefit from a 2 dice bonus to all Oblivion, Obtenebration and Necromantic rolls. Foreign spiritual entities cannot enter the structure as the myriads of Shadowland spirits will pounce on any intruders. Any intruder entering the building will be heavily disorientated and nervous. They will suffer a 2 dice penalty for any Awareness, Survival and Composure rolls they make. Mortals will find the air thin within the structure and begin to suffocate within a few minutes of entering the building. Additionally, if the structure is ever destroyed it will persist in the Shadowlands and its occupants will remain unscathed.", rouseChecks: 2, amalgamPrerequisites: [{ discipline: "necromancy", level: 4 }], summary: "Ritual: Transform building into Shadowland nexus with spiritual bonuses and protections.", dicePool: "Blood Sorcery + Necromancy", level: 4, discipline: "blood sorcery" },
+            { name: "The Maw", description: "The Vampire performs a truly horrid ritual and opens a gateway between the Umbra and the heart of Oblivion itself. For this power to work the user must sacrifice a mortal during the Ritual. If successful, the user will open a small tear into Oblivion itself. This tear will make the local spiritual world dangerous, causing all those entering it or using abilities with a Spiritual tag to halve their dice pool (rounding down). Over time the tear will devour or drive out all local spirits (living or dead, good and bad) and the physical world around the ritual site will start to die off (vegetation will rot, animals will be driven away, human structures will rust and crumble). Eventually, if not upkept the tear will seal itself shut and the area (spiritually and physically) will return to normal, overtime.", rouseChecks: 2, amalgamPrerequisites: [{ discipline: "oblivion", level: 4 }], summary: "Ritual: Open tear to Oblivion, devastating local spiritual/physical area, requires mortal sacrifice.", dicePool: "Blood Sorcery + Oblivion", level: 4, discipline: "blood sorcery" },
         ],
     },
     oblivion: {
@@ -5080,6 +5112,67 @@ export const disciplines: Record<DisciplineName, Discipline> = {
                 rouseChecks: 2,
                 amalgamPrerequisites: [],
             },
+
+            // Spiritus Rituals converted to powers
+            // Level 1 Rituals
+            {
+                name: "Mother's Blood",
+                description: "The vampire performs a sacred ritual combining their own blood with milk, honey, and medicinal herbs to create a powerful potion that aids pregnant mothers and infants. This blessed mixture dramatically increases the chances of successful delivery and infant survival when administered to expectant mothers. The ritual draws upon the nurturing aspects of the spiritual realm to protect and strengthen both mother and child during the vulnerable birthing process.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Create potion to aid pregnant mothers and infants - dramatically increases delivery success and infant survival",
+                dicePool: "None",
+                level: 1,
+                discipline: "spiritus"
+            },
+
+            // Level 2 Rituals
+            {
+                name: "Gaia's Vigil",
+                description: "Using spiritual rune materials, the vampire marks another Spiritus user with a mystical symbol that creates a supernatural connection to the natural world. Anyone who feeds from the marked vampire inherits a distinctive scent that can be tracked by those with the spiritual sensitivity to detect it. This ritual creates a network of spiritual surveillance, allowing Spiritus practitioners to monitor who has fed from their marked allies.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Mark another Spiritus user with spiritual rune - anyone feeding from them inherits trackable scent",
+                dicePool: "Spiritus + Humanity",
+                level: 2,
+                discipline: "spiritus"
+            },
+
+            // Level 3 Rituals
+            {
+                name: "Aegis Of Innocence",
+                description: "The vampire crafts a special talisman imbued with protective spiritual energy that shields the innocent from the vampire's Beast. When worn during Frenzy, this talisman makes children under 16 years old completely invisible to the frenzied vampire, protecting them from harm. The spiritual forces recognize the purity of youth and create a supernatural barrier that prevents the Beast from perceiving or targeting these innocents.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Create talisman making children under 16 invisible to wearer during Frenzy",
+                dicePool: "Spiritus + Humanity",
+                level: 3,
+                discipline: "spiritus"
+            },
+
+            // Level 4 Rituals
+            {
+                name: "Return The Pup",
+                description: "Through the spiritual connection formed by feeding, the vampire can identify Garou (werewolves) and their Kinfolk, gaining deep insight into their supernatural heritage. The ritual reveals crucial information about the target's lineage, including details about their mother, their Tribe affiliation, and their Sept (werewolf community). This knowledge proves invaluable for understanding werewolf society and tracking connections within their supernatural community.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Identify Garou/Kinfolk and discover their mother, Tribe, and Sept through feeding",
+                dicePool: "Spiritus + Humanity",
+                level: 4,
+                discipline: "spiritus"
+            },
+
+            // Level 5 Rituals
+            {
+                name: "Guiding Tears",
+                description: "The vampire creates a mystical potion that, when consumed, causes the drinker to weep tears of blood that possess unique spiritual properties. These bloody tears leave an invisible trail through the Umbra (spirit world) that can be followed to navigate back to the exact point where the potion was consumed. This ritual provides a supernatural method of orientation and return navigation for those who venture into the dangerous and often disorienting spirit realm.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Create potion causing bloody tears that mark Umbra path for navigation back to origin point",
+                dicePool: "Spiritus + Humanity",
+                level: 5,
+                discipline: "spiritus"
+            },
         ],
     },
     valeren: {
@@ -5502,6 +5595,117 @@ export const disciplines: Record<DisciplineName, Discipline> = {
                 level: 4,
                 discipline: "serpentis"
             },
+
+            // Serpentis Rituals converted to powers
+            // Level 1 Rituals
+            {
+                name: "Ophidian Infestation",
+                description: "The vampire performs a dark ritual to infest a building with serpents and lizards for one year. The ritual requires killing a local serpent or lizard specimen and hanging its remains while mixing the vampire's blood into the area. Over the following days, the building becomes home to numerous serpents and lizards that serve as the vampire's eyes and ears, reporting on activities within the structure.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Infest building with serpents and lizards for one year by killing local specimen and hanging remains",
+                dicePool: "None",
+                level: 1,
+                discipline: "serpentis"
+            },
+            {
+                name: "Godhead",
+                description: "The vampire dons ornate deity headgear and performs a ritual that strengthens their hold over followers. Those under the vampire's influence gain supernatural resistance to manipulation and mental powers from others, as their devotion to their false god becomes unshakeable. Followers gain +2 dice to resist manipulation and mental powers while the ritual's effects persist.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Strengthen hold over followers - they gain +2 dice against manipulation and mental powers",
+                dicePool: "None",
+                level: 1,
+                discipline: "serpentis"
+            },
+            {
+                name: "Cheat The Scales Of Anubis",
+                description: "Using blood from a pure-hearted human mixed with the vampire's own vitae, this ritual temporarily masks the spiritual stains of diablerie. For one night, the telltale signs that allow other vampires to detect acts of diablerie are hidden, allowing the vampire to move among their kind without suspicion. The ritual must be performed each night the deception is needed.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Mask signs of diablerie for one night using pure-hearted human blood",
+                dicePool: "None",
+                level: 1,
+                discipline: "serpentis"
+            },
+
+            // Level 2 Rituals
+            {
+                name: "Apep's Fury",
+                description: "The vampire smears their blood on a target and invokes the wrath of the serpent god Apep. The cursed individual becomes a magnet for serpentine attacks - all snakes within 100 meters are compelled to seek out and attack the target. The curse creates an supernatural aura that drives serpents into a frenzy when they sense the marked victim.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Curse target to be sought and attacked by snakes within 100 meters",
+                dicePool: "Serpentis + Resolve",
+                level: 2,
+                discipline: "serpentis"
+            },
+            {
+                name: "Set's Curse",
+                description: "By mixing blood from a local animal, criminal, and priest, the vampire curses an area to increase crime and substance abuse. The supernatural influence gradually corrupts the moral fabric of the location, making the vampire more charismatic and influential with local mortals who become more susceptible to corruption and vice. The vampire gains +2 Charisma dice when dealing with mortals in the affected area.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Curse area to increase crime and substance abuse, gain +2 Charisma dice vs local mortals",
+                dicePool: "Serpentis + Resolve",
+                level: 2,
+                discipline: "serpentis"
+            },
+            {
+                name: "Pact With Set",
+                description: "Using the vampire's vitae and a personal object from the target's master, this ritual breaks blood bonds and makes the target vulnerable to mental manipulation. The ritual severs the supernatural ties that bind the target to another, but leaves them spiritually weakened and more susceptible to new forms of mental control and influence.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Break target's blood bonds and make them vulnerable to mental manipulation",
+                dicePool: "Serpentis + Resolve",
+                level: 2,
+                discipline: "serpentis"
+            },
+
+            // Level 3 Rituals
+            {
+                name: "Heart Of Darkness",
+                description: "In this dangerous ritual, the vampire physically removes their heart from their body and places it in a container adorned with death symbolism. While the heart is removed, the vampire cannot be staked, but the heart becomes a vulnerable point - if destroyed, the vampire meets final death. The process of removing one's heart causes the vampire to lose 1 point of Humanity permanently.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Remove heart from body, cannot be staked but heart becomes vulnerable point (lose 1 Humanity)",
+                dicePool: "Serpentis + Resolve",
+                level: 3,
+                discipline: "serpentis"
+            },
+            {
+                name: "Mark Of Exile",
+                description: "Using the vampire's vitae and ancient curse symbols, this ritual places a powerful curse on the target that makes them appear disgusting and repulsive to all who look upon them. The curse mimics the Nosferatu clan bane, causing the target to appear monstrous and offensive to all observers for one week, making social interaction nearly impossible.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Curse target with Nosferatu bane - appear disgusting to all for one week",
+                dicePool: "Serpentis + Resolve",
+                level: 3,
+                discipline: "serpentis"
+            },
+
+            // Level 4 Rituals
+            {
+                name: "Mummify",
+                description: "This extensive ritual requires bandages soaked in blood and takes an entire session to complete. When performed on mortals, they die and are preserved as mummies. When used on enhanced mortals or Kindred, they enter a special form of torpor, wrapped in the preserved bandages and unable to act until the wrappings are removed or destroyed. The mummified state can preserve a subject indefinitely.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Mummify target - mortals die, enhanced mortals/Kindred enter special torpor",
+                dicePool: "Serpentis + Resolve",
+                level: 4,
+                discipline: "serpentis"
+            },
+
+            // Level 5 Rituals
+            {
+                name: "Mother/Father Of Monsters",
+                description: "This horrific ritual can only be performed by vampires with Humanity 5 or lower. The vampire takes a broken individual and uses a large portion of their own blood to transform them into a Typhonic monster under the vampire's complete command. The resulting creature is a twisted amalgamation of the original person and serpentine features, completely loyal to their creator and possessing supernatural strength and resilience.",
+                rouseChecks: 2,
+                amalgamPrerequisites: [],
+                summary: "Transform broken individual into Typhonic monster under your command (requires Humanity 5 or lower)",
+                dicePool: "Serpentis + Resolve",
+                level: 5,
+                discipline: "serpentis"
+            },
         ],
     },
     quietus: {
@@ -5685,6 +5889,227 @@ export const disciplines: Record<DisciplineName, Discipline> = {
                 dicePool: "Celerity + Quietus", 
                 level: 4, 
                 discipline: "quietus" 
+            },
+
+            // Assamite Sorcery Rituals converted to powers
+            // Path of Poisons - Level 1
+            {
+                name: "Ishtar's Touch - Path of Poisons",
+                description: "The vampire consumes an entire bottle of strong liquor, transforming their blood into an intoxicating poison. When transmitted to a target through bite, touch, or blood contact, the victim experiences severe intoxication that clouds their judgment and impairs their abilities. Mortals and Enhanced Mortals suffer a persistent -1 dice penalty to all rolls for 12 hours as the supernatural inebriation overwhelms their system.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Target feels intoxicated - suffers 1 dice penalty to all rolls for 12 hours (Mortals and Enhanced Mortals only)",
+                dicePool: "None",
+                level: 1,
+                discipline: "quietus"
+            },
+            {
+                name: "Alamut's Blessing - Path of Poisons",
+                description: "By consuming a small vial of sand, the vampire transforms their blood into a desert poison that mimics the effects of extreme heat exposure. When transmitted to a target, this poison inflicts the Poisoned condition, causing intense fever, profuse sweating, and potentially fatal heatstroke. The victim experiences symptoms similar to severe dehydration and heat exhaustion, which can be deadly for mortals and Enhanced Mortals.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Inflicts Poisoned condition causing fever, sweating, and potential death through heatstroke (Mortals and Enhanced Mortals only)",
+                dicePool: "None",
+                level: 1,
+                discipline: "quietus"
+            },
+            {
+                name: "Scorpion's Sting - Path of Poisons",
+                description: "The vampire consumes a scorpion or arachnid, transforming their blood into a powerful paralytic toxin. When transmitted to a target, this poison causes complete paralysis, rendering the victim unable to move or speak. The duration varies by target type: 12 hours for mortals, 6 hours for Enhanced Mortals, and 1 hour for Kindred. The paralysis can be cured by contact with vampiric bite or saliva.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Paralyzes target - unable to move or talk (12h Mortals, 6h Enhanced Mortals, 1h Kindred). Cured by vampiric bite/saliva",
+                dicePool: "None",
+                level: 1,
+                discipline: "quietus"
+            },
+
+            // Path of Poisons - Level 2
+            {
+                name: "Taste Of Bliss - Path of Poisons",
+                description: "Using Milk of Poppy or a suitable substitute, the vampire creates a euphoric poison that induces peaceful bliss in its victims. Mortals and Enhanced Mortals fall into a peaceful, dreamlike sleep, while Kindred experience such profound tranquility that they cannot enter Frenzy and lose the ability to use Willpower to re-roll dice. The poison creates an artificial state of contentment that overrides normal survival instincts.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Target feels euphoric - Mortals/Enhanced Mortals nap peacefully, Kindred avoid Frenzy and can't use Willpower to re-roll",
+                dicePool: "Quietus + Intelligence",
+                level: 2,
+                discipline: "quietus"
+            },
+            {
+                name: "Baal's Kiss - Path of Poisons",
+                description: "An enhanced version of Alamut's Blessing, this poison combines sand with human blood to create a more potent desert toxin that affects even Kindred. While it cannot cause Aggravated damage to vampires, it prevents them from healing wounds through blood expenditure and causes the same heat-related suffering as the original version. The addition of human blood makes it supernaturally virulent.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Like Alamut's Blessing but affects Kindred too - cannot cause Aggravated damage to Kindred, prevents wound healing via blood",
+                dicePool: "Quietus + Intelligence",
+                level: 2,
+                discipline: "quietus"
+            },
+            {
+                name: "Deny The Flock - Path of Poisons",
+                description: "Using blood from a currently ill mortal, the vampire creates a contagious supernatural plague that spreads among mortal populations. Those affected develop flu-like symptoms that make them tired and lethargic, reducing their vitality. Additionally, their blood becomes sour and unappetizing to Kindred for one week, effectively denying vampires access to quality feeding in the affected area.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Infectious flu-like symptoms spread among mortals - makes them tired, lethargic, and blood tastes sour to Kindred for 1 week",
+                dicePool: "Quietus + Intelligence",
+                level: 2,
+                discipline: "quietus"
+            },
+
+            // Path of Poisons - Level 3
+            {
+                name: "Blood Clot - Path of Poisons",
+                description: "Using a vial of snake venom, the vampire creates a poison that dramatically thickens the victim's blood, causing severe circulatory problems. Mortals and Enhanced Mortals suffer 1 point of Aggravated damage as their blood becomes too thick to circulate properly. Kindred cannot use any powers that require Rouse Checks, as their vitae becomes too viscous to flow. The condition can only be cured by consuming Thin Blood vitae.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Thickens blood - Mortals/Enhanced Mortals take 1 Aggravated damage, Kindred cannot use Rouse Check powers. Cured by Thin Blood vitae",
+                dicePool: "Quietus + Intelligence",
+                level: 3,
+                discipline: "quietus"
+            },
+            {
+                name: "Grip Of Humility - Path of Poisons",
+                description: "Using blood from a holy man (priest, rabbi, imam, etc.), the vampire creates a poison that strips away supernatural resilience from Kindred targets. The affected vampire loses all benefits of Fortitude and cannot halve damage from any source, leaving them as vulnerable as mortals. This humbling poison can only be cured by draining a mortal completely dry, an act that typically requires the vampire to abandon their humanity.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Target loses all Fortitude benefits and cannot halve damage (Kindred only). Cured by draining a mortal dry",
+                dicePool: "Quietus + Intelligence",
+                level: 3,
+                discipline: "quietus"
+            },
+
+            // Path of Poisons - Level 4
+            {
+                name: "Thin The Blood - Path of Poisons",
+                description: "This devastating poison requires the vampire to have fed from a Thin Blood as their last vessel. The resulting toxin temporarily reduces the target's blood potency, rendering them unable to use any powers that require Rouse Checks and causing all Upgrade powers to cease functioning for one night. The victim essentially becomes powerless, reduced to mortal-like capabilities. The condition can only be cured by drinking from a vampire of lower generation or completely draining another Kindred.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Target cannot use Rouse Check abilities and all Upgrades cease function for 1 night. Cured by drinking from lower generation or draining Kindred",
+                dicePool: "Quietus + Intelligence",
+                level: 4,
+                discipline: "quietus"
+            },
+
+            // Path of Poisons - Level 5
+            {
+                name: "Blood Of Destruction - Path of Poisons",
+                description: "The ultimate poison of the Banu Haqim, requiring blood from the same clan as the target. This devastating toxin deals 1 point of Aggravated damage for each dot of Blood Potency the victim possesses, plus 1 additional point for each Rouse Check the poisoner expends when creating it. The poison attacks the very essence of vampiric existence, using the victim's own power against them. It can only be cured by draining a Kindred of the same clan completely dry.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Target takes 1 Aggravated damage per Blood Potency dot, plus 1 more per Rouse Check used. Cured by draining same-clan Kindred",
+                dicePool: "Quietus + Intelligence",
+                level: 5,
+                discipline: "quietus"
+            },
+
+            // Path of Curses - Level 1
+            {
+                name: "Dagon's Call - Path of Curses",
+                description: "The vampire takes a picture of a specific location and submerges it in the victim's blood while performing this curse. The target becomes supernaturally compelled to visit the depicted location within one week. The compulsion grows stronger each day, starting as a mild urge and escalating to an overwhelming obsession. If the target does not succumb to the urge and visit the location, they experience increasing psychological distress until they either comply or the week passes.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Target feels compelled to visit specific location within one week or succumbs to urge",
+                dicePool: "None",
+                level: 1,
+                discipline: "quietus"
+            },
+            {
+                name: "Alamut's Warning - Path of Curses",
+                description: "The vampire sends an item bearing the Quietus symbol to the target through a mortal courier, having placed a drop of the victim's blood on the item. When the target opens or handles the item, they experience vivid, terrifying visions of their own death. These supernatural nightmares are so traumatic that the victim loses the ability to recover Willpower through rest for one full night, leaving them psychologically drained and vulnerable.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Send item with Quietus symbol - when opened, target experiences visions of their death and loses Willpower recovery for one night",
+                dicePool: "None",
+                level: 1,
+                discipline: "quietus"
+            },
+            {
+                name: "Song Of Distant Vitae - Path of Curses",
+                description: "The vampire ritually boils away the victim's blood while performing this curse, sending a telepathic death vision to all Kindred within 100 kilometers. This supernatural broadcast serves as a public death mark, announcing to the vampiric community that the target has been marked for destruction by the Banu Haqim. The vision is unmistakably clear about the target's identity and the assassin's intent.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Ritually boil victim's blood - sends telepathic death vision to all Kindred within 100km as public death mark",
+                dicePool: "None",
+                level: 1,
+                discipline: "quietus"
+            },
+
+            // Path of Curses - Level 2
+            {
+                name: "Erosion - Path of Curses",
+                description: "The vampire melts a piece of lead in water mixed with the victim's blood, then plants this cursed object within 10 meters (30 feet) of the target's frequent location. The cursed lead emanates a supernatural aura that saps the target's competence and confidence, imposing a -1 dice penalty to all rolls while they remain within the object's influence. The curse persists until the lead object is discovered and removed.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Lead item planted near target (10m/30ft) causes 1 dice penalty to all rolls until removed",
+                dicePool: "Quietus + Intelligence",
+                level: 2,
+                discipline: "quietus"
+            },
+            {
+                name: "Forbidden Masquerade - Path of Curses",
+                description: "Using the victim's vitae, the vampire curses a mortal target to experience the mental aspects of vampiric existence. For one week, the victim develops an irrational fear of fire, experiences a burning sensation in sunlight (though no actual damage), and develops an intense craving for blood. These are purely psychological effects that create panic and confusion. The curse can only be broken by a near-death experience that shocks the victim back to mortality.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Mortal target fears fire, burns in sunlight sensation, craves blood for 1 week (mental effects only). Cured by near-death experience",
+                dicePool: "Quietus + Intelligence",
+                level: 2,
+                discipline: "quietus"
+            },
+            {
+                name: "Marks Of Humanity - Path of Curses",
+                description: "By mixing blood from a morally upstanding individual with the victim's blood, the vampire temporarily inflates the target's Humanity to double its normal value (maximum 10) for one night. This sudden surge of moral sensitivity can cause overwhelming remorse for past actions, potentially leading to catatonic guilt, temporary insanity, or even suicide as the target becomes hypersensitive to their own moral failings.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Target's Humanity temporarily doubles (max 10) for 1 night, causing potential remorse, insanity, or suicide",
+                dicePool: "Quietus + Intelligence",
+                level: 2,
+                discipline: "quietus"
+            },
+
+            // Path of Curses - Level 3
+            {
+                name: "Blood Sweat - Path of Curses",
+                description: "The vampire boils the victim's blood in their own hand (suffering 1 point of Aggravated damage in the process), creating a curse that causes the target to sweat blood for one week. This creates obvious Masquerade concerns as the victim constantly bleeds from their pores, and the scent of blood makes them irresistibly attractive to Kindred. The curse can only be broken by drinking from a Kindred who is 2 or more generations lower.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Target sweats blood for 1 week - creates Masquerade concerns and makes them smell sweet to Kindred. Cured by drinking from Kindred 2+ generations lower",
+                dicePool: "Quietus + Intelligence",
+                level: 3,
+                discipline: "quietus"
+            },
+            {
+                name: "Weaken The Ancient Bond - Path of Curses",
+                description: "By mixing the victim's blood with Thin Blood, the vampire creates a curse that temporarily severs supernatural bonds of loyalty and control. For three days, the target is freed from all blood bonds, ghoul loyalty, and the effects of Dominate and Presence powers. This liberation allows them to think and act independently, often leading to rebellion against former masters or revelations about their manipulated state.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Breaks target's blood bonds, ghoul loyalty, and Dominate/Presence effects for 3 days",
+                dicePool: "Quietus + Intelligence",
+                level: 3,
+                discipline: "quietus"
+            },
+
+            // Path of Curses - Level 4
+            {
+                name: "Dam The Hearts River - Path of Curses",
+                description: "Using the victim's blood mixed with blood from a serious sinner (death row inmate, serial killer, etc.), the vampire creates a curse that corrupts the target's use of Disciplines. For one week, every time the target uses any Discipline power (except passive Upgrades), they automatically gain a Humanity stain as their supernatural abilities become tainted with moral corruption. This makes it extremely dangerous for Kindred to use their powers.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Every time target uses Disciplines (except upgrades) they gain Humanity stain for 1 week (Kindred only)",
+                dicePool: "Quietus + Intelligence",
+                level: 4,
+                discipline: "quietus"
+            },
+
+            // Path of Curses - Level 5
+            {
+                name: "Poison The Well Of Life - Path of Curses",
+                description: "The ultimate curse of the Banu Haqim, performed when the vampire is at Hunger 4. This devastating curse corrupts the target's ability to feed from mortals for one week. The cursed Kindred can only sustain themselves by feeding on other vampires, forcing them into acts of diablerie or desperate hunting of their own kind. This curse often leads to the target's destruction or transformation into a serial diablerist.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Target can only feed on other Kindred for 1 week (Kindred only)",
+                dicePool: "Quietus + Intelligence",
+                level: 5,
+                discipline: "quietus"
             },
         ],
     },
@@ -7414,7 +7839,56 @@ export const Rituals: Ritual[] = [
 
 // New Blood Sorcery Rituals - Level 5
 { name: "Walk the Spirit Plains", summary: "Astral projection to various spirit realms using enchanted needle", rouseChecks: 1, requiredTime: "Self-stabbing with needle", dicePool: "Intelligence + Blood Sorcery", ingredients: "Needle of the Mind's Eye", level: 5 },
-{ name: "Sacrifice of Odin", summary: "Sacrifice a body part for enhanced willpower effects and temporary bonuses", rouseChecks: 1, requiredTime: "1 turn", dicePool: "Intelligence + Blood Sorcery", ingredients: "One silver tipped knife", level: 5 }
+{ name: "Sacrifice of Odin", summary: "Sacrifice a body part for enhanced willpower effects and temporary bonuses", rouseChecks: 1, requiredTime: "1 turn", dicePool: "Intelligence + Blood Sorcery", ingredients: "One silver tipped knife", level: 5 },
+
+// Path of Creation Rituals
+{ name: "Craft of Wood and Metal", summary: "Transmute materials, improving and shaping raw wood and metal into tools, weapons, and constructs through blood sorcery", rouseChecks: 1, requiredTime: "1 hour", dicePool: "Intelligence + Blood Sorcery", ingredients: "Raw materials (wood/metal), caster's vitae", level: 2 },
+{ name: "Improved Craft", summary: "Enhance crafting abilities, allowing creation of objects of exceptional quality that rival supernatural workmanship", rouseChecks: 1, requiredTime: "Variable", dicePool: "Intelligence + Blood Sorcery + Craft", ingredients: "Crafting materials, caster's vitae", level: 3 },
+{ name: "Form of Earth and Water", summary: "Mold and shape earth and stone through mystical manipulation, creating fortifications, passages, or artistic works", rouseChecks: 1, requiredTime: "1 hour", dicePool: "Intelligence + Blood Sorcery", ingredients: "Earth or stone, water, caster's vitae", level: 4 },
+{ name: "Form of Plants and Trees", summary: "Manipulate and control plant growth, shaping living vegetation into desired forms or accelerating natural growth", rouseChecks: 1, requiredTime: "1 hour", dicePool: "Intelligence + Blood Sorcery", ingredients: "Living plants, fertile soil, caster's vitae", level: 4 },
+{ name: "Craft Clockwork", summary: "Create intricate mechanical devices and automatons powered by blood sorcery rather than conventional mechanisms", rouseChecks: 2, requiredTime: "Several hours", dicePool: "Intelligence + Blood Sorcery + Craft", ingredients: "Metal components, gears, caster's vitae", level: 5 },
+
+// Path of Destruction Rituals
+{ name: "Dissolve", summary: "Cause objects to rapidly deteriorate and crumble, weakening structures or destroying evidence", rouseChecks: 1, requiredTime: "1 turn", dicePool: "Intelligence + Blood Sorcery", ingredients: "Acid or corrosive substance, caster's vitae", level: 1 },
+{ name: "Rust and Ruin", summary: "Accelerate corrosion and decay in metal objects, causing weapons to break and armor to weaken", rouseChecks: 1, requiredTime: "1 turn", dicePool: "Intelligence + Blood Sorcery", ingredients: "Rust flakes, salt water, caster's vitae", level: 2 },
+{ name: "Break Down", summary: "Cause complex mechanisms and devices to malfunction and break down, affecting both mechanical and electronic systems", rouseChecks: 1, requiredTime: "1 turn", dicePool: "Intelligence + Blood Sorcery", ingredients: "Oil or lubricant, metal filings, caster's vitae", level: 3 },
+{ name: "Structural Weakness", summary: "Identify and exploit weak points in buildings and structures, causing targeted collapse or significant damage", rouseChecks: 2, requiredTime: "1 hour", dicePool: "Intelligence + Blood Sorcery", ingredients: "Sledgehammer or heavy tool, stone dust, caster's vitae", level: 4 },
+{ name: "Turn to Dust", summary: "Completely obliterate objects or structures, reducing them to fine dust through concentrated destructive force", rouseChecks: 3, requiredTime: "1 hour", dicePool: "Intelligence + Blood Sorcery", ingredients: "Bone dust, ground glass, caster's vitae", level: 5 },
+
+// Path of Life Rituals
+{ name: "Sense Life", summary: "Detect the presence and vitality of living creatures within a significant radius, distinguishing between different life forms", rouseChecks: 1, requiredTime: "1 turn", dicePool: "Intelligence + Blood Sorcery", ingredients: "Fresh flowers or herbs, caster's vitae", level: 1 },
+{ name: "Accelerated Growth", summary: "Dramatically speed up the growth and development of plants, causing them to mature in hours rather than months", rouseChecks: 1, requiredTime: "1 hour", dicePool: "Intelligence + Blood Sorcery", ingredients: "Seeds or young plants, fertile soil, caster's vitae", level: 2 },
+{ name: "Grant Animal Intelligence", summary: "Temporarily enhance an animal's cognitive abilities, allowing for complex communication and understanding", rouseChecks: 1, requiredTime: "1 hour", dicePool: "Intelligence + Blood Sorcery", ingredients: "Animal subject, brain matter from intelligent creature, caster's vitae", level: 3 },
+{ name: "Preserve Life", summary: "Halt aging and decay in living beings, maintaining them in perfect stasis for extended periods", rouseChecks: 2, requiredTime: "1 hour", dicePool: "Intelligence + Blood Sorcery", ingredients: "Amber or crystal, preservation salts, caster's vitae", level: 4 },
+{ name: "Control Weather", summary: "Manipulate local weather patterns, summoning storms, clearing skies, or creating specific atmospheric conditions", rouseChecks: 3, requiredTime: "1 hour", dicePool: "Intelligence + Blood Sorcery", ingredients: "Weather-related materials (rain water, storm glass, etc.), caster's vitae", level: 5 },
+
+// Path of Morpheus Rituals
+{ name: "Sleep of the Dead", summary: "Induce deep, supernatural slumber in mortal subjects, making them appear dead to casual observation", rouseChecks: 1, requiredTime: "1 turn", dicePool: "Intelligence + Blood Sorcery", ingredients: "Poppy seeds, caster's vitae", level: 1 },
+{ name: "Daydream", summary: "Cause targets to become lost in waking dreams and fantasies, reducing their awareness of reality", rouseChecks: 1, requiredTime: "1 turn", dicePool: "Intelligence + Blood Sorcery", ingredients: "Lotus petals, dream journal, caster's vitae", level: 2 },
+{ name: "Nightmare Realm", summary: "Trap sleeping victims in terrifying nightmares that can cause real psychological and physical trauma", rouseChecks: 2, requiredTime: "1 hour", dicePool: "Intelligence + Blood Sorcery", ingredients: "Black candles, nightmare herbs, caster's vitae", level: 3 },
+{ name: "Lucid Dreaming", summary: "Grant the ability to remain conscious and control actions within dreams, allowing for dream manipulation", rouseChecks: 1, requiredTime: "1 hour", dicePool: "Intelligence + Blood Sorcery", ingredients: "Clear crystal, meditation incense, caster's vitae", level: 4 },
+{ name: "Shared Unconscious", summary: "Link multiple dreamers into a shared dream space where they can interact and communicate", rouseChecks: 3, requiredTime: "1 hour", dicePool: "Intelligence + Blood Sorcery", ingredients: "Silver chains, shared personal items, caster's vitae", level: 5 },
+
+// Path of Warding Rituals
+{ name: "Personal Ward", summary: "Create a protective barrier around oneself that deflects minor hostile magic and supernatural effects", rouseChecks: 1, requiredTime: "1 turn", dicePool: "Intelligence + Blood Sorcery", ingredients: "Salt circle, protective herbs, caster's vitae", level: 1 },
+{ name: "Ward vs. Spirits", summary: "Establish barriers that prevent spirits and incorporeal entities from entering protected areas", rouseChecks: 1, requiredTime: "1 hour", dicePool: "Intelligence + Blood Sorcery", ingredients: "Iron filings, blessed water, caster's vitae", level: 2 },
+{ name: "Ward vs. Magic", summary: "Create areas of magical nullification that suppress or weaken supernatural powers and spells", rouseChecks: 2, requiredTime: "1 hour", dicePool: "Intelligence + Blood Sorcery", ingredients: "Antithetical materials, disruption crystals, caster's vitae", level: 3 },
+{ name: "Greater Warding", summary: "Establish powerful protective barriers that can repel multiple types of supernatural threats simultaneously", rouseChecks: 2, requiredTime: "3 hours", dicePool: "Intelligence + Blood Sorcery", ingredients: "Multiple ward components, rare protective materials, caster's vitae", level: 4 },
+{ name: "Permanent Ward", summary: "Create wards that persist indefinitely without maintenance, providing long-term supernatural protection", rouseChecks: 3, requiredTime: "All night", dicePool: "Intelligence + Blood Sorcery", ingredients: "Permanent anchoring materials, significant sacrifice, caster's vitae", level: 5 },
+
+// Path of Hexes Rituals
+{ name: "Curse of Misfortune", summary: "Inflict persistent bad luck on targets, causing failures in their endeavors and minor accidents", rouseChecks: 1, requiredTime: "1 hour", dicePool: "Intelligence + Blood Sorcery", ingredients: "Broken mirror, black cat fur, caster's vitae", level: 1 },
+{ name: "Hex of Confusion", summary: "Cloud the target's mind with persistent confusion and disorientation, impairing decision-making", rouseChecks: 1, requiredTime: "1 hour", dicePool: "Intelligence + Blood Sorcery", ingredients: "Labyrinth drawing, maze herbs, caster's vitae", level: 2 },
+{ name: "Curse of Weakness", summary: "Sap the physical strength and stamina of enemies, leaving them frail and easily exhausted", rouseChecks: 2, requiredTime: "1 hour", dicePool: "Intelligence + Blood Sorcery", ingredients: "Withered plants, bone dust, caster's vitae", level: 3 },
+{ name: "Major Hex", summary: "Inflict severe supernatural curses that cause significant ongoing problems and setbacks", rouseChecks: 2, requiredTime: "3 hours", dicePool: "Intelligence + Blood Sorcery", ingredients: "Personal effects of target, cursing materials, caster's vitae", level: 4 },
+{ name: "Permanent Curse", summary: "Create lasting curses that persist across generations, affecting bloodlines and inheritances", rouseChecks: 3, requiredTime: "All night", dicePool: "Intelligence + Blood Sorcery", ingredients: "Generational artifacts, binding materials, significant sacrifice, caster's vitae", level: 5 },
+
+// Path of Technomancy Rituals
+{ name: "Digital Divination", summary: "Use electronic devices and networks to gather information and peer into digital spaces", rouseChecks: 1, requiredTime: "1 hour", dicePool: "Intelligence + Blood Sorcery", ingredients: "Computer or electronic device, caster's vitae", level: 1 },
+{ name: "Ghost in the Machine", summary: "Inhabit and control electronic systems remotely, manipulating devices from a distance", rouseChecks: 1, requiredTime: "1 turn", dicePool: "Intelligence + Blood Sorcery", ingredients: "Circuit boards, copper wire, caster's vitae", level: 2 },
+{ name: "Information Warfare", summary: "Attack through digital networks, causing system failures and data corruption", rouseChecks: 2, requiredTime: "1 hour", dicePool: "Intelligence + Blood Sorcery", ingredients: "Virus-infected media, electromagnetic disruptors, caster's vitae", level: 3 },
+{ name: "Techno-Telepathy", summary: "Establish mystical connections with technological networks, allowing direct mental interface", rouseChecks: 2, requiredTime: "1 hour", dicePool: "Intelligence + Blood Sorcery", ingredients: "Neural interface components, brain tissue, caster's vitae", level: 4 },
+{ name: "Digital Ascension", summary: "Transfer consciousness into digital networks, existing as a supernatural entity within cyberspace", rouseChecks: 3, requiredTime: "All night", dicePool: "Intelligence + Blood Sorcery", ingredients: "Quantum computers, consciousness transfer matrix, caster's entire blood pool", level: 5 }
 ];
 
 export const powerIsRitual = (p: Power | Ritual | Ceremony): p is Ritual | Ceremony => {
