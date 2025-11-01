@@ -7,7 +7,7 @@ import chimestryLogo from "../resources/Rombo_Disciplines/rombo_Chimestry.svg"
 import deliriumLogo from "../resources/Rombo_Disciplines/rombo_Delirium.svg"
 import dominateLogo from "../resources/Rombo_Disciplines/rombo_Dominate.svg"
 import fortitudeLogo from "../resources/Rombo_Disciplines/rombo_Fortitude.svg"
-import koldunicLogo from "../resources/Rombo_Disciplines/rombo_koldunic.svg"
+import koldunicLogo from "../resources/Rombo_Disciplines/rombo_koldun.svg"
 import metamorphoseLogo from "../resources/Rombo_Disciplines/rombo_Metamorphosis.svg"
 import melpomineeLogo from "../resources/Rombo_Disciplines/rombo_Melpominee.svg"
 import obfuscateLogo from "../resources/Rombo_Disciplines/rombo_Obfuscate.svg"
@@ -968,6 +968,302 @@ export const disciplines: Record<DisciplineName, Discipline> = {
                 dicePool: "Resolve + Auspex vs Composure + Stamina",
                 level: 4,
                 discipline: "auspex",
+            },
+            // Additional Level 1 Powers
+            { 
+                name: "Sensory Shield", 
+                description: "The Kindred had been properly tutored in the art of Auspex and is trained to reflexively shut off the flow of information if in danger of being overwhelmed. The Kindred cannot be stunned due to loud sounds, bright flashes, horrid tastes, intrusive smells or maddening textures. This power functions even if no Auspex power is currently being used by the Kindred. The power doesn't negate the Discipline Bane if the Kindred rolls a 1 on a Rouse Check.",
+                rouseChecks: 0, 
+                amalgamPrerequisites: [], 
+                summary: "Immunity to sensory stunning. Active Auspex powers cease if overwhelmed but no stunning occurs.", 
+                dicePool: "None", 
+                level: 1, 
+                discipline: "auspex" 
+            },
+            { 
+                name: "Memory of Blood", 
+                description: "The Kindred has more than an acquired taste for blood. He can in fact see the life lived by the vessel he is drinking from. The Kindred sees flashes of memories from those whose blood they are drinking. This ability grows more powerful as the Auspex rating increases. At 1 dot the Kindred has access to the victims' memories up to the last hour, at 2 dots up to the last 24 hours, at 3 dots up to the last week, at 4 dots up to the last month and at 5 dots up to the last year. The memories come in a stream of flashes and can be difficult to decipher.",
+                rouseChecks: 0, 
+                amalgamPrerequisites: [], 
+                summary: "See memories from blood you drink. Duration depends on Auspex rating: 1hr/24hr/week/month/year.", 
+                dicePool: "Auspex + Wits", 
+                level: 1, 
+                discipline: "auspex" 
+            },
+            // Additional Level 2 Powers
+            { 
+                name: "Sense Vibrations", 
+                description: "Fear, anger, lust, joy and more. The Kindred can sense the emotions of the herd just by being in their vicinity. The Kindred can sense the prevailing emotions of those around him. The power automatically targets all individuals in the Kindred's vicinity. It can be used on a single individual, provided the Kindred is alone with them.",
+                rouseChecks: 1, 
+                amalgamPrerequisites: [], 
+                summary: "Sense emotions of all individuals within 10 meters of you.", 
+                dicePool: "Auspex + Wits", 
+                level: 2, 
+                discipline: "auspex" 
+            },
+            { 
+                name: "Share Senses", 
+                description: "Sometimes the easiest way to make others understand is for them to be able to see things from your perspective. Luckily some Kindred can do just that. The Kindred touches another individual. As long as their physical touch remains unbroken the targeted individual will be able to perceive the world around them through the Kindred's senses.",
+                rouseChecks: 1, 
+                amalgamPrerequisites: [], 
+                summary: "Share your senses with up to 2 touched individuals while physical contact is maintained.", 
+                dicePool: "Auspex + Wits", 
+                level: 2, 
+                discipline: "auspex" 
+            },
+            { 
+                name: "Eagle's Sight", 
+                description: "The Kindreds senses cease to be limited to their location as the Kindred gets a bird eye view of his surroundings. Inexperienced Auspex users believe this is simply an evolution of the senses but masters of the art know that its more akin to a short-term astral projection. If successful the Kindred will have a bird's eye view of his surrounding area. While the power is in effect the Kindred is considered to be in Torpor.",
+                rouseChecks: 1, 
+                amalgamPrerequisites: [], 
+                summary: "Bird's eye view from 10 meters above your location. Body enters Torpor during use.", 
+                dicePool: "Auspex + Wits", 
+                level: 2, 
+                discipline: "auspex" 
+            },
+            { 
+                name: "Whispers of the Dammed", 
+                description: "The Kindred had learned how to send a short telepathic message. Young Kindred use this power for its practicality, but more experienced vampires, especially those in the Sabbat, use the power to haunt the minds of their prey. The Kindred can send a short one sentence telepathic message to any individual within visual range.",
+                rouseChecks: 1, 
+                amalgamPrerequisites: [], 
+                summary: "Send one sentence telepathic message to target in visual range. No cost/test if eye contact or blood bonded.", 
+                dicePool: "Auspex + Wits", 
+                level: 2, 
+                discipline: "auspex" 
+            },
+            // Additional Level 3 Powers
+            { 
+                name: "Spirit Touch", 
+                description: "Older Kindred know that even small and unassuming objects have spirits of their own. Although these often pale in comparison to those of living creatures they are simple minded beings who soak in the spiritual essence around them. If successful the Kindred will get to see flashes of past events which occurred in the object's presence. The more successes the more accurate the vision. If the user possesses the Sense Vibrations power than he can also sense the emotions of those who were near the object.",
+                rouseChecks: 1, 
+                amalgamPrerequisites: [], 
+                summary: "Touch object to see past events in its presence. Also sense emotions if you have Sense Vibrations.", 
+                dicePool: "Auspex + Wits", 
+                level: 3, 
+                discipline: "auspex" 
+            },
+            { 
+                name: "An Ear For Lies", 
+                description: "There is an art to reading the tone and colour of a person's voice. Auspex users can pick up on minute details on how a sentence is phrased allowing them to pick up on lies with ease. If successful the Kindred can accurately establish whether or not an individual is telling the truth or not. The truth, in this case, is only what the target believes to be true so if your target is under mental manipulation, telling half-truths or had been lied to themselves the power may not have the desired outcome.",
+                rouseChecks: 1, 
+                amalgamPrerequisites: [], 
+                summary: "Detect lies during conversation. Requires hearing target and eye contact.", 
+                dicePool: "Auspex + Wits", 
+                level: 3, 
+                discipline: "auspex" 
+            },
+            { 
+                name: "Precognition", 
+                description: "The powers of Auspex can sometimes provide the Kindred with premonitions far into the future. If successful the Kindred will receive a prediction about an object or an individual. The accuracy of the prediction is dictated by the number of successes and the discretion of the Storyteller. If the Kindred has the power of Premonition as well than you will receive one random vision per Session without needing to activate this ability. This is at the discretion of the Storyteller.",
+                rouseChecks: 1, 
+                amalgamPrerequisites: [], 
+                summary: "Receive predictions about individuals/objects you've seen. Free random visions if you have Premonition.", 
+                dicePool: "Auspex + Wits", 
+                level: 3, 
+                discipline: "auspex" 
+            },
+            { 
+                name: "Crocodile Tongue", 
+                description: "Not all Auspex users focus on enhancing their senses to a supernatural degree, some pair their powers with their social skills. While talking to the target they are able to use limited telepathy to say exactly what the person wants to hear. The Kindred adds 2 dice to all non-supernatural Persuasion and Subterfuge rolls.",
+                rouseChecks: 1, 
+                amalgamPrerequisites: [], 
+                summary: "Add 2 dice to non-supernatural Persuasion and Subterfuge rolls.", 
+                dicePool: "Auspex + Wits", 
+                level: 3, 
+                discipline: "auspex" 
+            },
+            // Additional Level 4 Powers
+            { 
+                name: "Mind Speech", 
+                description: "The Kindred had learned not only how to pass their thoughts onto others but to listen to their responses as well. If successful the Kindred opens a two-way mental communication between himself and the target.",
+                rouseChecks: 1, 
+                amalgamPrerequisites: [], 
+                summary: "Two-way telepathic communication with target in visual range. No cost/test if eye contact or blood bonded.", 
+                dicePool: "Auspex + Wits", 
+                level: 4, 
+                discipline: "auspex" 
+            },
+            { 
+                name: "Clairvoyance", 
+                description: "For creatures who are hunters and had been hunted in turn the ability to quickly assess their territory can be incredibly useful. If successful the Kindred will be provided with basic information about their immediate surroundings up to 10 kilometres (5 miles). Meeting the basic test difficulty will tell the Kindred the lay of the land, a rough number of mortals, animals, vegetation and hints of other supernatural creatures. For each success the Kindred exceeds the minimum test requirement, the more detailed information he will gather on the area.",
+                rouseChecks: 1, 
+                amalgamPrerequisites: [], 
+                summary: "Gather detailed information about area within 10km. Body enters Torpor during ritual.", 
+                dicePool: "Auspex + Wits", 
+                level: 4, 
+                discipline: "auspex" 
+            },
+            { 
+                name: "Sight of the Oracle", 
+                description: "The most competent Auspex users who tap into the powers of premonition become akin to oracles within Kindred society. If successful the Kindred gains an extensive and important prediction of the future. This power doesn't necessarily target any single individual, object or location, although the player can advise the storyteller that those are of special interest to them. The result of the power is left to the discretion of the Storyteller but should be something linked with the main plot of the chronicle.",
+                rouseChecks: 1, 
+                amalgamPrerequisites: [], 
+                summary: "Receive major plot-relevant visions of the future. Body enters Torpor during ritual.", 
+                dicePool: "Auspex + Wits", 
+                level: 4, 
+                discipline: "auspex" 
+            },
+            // Additional Level 5 Powers
+            { 
+                name: "Master's Call", 
+                description: "The Kindred is a master of Telepathy and can communicate with his thralls across great distances. The Kindred can use Mind Speech on Ghouls, Blood Bonded Kindred or living family members regardless of distance. For such targets Mind Speech no longer requires Visual range and the effects of the power have no range limit.",
+                rouseChecks: 0, 
+                amalgamPrerequisites: [], 
+                summary: "Use Mind Speech on ghouls/blood bonded/family at unlimited range without visual requirement.", 
+                dicePool: "None", 
+                level: 5, 
+                discipline: "auspex" 
+            },
+            { 
+                name: "Astral Projection", 
+                description: "The Kindred had learned to project his spirit out of his body. If successful the Kindred projects a spiritual avatar which looks like their own body. The avatar is considered a spirit. It is invisible to normal eye sight, can pass through walls and has the power of flight. The avatar can even enter other spiritual domains if he finds an access point to them. However, the Kindred does not have access to his disciplines while in his avatar form. Additionally, regardless if he is a spirit or not the Kindred will still be harmed by sunlight.",
+                rouseChecks: 2, 
+                amalgamPrerequisites: [], 
+                summary: "Project spirit form that's invisible, can fly and pass through walls. Body in Torpor, no disciplines in spirit form.", 
+                dicePool: "Auspex + Wits", 
+                level: 5, 
+                discipline: "auspex" 
+            },
+            // Additional Amalgam Powers
+            {
+                name: "Tyrant's Circle",
+                description: "The user despises mental and spiritual intrusion. His spirit doesn't just block those who look too closely, it outright lashes out at them. Whenever the user is targeted by a power that seeks to discern information from the user's mind or spiritual aura the intruder suffers immense psychological pain. Initially, the power inflicts a 2 dice penalty to any individual attempting to read the user's mind or their spiritual aura. However, if the intruder does not make any successes on their rolls or has no dice to roll (or no roll is needed), once the penalty is applied, then they suffer a point of Aggravated Willpower Damage as well and are stunned for 1 Round.",
+                summary: "Upgrade: Penalties and damage to those trying to read your mind or aura",
+                rouseChecks: 0,
+                amalgamPrerequisites: [{ discipline: "fortitude", level: 1 }],
+                dicePool: "None",
+                level: 1,
+                discipline: "auspex",
+            },
+            {
+                name: "Nikolai's Acuity",
+                description: "The Kindred is well connected to the Madness Network and has a habit of tracing down those who possess a neurological divergence. When you successfully use this ability roll a D10 and apply the odds or evens result accordingly. Odds – You have managed to lock onto a mortal with a neurological disorder who is not yet connected to the Madness Network. Evens – You have managed to lock onto another Delirium user. Regardless of what result you get, when you lock onto a target using this power you will be able to discern their location for the 1 week and will know instinctively when you have found them.",
+                summary: "Ritual: Locate mortals with neurological disorders or Delirium users",
+                rouseChecks: 1,
+                amalgamPrerequisites: [{ discipline: "delirium", level: 1 }],
+                dicePool: "Auspex + Delirium",
+                level: 1,
+                discipline: "auspex",
+            },
+            {
+                name: "Terra's Unflinching Gaze",
+                description: "Few things remain hidden from this Kindred, buried or otherwise. If successful, the user can see the spirit of the natural world around them. This sight doesn't work like normal Sense The Unseen or similar. Instead, to the user, the world becomes vibrant and bright as they see the spiritual emanations of the Earth itself. These emanations do not directly reveal the presence of supernatural entities or obfuscated individuals, but, much like the surface of water, every individual and object causes ripples to occur which the user can see. Mechanically the user adds 3 dice to any Awareness-based rolls and can perform a Wits + Awareness roll to see past supernatural obfuscation or determine the presence of spirits.",
+                summary: "See spiritual emanations of Earth, +3 dice to Awareness rolls",
+                rouseChecks: 1,
+                amalgamPrerequisites: [{ discipline: "protean", level: 1 }],
+                dicePool: "Auspex + Protean",
+                level: 1,
+                discipline: "auspex",
+            },
+            {
+                name: "Mental Sanctum",
+                description: "A portion of the Kindred's mind remains an impartial observer during times of crisis. A small portion of the user's mind is kept separate from the rest of their thoughts. The nature of this minor personality is completely focused on advising its larger whole impartially and is protected from most forms of physical, mental and spiritual intrusion. When the user is impacted by a supernatural effect, the minor personality memorizes what occurs and provides this information afterwards as best as it can to its larger whole. While mechanically this power simply adds 2 dice to any attempts made by the user to resist ongoing mental, physical or spiritual manipulation (it cannot be used to prevent the manipulation from first occurring) it's uses vary and Storytellers are encouraged to apply it as a helpful storytelling tool.",
+                summary: "Upgrade: +2 dice to resist ongoing manipulation, impartial mental advisor",
+                rouseChecks: 0,
+                amalgamPrerequisites: [{ discipline: "valeren", level: 1 }],
+                dicePool: "None",
+                level: 1,
+                discipline: "auspex",
+            },
+            {
+                name: "Sense The Wellspring Of Life",
+                description: "Time and distance can often keep a vampire from their loved ones. With this talisman, they might not be able to see them, but they will at least be assured of their safety. For the ritual to succeed the user needs a vial of the target's blood. During the alchemical ritual, the blood is reduced to a few drops worth and placed into a clear container (usually a small glass vial embedded in a locket-sized talisman). If the target is alive and healthy the blood in the talisman will remain vibrant and red. If the target is injured or ill it will turn a dark crimson. If the target dies or is dead, it will turn black.",
+                summary: "Ritual: Create talisman that shows target's health status via blood color",
+                rouseChecks: 1,
+                amalgamPrerequisites: [{ discipline: "quietus", level: 1 }],
+                dicePool: "Auspex + Quietus",
+                level: 1,
+                discipline: "auspex",
+            },
+            { 
+                name: "Strike The Ley Lines", 
+                description: "The user seems to strike empty air at first only for the world around to shudder. Ley Lines are lines of spiritual energy that crisscross the world. Each Ley Line is a font of spiritual energy which is highly sought after by Mages, Cainite Sorcerers, Garou and other creatures. They are invisible to those without supernatural senses and extremely rare. This power acts as an Upgrade and an Ability. As an Upgrade, the user can sense and see Ley Lines when near them (within 10 meters or 30 feet). As an Ability, the user projects a portion of their spirit into their fists to strike the Ley Line itself. As Ley Lines are the equivalent of a major artery for the spiritual world the result of striking them can vary.", 
+                rouseChecks: 1, 
+                amalgamPrerequisites: [{ discipline: "potence", level: 2 }], 
+                summary: "Strike Ley Lines for varied powerful effects, can sense Ley Lines.", 
+                dicePool: "Auspex + Potence", 
+                level: 2, 
+                discipline: "auspex" 
+            },
+            { 
+                name: "Seek The World Vein", 
+                description: "The user enters a deep trance and is guided by spirits to a location of significant spiritual power. This power works as an Upgrade and an Ability. As an Upgrade, the user can sense and see Ley Lines when near them (within 10 meters or 30 feet). As an Ability, the user enters a trance-like state in which he will move to a location where a Ley Line can be accessed. When in such a trance they will still be able to operate vehicles, avoid obvious dangers (like walking into traffic) and retain the bare basic communication skills. This trance is broken if the user is attacked, or they reach their desired destination. Once the trance breaks the user will have no memory of their travel to the location and will likely not recognize their new surroundings. Regardless, they are, for all intents and purposes, now standing in front of an active Ley Line.", 
+                rouseChecks: 1, 
+                amalgamPrerequisites: [{ discipline: "koldunic", level: 2 }], 
+                summary: "Ritual: Trance-guided travel to nearest Ley Line, can sense Ley Lines.", 
+                dicePool: "Auspex + Koldunic", 
+                level: 2, 
+                discipline: "auspex" 
+            },
+            { 
+                name: "Blessings Of The Angel's True Form", 
+                description: "Innumerable eyes manifest across the user's body. Clothing and armour are no obstruction as the fleshy growths manifest upon them, fusing flesh and material. If successful, the user manifests dozens of eyes across their body. These eyes will even manifest upon any clothing they are wearing and armour itself is no obstruction. The fleshy growths fuse flesh and material temporarily. While the eyes remain present the user automatically passes any Awareness rolls and can see spirits (of all types), through all forms of darkness (supernatural or otherwise) and can even see Obfuscated individuals. However, the innumerable eyes create a confusing picture for the user and while their awareness is expanded to inhuman levels their other skills are impacted, causing the user to suffer a 1 dice penalty to all other rolls. In addition, the form itself creates a horrific sight and any Mortals witnessing the Kindred in this altered state will flee the Scene unless they pass a Willpower test (3). Enhanced Mortals and Kindred (while disturbed by the sight) are not affected.", 
+                rouseChecks: 1, 
+                amalgamPrerequisites: [{ discipline: "metamorphose", level: 2 }], 
+                summary: "Manifest eyes across body for perfect awareness but -1 dice to other rolls, terrifies mortals.", 
+                dicePool: "Auspex + Metamorphose", 
+                level: 2, 
+                discipline: "auspex" 
+            },
+            { 
+                name: "A Moment Of Eternity", 
+                description: "Time seems to stretch out and slow for the user. For a few brief moments, they can see their surroundings, unaffected by time itself. This Upgrade is allowed to be used once per Scene. The user can perform a Wits + Awareness roll to investigate a particular target or their general surroundings. This roll is unaffected by the chaos of the moment, giving the user a valuable ability to assess their surroundings or a particular target calmly. They can then apply the knowledge gleaned towards their next action accordingly. This analysis of the situation occurs outside of the normal order of play (in between two Rounds).", 
+                rouseChecks: 1, 
+                amalgamPrerequisites: [{ discipline: "celerity", level: 2 }], 
+                summary: "Once per scene, analyze situation with unaffected Wits + Awareness roll outside normal play order.", 
+                dicePool: "Wits + Awareness", 
+                level: 2, 
+                discipline: "auspex" 
+            },
+            { 
+                name: "Wraith Sight", 
+                description: "The vampire's supernatural perception allows them to see beyond the veil of death itself, perceiving spirits and wraiths with perfect clarity while also being able to interact with them as if they were solid. This enhanced spiritual sight reveals not only the presence of the restless dead but also their emotional states and general intentions. The vampire can see, hear, and even physically interact with spirits and wraiths as though they possessed corporeal forms. This interaction is bidirectional - spirits can also see and interact with the vampire normally.", 
+                rouseChecks: 2, 
+                amalgamPrerequisites: [{ discipline: "necromancy", level: 3 }], 
+                summary: "See and physically interact with spirits and wraiths as if they were solid beings.", 
+                dicePool: "Auspex + Wits", 
+                level: 3, 
+                discipline: "auspex" 
+            },
+            { 
+                name: "Arad Asbu", 
+                description: "Derived from Sumerian, 'to serve the shadows', this old ritual brings practitioners closer to the font of their power. If successful, the user communicates directly with the Abyss itself. This can be an incredibly uncomfortable experience for new practitioners as they are brought face to face with the font of their power and the malignant intelligence inherent in its predatory nature. Still, if one persists, he will be granted knowledge by the Abyss. The user adds 1 dice to any Oblivion-related roll they make for the rest of the Session. The ritual must be performed in a dark environment with little or no lights present.", 
+                rouseChecks: 1, 
+                amalgamPrerequisites: [{ discipline: "oblivion", level: 3 }], 
+                summary: "Ritual: Communicate with the Abyss for knowledge, +1 dice to Oblivion rolls for session.", 
+                dicePool: "Auspex + Oblivion", 
+                level: 3, 
+                discipline: "auspex" 
+            },
+            { 
+                name: "A Familiar Face", 
+                description: "No matter where this Vampire travels to, they have people who they always can call 'friend'. The user appears as a familiar face to any who meets them. No test needs to be made against Mortals. To those impacted, the user is at first unfamiliar, but the victim's mind soon forms false memories of their time together. This effect grows worse the more times the victim is impacted by the same power, as the false memories become stronger and more permanent. Over time the power will no longer need to be used as the victim will have created a whole false timeline of their life spent alongside the user. This usually occurs after the 5th successful use of this power on an individual.", 
+                rouseChecks: 1, 
+                amalgamPrerequisites: [{ discipline: "presence", level: 3 }], 
+                summary: "Appear as familiar face to create false memories that become permanent after 5 uses.", 
+                dicePool: "Auspex + Presence", 
+                level: 3, 
+                discipline: "auspex" 
+            },
+            { 
+                name: "Find The Magos", 
+                description: "Since the fall of Vienna, clan Tremere had lost many of its members to desertion. Over time it became apparent that these traitors would need to be hunted down to preserve the clan's secrets, thus a special elixir was created. For this power to work the user must recover an item from a ritual site. This could be a used vial, ash, dirt, blood, the remains of victims, or whatever might have been left behind, used or impacted by the ritual. Afterwards, the item they recovered is crushed and mixed with a healthy dose of the user's own vitae. If successful, the user will create enough elixir for up to 3 separate uses. Those who consume the drink will see a faint strand of red twisting and shifting through the air. If they follow the strand, it will lead them to the individual who cast the original Ritual. The strand bypasses all attempts at supernatural obfuscation or illusions and functions even on other Supernatural Creatures (Garou, Mages, Mummies etc.), as long as they perform a ritual they can be tracked.", 
+                rouseChecks: 1, 
+                amalgamPrerequisites: [{ discipline: "blood sorcery", level: 3 }], 
+                summary: "Ritual: Create tracking elixir from ritual site remnants, creates visible strand leading to original caster.", 
+                dicePool: "Auspex + Blood Sorcery", 
+                level: 3, 
+                discipline: "auspex" 
+            },
+            { 
+                name: "Artemis's Blessing", 
+                description: "This Vampire is a hunter of unparalleled skill, capable of tracking all forms of quarry. The user can track down the whereabouts of the last individual they fed from. Bottled blood counts as well. The effect materializes differently for each Kindred. Some might follow an invisible strand to their target, others might sniff out their quarry like a bloodhound and others might follow a specific melody which grows stronger the closer they come to their prey. In either event, unless the target is no longer on this plane of existence or more than 100 kilometres (60 miles) away, the user will be able to track them down. This power is so precise the user can even find their quarry if it is supernaturally obfuscated or underground.", 
+                rouseChecks: 0, 
+                amalgamPrerequisites: [{ discipline: "animalism", level: 4 }], 
+                summary: "Track the last individual whose blood you sampled within 100km, bypasses supernatural obfuscation.", 
+                dicePool: "None", 
+                level: 4, 
+                discipline: "auspex" 
             },
         ],
     },
