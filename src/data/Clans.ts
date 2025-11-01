@@ -155,7 +155,7 @@ export const clans: Record<ClanName, Clan> = {
             "Hollow Heart: A sinking feeling, cold comfort, numbness. Your Beast drowns in the nihilism of the void. There is an inevitable nothing that will forever be empty, a hole that can't be filled with an ocean of emotion, wealth, praise, or success. Your attention and determination is eroded by waves cold detachment. Your Stamina, Resolve, and Composure pools suffer a -2 penalty until the end of the Scene, or someone rouses you from this stupor by getting a Critical Success against you.",
             "Righteous Indignation: The only anchor in your life is stead-fast adherence to values that keep you steady amidst the uncertainty of the night. This compulsion manifests when you fail to operate on this personal code and your Beast is quick to steer that moral compass against you. You get a -3 dice penalty on all pools that don't directly act out one or more of your Convictions, as well as your pools to resist Frenzy. This lasts until you successfully win a Test of any kind with an aggressive action, or until you Frenzy."
         ],
-        nativeDisciplines: ["dominate", "potence", "oblivion"],
+        nativeDisciplines: ["dominate", "potence", "oblivion", "obtenebration"],
     },
     "Banu Haqim": {
         name: "Banu Haqim",
@@ -166,7 +166,7 @@ export const clans: Record<ClanName, Clan> = {
         "Noxious Blood - The Blood of the Banu Haqim is toxic to mortals, but not to other vampires. Due to this mortals receive Aggravated Damage equal to the Bane Severity of the vampire for each Rouse Check’s worth of Blood consumed. Their Blood cannot be used to heal mortal injuries. In amounts below the amount needed to Blood Bond, it does not harm them, even if directly injected into them."
     ],
         compulsions: ["Judgment: Drink at least 1 hunger of blood from anyone who acts against on of your personal convictions. If you can't, take three-dice penalty to all rolls until compulsion is satisfied or scene ends."],
-        nativeDisciplines: ["celerity", "obfuscate", "blood sorcery"],
+        nativeDisciplines: ["celerity", "obfuscate", "blood sorcery", "quietus"],
     },
     Ministry: {
         name: "Ministry",
@@ -178,7 +178,7 @@ export const clans: Record<ClanName, Clan> = {
         "Cold-Blooded - They can only use Blush of Life if they have recently fed from a living vessel in the same scene or up to roughly an hour ago, Storytellers discretion. When they do so, it requires a number of Rouse Checks equal to their Bane Severity rather than just one."
     ],
         compulsions: ["Transgression: Take a two-dice penalty on all rolls not related to enticing someone (even themselves) to break a Chronicle Tenet or personal Conviction, causing at least one Stain and ending this Compulsion."],
-        nativeDisciplines: ["obfuscate", "presence", "protean"],
+        nativeDisciplines: ["obfuscate", "presence", "protean", "serpentis"],
     },
     Ravnos: {
         name: "Ravnos",
@@ -189,7 +189,7 @@ export const clans: Record<ClanName, Clan> = {
         "Unbirth Name - If a Ravnos’ unbirth name is used against them, the name-wielding opponent receives a bonus equal to the Ravnos’ Bane Severity to resist their Discipline powers. Additionally, the Ravnos affected receives the same penalty to resist supernatural powers used by the opponent."
     ],
         compulsions: ["Tempting Fate: Next time you're faced with a problem, you must choose the most dangerous and daring solution, or take a two-dice penalty. Lasts until the problem is solved or further attempts are impossible."],
-        nativeDisciplines: ["animalism", "obfuscate", "presence"],
+        nativeDisciplines: ["animalism", "obfuscate", "presence", "chimestry"],
     },
     Tzimisce: {
         name: "Tzimisce",
@@ -201,7 +201,7 @@ export const clans: Record<ClanName, Clan> = {
         "Cursed Courtesy - If they wish to enter a place of residence uninvited they must spend Willpower equal to their Bane Severity, this penalty also applies to their Discipline pools while they are there. The invitation inside can only be made by someone who lives there and this does not occur in uninhabited homes or public places. Tzimisce with this Bane cannot take the uninvited Folkloric Block."
     ],
         compulsions: ["Covetousness: Become obsessed with possessing something in the scene. Any action not taken toward this purpose incurs two-dice penalty. Persists you own it or ownership becomes impossible."],
-        nativeDisciplines: ["animalism", "dominate", "protean", "metamorphose"],
+        nativeDisciplines: ["animalism", "dominate", "protean", "metamorphose", "koldunic"],
     },
     Hecata: {
         name: "Hecata",
@@ -213,7 +213,7 @@ export const clans: Record<ClanName, Clan> = {
         "Decay - Hecata suffer additional dots in Flaws equal to their Bane Severity spread as they see fit across Retainer, Haven, and Resources Flaws. These Flaws can either be taken at Character Creation or removed by paying twice the amount of Background dots. Additionally, any purchase of dots in these Advantages costs an additional amount of experience points equal to their Bane Severity."
     ],
         compulsions: ["Morbidity: Until you have either predicted a death or solved the cause of a local one, you suffer a three-dice penalty to other rolls. Conclusions don't need to be correct, but should make sense."],
-        nativeDisciplines: ["auspex", "fortitude", "oblivion"],
+        nativeDisciplines: ["auspex", "fortitude", "oblivion", "necromancy"],
     },
     Salubri: {
         name: "Salubri",
@@ -225,15 +225,15 @@ export const clans: Record<ClanName, Clan> = {
         "Asceticism - Whenever their Hunger is below three, the Salubri suffer a penalty equal to their Bane Severity to any Discipline dice pools. The bleeding third eye still remains."
     ],
         compulsions: ["Affective Empathy: Become overwhelmed with somebody's personal problem. Suffer a two-dice penalty to all actions that don't got towards solving the problem. Lasts until the problem is eased, an immediate crisis supersedes it or the scene ends."],
-        nativeDisciplines: ["auspex", "dominate", "fortitude"],
+        nativeDisciplines: ["auspex", "dominate", "fortitude", "valeren"],
     },
         Lamia: {
             name: "Lamia",
             description: "Bloodline of Hecata with a unique connection to death and resurrection.",
             logo: lamiaLogo,
             banes: ["Painful Kiss: Hecata may only take harmful drinks from mortals which result in blood loss. Unwilling mortals that are able to escape will make the attempt, even those who are convinced or willing must succeed in a Stamina + Resolve test against Difficulty 2 + Bane Severity in order to not recoil. Vampires who are willingly bit must make a Frenzy test against Difficulty 3 to avoid terror Frenzy."],
-            compulsions: ["Morbidity: The vampire must move something from life to death or vice versa, any action not taken to end or resurrect something suffers a two-dice penalty. The subject does not have to be a living thing and can instead be an object or more abstract such as ideas or conversation points. This Compulsion lasts until they manage to kill or return something to life."],
-            nativeDisciplines: ["auspex", "fortitude", "oblivion"],
+            compulsions: ["Morbidity: The vampire must move something from life to death or vice versa, any action not taken to end or resurrext something suffers a two-dice penalty. The subject does not have to be a living thing and can instead be an object or more abstract such as ideas or conversation points. This Compulsion lasts until they manage to kill or return something to life."],
+            nativeDisciplines: ["auspex", "fortitude", "oblivion", "necromancy"],
         },
         Nagaraja: {
             name: "Nagaraja",
@@ -241,7 +241,7 @@ export const clans: Record<ClanName, Clan> = {
             logo: nagarajaLogo,
             banes: ["Organvore: They must consume flesh, as well as drinking blood in order to slack their Hunger and hold back decay. For every night the Nagaraja doesn’t consume flesh they rot. The type of flesh varies with the severity of the Bane. Each night that they do not consume Flesh they lose a die in all social rolls and for every 5 days they rot persists they loose two dice to all physical attributes. The negative effects are reversed for ever health level of flesh consumed, die rolls never can be drop below 1."],
             compulsions: ["Dead Temple: The vampire is compelled be among the dead, they feel an overwhelming urge to surround themselves with the dead, even a pile of bones will comfort them. If they cannot find a corpse they will be compelled to make one."],
-            nativeDisciplines: ["auspex", "dominate", "oblivion"],
+            nativeDisciplines: ["auspex", "dominate", "oblivion", "necromancy"],
         },
         "Daughters of Cacophony": {
             name: "Daughters of Cacophony",
@@ -249,7 +249,7 @@ export const clans: Record<ClanName, Clan> = {
             logo: daughtersofCacophonyLogo,
             banes: ["Tune - The Daughters of Cacophony constantly hear music. The tune is different for each Daughter. Some of them hear violins, some an orchestra, some pounding drums, and a few a chorus of screams. Each Fugue is unique to the Daughter who hears it, and while it has driven some of them mad, it is always beautiful to them in its own way. You can often hear a Daughter humming along to the tune in their head. This might be a form of synaesthesia, or it might be a hallucination. This constant song distracts the Daughters as much as it guides them, some say the songs contains words of insight. Because of this constant tune the difficulties of all their Awareness rolls increase by 1 for every level of their Bane and no Daughter of Cacophony may have Awareness above 3 dots."],
             compulsions: ["DIN OF DELUSION - The song in the Daughters head becomes so intense it can make them mad. For one scene the Siren hears the Fugue so load they must concentrate to hear anything else. They also see colours and flickering images from their peripheral vision. They receive a two-dice penalty to rolls involving Manipulation, Composure, and Wits as well as on rolls to resist terror frenzy."],
-            nativeDisciplines: ["fortitude", "auspex", "presence"],
+            nativeDisciplines: ["fortitude", "auspex", "presence", "melpominee"],
         },
         DaughtersofCacophony: {
             name: "Daughters of Cacophony",
@@ -259,7 +259,7 @@ export const clans: Record<ClanName, Clan> = {
                 "Tune - The Daughters of Cacophony constantly hear music. The tune is different for each Daughter. Some of them hear violins, some an orchestra, some pounding drums, and a few a chorus of screams. Each Fugue is unique to the Daughter who hears it, and while it has driven some of them mad, it is always beautiful to them in its own way. You can often hear a Daughter humming along to the tune in their head. This might be a form of synaesthesia, or it might be a hallucination. This constant song distracts the Daughters as much as it guides them, some say the songs contains words of insight. Because of this constant tune the difficulties of all their Awareness rolls increase by 1 for every level of their Bane and no Daughter of Cacophony may have Awareness above 3 dots."
             ],
             compulsions: ["DIN OF DELUSION - The song in the Daughters head becomes so intense it can make them mad. For one scene the Siren hears the Fugue so load they must concentrate to hear anything else. They also see colours and flickering images from their peripheral vision. They receive a two-dice penalty to rolls involving Manipulation, Composure, and Wits as well as on rolls to resist terror frenzy."],
-            nativeDisciplines: ["fortitude", "auspex", "presence"],
+            nativeDisciplines: ["fortitude", "auspex", "presence", "melpominee"],
         },
         Ahrimanes: {
             name: "Ahrimanes",
@@ -267,7 +267,7 @@ export const clans: Record<ClanName, Clan> = {
             logo: ahrimanesLogo,
             banes: ["An Ahrimanes' blood is inert, and resists the ties of bondage. They are unable to create blood bonds or ghouls, and the modern Ahrimanes struggle to create additional childer."],
             compulsions: ["CO-SURVIVOR: The pack is as strong as its weakest link, and failure out here in the wilderness means death. This compulsion tends to manifest when both you and another utterly fail in succession. You get a -2 penalty on all pools until you, or someone you're helping, succeeds on a Teamwork Dice Pool."],
-            nativeDisciplines: ["animalism", "protean", "auspex"],
+            nativeDisciplines: ["animalism", "protean", "auspex", "spiritus"],
         },
         Lhiannan: {
             name: "Lhiannan",
@@ -275,7 +275,7 @@ export const clans: Record<ClanName, Clan> = {
             logo: lhiannanLogo,
             banes: ["The Lhiannan were part nature spirit, and so had a unique connection to the world of spirits, most notably in the form of their Ogham; this connection gave them an inhuman aura obvious even to humans (and it was exceedingly easy for others to gauge their natures through the use of Auspex)."],
             compulsions: ["ZOOCHOSIS: Modern life is closing in around you. Streets packed with loud vehicles, narrow alleyways reeking of rot and garbage, the cries and constructions of unnatural society layered onto itself. When this compulsion manifests you tend to revert to a more primitive mental state; Repeating monotonous tasks, scratching the surface of your desk into a groove, or grinding your teeth. These effects confer a -2 Dice penalty to Social Pools until you can manage to find an open and more natural locale or speak with someone who understands your mental state."],
-            nativeDisciplines: ["animalism", "presence", "protean"],
+            nativeDisciplines: ["animalism", "presence", "protean", "spiritus"],
         },
     Caitiff: {
         name: "Caitiff",
@@ -297,6 +297,15 @@ export const clans: Record<ClanName, Clan> = {
             "blood sorcery",
             "oblivion",
             "delirium",
+            "spiritus",
+            "valeren",
+            "serpentis",
+            "quietus",
+            "obtenebration",
+            "necromancy",
+            "melpominee",
+            "koldunic",
+            "chimestry",
         ],
     },
     "Thin-blood": {
@@ -364,7 +373,7 @@ export const clans: Record<ClanName, Clan> = {
             "Haunted: Haunted by ghosts, spirits, or wraiths for disturbing the realm of death. Presence attracts the dead."
         ],
         compulsions: ["Morbidity: The vampire must move something from life to death or vice versa, any action not taken to end or resurrect something suffers a two-dice penalty. The subject does not have to be a living thing and can instead be an object or more abstract such as ideas or conversation points. This Compulsion lasts until they manage to kill or return something to life."],
-        nativeDisciplines: ["dominate", "fortitude", "oblivion"],
+        nativeDisciplines: ["dominate", "fortitude", "oblivion", "necromancy"],
     },
     Cappadocian: {
         name: "Cappadocian",
@@ -374,7 +383,7 @@ export const clans: Record<ClanName, Clan> = {
             "Corpse-Like Visage: Have difficulties with all social rolls due to corpse-like appearance."
         ],
         compulsions: ["Morbidity: The vampire must move something from life to death or vice versa, any action not taken to end or resurrect something suffers a two-dice penalty. The subject does not have to be a living thing and can instead be an object or more abstract such as ideas or conversation points. This Compulsion lasts until they manage to kill or return something to life."],
-        nativeDisciplines: ["auspex", "protean", "oblivion"],
+        nativeDisciplines: ["auspex", "protean", "oblivion", "necromancy"],
     },
     Samedi: {
         name: "Samedi",
@@ -384,7 +393,7 @@ export const clans: Record<ClanName, Clan> = {
             "Rotting Body: The Samedi's flesh is constantly decomposing, giving off a foul odor and a ghastly appearance. This makes blending in with mortals nearly impossible, imposing a severe penalty to all social rolls involving appearance or first impressions. Their touch is cold and clammy, and wounds heal with visible necrosis. Any attempt to mask their condition with mundane means is doomed to fail, and even supernatural disguises are less effective (Storyteller's discretion). In addition, their bodies are more fragile—physical trauma often results in grotesque injuries, and healing takes on a disturbing, patchwork quality."
         ],
         compulsions: ["Morbidity: The vampire must move something from life to death or vice versa, any action not taken to end or resurrect something suffers a two-dice penalty. The subject does not have to be a living thing and can instead be an object or more abstract such as ideas or conversation points. This Compulsion lasts until they manage to kill or return something to life."],
-        nativeDisciplines: ["obfuscate", "fortitude", "oblivion"],
+        nativeDisciplines: ["obfuscate", "fortitude", "oblivion", "necromancy"],
     },
     "True Brujah": {
         name: "True Brujah",
