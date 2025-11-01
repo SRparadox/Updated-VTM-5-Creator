@@ -3,13 +3,13 @@ import { z } from "zod"
 import animalismLogo from "../resources/Rombo_Disciplines/rombo_Animalism.svg"
 import auspexLogo from "../resources/Rombo_Disciplines/rombo_Auspex.svg"
 import celerityLogo from "../resources/Rombo_Disciplines/rombo_Celerity.svg"
-import chimestryLogo from "../resources/Rombo_Disciplines/rombo_Chimestry.svg"
+import chimestryLogo from "../resources/Rombo_Disciplines/rombo_chimerstry.svg"
 import deliriumLogo from "../resources/Rombo_Disciplines/rombo_Delirium.svg"
 import dominateLogo from "../resources/Rombo_Disciplines/rombo_Dominate.svg"
 import fortitudeLogo from "../resources/Rombo_Disciplines/rombo_Fortitude.svg"
 import koldunicLogo from "../resources/Rombo_Disciplines/rombo_koldun.svg"
 import metamorphoseLogo from "../resources/Rombo_Disciplines/rombo_Metamorphosis.svg"
-import melpomineeLogo from "../resources/Rombo_Disciplines/rombo_Melpominee.svg"
+import melpomineeLogo from "../resources/Rombo_Disciplines/rombo_melpominee.svg"
 import obfuscateLogo from "../resources/Rombo_Disciplines/rombo_Obfuscate.svg"
 import potenceLogo from "../resources/Rombo_Disciplines/rombo_Potence.svg"
 import presenceLogo from "../resources/Rombo_Disciplines/rombo_Presence.svg"
@@ -979,7 +979,7 @@ export const disciplines: Record<DisciplineName, Discipline> = {
                 dicePool: "None", 
                 level: 1, 
                 discipline: "auspex" 
-            },
+            },   
             { 
                 name: "Memory of Blood", 
                 description: "The Kindred has more than an acquired taste for blood. He can in fact see the life lived by the vessel he is drinking from. The Kindred sees flashes of memories from those whose blood they are drinking. This ability grows more powerful as the Auspex rating increases. At 1 dot the Kindred has access to the victims' memories up to the last hour, at 2 dots up to the last 24 hours, at 3 dots up to the last week, at 4 dots up to the last month and at 5 dots up to the last year. The memories come in a stream of flashes and can be difficult to decipher.",
