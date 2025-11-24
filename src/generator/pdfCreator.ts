@@ -290,8 +290,10 @@ const createPdf_nerdbert = async (character: Character): Promise<Uint8Array> => 
     const baneText = rawBane.replace("BANE_SEVERITY", `${effects.bane} (bane severity)`);
     form.getTextField("ClanBane").setText(baneText)
     
-    // Handle multiple compulsions - join them with line breaks if there are multiple
-    const compulsionText = clans[character.clan].compulsions?.join('\n\n') || "";
+    // Use selected compulsion if available, otherwise fall back to first compulsion from clan
+    const compulsionText = character.selectedCompulsion && character.selectedCompulsion.trim() !== "" 
+        ? character.selectedCompulsion 
+        : clans[character.clan].compulsions?.[0] || "";
     form.getTextField("ClanCompulsion").setText(compulsionText)
 
     // Fill Sect field with 'sect -- religion'
