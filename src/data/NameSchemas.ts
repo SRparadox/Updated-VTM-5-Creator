@@ -67,6 +67,7 @@ export const disciplineNameSchema = z.union([
     z.literal("melpominee"),
     z.literal("koldunic"),
     z.literal("chimestry"),
+    z.literal("daimonion"),
 
     z.literal(""),
 ])

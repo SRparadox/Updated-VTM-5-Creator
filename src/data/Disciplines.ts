@@ -21,6 +21,7 @@ import valerenLogo from "../resources/Rombo_Disciplines/rombo_valeren.svg"
 import serpentisLogo from "../resources/Rombo_Disciplines/rombo_serpentis.svg"
 import quietusLogo from "../resources/Rombo_Disciplines/rombo_quietus.svg"
 import necromancyLogo from "../resources/Rombo_Disciplines/rombo_necromancy.svg"
+import daimonionLogo from "../resources/Rombo_Disciplines/rombo_daimonion.svg"
 import { clanNameSchema, DisciplineName, disciplineNameSchema } from "./NameSchemas"
 
 export const amalgamPrerequisiteSchema = z.object({
@@ -730,6 +731,16 @@ export const disciplines: Record<DisciplineName, Discipline> = {
                 level: 5,
                 discipline: "animalism",
             },
+            {
+                name: "Lord of the Land",
+                description: "True masters of Animalism are not limited by distance. The greatest of Tzimisce Voivodes and Nosferatu spymasters are uncontested lords over their domains and everything in them, able to manipulate their subjects with little more than a thought.\n■ Cost: One Rouse Check in addition to the cost of the power amplified\n■ Dice Pools: N/A\n■ System: This power requires the user to establish control over a domain or territory of some sort, mark its boundaries with their Blood, and hold it uncontested. If the marks are effaced or destroyed, or another vampire takes up residence in the domain without the lord's permission, this power ceases to function. From a mechanical standpoint, a character's territory may not be larger than their Chasse's influence.\nBy making an additional Rouse Check when activating an Animalism power within their domain, the lord can amplify the power to affect every possible target in that domain. Each target can roll to contest separately, or the lord can make a single roll against the highest resistance pool.\n■ Duration: As the duration of the amplified power.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Amplify Animalism powers to affect all targets within your marked domain.",
+                dicePool: "N/A",
+                level: 5,
+                discipline: "animalism",
+            },
         ],
     },
     auspex: {
@@ -759,6 +770,16 @@ export const disciplines: Record<DisciplineName, Discipline> = {
             { name: "Unerring Pursuit", description: "Track a victim through their reflection.", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "dominate", level: 1 }], summary: "Track a victim through their reflection.", dicePool: "Resolve + Auspex", level: 2, discipline: "auspex" },
             { name: "Shivers", description: "Through begrimed facades, rusted old drainpipes, and the detritus of forgotten back-alleys, the city—the genius loci—whispers. By standing still in the urban sprawl, the vampire attunes to its pulse, subconsciously piecing together information gathered through all their senses. The user rolls Intelligence + Auspex against Difficulty 3. On a win, the Storyteller gives the user a brief read on the area's aura or vibe—the residue of past events, the emotional signature of its residents, or that intangible feeling hanging in the air.", rouseChecks: 1, amalgamPrerequisites: [], summary: "Get a read on an area's aura, vibe, and emotional history.", dicePool: "Intelligence + Auspex", level: 2, discipline: "auspex" },
             { name: "Dream Domineer", description: "This tightly-woven power of Auspex uses rudimentary telepathy to communicate with those in a lower state of consciousness, usually while they sleep, though any state of being unconscious usually suffices. The user can speak telepathically with those who are unconscious or asleep and are in their line of sight. Communicating this way allows the user to implant subtle ideas into a victim's mind, and they can use Manipulation + Auspex to change a Mortal's Resonance. Two Successes change it to a Fleeting, four or more Intense. A Critical changes it to Acute. Victims do not immediately wake, unless their mental state greatly disrupted, whether due to threats, or the probing for information, in which case victims may pass a Willpower; Difficulty 3 Test to wake. The user may also employ other Dominate powers through this power.", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "dominate", level: 2 }], summary: "Communicate telepathically with sleeping/unconscious targets and change their resonance.", dicePool: "Manipulation + Auspex vs Resolve + Wits", level: 2, discipline: "auspex" },
+            {
+                name: "Thaumaturgical Sight",
+                description: "Referred to as \"Quintessence Detection\" by those Tremere who still know the meaning of these words, Thaumaturgical Sight allows its user to visualise magical effects that would otherwise have gone unnoticed. Many Banu Haqim, who refer to this power as \"Sense Magic\" use it well to hunt demons and infernalists. How one senses is often unique to the, but generally a stronger power should give off a brighter aura or a stronger smell.\n■ Prerequisite: Sense the Unseen\n■ Amalgam: Any Blood Sorcery at a rating of 2\n■ Cost: Free\n■ Dice Pools: Intelligence + Auspex\n■ System: The user may reflexively roll Intelligence + Auspex against a difficulty equal to the number of successes on a magic power or a ritual within their line of sight. This roll does not count towards the limit of activating Discipline powers per turn and is made before any resistance rolls.\nOn a win, the user senses magic and, if they are at least somewhat familiar with the Path (seen it in practice, received education, heard of it in detail), they can generally narrow it down to exactly what power of what Path has been used. If the user is not familiar with the Path but is familiar with some other Path of that Blood Sorcery, they can at least pinpoint what Blood Sorcery Discipline is in question. If the power is not that of Blood Sorcery but of some other source (demonic powers, true magic, forms of linear sorcery, True Faith and so on), the user automatically learns of the type of power and, if they are familiar with the power, they learn of it as well as the category for the power if they are familiar with it. A mummy invoking Hekau or a demon invoking a power would give off their unique auras or vibes.\nThis knowledge gives the user a two-dice bonus on all rolls to resist or dodge the perceived magic. This bonus is not further amplified by power bonus as it is merely knowledge how to defend, not a power by itself.\nFor example, somebody activating Taste of Vitae within sight of the user may find their tongue radiating energy when looked at by the user.\nMagic without rolls such as constructs of magic (familiars, zombies, homunculi...) can be recognised as well with the difficulty for the roll being 3.\nIf you wish to flavour how one perceives magic, you may take inspiration from Scry the Soul writeup below and discuss it with your storyteller such as seeing magical flares, smelling or tasting the swirl of magical energy.\n■ Duration: Passive",
+                rouseChecks: 0,
+                amalgamPrerequisites: [{ discipline: "blood sorcery", level: 2 }],
+                summary: "Detect and identify magical effects, gaining defensive bonuses against perceived magic.",
+                dicePool: "Intelligence + Auspex",
+                level: 2,
+                discipline: "auspex",
+            },
             // Level 3
             { name: "Eyes of Beasts", description: "See through the eyes of animals.", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "animalism", level: 2 }], summary: "See through the eyes of animals.", dicePool: "Wits + Auspex", level: 3, discipline: "auspex" },
             { name: "Fatal Flaw", description: "Determine a target's weakness.", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "oblivion", level: 1 }], summary: "Determine a target's weakness.", dicePool: "Intelligence + Auspex", level: 3, discipline: "auspex" },
@@ -1684,6 +1705,126 @@ export const disciplines: Record<DisciplineName, Discipline> = {
                 level: 1,
                 discipline: "delirium",
             },
+            {
+                name: "An Ear for Lies",
+                description: "Lying is not a thing that comes natural to humans as the body and the mind itself finds it uncomfortable. A prudent user of Delirium can notice the physical signs of lies and sense their veil clouding the mind's eye.\n■ Amalgam: Auspex 1\n■ Cost: Free\n■ Dice Pools: N/A\n■ System: Add the Delirium rating to all Insight rolls to detect lies of others. This does not stack with Folderol as they act upon similar principles. While this power is active, the vampire must also focus, usually by focusing their other senses such as by pinching skin or closing their eyes. This focusing may be perceived by its own Awareness roll against the user's Composure + Subterfuge. Masks and veils can be used to hide the usage of this power.\n■ Duration: As long as the user focuses",
+                rouseChecks: 0,
+                amalgamPrerequisites: [{ discipline: "auspex", level: 1 }],
+                summary: "Add Delirium rating to Insight rolls to detect lies, requires focus",
+                dicePool: "N/A",
+                level: 1,
+                discipline: "delirium",
+            },
+            {
+                name: "Incubus Humor",
+                description: "The vampire can inflame the humors of a victim within line of sight, eroding the victim's self-control and amplifying his temperament to a fevered pitch. The vampire may select one of the four humours that govern the body and induce the emotion associated with it. Thus, the flames of mild irritation may be fanned into a rage with an inflammation of yellow bile, or brief melancholia into crippling depression with an inflammation of black bile. Inflaming phlegm, on the other hand, completely deadens the victim's emotions.\n■ Cost: One Rouse Check\n■ Dice Pools: Manipulation + Delirium vs. Resolve +Composure\n■ System: For this power to work, the vampire must converse with the target and then roll Manipulation + Delirium vs. Resolve + Composure. Upon a win, they change the victim's Resonance and, through it, their behaviour. A Critical win increases their Resonance to at least Intense. Now knowing what buttons to push, the user gains a two-dice bonus on their Social rolls against the target when the target's Resonance would come in handy.\n■ Duration: The change in Resonance lasts for a session. A Critical win extends this duration for the rest of the story. The Resonance changes only upon expiration of this power or other magic.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Change target's Resonance through conversation, gain social bonuses",
+                dicePool: "Manipulation + Delirium vs. Resolve + Composure",
+                level: 1,
+                discipline: "delirium",
+            },
+            {
+                name: "Invoke Passion",
+                description: "While some users of Delirium like to influence and change personalities of others by toying with their humours, others like to tear down their mental defenses and make them more nervous and prone to succumbing to their primal urges.\n■ Cost: One Rouse Check\n■ Dice Pools: Manipulation + Delirium vs. Wits + Composure\n■ System: By saying something provocative about the target, the user is able to get under the skin of their victim. For this power to work, the user must be able to be heard by the victim and roll Manipulation + Delirium vs. the victim's Wits + Composure. On a win, the victim takes a dice penalty to frenzy rolls equal to the user's Delirium rating, halved and rounded up. The user also gains a two-dice bonus on all Social rolls to persuade to incite frenzies, violence, anger or unrest in the target.\n■ Duration: 1 hour + an hour for each margin.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Make target more prone to frenzy and easier to incite to violence",
+                dicePool: "Manipulation + Delirium vs. Wits + Composure",
+                level: 1,
+                discipline: "delirium",
+            },
+            {
+                name: "Spreading the Truth",
+                description: "The madness of Malkav, the source of Delirium, is not a curse, but a noble burden. To be different or odd is to see things from another angle. Sometimes, that difference must be imposed for a subject to truly know.\n■ Cost: One Rouse Check\n■ Dice Pools: Manipulation + Delirium vs. Wits + Composure\n■ System: The user must talk converse with the target to activate this power, rolling Manipulation + Delirium vs. the victim's Wits + Composure. On a win, the victim gains the effects of a Malkavian clan bane at a bane severity equal to the user's Delirium rating + their power bonus with the user choosing the Attributes which the bane affects. A critical win adds the Malkavian compulsion if the target possesses the vampiric Beast. This does not replace any standard clan banes or compulsions, but rather adds. Those possessing the Malkavian bane normally are immune to this power, but have their Bane Severity increased to the user's Delirium rating + the user's power bonus if their Bane Severity is lower.\n■ Duration: Days equal to the margin with a critical win adding another whole month",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Impose Malkavian clan bane on target through conversation",
+                dicePool: "Manipulation + Delirium vs. Wits + Composure",
+                level: 1,
+                discipline: "delirium",
+            },
+            {
+                name: "Soul Haunting",
+                description: "A brief speech to a target allows the vampire to touch the sacred or profane within her victim, destroying the banal concerns that keep those urges from making themselves known. These urges manifest as visions, scents, and sounds of divinity revealing themselves in the most mundane of places. Victims report that these images tend to follow a general theme: angels or demons (or a culturally appropriate religious figure, including ancestors) dramatically recounting and reenacting the victim's greatest fears and repressed secrets. Even if the victim ignores these visions, more insidious is the subtle altering of their senses – a prince's genuine sympathy can become mocking pity, while the false lust of an Alamut houri ghoul becomes all-consuming passion. Even if visions are ignored, the victim's trust in their senses is utterly compromised\n■ Cost: One Rouse Check\n■ Dice Pools: Manipulation + Delirium vs. Resolve +Composure\n■ System: For this power to be activated, the user must converse with the victim for at least 3 turns and then roll Manipulation + Delirium vs. Resolve + Composure. On a win, the visions will haunt the victim a night with an additional night per point of margin. At any point during the period, the Delirium user may force the visions to occur, requiring minimal focus on their part, regardless of the distance between the two. Visions inflict a penalty of two dice to all dice pools for two turns. The victim may only suffer such visions once per scene, with each new sunset bringing them new horrors. The victim attempt to snap out of it by rolling Resolve + Composure against the initial successes of the user at the beginning of each night after the first.\n■ Duration: See System.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Haunt target with religious visions that compromise their trust in senses",
+                dicePool: "Manipulation + Delirium vs. Resolve + Composure",
+                level: 1,
+                discipline: "delirium",
+            },
+            {
+                name: "Soul Tear",
+                description: "This subtle power requires nothing more than casual conversation, as the vampire's insidious influence hides between the lines and inflections employed. The victim finds themselves increasingly agitated as their inner demons bubble to the surface, eventually drowning out all rhyme and reason.\n■ Cost: One Rouse Check per target\n■ Dice Pools: Manipulation + Delirium vs. Composure + Intelligence\n■ System: After engaging in conversation with a victim, the user can activate this power. For the duration of the scene, the user may attack a single individual each turn in a Manipulation + Delirium vs Composure + Intelligence conflict, causing Superficial damage to Willpower equal to the margin. A mortal who becomes Impaired by this power experiences a nervous breakdown or psychotic break, the shape and nature of which depends on their personality (and perhaps their blood Resonance). A target that becomes Impaired by this power must immediately succumb to an applicable Compulsion, as chosen by the user (Hunger frenzy is manifested through cannibalism for most mortals).\n■ Duration: One Scene.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Attack target's Willpower through conversation each turn of a scene",
+                dicePool: "Manipulation + Delirium vs. Composure + Intelligence",
+                level: 1,
+                discipline: "delirium",
+            },
+            {
+                name: "An Ear for Lies",
+                description: "Lying is not a thing that comes natural to humans as the body and the mind itself finds it uncomfortable. A prudent user of Delirium can notice the physical signs of lies and sense their veil clouding the mind's eye.\n■ Amalgam: Auspex 1\n■ Cost: Free\n■ Dice Pools: N/A\n■ System: Add the Delirium rating to all Insight rolls to detect lies of others. This does not stack with Folderol as they act upon similar principles. While this power is active, the vampire must also focus, usually by focusing their other senses such as by pinching skin or closing their eyes. This focusing may be perceived by its own Awareness roll against the user's Composure + Subterfuge. Masks and veils can be used to hide the usage of this power.\n■ Duration: As long as the user focuses",
+                rouseChecks: 0,
+                amalgamPrerequisites: [{ discipline: "auspex", level: 1 }],
+                summary: "Add Delirium rating to Insight rolls to detect lies, requires focus",
+                dicePool: "N/A",
+                level: 1,
+                discipline: "delirium",
+            },
+            {
+                name: "Incubus Humor",
+                description: "The vampire can inflame the humors of a victim within line of sight, eroding the victim's self-control and amplifying his temperament to a fevered pitch. The vampire may select one of the four humours that govern the body and induce the emotion associated with it. Thus, the flames of mild irritation may be fanned into a rage with an inflammation of yellow bile, or brief melancholia into crippling depression with an inflammation of black bile. Inflaming phlegm, on the other hand, completely deadens the victim's emotions.\n■ Cost: One Rouse Check\n■ Dice Pools: Manipulation + Delirium vs. Resolve +Composure\n■ System: For this power to work, the vampire must converse with the target and then roll Manipulation + Delirium vs. Resolve + Composure. Upon a win, they change the victim's Resonance and, through it, their behaviour. A Critical win increases their Resonance to at least Intense. Now knowing what buttons to push, the user gains a two-dice bonus on their Social rolls against the target when the target's Resonance would come in handy.\n■ Duration: The change in Resonance lasts for a session. A Critical win extends this duration for the rest of the story. The Resonance changes only upon expiration of this power or other magic.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Change target's Resonance through conversation, gain social bonuses",
+                dicePool: "Manipulation + Delirium vs. Resolve + Composure",
+                level: 1,
+                discipline: "delirium",
+            },
+            {
+                name: "Invoke Passion",
+                description: "While some users of Delirium like to influence and change personalities of others by toying with their humours, others like to tear down their mental defenses and make them more nervous and prone to succumbing to their primal urges.\n■ Cost: One Rouse Check\n■ Dice Pools: Manipulation + Delirium vs. Wits + Composure\n■ System: By saying something provocative about the target, the user is able to get under the skin of their victim. For this power to work, the user must be able to be heard by the victim and roll Manipulation + Delirium vs. the victim's Wits + Composure. On a win, the victim takes a dice penalty to frenzy rolls equal to the user's Delirium rating, halved and rounded up. The user also gains a two-dice bonus on all Social rolls to persuade to incite frenzies, violence, anger or unrest in the target.\n■ Duration: 1 hour + an hour for each margin.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Make target more prone to frenzy and easier to incite to violence",
+                dicePool: "Manipulation + Delirium vs. Wits + Composure",
+                level: 1,
+                discipline: "delirium",
+            },
+            {
+                name: "Spreading the Truth",
+                description: "The madness of Malkav, the source of Delirium, is not a curse, but a noble burden. To be different or odd is to see things from another angle. Sometimes, that difference must be imposed for a subject to truly know.\n■ Cost: One Rouse Check\n■ Dice Pools: Manipulation + Delirium vs. Wits + Composure\n■ System: The user must talk converse with the target to activate this power, rolling Manipulation + Delirium vs. the victim's Wits + Composure. On a win, the victim gains the effects of a Malkavian clan bane at a bane severity equal to the user's Delirium rating + their power bonus with the user choosing the Attributes which the bane affects. A critical win adds the Malkavian compulsion if the target possesses the vampiric Beast. This does not replace any standard clan banes or compulsions, but rather adds. Those possessing the Malkavian bane normally are immune to this power, but have their Bane Severity increased to the user's Delirium rating + the user's power bonus if their Bane Severity is lower.\n■ Duration: Days equal to the margin with a critical win adding another whole month",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Impose Malkavian clan bane on target through conversation",
+                dicePool: "Manipulation + Delirium vs. Wits + Composure",
+                level: 1,
+                discipline: "delirium",
+            },
+            {
+                name: "Soul Haunting",
+                description: "A brief speech to a target allows the vampire to touch the sacred or profane within her victim, destroying the banal concerns that keep those urges from making themselves known. These urges manifest as visions, scents, and sounds of divinity revealing themselves in the most mundane of places. Victims report that these images tend to follow a general theme: angels or demons (or a culturally appropriate religious figure, including ancestors) dramatically recounting and reenacting the victim's greatest fears and repressed secrets. Even if the victim ignores these visions, more insidious is the subtle altering of their senses – a prince's genuine sympathy can become mocking pity, while the false lust of an Alamut houri ghoul becomes all-consuming passion. Even if visions are ignored, the victim's trust in their senses is utterly compromised\n■ Cost: One Rouse Check\n■ Dice Pools: Manipulation + Delirium vs. Resolve +Composure\n■ System: For this power to be activated, the user must converse with the victim for at least 3 turns and then roll Manipulation + Delirium vs. Resolve + Composure. On a win, the visions will haunt the victim a night with an additional night per point of margin. At any point during the period, the Delirium user may force the visions to occur, requiring minimal focus on their part, regardless of the distance between the two. Visions inflict a penalty of two dice to all dice pools for two turns. The victim may only suffer such visions once per scene, with each new sunset bringing them new horrors. The victim attempt to snap out of it by rolling Resolve + Composure against the initial successes of the user at the beginning of each night after the first.\n■ Duration: See System.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Haunt target with religious visions that compromise their trust in senses",
+                dicePool: "Manipulation + Delirium vs. Resolve + Composure",
+                level: 1,
+                discipline: "delirium",
+            },
+            {
+                name: "Soul Tear",
+                description: "This subtle power requires nothing more than casual conversation, as the vampire's insidious influence hides between the lines and inflections employed. The victim finds themselves increasingly agitated as their inner demons bubble to the surface, eventually drowning out all rhyme and reason.\n■ Cost: One Rouse Check per target\n■ Dice Pools: Manipulation + Delirium vs. Composure + Intelligence\n■ System: After engaging in conversation with a victim, the user can activate this power. For the duration of the scene, the user may attack a single individual each turn in a Manipulation + Delirium vs Composure + Intelligence conflict, causing Superficial damage to Willpower equal to the margin. A mortal who becomes Impaired by this power experiences a nervous breakdown or psychotic break, the shape and nature of which depends on their personality (and perhaps their blood Resonance). A target that becomes Impaired by this power must immediately succumb to an applicable Compulsion, as chosen by the user (Hunger frenzy is manifested through cannibalism for most mortals).\n■ Duration: One Scene.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Attack target's Willpower through conversation each turn of a scene",
+                dicePool: "Manipulation + Delirium vs. Composure + Intelligence",
+                level: 1,
+                discipline: "delirium",
+            },
             // Existing Level 2 powers
             {
                 name: "Haunting",
@@ -1818,6 +1959,46 @@ export const disciplines: Record<DisciplineName, Discipline> = {
                 level: 3,
                 discipline: "delirium",
             },
+            {
+                name: "Eyes of Chaos",
+                description: "Fleeting clarity hides within insanity; a shattered mirror reflects more than one unbroken one. This level of Delirium is responsible for the Malkavians' reputation of gleaning hidden truths, and their tendency to speak those truths to power. They may scrutinize the \"patterns\" of personal interaction or even random events in nature itself in order to reveal a hidden truth aboutthe situation they're in. The character needs not ask a question – the patterns are obvious at even a moment's glance.\n■ Cost: One Rouse Check\n■ Dice Pools: Resolve + Delirium\n■System:This power may only be used when scrutinizing a complex pattern or event, such as the interactions of a vampiric court or the clash of an army. Analyzing the blood spatter flicked from one's fingers or the spill of entrails works just as well, however. The character rolls Resolve + Delirium at a difficulty of 3 as they ponder the hidden truths of their focus. The player may ask the storyteller questions equal to the margin. Some of the viable questions are: • What's this person's Road? • What's the underlying or hidden message here? • How relevant to our overarching goals is this scene? Alternatively, the user of Eyes of Chaos may also use the power and roll Resolve + Delirium at a difficulty of 3 once per scene to actively focus on the situation at hand. Once during the in-game night you may call on the power of of the Eyes of Chaos to add the number of dice to any Attribute-based roll that is not a Discipline (after both sides have rolled if it is a contest) equal to the number of margins on the roll, rounded up. Upon a Critical you add another die. A user may not use multiple similar bonuses from similar future-telling powers within the same scene such as Premonition, Oneiromancy, etc. Power Bonus stacks with the dice bonus as usual.\n■ Duration: One turn.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Scrutinize patterns to ask questions or gain dice bonuses to future rolls",
+                dicePool: "Resolve + Delirium",
+                level: 3,
+                discipline: "delirium",
+            },
+            {
+                name: "Fire Voice",
+                description: "By mentioning one of many truths the clan Malkavian knows, the user of Delirium may shatter their victim's psyche and force them to cover in fear.\n■ Cost: One Rouse Check\n■ Dice Pools: Manipulation + Delirium vs. Wits + Composure\n■ System: This subtle power only requires the victim to converse or at least be able to hear the user. On a win, the target flees in terror while vampire victims must roll for Fear Frenzy at a difficulty of 3.\n■ Duration: One scene",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Force target to flee in terror, vampires must test for Fear Frenzy",
+                dicePool: "Manipulation + Delirium vs. Wits + Composure",
+                level: 3,
+                discipline: "delirium",
+            },
+            {
+                name: "Eyes of Chaos",
+                description: "Fleeting clarity hides within insanity; a shattered mirror reflects more than one unbroken one. This level of Delirium is responsible for the Malkavians' reputation of gleaning hidden truths, and their tendency to speak those truths to power. They may scrutinize the \"patterns\" of personal interaction or even random events in nature itself in order to reveal a hidden truth aboutthe situation they're in. The character needs not ask a question – the patterns are obvious at even a moment's glance.\n■ Cost: One Rouse Check\n■ Dice Pools: Resolve + Delirium\n■System:This power may only be used when scrutinizing a complex pattern or event, such as the interactions of a vampiric court or the clash of an army. Analyzing the blood spatter flicked from one's fingers or the spill of entrails works just as well, however. The character rolls Resolve + Delirium at a difficulty of 3 as they ponder the hidden truths of their focus. The player may ask the storyteller questions equal to the margin. Some of the viable questions are: • What's this person's Road? • What's the underlying or hidden message here? • How relevant to our overarching goals is this scene? Alternatively, the user of Eyes of Chaos may also use the power and roll Resolve + Delirium at a difficulty of 3 once per scene to actively focus on the situation at hand. Once during the in-game night you may call on the power of of the Eyes of Chaos to add the number of dice to any Attribute-based roll that is not a Discipline (after both sides have rolled if it is a contest) equal to the number of margins on the roll, rounded up. Upon a Critical you add another die. A user may not use multiple similar bonuses from similar future-telling powers within the same scene such as Premonition, Oneiromancy, etc. Power Bonus stacks with the dice bonus as usual.\n■ Duration: One turn.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Scrutinize patterns to ask questions or gain dice bonuses to future rolls",
+                dicePool: "Resolve + Delirium",
+                level: 3,
+                discipline: "delirium",
+            },
+            {
+                name: "Fire Voice",
+                description: "By mentioning one of many truths the clan Malkavian knows, the user of Delirium may shatter their victim's psyche and force them to cover in fear.\n■ Cost: One Rouse Check\n■ Dice Pools: Manipulation + Delirium vs. Wits + Composure\n■ System: This subtle power only requires the victim to converse or at least be able to hear the user. On a win, the target flees in terror while vampire victims must roll for Fear Frenzy at a difficulty of 3.\n■ Duration: One scene",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Force target to flee in terror, vampires must test for Fear Frenzy",
+                dicePool: "Manipulation + Delirium vs. Wits + Composure",
+                level: 3,
+                discipline: "delirium",
+            },
             // Existing Level 4 powers
             {
                 name: "Voice of Madness",
@@ -1875,6 +2056,26 @@ export const disciplines: Record<DisciplineName, Discipline> = {
                 level: 4,
                 discipline: "delirium",
             },
+            {
+                name: "Stain the Soul",
+                description: "The user of Delirium speaks to their victim a truth beyond truth, and the victim is left stunned. The user of forces the target's very soul into self-doubt, temporarily twisting the target's morality.\n■ Cost: One Rouse Check\n■ Dice Pools: Manipulation + Delirium vs. Wits + Composure\n■ System: For this power to work, the victim must be able to hear the user. The user rolls Manipulation + Delirium against the victim's Wits + Composure. On a win, the target's Humanity (or Road/Path) rating is lowered by an amount equal to the margin for a scene. The rating itself is not touched for the purposes of Stain accumulation, but it is counted as lower for the purposes of Frenzy, Merits and every drawbacka lower ratingwould bring. If the user possesses Invoke Passion, its effect also happens as if a part of this power.\n■ Duration: One scene, but a Critical Win extends the effect for the rest of the night.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Temporarily lower target's Humanity rating by margin amount",
+                dicePool: "Manipulation + Delirium vs. Wits + Composure",
+                level: 4,
+                discipline: "delirium",
+            },
+            {
+                name: "Stain the Soul",
+                description: "The user of Delirium speaks to their victim a truth beyond truth, and the victim is left stunned. The user of forces the target's very soul into self-doubt, temporarily twisting the target's morality.\n■ Cost: One Rouse Check\n■ Dice Pools: Manipulation + Delirium vs. Wits + Composure\n■ System: For this power to work, the victim must be able to hear the user. The user rolls Manipulation + Delirium against the victim's Wits + Composure. On a win, the target's Humanity (or Road/Path) rating is lowered by an amount equal to the margin for a scene. The rating itself is not touched for the purposes of Stain accumulation, but it is counted as lower for the purposes of Frenzy, Merits and every drawbacka lower ratingwould bring. If the user possesses Invoke Passion, its effect also happens as if a part of this power.\n■ Duration: One scene, but a Critical Win extends the effect for the rest of the night.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Temporarily lower target's Humanity rating by margin amount",
+                dicePool: "Manipulation + Delirium vs. Wits + Composure",
+                level: 4,
+                discipline: "delirium",
+            },
             // Existing Level 5 powers
             {
                 name: "Psychomemoria",
@@ -1919,6 +2120,26 @@ export const disciplines: Record<DisciplineName, Discipline> = {
                 amalgamPrerequisites: [],
                 summary: "Cause mass insanity in a 10-meter radius",
                 dicePool: "delirium x 2",
+                level: 5,
+                discipline: "delirium",
+            },
+            {
+                name: "Many Voices, One Mouth",
+                description: "A Malkavian is one part of a greater hole, and same can be said for other users of Delirium. With the Voice of Many, a Malkavian can amplify their voice to be able to carry terrible power.\n■ Cost: N/A\n■ Dice Pools: N/A\n■ System: Every power of Delirium may now affect more than a single target. The user has to make additional Rouse Checks (for the purposes of re-rolling, the level of the power used counts) for each additional target after the first. Targets must still fulfil conditions such as at least listening to the user when a power demands a conversation.\n■ Duration: N/A",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Make all Delirium powers affect multiple targets with additional Rouse Checks",
+                dicePool: "N/A",
+                level: 5,
+                discipline: "delirium",
+            },
+            {
+                name: "Shedding the Mask",
+                description: "Malkavians learn to hide their insanity, lest it make them a target. Others don't have that practice. At the apex of Delirium mastery, the vampire may overwhelm their victim with insanity, shattering their conscious mind and warping their personality to serve the whims of madness. Effectively, damage to one's soul caused by this power is similar to that of Soul Tear,except that the damage could be better described as \"destroying\" rather than \"tearing\".\n■ Cost: One Rouse per target\n■ Dice Pools: Manipulation + Delirium vs. Wits + Composure\n■ System: By speaking a riddle the Delirium user damages the mind of the target with a devastating force. The target must be able to hear the user at least partially, making this power very efficient in combat. On a win, the target takes Aggravated Willpower damage for every point on the margin. Alternatively, the user may choose to speak to only one person and speak directly of the matters that concern them, dealing two points of Aggravated Willpower damage for every point of n the margin.Those impaired by this power must immediately succumb to a Compulsion, as chosen by the power's user, even if the target is not a vampire or a revenant(Hunger frenzy is manifested through cannibalism for most common mortals).\n■ Duration: One turn.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Deal Aggravated Willpower damage through riddles, force Compulsions",
+                dicePool: "Manipulation + Delirium vs. Wits + Composure",
                 level: 5,
                 discipline: "delirium",
             },
@@ -2276,6 +2497,16 @@ export const disciplines: Record<DisciplineName, Discipline> = {
                 ],
                 summary: "Manifest Disciplines within the dream world, limited by Blood Potency.",
                 dicePool: "None",
+                level: 4,
+                discipline: "dominate",
+            },
+            {
+                name: "Theft of Will",
+                description: "Developed by Tremere elders to deal with spells of mischievous neonates a lesson, Theft of Will allows its user to Dominate magic itself and take control of nearby magical effects made by other sorcerers such as Wards and curses.\n■ Amalgam: Thaumaturgy 3/ Akhu 3/Blood Witchcraft 3/Dur-An-Ki 3 /Koldunism 3/Sihr3\n■ Cost: One Rouse\n■ Dice Pools: Intelligence + Dominate\n■ System: First, the user must know that there is a magical effect to take control of such as by Sense the Unseen (for things like Wards and spells) or aura reading Scry the Soul (for things like curses). Sense Magic power works perfectly with Theft of Will. Alternatively, walking face-first into a Ward or being told that they are cursed also works. After that, the user rolls Intelligence + Dominate against the initial successes of the sorcerer on the Ritual or a Path power they wish to take control of.\nWards can then be dispelled or taken control of, allowing the user to pass through and let others pass (see Wards, p. X) while effects such as curses and debilitations can be \"paused\" or completely dispelled lifted by the user as if they cast it themselves. At the storyteller's discretion, this power can interrupt other Blood Sorcery powers that last for longer than a turn such as Theft of Vitae or enchantments such as those often placed on weapons (like magical burning weapons) and armour.\nIf the sorcerer can visualise the magical effect such as by the Faux Path or the Thaumaturgical sight, they gain a two-dice bonus on this roll.\n■ Duration: The effect is instantaneous.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [{ discipline: "blood sorcery", level: 3 }],
+                summary: "Take control of magical effects like wards and curses created by other sorcerers",
+                dicePool: "Intelligence + Dominate",
                 level: 4,
                 discipline: "dominate",
             },
@@ -2645,6 +2876,16 @@ export const disciplines: Record<DisciplineName, Discipline> = {
             { name: "Valeren", description: "Heal other vampires' health. (Amalgam: Auspex 1)", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "auspex", level: 1 }], summary: "Heal other vampires' health.", dicePool: "Intelligence + Fortitude", level: 2, discipline: "fortitude" },
             { name: "Hinder Blight", description: "A single drop of the vampire's vitae is enough to halt the spreading of rot and decay, prevent kine from falling ill, or even temporarily preserve those on the brink of death. When applied to a corpse, it halts decomposition and rot for a week. On a living mortal or a ghoul, it prevents them from contracting diseases for a day. If used on a dying mortal, the Blood induces a torpor-like state, reducing their life functions to a bare minimum, and postponing death for a day. If the target was affected by Oblivion powers, the user rolls Composure + Fortitude vs the Oblivion user's Resolve + Oblivion.", rouseChecks: 1, amalgamPrerequisites: [], summary: "Halt decay, prevent disease, or postpone death with vitae.", dicePool: "Composure + Fortitude vs Resolve + Oblivion", level: 2, discipline: "fortitude" },
             { name: "Somber Oblation", description: "Used prevalently by those in the Ombre di Cristo, this technique entwines the pangs of Oblivion's soul-withering influences as a kind of oblation. An act that miraculously mends one's flesh, restoring constitution above their blood's normal efficacy. When the user gets a 1 or a 10 on a Rouse Check to mend health, they gain a Stain, then Mend an additional point of Superficial Health for each Stain they have. If the user is Rousing the Blood to Mend Aggravated Damage and have three or more Stains, they may choose to Mend an additional point of Aggravated Health Damage instead.", rouseChecks: 0, amalgamPrerequisites: [{ discipline: "oblivion", level: 2 }], summary: "Gain Stains to enhance healing when rolling 1s or 10s on Rouse Checks.", dicePool: "", level: 2, discipline: "fortitude" },
+            {
+                name: "Healer's Vitae",
+                description: "The vampire is able to strengthen their Blood's capacity to knit flesh and heal ailments. Living beings that partake of their vitae recover their vitality at surprising speed, and this allows them to shed blood and mend the broken bodies of their Kindred. This gift is not freely given however, as it risks the Blood Bond and creates ghouls.\n■ Amalgam: Auspex 1\n■ Cost: One Rouse Check\n■ System: The vampire bleeds a Rouse Check's worth of vitae and any mortal who partakes from their vein heals three Aggravated Health damage instead of the normal one (see Players Guide p.139). Kindred who do the same mend a number of Superficial damage equal to the vampire's Fortitude, or one Aggravated damage per Rouse Check of vitae.\n■ Duration: Passive.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [{ discipline: "auspex", level: 1 }],
+                summary: "Enhanced healing vitae: mortals heal 3 Aggravated, Kindred heal Fortitude Superficial or 1 Aggravated per Rouse Check",
+                dicePool: "",
+                level: 2,
+                discipline: "fortitude",
+            },
 
             // Level 3
             { name: "Calloused Soul", description: "Prevent stains for one night.", rouseChecks: 1, amalgamPrerequisites: [], summary: "Prevent stains for one night.", dicePool: "Composure + Fortitude", level: 3, discipline: "fortitude" },
@@ -3217,6 +3458,7 @@ export const disciplines: Record<DisciplineName, Discipline> = {
             { name: "Unseen Passage", description: "Go invisible and move around.", rouseChecks: 1, amalgamPrerequisites: [], summary: "Go invisible and move around.", dicePool: "Wits + Obfuscate", level: 2, discipline: "obfuscate" },
             { name: "Ventriloquism", description: "Project your voice to one person only. (Amalgam: Auspex 2)", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "auspex", level: 2 }], summary: "Project your voice to one person only.", dicePool: "Manipulation + Obfuscate", level: 2, discipline: "obfuscate" },
             { name: "Hush", description: "Through mere touch, the vampire creates an aura of impenetrable silence between themselves and their target, shielding both from being overheard by outside parties. The user activates this power by touching their target. Each additional target requires a separate activation. Any verbal communication between the user and affected targets cannot be overheard by outsiders. Attempts to read lips suffer a dice penalty equal to the user's Obfuscate rating. Only vampires with the Auspex power Sense the Unseen may attempt to detect or overhear the communication. The power lasts as long as the user maintains physical contact with their targets.", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "obfuscate", level: 1 }], summary: "Create aura of silence for private communication through touch.", dicePool: "Composure + Obfuscate vs Wits + Auspex", level: 2, discipline: "obfuscate" },
+            { name: "Unseen Spirit", description: "Ghosts naturally are immune to all mind-altering powers such as Obfuscate as long as they remain unmanifested within the Underworld. The Nagaraja and the Samedi, often dealing in haunted places or exploring the Shadowlands, have learned to extend their Obfuscate in order for it cloud even the senses of ghosts.", rouseChecks: 0, amalgamPrerequisites: [{ discipline: "necromancy", level: 2 }], summary: "Your Obfuscate now affects ghosts as it would normal humans.", dicePool: "N/A", level: 2, discipline: "obfuscate" },
 
             // Level 3
             { name: "Guise of the Departed", description: "Take a corpse's appearance. (Amalgam: Oblivion 1)", rouseChecks: 2, amalgamPrerequisites: [{ discipline: "oblivion", level: 1 }], summary: "Take a corpse's appearance.", dicePool: "Manipulation + Obfuscate", level: 3, discipline: "obfuscate" },
@@ -5172,8 +5414,313 @@ export const disciplines: Record<DisciplineName, Discipline> = {
                 level: 5,
                 discipline: "spiritus"
             },
+
+            // NEW SPIRITUS POWERS
+            // Level 1
+            {
+                name: "Aid from the Spirits",
+                description: "Spirits need not be complicated forms of intelligent 'life' such as that of animals. Truth be told, most are spirits of concepts, like the fork you are using when you are eating. The user of Spirits is able to directly rouse the spirit within an object to aid them in fulfilling a task. The vampire rolls Manipulation + Spiritus at a Difficulty of 3. The vampire receives a number of bonus dice to handle that item, equal to the number of margins. A critical win adds another die. These bonus dice can all be spent on a single roll, or spread out and cannot be used in the same roll as Premonition (Auspex 2), Eyes of Chaos (Chimerstry 3) or similar powers. Power Bonus applies only once. The power may not be used more than once in the same scene so as not to draw the ire of the spirits.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Gain bonus dice when handling specific objects by rousing their spirit",
+                dicePool: "Manipulation + Spiritus",
+                level: 1,
+                discipline: "spiritus"
+            },
+            {
+                name: "Spirit Whisperer",
+                description: "The user's eyesight attunes to the umbra, beyond of what even the necromancers are capable of perceiving. Many spirits are curious and intrigued by the material beings being able to perceive them and are usually willing to converse with the vampire, should they be respectful. The player makes a Wits + Spiritus roll at a Difficulty of 3. Upon a win, the user is able to see spirits with their own eyes. Them being willing to talk is entirely up to them, however. Spirits of animals are far more friendly than spirits of a rock which simply wishes to remain where it is (not to mention the intelligence of a rock is questionable at best). Sense the Unseen may see spirits who are close to the material world, but Spirit Whisperer allows one to practically pierce into the Umbra where the spirits reside in an equivalent location.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "See and potentially communicate with spirits in the Umbra",
+                dicePool: "Wits + Spiritus",
+                level: 1,
+                discipline: "spiritus"
+            },
+
+            // Level 2
+            {
+                name: "Friend of the Spirits",
+                description: "The user's very aura becomes attuned more alluring to the spirits, appearing as either one of them or something friendly to them, allowing the users of Spiritus to demand more from them without enraging the spirits. The user adds half their Spiritus rating, rounded up, to all pools directly involving the spirits of animals and concepts, including power of this Discipline.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Add half Spiritus rating to all spirit-related rolls",
+                dicePool: "N/A",
+                level: 2,
+                discipline: "spiritus"
+            },
+            {
+                name: "Summon the Spirit Beast",
+                description: "The user summons one of the spirits native to the area to fulfil a command, a spirit of a dog on a street or bear in a forest. Once summoned, the spirit materializes, taking on an ordinary form. While it can be rather difficult to coerce the spirit of a pigeon to murder a human, a clever user of Spiritus will be able to get what they need from a right spirit. A win on a Charisma + Spiritus roll at a Difficulty of 2 allows the user to summon a spirit of a summoning of a large animal or two small or medium animals. These spirits communicate telepathically with the user and possess a slightly higher intelligence than that of the animal it represents. The spirit will naturally obey commands that suit its nature – a curious pigeon might follow a person and report to the user while a wolf might be happy to maul a person to death. To issue a command unnatural to the spirit, a roll must be made with Manipulation + Spiritus with a difficulty set by the storyteller (between 2 to 5 in extreme cases). The spirit remains in the material world for a number of turns equal to the successes on the Charisma summoning roll, after which it simply dematerialises. The user may not have more spirits summoned active than they have dots in Spiritus.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Summon animal spirits to material world to fulfill commands",
+                dicePool: "Charisma + Spiritus",
+                level: 2,
+                discipline: "spiritus"
+            },
+
+            // Level 3
+            {
+                name: "Aspect of the Beast",
+                description: "The users of Spiritus are known for also drawing parts of spirits and their concepts into themselves to boost their powers, often in bargains with the said spirits to bring vengeance to this who hunt animals for fun and destroy their habitats for profits. This power takes one full turn to take effect and counts as an active action as the user collects the spirits of the area and usually makes some sort of a promise to them. The user rolls Manipulation + Spiritus at a Difficulty of 3. On a win, they may choose two aspects of spirits of the animals native to the area in around 500 meters radius. On a Critical Win, they may choose three: Ant (gain a dot in Survival), Bat (see in dark), Bear (gain a dot in Strength), Bee (gain a dot in Leadership), Cat (gain a dot in Charisma), Crow (gain a dot in Occult), Dog (gain a dot in Awareness), Fox (gain a dot in Manipulation), Ram (gain a dot in Melee), Owl (gain a dot in Stealth), Peacock (gain a dot in Etiquette), Pig (eat food like mortals), Rabbit (gain a dot in Athletics), Snake (gain a dot in Brawl), Spider (gain a dot in Crafts), Wild boar (gain a dot in Intimidation), Wolf (gain a dot in Dexterity). These effects are visible when seen by aura reading powers such as Scry the Soul or powers that allow for the sight of spirits in the world like Auspex which can identify which spirits exactly the person has drawn to themselves.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Gain animal aspects granting attribute/skill bonuses or special abilities",
+                dicePool: "Manipulation + Spiritus",
+                level: 3,
+                discipline: "spiritus"
+            },
+            {
+                name: "The Wild Beast",
+                description: "There are many restless spirits lurking around violent creatures, especially the undead. These creatures seek vengeance and destruction which can be often used in the favour of those calling to such spirits who are able to host them in their bodies in exchange for power. The transformation requires one turn after which the user's nails elongate as their hands become claws, counting as a +2 piercing Brawl weapon dealing Aggravated Health damage to mortals and spirits (materialised or not) and unhalved Superficial Health damage to vampires. The user's Physical Attributes all raise by one dot, but their Charisma, Composure, Intelligence and Wits are lowered by one as well. Additionally, the user bypasses any visual impairments, being able to sense, rather than see their targets. This transformation does not stack with others.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Transform with claws and enhanced physical attributes but reduced mental ones",
+                dicePool: "N/A",
+                level: 3,
+                discipline: "spiritus"
+            },
+
+            // Level 4
+            {
+                name: "Shatter the Vessel",
+                description: "With but a whisper, the user is able to convince a wall to come down, armour to dissolve or a weapon to shatter by appealing to its spirit and promising it freedom or greater rewards. The user needs to be able to issue a verbal command or express their will in some other form if unable. For an object to shatter, the user must win succeed on a Manipulation + Spiritus roll against a difficulty of 4. Destroying larger scale objects destroys about a meter across per margin, giving the users of Spiritus the literal ability to tear down the walls of fortresses as the founder of the Ahrimanes had done. If the object is Warded against spirits or enchanted to be unbreakable (e.g. with powers such as Blood Tampering), the user of Spiritus contests the original successes on the Ward/enchantment. The sorcerer may make that roll again if they are in the vicinity, for the purposes of keeping the game running smooth.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Convince object spirits to shatter or destroy themselves",
+                dicePool: "Manipulation + Spiritus",
+                level: 4,
+                discipline: "spiritus"
+            },
+            {
+                name: "Slake by Spirit",
+                description: "When venturing the umbra or the untouched wilderness, many users of Spiritus must feed somehow, even if it comes to the detriment of the lesser spirits on whose energies they slake. By spending a point of Willpower, the user is able to drain a spirit to slake a point of Hunger. In combat, this can be done as a minor action, incurring a penalty of two dice. Average and greater spirits may resist with Composure + Resolve against the user's Resolve + Spiritus. Should the user of Spiritus win, the spirit takes three points of Aggravated Health damage instead of being instantly consumed.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Drain spirits to slake Hunger by spending Willpower",
+                dicePool: "N/A",
+                level: 4,
+                discipline: "spiritus"
+            },
+
+            // Level 5
+            {
+                name: "Alliance with the Spirits",
+                description: "By attuning themselves further to the deeper spaces of the umbra, the user is able to benefit from more spirits lending them their powers. The user is able to pick additional aspects of the animal spirits from the power Aspects of the Beast equal to their Spiritus rating and may pick the same option thrice, now being able to sustain more spiritual power.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [{ discipline: "spiritus", level: 3 }],
+                summary: "Enhance Aspect of the Beast - pick additional aspects equal to Spiritus rating",
+                dicePool: "N/A",
+                level: 5,
+                discipline: "spiritus"
+            },
+            {
+                name: "The Spirit Beast",
+                description: "Conceding one's body to a spirit is rarely a good option, unless you are a master of Spiritus. By letting the spirit take the proverbial wheel with limited control, the vampire is able to resist the urge to fall asleep and becomes resistant to the Sun. When using the Wild Beast, the user is also immune to sunlight and resists the urge to sleep. Additionally, by spending a point of Willpower and waiting for 3 turns, they are able to plunge themselves into the wild plane of the Umbra where the spirits reside. While time and space are warped there, it can be used to ambush targets as the material world is reflected in the spirit world. To identify the traces of a specific person, the user must succeed at a roll of Resolve + Investigation at a difficulty of 3.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [{ discipline: "spiritus", level: 3 }],
+                summary: "Enhance Wild Beast with sunlight immunity and ability to enter the Umbra",
+                dicePool: "N/A",
+                level: 5,
+                discipline: "spiritus"
+            },
         ],
     },
+    daimonion: {
+        clans: ["Baali", "Caitiff"],
+        summary: "Infernal powers and demonic manipulation",
+        logo: daimonionLogo,
+        powers: [
+            // Level 1
+            {
+                name: "Chaining the Beast - Investiture",
+                description: "The greatest black miracle of the infernal gifts is perhaps the ability to suppress the Beast, almost restraining it to almost the point of blissful silence for the vampire. The vampire adds half of their Daimonion rating rounded up to all rolls to resist frenzies. The roll may not be further modified by other powers and rituals from Disciplines or other sources, including more infernal investitures.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Add half Daimonion rating to frenzy resistance rolls (passive)",
+                dicePool: "N/A",
+                level: 1,
+                discipline: "daimonion"
+            },
+            {
+                name: "Peel the Surface",
+                description: "People talk to each other to get to know one another, but a user of Daimonion often talks to learn of the subject's beliefs and values so that they may indoctrinate or torment them for fun. For this power to work, the user must engage in a conversation with their target and discuss a couple of different topics to pinpoint the target's stances on them. On a win, the user of the power learns of one conviction the target holds and, if a touchstone is within the same scene, they also learn who their touchstone for it is. On a Critical Win, they learn of all the target's convictions and of touchstones if they are present in the scene. The user of the power permanently gains a one-die bonus when incorporating the target's convictions in a social test against them.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Learn target's convictions through conversation, gain permanent bonus using them",
+                dicePool: "Intelligence + Daimonion vs Composure + Subterfuge",
+                level: 1,
+                discipline: "daimonion"
+            },
+            {
+                name: "Sense the Sin",
+                description: "Every jewel has a fault, and every man has a vice. The best way to shatter a jewel is to strike that fault, and the best way to shatter a man is to hammer his vice. This power allows the user to find a target's particular vice and glean their secrets with a glance. For this power to work, the user must have the target within the line of sight, observing their way of clothing or topics of their conversation. On a win, the user of the power learns of the current target's Desire and gains a two-die bonus when incorporating it or the target's desire in a social interaction such as persuading them to pursue it, break it or twist it or simply mocking them. Additionally, the user learns one of the 7 deadly sins to which their target leans towards the most unless the person possesses True Faith. On a Critical Win, the user learns the target's ambition as well.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Learn target's Desire and sins by observation, gain 2-die social bonus",
+                dicePool: "Intelligence + Daimonion vs Composure + Subterfuge",
+                level: 1,
+                discipline: "daimonion"
+            },
+
+            // Level 2
+            {
+                name: "Fear of the Void",
+                description: "Once you know a subject's beliefs or desires, manipulating them is easy. Converting vices of pleasure into waves of existential terror or shattering their beliefs on the spot is a greater trick. Speaking in soft tones of primeval horror, the user of Daimonion may send their victim fleeing as their very person is brought into question. For this power to work, the victim must be able to hear the user and the user must know either the target's ambition or desire or at least one of the target's convictions. On a win the user may select one of the following effects: The victim flees in terror (Vampire victims test for a Fear Frenzy against a difficulty of 3), The victim is enraged (Vampire victims test for a Fury Frenzy against a difficulty of 3), The victim feels intense guilt and gains a stain (once per session), The victim gains a compulsion of the user's choice.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Cause fear, rage, guilt, or compulsions using knowledge of target's beliefs/desires",
+                dicePool: "Intelligence + Daimonion vs Composure + Resolve",
+                level: 2,
+                discipline: "daimonion"
+            },
+            {
+                name: "Honeyed Words",
+                description: "Unbeknownst to but a select few, the Baali have actually been quite active at the time the bonfires of inquisition burned around Europe. Using Honeyed Words, the vampire finds it easier to push or trick their targets into confessing their sins and telling the whole store. By simply twisting a question or giving a sentence an ambiguous meaning and paying the cost of a Rouse Check, the vampire rerolls every die in an Etiquette, Subterfuge, Persuasion or an Intimidation dice pool. When a pool is rerolled, the player may choose the most preferable result. You may spend Willpower to reroll the chosen result. Only a single roll may be rerolled by this power (or any other as powers can not stack).",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Reroll social dice pools and choose best result",
+                dicePool: "N/A",
+                level: 2,
+                discipline: "daimonion"
+            },
+            {
+                name: "Dark Thaumaturgy - Investiture",
+                description: "Usually, those seeking to learn Dark Thaumaturgy must do so by first petitioning a demon to bestow it upon them in a pact. Even another vampire who knows it is not capable of teaching other vampires as that kind of magic is only attainable through demonic pacts. With this Investiture, the user's own blood acts as a demon bestowing a pact, whispering secrets of dark magic. The user may learn Dark Thaumaturgy without a demon-teacher by making pacts with something inherent in the Daimonion user's blood. The rating of Daimonion itself may be used to power Dark Thaumaturgy, if it is higher.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Learn Dark Thaumaturgy without demons, use Daimonion rating to power it",
+                dicePool: "N/A",
+                level: 2,
+                discipline: "daimonion"
+            },
+            {
+                name: "Infernal Wings - Investiture",
+                description: "According to the Baali traditions, the vitae of the users of Daimonion carries the will of the unfathomable horrors that gifted it to them. Their tainted blood is capable of manifesting infernal powers known as the Investitures. One such Investiture is the ability to call upon demonic wings that allow the vampire to fly. At the cost of one Rouse Check, the user retracts or sprouts a pair of wings (appearance is highly personal and unique to each person who possesses this Investiture) and gains the ability to fly as if they had two dots in the Flight Discipline. Investiture: Infernal Wings may be activated or retracted at the same time as Investiture: The Demonic Form, bypassing the limitation of only being able to activate a single power per turn. Only a single Rouse Check is required for using both Investitures.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Sprout demonic wings for flight (can combine with Demonic Form)",
+                dicePool: "N/A",
+                level: 2,
+                discipline: "daimonion"
+            },
+            {
+                name: "The Demonic Form - Investiture",
+                description: "The tainted blood of those using Daimonion offers many more boons than simply sprouting wings One such Investiture is the ability to call upon a form that can only be described as 'half-demonic', giving them a great edge in battle and the ability to put fear of God (or the devil) into any mortal. At the cost of one Rouse Check, the user may retract or manifest their features. While their features are manifested, they may develop a leathery hide, sinewy alien musculature, and razor claws, tentacles or great horns. The user gains a 1-die bonus on all Intimidation rolls and they develop a deadly weapon, each unique to their user, adding a +1 modifier to their Brawl damage and causing Aggravated Health damage to mortals. Superficial damage caused by such weapons is not halved. Either due to the elongated arms or long tentacles sprouting from the user, the user also gains a 1-die bonus on all Grappling rolls that is not modified by Power Bonus.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Transform into demonic form - +1 Intimidation, +1 Brawl damage (Aggravated to mortals), +1 Grappling",
+                dicePool: "N/A",
+                level: 2,
+                discipline: "daimonion"
+            },
+
+            // Level 3
+            {
+                name: "Condemnation",
+                description: "The Children of Baal relish the opportunity to importune dark energies into the waking world. With this power, the Baali levies a curse upon her victim, drawing upon the tormented might of their blood to work their will upon fate. The victim must be in the line of sight (magical or physical) and the curser must know the victim's name. The user mumbles the curse under his breath or shouts it loudly enough as a threat followed by a motion towards the victim. Upon the user's win, the victim has been successfully cursed and receives a two-dice penalty when using a Skill the user has named for nights equal to the user's Daimonion rating. Upon a Critical Win, the user may name three Skills to receive a penalty instead of one. Scry the Soul and other aura reading powers may reveal the user to be under the effects of a curse. Each scene the victim may attempt to roll Composure + Occult against the initial successes of the user to shed off the curse.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Curse target with skill penalties by knowing their name",
+                dicePool: "Intelligence + Daimonion vs Composure + Occult",
+                level: 3,
+                discipline: "daimonion"
+            },
+            {
+                name: "Fire-Immunity - Investiture",
+                description: "Many practitioners of Daimonion believe that their own accursed Blood already predestines them for Hell. As such, their body already prepares for hellfire. In comparison, what's fire of this earth? After paying the cost, the user riles up their Blood, channeling the images of the dark abyss into it. The vampire becomes fully immune to damage received from fire for turns equal to their Blood Potency for every Rouse Check made. Additionally, the user passively gains a dice bonus to resist fire frenzies equal to their Daimonion rating rounded up, but it does not stack with similar powers such as: Chaining the Beast or Armour of Caine's Fury (Rituals can still stack).",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Become immune to fire damage and resist fire frenzies",
+                dicePool: "N/A",
+                level: 3,
+                discipline: "daimonion"
+            },
+            {
+                name: "Profane the Sanctified",
+                description: "Same as Oblivion power in Tattered Fascade, p. 100. In our Inquisitor homebrew, it lowers True Faith to 0. In normal Hunter 5th, it disables the usage of endowments.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Disable True Faith or Hunter endowments",
+                dicePool: "Intelligence + Daimonion",
+                level: 3,
+                discipline: "daimonion"
+            },
+
+            // Level 4
+            {
+                name: "Bring the Plague",
+                description: "A Daimonion user with Bring the Plague calls down a Biblical plague on their enemies, cursing them with a highly infectious disease that plagues mortal and Cainite alike. It causes violent, painful boils that look like bleeding burn wounds when they burst. The target attracts swarms of insects and vermin wherever they go as they wait for their inevitable death and feast. First the user states the number of transmissions (from 1 to unlimited). After that, they need to touch a person to activate the power. A victim with the plague cannot heal by mundane means and must be healed by magical means or True Faith. At the beginning of every night, the infected suffer a point of Aggravated Health damage if they fail a Stamina + Stamina roll with the Difficulty being the plague bringer's Daimonion rating. Infected targets also lower their Looks Merit's rating by one. Characters interacting with the infected must also roll and succeed on a Stamina + Stamina roll or be infected. It can spread by touch, by breath, or by any bodily fluids. Characters with True Faith are not only immune but can cure the plague by touch.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Spread infectious supernatural plague through touch",
+                dicePool: "Intelligence + Daimonion vs Composure + Occult",
+                level: 4,
+                discipline: "daimonion"
+            },
+            {
+                name: "Psychomachia",
+                description: "Prudentius was a Roman poet who wrote the Psychomachia – 'the Battle of Souls,' describing the struggle of faith against idolatry and vice. The Baali know this game, and they play to win. With this power, the vampire combines the ability to read a victim's psyche with the ability to rend spiritual matter. Psychomachia breathes infernal life into the target's vice, forcing the victim to act the hero and literally battle her inner demons. The user gestures towards a target and rolls. Upon a win, the caster summons a mist-like entity out of the target's body, dealing a point of Aggravated Health damage to them. Once it properly forms, it resembles a twisted version of the target – personified apparition of the victim's vice summoned from their darker self. The entity will seek out the destruction of their victim. The assailant possesses the same Attributes of the target subtracted by 1/3 of the victim's Humanity/Road rating, rounded down, to a minimum of 0. The apparition also possesses the same Skills of the target and the same supernatural powers like Disciplines equal to that of the target which the apparition uses Willpower checks to activate. The phantasm vanishes on their defeat or the user's loss of concentration.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Summon target's inner demons as physical opponent",
+                dicePool: "Intelligence + Daimonion vs Resolve + Composure",
+                level: 4,
+                discipline: "daimonion"
+            },
+
+            // Level 5
+            {
+                name: "Tear the Rift",
+                description: "With this power, the Daimonion user opens a rift into the hellish abyssal prison summons forth a demon that is spiritually bound to them by their blood. The demon embodies one of the seven deadly sins which the caster must have performed in the same night. If the user possesses a celestial or a True Name of a demon, they may use it to summon them by writing it with blood. If they do not, a random lesser demon is summoned. By pouring their accursed vitae onto the earth and succeeding on a difficulty 4 Intelligence + Daimonion roll, the user summons forth a demon from its abyssal prison and choose to automatically bind it to their will. The Demonic Servitor will fully act as its summoner commands to the letter as it is bound until the next sunset. The demon must also truthfully answer questions to the letter, but the demon may twist their words in accordance to the wording of the question. At the beginning of each night after the first, the user of Daimonion may spend a point of Willpower to maintain their control over the demon for another night. Only one demon may be summoned at a time using this power.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [{ discipline: "presence", level: 4 }],
+                summary: "Summon and bind demons from the abyss",
+                dicePool: "Intelligence + Daimonion",
+                level: 5,
+                discipline: "daimonion"
+            },
+            {
+                name: "Tormented Essence",
+                description: "The Daimonion users, as do all Baali, know their place in the universe and within the hierarchy of their masters. Suffering trickles downward, and the Daimonion users stand within that torrent. Calling on the torment in their blood, the Daimonion user may hurl a blazing bolt of infernal pain at their enemies. Nerves cry out, wood turns to ash, stone melts, and flesh disintegrates utterly. The character gathers infernal pain into their hands; most commonly this manifests as a bolt of black flame, but sickening-hued lightning or slick black tentacles are just as common. Regardless, the power creates a missile that inflicts Aggravated Health damage equal to the margin upon the user's win. Interestingly enough, this attack is even more effective against demons, bane spirits and specters, who take an additional point of Aggravated Health damage and may be hit even if they are incorporeal.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Hurl infernal energy bolt dealing Aggravated damage (extra vs demons/spirits)",
+                dicePool: "Intelligence + Daimonion vs Dexterity + Athletics",
+                level: 5,
+                discipline: "daimonion"
+            },
+        ],
+    },
+    // NEW QUIETUS POWERS ADDED
+    // These powers represent the expanded paths of Quietus as described
+    // including Quietus Animae (spiritual path), Quietus Cruciatus (warrior path), and Quietus Sanguinis (sorcerer path)
+    
+    // Add these to the existing Quietus powers array above:
+    /*
+    QUIETUS ANIMAE POWERS:
+    Level 1: Internal Awareness, Taste of the Soul, Silentia Mortis
+    Level 2: Lure of the Blood, Ripples of the Blood, Read the Blood's Desire  
+    Level 3: Ishtar's Touch, Strengthen the Soul
+    Level 4: Blood Sweat, Truth of Blood
+    Level 5: Blood Awakening, Taste of Bliss
+    
+    QUIETUS CRUCIATUS POWERS:
+    Level 1: Blood Essence, Taste of the Body, Silence of Death
+    Level 2: Hinder Mending, Scorpion's Touch
+    Level 3: Dagon's Call, Raptorous Touch
+    Level 4: Hinder the Cainite Vitae, Quicken the Mortal's Blood
+    Level 5: Baal's Caress, Erode
+    
+    QUIETUS SANGUINIS POWERS:
+    Level 1: Blood Tempering, Taste of the Body (mental), Sight of the Blood
+    Level 2: Blood Forging, Scorpion's Curse
+    Level 3: Marduk's Rattle, Marduk's Whip
+    Level 4: Cleansed in Blood, Blood Talk
+    Level 5: Multiple level 5 powers including blood potency reduction
+    */
+    
     valeren: {
         clans: ["Salubri", "Caitiff"],
         summary: "Healing and purification abilities, divided into Path of the Healer (Obeah) and Path of the Warrior",
@@ -5705,6 +6252,28 @@ export const disciplines: Record<DisciplineName, Discipline> = {
                 level: 5,
                 discipline: "serpentis"
             },
+
+            // NEW SERPENTIS POWERS
+            {
+                name: "Serpent's Flesh",
+                description: "With this power, the Setite's flesh becomes leathery, scaly, slimy, and otherwise monstrous. Their body becomes flexible and malleable, and they become harder to hurt. The user completes their transformation almost instantly into a creature that is obvious unnatural. Should the user wish to appear more subtle and not unnerving to common mortals, they must spend a point of Willpower to contain the transformation. The user may slip through any opening wide enough to fit their head and gains a bonus to any dice pool to swim, wriggle through tight spaces, escape a physical grapple, or escape any form of restraints. Additionally, should the user not conceal their obviously monstrous appearance, they gain a one-die bonus on all Intimidation rolls. This power does not stack with Squirm as they both do similar things by different means. If the owner possesses this power and takes on one of the shapes of Blessings of Set-Typhon, they innately possess this while in one of its forms.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Transform flesh to become flexible and escape through tight spaces, +1 Intimidation if monstrous",
+                dicePool: "N/A",
+                level: 1,
+                discipline: "serpentis"
+            },
+            {
+                name: "Typhonic Maw",
+                description: "The user's throat becomes as flexible as that of a snake and their teeth become even sharper, allowing them to tear more than flesh away from their victims when biting. Whenever the user achieves a successful bite attack, they slake one point of Hunger on a successful bite attack and increase a target Cainite's Hunger by 1. Additionally, the user suffers no called-shot penalty for a bite attack.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Flexible throat and sharp teeth - slake Hunger on bite, increase Cainite target's Hunger by 1, no bite penalty",
+                dicePool: "N/A",
+                level: 2,
+                discipline: "serpentis"
+            },
         ],
     },
     quietus: {
@@ -6107,6 +6676,369 @@ export const disciplines: Record<DisciplineName, Discipline> = {
                 amalgamPrerequisites: [],
                 summary: "Target can only feed on other Kindred for 1 week (Kindred only)",
                 dicePool: "Quietus + Intelligence",
+                level: 5,
+                discipline: "quietus"
+            },
+
+            // QUIETUS ANIMAE POWERS
+            // Level 1
+            {
+                name: "Internal Awareness",
+                description: "Blood of those using Quietus Animae is directly tied to their very soul, providing it with a sense of awareness that the user themselves perhaps does not notice. Internal Awareness compels the vitae of the user to passively defend the user and even to protect the user's soul from being consumed. Every time an effect of a mind-altering power (Presence, Dominate and other direct mind afflicting magics) would affect the user without a contest, the user's blood compels them to resist with Composure + Quietus. This roll is not further enhanced by other powers (such as Unswayable Mind) as this is the internal mechanism acting, not the user themselves. A critical win has the vampire's own blood rouse awake, letting the user realise that somebody attempted to influence their mind with a supernatural power. The user may also use Internal Awareness instead of normal rolls on standard contests against mind-altering powers such as Delirium. The vampire also gains a dice bonus equal to half of their Quietus rating rounded up to resist being diablerised.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Passive resistance to mind-altering powers and diablerie attempts",
+                dicePool: "Composure + Quietus",
+                level: 1,
+                discipline: "quietus"
+            },
+            {
+                name: "Taste of the Soul",
+                description: "By sipping blood, those capable of listening to the blood are able to find out more about the mental constitution, the ardour and the way the person acts or behaves, giving them an advantage in manipulating them. The user gains a die bonus to all Social Skill-based rolls against a person from whom they drank at least one Rouse Check's worth of blood from.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Gain dice bonus to Social Skills against those you've fed from",
+                dicePool: "N/A",
+                level: 1,
+                discipline: "quietus"
+            },
+            {
+                name: "Silentia Mortis",
+                description: "Haqim's gift to his children so that they may plot in secret near hostile ears, Silentia Mortis offers a shroud of silence to hide their steps and voice so that they may scheme by whispers in the shadows. The user's blood begins to vibrate at a mystic frequency and fully silences their footsteps, voice, clothing, minor collisions, and other sounds of their person, giving them a two-dice bonus on all Stealth rolls. The bonus does not stack with other means of silencing oneself. This makes the vampire undetectable if an observer could only notice them by sound, such as when on a different floor of a house. This power does not eliminate sounds the user makes outside their personal space (throwing or dropping objects, or slamming doors, for example). Sense of the Unseen (Auspex 1) and similar powers allow their users to pierce the veil of silence by rolling against the user's Intelligence + Quietus. While this power is active, the user can allow one or more persons to hear them, allowing them to exercise Presence and Dominate without others realizing it.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Silence all sounds you make, +2 dice to Stealth rolls",
+                dicePool: "N/A",
+                level: 1,
+                discipline: "quietus"
+            },
+            
+            // Level 2
+            {
+                name: "Lure of the Blood",
+                description: "The vitae of the Children of Haqim is feared by the other clans as rumours (spread by the Haqimites themselves) state that a single sip is enough to blood bond a person. While it is not known if some masters of Quietus are capable of doing that, Lure of the Blood enhances the blood-bonding properties to shorten the number of nights required to achieve a blood bond. Every time the user's vitae is consumed, it counts as another sip of vitae on a different night, meaning that the vizier may achieve a blood bond in only two nights (in which case the blood bond would start off at a strength of 4).",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Your vitae counts as two sips for blood bonding purposes",
+                dicePool: "N/A",
+                level: 2,
+                discipline: "quietus"
+            },
+            {
+                name: "Ripples of the Blood",
+                description: "With this power, a vampire can leave an emotional echo that resonates in their own blood or the blood of those from whom they feeds. For this power to work, the user must first make their Rouse Check and make roll Intelligence + Quietus against a Difficulty of 3 and focus on a specific emotion belonging to a Resonance. On a win, the user's mouth begins to fill with blood infused with that emotion. The vampire may either swallow it to affect themselves or feed it to somebody else. Either way, the target's Resonance changes to the one belonging to the previously focused emotion and their Temperament is set to at least Intense. Should a Resonance be changed in a target with an Acute Temperament, they user may dictate their new Dyscasia.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Change target's Resonance and Temperament through blood",
+                dicePool: "Resolve + Quietus",
+                level: 2,
+                discipline: "quietus"
+            },
+            {
+                name: "Read the Blood's Desire",
+                description: "By mixing a subject's blood with theirs, their blood extracts information on the subject's desire and beliefs. For this power to work, the user must first possess at least one drop of the subject's blood that is not older than 48 hours and place it in a cup that they fill with their own (covered by the power's own Rouse Check). After that, they drink the mixture and roll Resolve + Quietus against a difficulty of 3. For each point on the margin, the user may select one of the following effects: Desire (learn current Desire), Exploit Weaknesses (gain two-dice bonus on next Stealth or Social Skill roll against target), Study Beliefs (learn one Conviction, may be taken multiple times).",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Learn target's Desires, Convictions, or gain bonuses against them",
+                dicePool: "Intelligence + Quietus",
+                level: 2,
+                discipline: "quietus"
+            },
+
+            // Level 3
+            {
+                name: "Ishtar's Touch - Animae",
+                description: "The vizier version of Scorpion's Touch is Ishtar's Touch. Instead of yielding a deadly poison, this power converts the vizier's blood into a touch-activated narcotic that puts the victim into an inebriated state under which he is more vulnerable to Presence, Dominate, and even mundane Social manipulation. Ishtar's Touch follows the same system as the Scorpion's Touch for the purposes of the contact poison applying its effect on the victim. Instead of dealing damage, however, this poison makes the target more susceptible to manipulation, giving them a two-die penalty in contests involving somebody using a Social Skill against them or a power that affects the mind (Daimonion, Serpentis' Eyes of the Serpent, Obfuscate, Mytherceria, Quietus, some Magics, Presence, Dominate...). The effect can only be noticed by powers that read auras to detect if the person is under the effects of Disciplines.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Touch poison making target vulnerable to Social Skills and mind powers (-2 dice)",
+                dicePool: "Resolve + Quietus vs Intelligence + Composure",
+                level: 3,
+                discipline: "quietus"
+            },
+            {
+                name: "Strengthen the Soul",
+                description: "Those drinking the blood of the user find themselves having frequent 'gut feelings' about things they should not be possible to sense. Anybody who has drank at least one Rouse Check's worth of blood from the vampire with this power gains the effects of the Internal Awareness, using the vampire's Quietus rating and Power Bonus. The effect persists in a person for a month or until the vampire who drank the blood feeds again, whichever comes sooner.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Those who feed from you gain Internal Awareness effects for a month",
+                dicePool: "N/A",
+                level: 3,
+                discipline: "quietus"
+            },
+
+            // Level 4
+            {
+                name: "Blood Sweat",
+                description: "By reminding a person of how low they have stooped, vizier hurls insults at their core. Vampires break down in blood sweat and mortals cower in front of the vampire. The victim must be able to hear the user and have fewer points in Humanity or Road/Path rating than the user for this power to work. The vampire rolls Resolve + Quietus vs. the victim's Road of Humanity rating. On a win, mortals suffer Aggravated Willpower damage equal to the margin and suffer mental impairment for the rest of the scene. Vampire victims break down in blood-sweat and must make a number of Rouse Checks equal to the margin. If the vampire is already on or hits Hunger 5 through this power, the margins that did not produce blood sweat deal damage and impairment to the victim as if they were a mortal.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Insult targets with lower morality - causes Willpower damage to mortals, Rouse Checks to vampires",
+                dicePool: "Resolve + Quietus vs Humanity/Road rating",
+                level: 4,
+                discipline: "quietus"
+            },
+            {
+                name: "Truth of Blood",
+                description: "As a means to assure that their judgments are firmly grounded in truth, this power allows a vampire to use the blood of an individual being questioned to divine not only the truth of the subject's words, but the truth behind those words. To use this power, the Cainite must have one point of the target's blood, which she pours into an open container capable of holding the fluid indefinitely, such as a basin or goblet. For every statement made by the subject, the user makes a Resolve + Quietus against the subject's Composure + Occult (or Fortitude) roll. The first failed contest ends the power as the blood instantly dissolves into red mist. A Win tells them whether that statement is true, as far as the subject knows. On a critical win by the caster, the subject involuntarily expands upon their answer, providing more information. A Critical Win also allows for this power to penetrate mind and memory-altering magics and powers like Dominate.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Use target's blood to detect truth in their statements",
+                dicePool: "Resolve + Quietus vs Composure + Occult/Fortitude",
+                level: 4,
+                discipline: "quietus"
+            },
+
+            // Level 5
+            {
+                name: "Blood Awakening",
+                description: "By ingesting blood, the user is able to further break it down into memories and opinions, perfect for knowing who to call into plots and who to have executed. The user may also select the following effects when using Read the Blood's Desire: Walking Down the Memory Lane (quickly live through a scene from the subject's past), Read the Messages of Mind (learn subject's opinion on something). These effects may be selected as many times as the user is able.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Enhanced Read the Blood's Desire - access memories and opinions",
+                dicePool: "Intelligence + Quietus",
+                level: 5,
+                discipline: "quietus"
+            },
+            {
+                name: "Taste of Bliss",
+                description: "Shocking even those who are experts at Presence, the Taste of Bliss allows a vampire to simulate a blood bond – effectively trapping the victim in emotional slavery by exhaling a red mist carrying their vitae. The user softly exhales a fine reddish mist towards the target which creeps up to them slowly enough for them to attempt to dodge. First, the user rolls Resolve + Quietus and the target rolls Dexterity + Athletics to evade the mist. Should the victim fail to avoid the mist, then they must roll Resolve + Composure against the initial successes on the user's Resolve + Quietus roll to resist its intoxicating effect. Upon the user's win, the target suffers a blood bond to the user with its strength equal to double the number of margins, up to 6. This power ignores any real blood bonds. Power's effects break at the next sunrise.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Exhale mist to create temporary blood bond (breaks at sunrise)",
+                dicePool: "Resolve + Quietus vs Dexterity + Athletics and Resolve + Composure",
+                level: 5,
+                discipline: "quietus"
+            },
+
+            // QUIETUS CRUCIATUS POWERS (Warrior Path)
+            // Level 1
+            {
+                name: "Blood Essence - Cruciatus",
+                description: "The warrior caste of the Banu Haqim is the preferred option when somebody wishes to arrange a contract for assassination of another vampire. With Blood Essence, a Cainite may 'kill' another Cainite, but preserve their heart for proof. First, the user must exsanguinate the victim and, if the victim is a Cainite, they must be in torpor. After that, the user makes an Intelligence + Quietus roll at a Difficulty of 3 and pours a hunger's worth of Rouse Check near the area of the heart of the victim. As they massage it, their hand sinks deeper and deeper into the body until they are able to grasp the heart and rip it out. Cainite's body turns to ash as it does normally, but their heart remains. The preserved heart of a mortal or a Cainite can be consumed later, slaking one point of Hunger in the process. A consumed heart of a Cainite triggers a diablerie roll as normal.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Preserve victim's heart after exsanguination for later consumption",
+                dicePool: "Intelligence + Quietus",
+                level: 1,
+                discipline: "quietus"
+            },
+            {
+                name: "Taste of the Body - Cruciatus",
+                description: "By sipping blood, those capable of listening to the blood are able to find out more about the constitution, muscle density, the quality of their blood and probably even estimate what kind of food a mortal eats. The user gains a die bonus to all Physical Skill-based rolls against a person from who they slaked at least one Rouse Check's worth of blood from.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Gain dice bonus to Physical Skills against those you've fed from",
+                dicePool: "N/A",
+                level: 1,
+                discipline: "quietus"
+            },
+            {
+                name: "Silence of Death",
+                description: "A gift of Haqim to his children born without the ability to mask themselves, Silence of Death offers a shroud of silence to hide the sounds made by the user and their close allies, perfect for ambushes or simply walking around unheard. The user's blood begins to vibrate at a frequency that disrupts hearing and silences the footsteps, clothing, minor collisions, and other sounds in a 6-meter radius, giving themselves and others a two-dice bonus on all Stealth rolls. The bonus does not stack with other means of silencing oneself and one's area. This makes the vampire undetectable if an observer could only notice them by sound, such as when on a different floor of a house. This power does not eliminate sounds the user makes outside the radius. Sense of the Unseen (Auspex 1) and similar powers allow their users to pierce the veil of silence by rolling against the user's Wits + Quietus.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Silence 6-meter radius, +2 dice to Stealth for everyone in area",
+                dicePool: "N/A",
+                level: 1,
+                discipline: "quietus"
+            },
+
+            // Level 2
+            {
+                name: "Hinder Mending",
+                description: "With Hinder Mending, the vampire concocts a special poison that prevents usage of vitae for mending, disrupting vampire targets and their other creations that utilise vitae to heal. The user concentrates for a turn and forces Blood through an open, usually self-inflicted, wound. Each Rouse Check worth of poison made takes a turn and emits enough Blood to coat one bladed melee weapon or to fill one mouthful to be spat at a foe. If the poison hits, the user rolls a contest of Resolve + Quietus vs. Stamina + Occult. (those with Fortitude may resist with Stamina + Fortitude). If the user wins, the poison prevents the usage of mending Health with vitae in the target for a number of turns equal to the margin.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Poison preventing vitae healing for turns equal to margin",
+                dicePool: "Resolve + Quietus vs Stamina + Occult/Fortitude",
+                level: 2,
+                discipline: "quietus"
+            },
+            {
+                name: "Scorpion's Touch - Cruciatus",
+                description: "Scorpion's Touch transmutes the Cainite vitae, which is usually healing and nurturing, into a deadly poison capable of harming victims by touch alone. The user concentrates for a turn and forces Blood through an open, usually self-inflicted, wound. Each Rouse Check worth of poison made takes a turn and emits enough Blood to coat one bladed melee weapon stickily or to fill one mouthful to be spat at a foe. If the poison hits, the user rolls a contest of Strength + Quietus vs. Stamina + Occult. (Those with Fortitude may resist with Stamina + Fortitude). If the user wins, the poison does the margin in Aggravated Health damage to mortals who instantly fall unconscious and non-halved Superficial Health damage to vampires.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Transmute blood to deadly contact poison (Aggravated to mortals, Superficial to vampires)",
+                dicePool: "Resolve + Quietus vs Stamina + Occult/Fortitude",
+                level: 2,
+                discipline: "quietus"
+            },
+
+            // Level 3
+            {
+                name: "Dagon's Call",
+                description: "With the slightest scratch delivering a dab of blood to mingle with that of the target's, Dagon's Call twists a victim's own blood against them. In order to use this power, the user's blood must first touch the skin of the target or be ingested by them. The character waits a minimum of one hour for their blood to be fully absorbed, entering the circulatory system to securely grip the victim from within after which the user may safely activate the power from a distance. To activate the power, the user must Rouse the Blood and stab themselves, usually with a ritual blade, and rolling Resolve + Quietus against the victim's Stamina + Occult or Fortitude. Upon a Win a mortal victim takes Aggravated Health damage equal to the margins with vampires taking it as Superficial Health damage instead. A single person may be struck by Dagon's Call only up to three times within the same night.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Remote blood attack after initial contact (up to 3 times per night)",
+                dicePool: "Resolve + Quietus vs Stamina + Resolve",
+                level: 3,
+                discipline: "quietus"
+            },
+            {
+                name: "Raptorous Touch",
+                description: "Using fangs to drink is sometimes too inefficient for those grappling their enemies. Raptorous Touch allows its user to drink blood through skin contact alone. As a reflexive action after activation of the power, the user automatically drinks one point of Hunger from the victim if they touch them. This can be especially useful while grappling as the user continuously drains blood from their target. Feeding on mortals in this manner can both be normal feeding and harmful feeding, depending on the strength of the vampire's grip.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Drink blood through touch, especially useful while grappling",
+                dicePool: "N/A",
+                level: 3,
+                discipline: "quietus"
+            },
+
+            // Level 4
+            {
+                name: "Hinder the Cainite Vitae",
+                description: "The older a Cainite target at the end of an assassin's blade, the greater the chance of the target utilising powerful Disciplines fueled by their older Blood to fend off an attacker. Hinder the Cainite Vitae lends its aid in such situations, shutting off the powers of even the mightiest of elders with but a touch. The user touches the target (which can be done in combat with any combination of Strength or Dexterity + Acrobatics or Brawl) and rolls Resolve + Quietus vs. the victim's Stamina + Occult. (Those with Fortitude may resist with Stamina + Fortitude). On a win, the target may not perform Rouse Checks for turns equal to the margins. To break out of the effect early, the victim may perform Rouse Checks equal to the margin they lost on the roll.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Touch to prevent Rouse Checks for turns equal to margin",
+                dicePool: "Resolve + Quietus vs Stamina + Occult/Fortitude",
+                level: 4,
+                discipline: "quietus"
+            },
+            {
+                name: "Quicken the Mortal's Blood",
+                description: "To maximize the amount of nourishment possible from a mortal's blood, those developing Cruciatus eventually evolve exceptional control over how they process the vitae they imbibe. After drinking from a mortal, the user makes an Intelligence + Quietus roll at a Difficulty of 3 with the user slaking additional points of Hunger equal to the margin. This can be used when slaking on a herd member.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Slake additional Hunger equal to margin when feeding from mortals",
+                dicePool: "Resolve + Quietus",
+                level: 4,
+                discipline: "quietus"
+            },
+
+            // Level 5
+            {
+                name: "Baal's Caress - Cruciatus",
+                description: "A refinement of Scorpion's Touch, Baal's Caress allows a vampire to transform her blood into an acidic toxin that burns any living or undead flesh, usually accomplished by licking a blade to lubricate it before assaulting an opponent. This power uses the same system (and its poison has the same restrictions) as Scorpion's Touch except that damage from the poison is Aggravated, even to vampires and lupines. Upon contact with the skin of a mortal, the victim of the Baal's Caress dies instantly and painlessly while a vampire falls into torpor during their next rest. Baal's Caress and Scorpion's Touch do not stack with each other as these poisons do not mix well.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Acidic blood poison dealing Aggravated damage even to vampires",
+                dicePool: "Resolve + Quietus vs Stamina + Occult/Fortitude",
+                level: 5,
+                discipline: "quietus"
+            },
+            {
+                name: "Erode",
+                description: "By touching their victim, the user turns the target's own blood against them and causes their body to rapidly give strength, potentially leading to death. The user touches the target (which can be done in combat with any combination of Strength or Dexterity + Acrobatics or Brawl) and rolls Resolve + Quietus vs. the victim's Stamina + Occult. (Those with Fortitude may resist with Stamina + Fortitude). On a win, the victim counts their Strength, Dexterity and Stamina as lower by 2, to a minimum of 0. If a mortal target's Stamina is reduced to 0 or less by this, they die instantly. Vampires and other more durable creatures that take damage like them suffer Physical Impairment instead of instant death if their Stamina is reduced to 0 or less.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Touch to reduce target's physical attributes by 2 (instant death if mortal Stamina hits 0)",
+                dicePool: "Resolve + Quietus vs Stamina + Occult/Fortitude",
+                level: 5,
+                discipline: "quietus"
+            },
+
+            // QUIETUS SANGUINIS POWERS (Sorcerer Path)
+            // Level 1
+            {
+                name: "Blood Tempering",
+                description: "The Children of Haqim possess some of the oldest scrolls and artefacts from antiquity thanks to their sorcerers' ability to infuse objects with vampiric longevity. First the user must splatter the object with vitae and utter a prayer to the spirits, seeking to petition them to instill the object with vampiric longevity and metaphysical strength. The enchanted object can only be destroyed by things that harm vampires by dealing Aggravated Health damage to them such as specific types of magic, sunlight, Fist of Caine, fire and True Faith and so on. The object gains health equal to the user's Quietus rating to endure such damage. Weapons and armour enchanted by this do not break or dull by powers and age as usual and armour extends its Avoidance effect even against weapons dealing armour-piercing and heavy impact damage.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Enchant objects with vampiric durability and resistance to normal damage",
+                dicePool: "Intelligence + Quietus",
+                level: 1,
+                discipline: "quietus"
+            },
+            {
+                name: "Taste of the Body - Sanguinis",
+                description: "By sipping blood, those capable of listening to the blood are able to find out more about the constitution, muscle density, the quality of their blood and probably even estimate what kind of food a mortal eats. The user gains a die bonus to all Mental Skill-based rolls against a person whose blood they slaked at least one Rouse Check's worth of blood from. For example, Awareness, useful in detecting ambushes as their body innately learns patterns of movement or Investigation, detecting traces and workings of another.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Gain dice bonus to Mental Skills against those you've fed from",
+                dicePool: "N/A",
+                level: 1,
+                discipline: "quietus"
+            },
+            {
+                name: "Sight of the Blood",
+                description: "The sorcerers of Haqim were specifically designed and entrusted by Haqim to keep watch over the spirits close to the material plane and hunt for demons infesting it. Sight of Blood is a key part of that kit, allowing its user to see the spirits around them. The user paints over their eyes with blood and rolls Intelligence + Quietus at a difficulty of 2. On a win, they are able to see nearby spirits. Ghosts are not proper spirits by definition as they have an ectoplasmic corpus. Demons and jinn count as spirits, but it will not detect demons who are inhabiting a person through one of many rituals to fuse with a mortal.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Paint eyes with blood to see spirits (not ghosts)",
+                dicePool: "Intelligence + Quietus",
+                level: 1,
+                discipline: "quietus"
+            },
+
+            // Level 2
+            {
+                name: "Blood Forging",
+                description: "Quietus Sanguinis allows for alteration of materials, making sorcerers the experts on creating supernatural items. With Blood Forging, an item will not only last forever, but also be able to interact with the incorporeal. Items enchanted by Blood Tampering can now physically interact with and harm spirits even if they are immaterial. It should be noted that ghosts are not spirits as they have an ectoplasmic corpus. Demons and jinn count as spirits. Enchanted weapons harm spirits the same they do to mortals, dealing Aggravated Health damage if bladed.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [{ discipline: "quietus", level: 1 }],
+                summary: "Enhances Blood Tempering - enchanted items can harm incorporeal spirits",
+                dicePool: "N/A",
+                level: 2,
+                discipline: "quietus"
+            },
+            {
+                name: "Scorpion's Curse",
+                description: "Unlike the warriors, the variant of the Scorpion's Touch among sorcerers can last for days and act as a ward, preventing unwanted visitors and theft. The user, in a similar manner to blood sorcerers, writes a protective spell on an object and makes a roll at a Difficulty of 3, taking 5 minutes. The 'Ward' can only cover the space of about a meter across and only lasts for a number of days equal to the caster's Quietus rating due to the transmuted poison vitae losing power. The 'Ward' is triggered upon any contact with the skin/body of another – gloves and armour offer no protection. Once triggered the victim makes a Stamina + Occult roll against the initial number of successes when the Ward was made. Upon the win of the Quietus user, the victim suffers unhalved Superficial Health damage.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Create poisonous ward on object lasting days equal to Quietus rating",
+                dicePool: "Intelligence + Quietus vs Stamina + Occult",
+                level: 2,
+                discipline: "quietus"
+            },
+
+            // Level 3
+            {
+                name: "Marduk's Rattle",
+                description: "The sorcerers have developed Marduk's Rattle – a variant of Dagon's Call that ravages the mind of the person. In order to use this power, the user's blood must first touch the skin of the target or be ingested by them. The character waits a minimum of one hour for their blood to be fully absorbed, entering the circulatory system to securely grip the victim from within after which the user may safely activate the power from a distance. To activate the power, the user must Rouse the Blood and stab themselves, usually with a ritual blade, and rolling Resolve + Quietus against the victim's Composure + Occult or Fortitude. On a win, the victim suffers unhalved Superficial Willpower damage equal to the margin upon the user's roll on a win. A single person may be struck by Marduk's Rattle only up to three times within the same night.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Remote mental attack causing Willpower damage (up to 3 times per night)",
+                dicePool: "Resolve + Quietus vs Composure + Occult/Fortitude",
+                level: 3,
+                discipline: "quietus"
+            },
+            {
+                name: "Marduk's Whip",
+                description: "When in need, the user of Quietus extends their blood into a whip capable of crystalizing to form a sharp but flexible weapon. Most Haqimites prefer to make a whip as the image of a sorcerer whipping spirits and demons away usually sends a message. The user makes a Rouse Check and releases their blood (usually through a minor self-inflicted would). The blood crystalizes into a piercing weapon of the user's choice with its damage rating equal to 1 + half the user's Quietus rating, rounded up. This weapon is capable of striking incorporeal targets such as spirits and demons, and struck targets suffer a three-dice penalty to use their powers for the rest of the scene.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Create blood crystal weapon that harms spirits and penalizes their powers",
+                dicePool: "N/A",
+                level: 3,
+                discipline: "quietus"
+            },
+
+            // Level 4
+            {
+                name: "Cleansed in Blood",
+                description: "By using the power of vitae to cleanse and restore, the vampire releases her blood, allowing it to wash over another and carry away spiritual impurities from outside influences. This power cleanses the target's soul, purging their mind of externally imposed supernatural taints and stains. The character baptizes the forehead of the intended subject with their Blood, then places their hands on the subject's head. Both parties spend a minimum of one hour in deep concentration per power that the subject wishes to eliminate. After that, the user makes a Resolve + Quietus roll with the difficulty being the initial successes of the power or Ritual that inflicted the effect the user is trying to purge. On a win, the Blood the user used turns into red mist and vanishes together with the supernatural effect. Cleansed in Blood can erase current and ongoing lasting influences from Blood Sorcery and its curses, Daimonion, Dominate, Delirium, Presence or similar effects including those coming from other supernatural creatures such as demons.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Purge supernatural effects from target through blood baptism ritual",
+                dicePool: "Resolve + Quietus",
+                level: 4,
+                discipline: "quietus"
+            },
+            {
+                name: "Blood Talk",
+                description: "A form of blood telepathy, the user is capable of talking directly to someone's blood which then resonates within the mind of the user. For this power to work, the user must possess at least one droplet of the target's blood. Many Banu Haqim keep lockets or enchanted vials to preserve the blood of those they seek to communicate with. Once ready, the user has to simply concentrate and talk to the blood normally so that it may hear them. The sound is then transmitted to the target's mind. Targets who wish to resist listening to voices of those who seek to torment them can simply block them by concentrating and making a Resolve + Occult roll vs. the user's Wits + Occult.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Telepathic communication using target's blood",
+                dicePool: "N/A",
+                level: 4,
+                discipline: "quietus"
+            },
+
+            // Level 5
+            {
+                name: "Diminish Blood Potency",
+                description: "This sanguinis power allows the user to weaken another vampire's blood through mystical manipulation. The user must first possess at least one drop of the target's blood, then perform a ritual involving the symbolic dilution of that blood with water while speaking incantations that call upon Haqim's judgment. The user rolls Resolve + Quietus vs. the victim's Stamina + Occult. (Those with Fortitude may resist with Stamina + Fortitude). On a win, the victim's Blood Potency decreases equal to the margin with the maximum decrease being 2 or 3 on a critical win. The target's Generation also increases by 2 or 3 on a critical win. Victims who have their Blood Potency brought below 0 feel the call of torpor and must spend a point of Willpower each turn or fall into slumber.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Weaken vampire's Blood Potency through ritual blood manipulation",
+                dicePool: "Resolve + Quietus vs Stamina + Occult/Fortitude",
                 level: 5,
                 discipline: "quietus"
             },
@@ -8084,11 +9016,21 @@ export const disciplines: Record<DisciplineName, Discipline> = {
             },
             {
                 name: "Shared Nightmare",
-                description: "The Kindred turns an area into a horrible realm on walking nightmares. The ritual is especially powerful against large groups of assailants as it uses the fears of each intruder to augment the number and type of apparitions cast. The Kindred spills some of their blood into a burning fire (they must test for fear frenzy before performing the ritual). If successful, the area surrounding the ritual will become cursed. Anyone other than the Kindred or those of their blood (including ghouls and blood bound servants) will become affected automatically. For each intruder a spectre that embodies the victims worse fear will manifest. These are not supernatural fears like fire for vampires (although the storyteller can make them such) but rather deep personal horror. The spectres also have a mind of their own and each intruder's individual spectre does not need to haunt them itself. In game terms the area becomes chaotically haunted, and all enemies suffer a 2 dice penalty to all their rolls while the effects last (although the storyteller is welcome to introduce other affects as well). Type: Ritual. Tag: Physical. Range & Targets: An area within 100 meters (300 feet) of the site of the ritual. The size of the area can be modified to be a building for ease of gameplay. Cost: 1 Scene + 1 Rouse Check. Conditions: Must target the building the ritual takes place in. If the fire at the center of the Ritual is extinguished the ritual and its effects end immediately. Risk: Very High. The specters have a mind of their own and the ability indiscriminately targets all but the user and his closest allies (those who possess its blood). Test: Chimerstry + Wits (4). Resistance Roll: None. Duration: 1 Session (6 Hours) or until the fire that was used to cast the ritual is extinguished.",
+                description: "The Kindred turns an area into a horrible realm on walking nightmares. The ritual is especially powerful against large groups of assailants as it uses the fears of each intruder to augment the number and type of apparitions cast. The Kindred spills some of their blood into a burning fire (they must test for fear frenzy before performing the ritual). If successful, the area surrounding the ritual will become cursed. Anyone other than the Kindred or those of their blood (including ghouls and blood bound servants) will become affected automatically. For each intruder a spectre that embodies the victims worse fear will manifest. These are not supernatural fears like fire for vampires (although the storyteller can make them such) but rather deep personal horror. The spectres also have a mind of their own and each intruder's individual spectre does not need to haunt them itself. In game terms the area becomes chaotically haunted, and all enemies suffer a 2 dice penalty to all their rolls while the effects last (although the storyteller is welcome to introduce other affects as well). Type: Ritual. Tag: Physical. Range & Targets: An area within 100 meters (300 feet) of the site of the ritual. The size of the area can be modified to be a building for ease of gameplay. Cost: 1 Scene + 1 Rouse Check. Conditions: Must target the building the ritual takes place in. If the fire at the center of the Ritual is extinguished the ritual and its effects end immediately. Risk: Very High. The specters have a mind of their own and the ability indiscriminately targets all but the user and his closest allies (those who possess its blood). Test: Chimestry + Wits (4). Resistance Roll: None. Duration: 1 Session (6 Hours) or until the fire that was used to cast the ritual is extinguished.",
                 rouseChecks: 1,
                 amalgamPrerequisites: [],
                 summary: "Create area of nightmarish spectres that impose -2 dice penalty",
                 dicePool: "Chimestry + Wits",
+                level: 4,
+                discipline: "chimestry",
+            },
+            {
+                name: "False Resonance",
+                description: "The user's Chimerstry extends beyond normal sights now, able to fool even those capable of reading auras. This power is a great source of distrust against the Ravnos who could masquerade as mortals, Revenants, change how their morality is perceived and even hide signs of Diablerie with it.\n■ Cost: One Rouse Check\n■ Dice Pools: Manipulation + Chimerstry\n■ System: The user makes a Manipulation + Chimerstry roll and sets their aura as whatever they wish (for example, an aura of a mortal revenant walking the Road of Heaven who is also under the influence of Blood Sorcery while hiding the black veins of diablerie). Successes on the roll should be written down and all aura reading powers on the user contest those successes as a difficulty instead of the standard roll to resist aura reading powers. Illusion of False Resonance does not count towards the maximum number of illusions.\nIt is also possible to entirely strip oneself of all auras. One Ravnos pretended to be a statue with no indication that they were a sentient being by their aura the whole night before assassinating their Tremere nemesis.\n■ Duration: Illusion lasts for a night unless the user possesses Permanency which makes it permanent until dismissed.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Disguise your aura to fool aura-reading powers",
+                dicePool: "Manipulation + Chimerstry",
                 level: 4,
                 discipline: "chimestry",
             },
@@ -8110,6 +9052,16 @@ export const disciplines: Record<DisciplineName, Discipline> = {
                 amalgamPrerequisites: [],
                 summary: "Curse targets with week-long nightmarish visions",
                 dicePool: "Chimestry + Wits",
+                level: 5,
+                discipline: "chimestry",
+            },
+            {
+                name: "See with Lies",
+                description: "See with Lies allows the user of Chimerstry to extend their own senses through their illusions, possibly giving them the ability to permanently control them from afar if used correctly or craft illusions like birds through which they may soar into the sky and see with.\n■ Cost: Free\n■ Dice Pools: N/A\n■ System: The user may choose to enhance the illusions created by Ignis Fatuus and Fata Morgna to extend their own senses through them. To achieve this effect, the user must spend a point of Willpower every time they wish to tap into their illusion's senses. Those whose vitae is at least Blood Potency 9 are exempt from needing to spend Willpower as their blood already carries enough strength. The illusions do not allow Disciplines such as Presence, Thaumaturgy or Dominate to be used through them, but many powers of Auspex and Chimerstry can make great use out of these illusions as it gives them the often-necessary sight.\n\nThese illusions may even be tapped into during daysleep, but the sight of sunlight still provokes a Frenzy. If the vampire succumbs to Frenzy during daysleep, they may not use this power for the rest of their sleep and wake up in a Frenzy.\n■ Duration: Spreading your senses through an illusion lasts for a scene per point of Willpower spent.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Extend your senses through illusions, use Willpower to see through them",
+                dicePool: "N/A",
                 level: 5,
                 discipline: "chimestry",
             },
