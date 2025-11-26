@@ -22,6 +22,8 @@ import serpentisLogo from "../resources/Rombo_Disciplines/rombo_serpentis.svg"
 import quietusLogo from "../resources/Rombo_Disciplines/rombo_quietus.svg"
 import necromancyLogo from "../resources/Rombo_Disciplines/rombo_necromancy.svg"
 import daimonionLogo from "../resources/Rombo_Disciplines/rombo_daimonion.svg"
+import mythercriaLogo from "../resources/Rombo_Disciplines/rombo_mytherceria.svg"
+// import visceratikaLogo from "../resources/Rombo_Disciplines/rombo_visceratika.svg" // TODO: Create visceratika logo
 import { clanNameSchema, DisciplineName, disciplineNameSchema } from "./NameSchemas"
 
 export const amalgamPrerequisiteSchema = z.object({
@@ -3429,6 +3431,47 @@ export const disciplines: Record<DisciplineName, Discipline> = {
             { name: "Arachnid Horror", description: "The vampire's form shifts and mutates until dozens of monstrous appendages sprout from their body granting them a horrible degree of speed, dexterity and lethality. If successful, the user's form is altered with insectoid-like features. This could mean their lower half resembles that of a spider or centipede or other similar insectoid-like appendages sprout from their back or sides. Whatever form it takes the user receives the following bonuses: Unrivalled Dexterity: The user effectively benefits from the Celerity power of Cats Grace and Fleetness. Sharpened Limbs: Damage from the user's unarmed attacks ignores armour and cannot be halved. Extra Appendages: The user adds 2 dice to any Brawl and Athletics roll they make. Fleshcrafted Horror: Mortals and Enhanced Mortals must pass a Willpower test (3) or flee the Scene in horror.", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "celerity", level: 3 }], summary: "Transform into arachnid horror with enhanced speed, armor-piercing attacks, and terrifying appearance.", dicePool: "Celerity + metamorphose", level: 3, discipline: "metamorphose" },
             { name: "Mortis Engine", description: "The user creates a truly terrifying entity powered by the soul of a Wraith. For this Ritual to work the user must have a fleshcrafted body prepared and a Wraith either willingly waiting or trapped in an item nearby. The fleshcrafted body does not have to be anything special but it must be at least 2 meters tall (roughly 7 feet) and weigh 100 kilograms (200 pounds). If successful, the ritual will create a unique Fleshcrafted monstrosity known as a Mortis Engine. These entities are incredibly violent and will only listen to their creator. The creature is also incredibly resilient. It counts as having 10 health and halves all Superficial Damage. It also counts all Physical Attributes as 5, while the rest of its Attributes and Skills are copied from the Wraith. The creature benefits from its user's fleshcrafting expertise and the body can have 3 upgrades applied to it: Enhanced Musculation, Extra Limbs, Spiked Carapace, or Vicious Talons. Additionally, the creature will also develop 2 further mutations from the Wraith: Ethereal Fires, Debilitating Aura, or Deathless Onslaught. The creature can see and physically attack other spiritual entities and causes terror in mortals.", rouseChecks: 2, amalgamPrerequisites: [{ discipline: "oblivion", level: 4 }], summary: "Ritual: Create powerful fleshcrafted creature from wraith soul, highly violent and resilient.", dicePool: "Oblivion + metamorphose", level: 4, discipline: "metamorphose" },
        
+            // Additional Tzimisce Powers
+            {
+                name: "Coax the Tendons",
+                description: "Normally, mortals and even ghouls are unable to restore missing limbs without cutting-edge advancements in Medicine or powerful rituals. Coax the Tendons was used by the Tzimisce during the dark ages to quickly patch up their servants on the field of battle, allowing for reattachment of missing limbs. Many Tzimisce also see a more personally utilitarian purpose to this power and graft additional limbs to themselves and others. The user makes a Resolve + Metamorphosis against a difficulty of 2. On a win, they may reattach a lost limb or graft additional and new ones. Grafting additional limbs increases one's Strength (arms) or Dexterity (legs or arms), possibly going above the standard maximum of 5. Only one dot may be gained with this power.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Reattach lost limbs or graft additional limbs, potentially exceeding normal attribute limits",
+                dicePool: "Resolve + Metamorphosis",
+                level: 1,
+                discipline: "metamorphose"
+            },
+            {
+                name: "Blood Form",
+                description: "This power lets the vampire take the form of an amorphous mass of blood, or to turn only part of their form to animate vitae. The transformation takes one turn to fully complete, with the user being able to speed it up by one turn for every additional Rouse Check made. The user transforms themselves into a liquid. In form, they cannot be harmed by most conventional weapons (including stakes), though sunlight and fire still affect them as normal and consuming them is always an option. Attacks that can harm the user can be dodged as normal. The user gains a three-dice bonus on Athletics and Stealth that does not stack with the Power Bonus. In this form, there is no cumulative penalty to dodging against multiple opponents either. The user can squeeze through small cracks, and even flow cleanly up walls or across ceilings. While in bloodform (or partially in bloodform), the user can perform general actions such as pushing and pulling, but the difficulty of fine manipulation of electronic devices or liquids increases by two if manipulating them as Blood. If part of the mass is separated (or entirely consumed) the user's consciousness goes with the largest portion of Blood lost. If a portion of the user is consumed, it creates Blood Bonds as normal but the user cannot control their Blood after its been ingested by another. To consume the bloodformed user, the attacker must make a successful bite attack against the user who may dodge as normal. A successful bite attack deals no damage, but it increases the bloodformed target's Hunger by 1 while slaking the attacker's Hunger by one. Should the user be fully consumed after reaching Hunger 5 and being consumed once more, they reform in torpor with all Health marked with Aggravated Health damage. The user may use Disciplines as normal, provided they do not need to make eye contact or speak, though they can make a Rouse Check to partially reform body parts such as eyes, a vocal tract, limbs, or head (one Rouse Check is enough for all of them). However, the ability to reform parts of the body only comes with Inner Mastery (lvl 4 Metamorphosis).",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Transform into liquid blood form with immunity to conventional weapons but vulnerability to consumption",
+                dicePool: "N/A",
+                level: 3,
+                discipline: "metamorphose"
+            },
+            {
+                name: "Kin of Flesh",
+                description: "While cloning has...dubious implications and has the potential of leading one's authority into question as who is the 'real' vampire is uncertain, Kin of Flesh allows a vampire to essentially separate into two weaker halves. The separation takes one turn to complete, during which the user can only defend using their normal dice pools. Once transformed, the user is split into two halves. Each half possesses half (rounded down) Attributes of the other and half (rounded down, to a Generational minimum) Blood Potency, but the same rating of Skills, Disciplines, Hunger. Willpower also remains the same despite the halving of Composure and Resolve. Each half may use Disciplines, but the Hunger is shared between the two clones as well as Willpower. Permanent until the halves merge which takes one turn to complete. Should one half be destroyed, the other may has its Attributes and Blood Potency reset and takes Aggravated Health damage equal to the Health they just gained by resetting the Attributes.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Split into two weaker clones with shared Hunger and Willpower",
+                dicePool: "N/A",
+                level: 3,
+                discipline: "metamorphose"
+            },
+            {
+                name: "Inner Mastery",
+                description: "Approaching the legendary apotheosis, the goal of those walking the Road of Metamorphosis, the user's body and mind become one, being able to exercise complete control over the body as well as the mind. Prerequisite: Shape Bone. After purchasing this power, the user treats Mental and Social Attributes as if they were Physical for all purposes of Metamorphosis. The power itself has the same system as Shape Flesh with the following Alterations: Blood of the Dragon: The subject is capable of breathing out a burst of flame like a dragon by transmuting their blood into a gas that ignites on impact with air. To use this alteration, the subject pays a cost of a Rouse Check and rolls Composure + Firearms against the target's dodge pool, dealing Aggravated Health damage equal to the margin. The attack has a maximum range of around 6 meters. The fire passing through the subject's body inflicts one point of Aggravated Health damage whenever the breath of fire is used and provokes a fire fear frenzy check against a difficulty of 2 as normal. The vampire may only use this alteration on themselves due to the constant need for producing and breathing the flammable liquid. (Cost: One Physical Attribute). Encase the Heart: The subject's heart is encased in hardened crystallised blood, requiring two additional points of damage before halving to be properly staked. (Cost: half of a Physical Attribute dot). Horror of the Mind: This alteration is only usable while in the Horrid Form which begins to exude a strange miasma coupled with body horror that cause nearby onlookers, to be even more afraid afraid. Mortals and animals within a 10meter radius must make a Willpower check against a difficulty of 3 or they will flee in terror. Tzimisce revenants are immune to this. (Cost: half of a Physical Attribute dot). Memory Change: This alteration rewrites a single decade's worth of memory for each success on the Metamorphosis roll poured into this alteration. One may even replace memories of hostile relations and effectively turn a person into their indebted servant using Memory Change. To permanently recruit an ally, they must be bought as a one-dot retainer. (Cost: Free). Poison in the Blood: The subject's blood is mixed with various digestive acids and other nasty liquids of the body, mortals coming in contact (usually by drinking, but skin contact by spitting it with Composure + Firearms works as well) with at least one Rouse Check's worth of vitae die instantly while vampires suffer a point of Aggravated Health damage due to the corrosive nature of the contact-poison (Cost: One Physical Attribute). Voice to the Beast: The user's own Horrid Form is capable of speech, allowing Disciplines like Dominate to be used and it grants the user the ability to use Blood Sorcery. (Cost: One Physical Attribute dot). This acts as a passive power enhancing Shape Flesh and passively providing mentioned benefits.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Ultimate metamorphosis mastery - apply to Mental/Social Attributes, gain dragon breath, heart protection, memory manipulation, and more",
+                dicePool: "Resolve + Metamorphosis",
+                level: 5,
+                discipline: "metamorphose"
+            },
         ],
     },
     obfuscate: {
@@ -5693,33 +5736,424 @@ export const disciplines: Record<DisciplineName, Discipline> = {
             },
         ],
     },
-    // NEW QUIETUS POWERS ADDED
-    // These powers represent the expanded paths of Quietus as described
-    // including Quietus Animae (spiritual path), Quietus Cruciatus (warrior path), and Quietus Sanguinis (sorcerer path)
-    
-    // Add these to the existing Quietus powers array above:
-    /*
-    QUIETUS ANIMAE POWERS:
-    Level 1: Internal Awareness, Taste of the Soul, Silentia Mortis
-    Level 2: Lure of the Blood, Ripples of the Blood, Read the Blood's Desire  
-    Level 3: Ishtar's Touch, Strengthen the Soul
-    Level 4: Blood Sweat, Truth of Blood
-    Level 5: Blood Awakening, Taste of Bliss
-    
-    QUIETUS CRUCIATUS POWERS:
-    Level 1: Blood Essence, Taste of the Body, Silence of Death
-    Level 2: Hinder Mending, Scorpion's Touch
-    Level 3: Dagon's Call, Raptorous Touch
-    Level 4: Hinder the Cainite Vitae, Quicken the Mortal's Blood
-    Level 5: Baal's Caress, Erode
-    
-    QUIETUS SANGUINIS POWERS:
-    Level 1: Blood Tempering, Taste of the Body (mental), Sight of the Blood
-    Level 2: Blood Forging, Scorpion's Curse
-    Level 3: Marduk's Rattle, Marduk's Whip
-    Level 4: Cleansed in Blood, Blood Talk
-    Level 5: Multiple level 5 powers including blood potency reduction
-    */
+    mytherceria: {
+        clans: ["Kiasyd", "Caitiff"],
+        summary: "Fae-touched powers of perception and reality manipulation",
+        logo: mythercriaLogo,
+        powers: [
+            // Level 1
+            {
+                name: "Fae Sight",
+                description: "The fae see the world brighter and in more ways than a mortal could possibly imagine. While such perspectives often do not match the material reality, the practitioners of Mytherceria are still able to see beyond the mundane, able to see things hidden by magic. This power applies to everything Sense the Unseen would such as things hidden from plain sight by magic like users of Obfuscate and even magical Wards. Wits + Mytherceria is primarily used for spontaneous detection with Resolve + Mytherceria representing an active search by the user.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "See through magical concealment like Obfuscate and Wards (passive)",
+                dicePool: "Wits/Resolve + Mytherceria",
+                level: 1,
+                discipline: "mytherceria"
+            },
+            {
+                name: "Folderol",
+                description: "The fae see what others can not. Even in undeath, the practitioners of Mytherceria retain shards of such powers. Whenever someone deliberately tells a lie that has been detected, the user's body reacts to it in a unique way; one might experience bleeding from the eyes or ears when they hears a lie, whilst another Weirdling's eyes glow. Add the Mytherceria rating to all Insight rolls to detect lies of others. A successful lie detection provokes a visible physical reaction in the user.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Add Mytherceria rating to Insight rolls, physical reaction when detecting lies",
+                dicePool: "N/A",
+                level: 1,
+                discipline: "mytherceria"
+            },
+            {
+                name: "Ink Trace",
+                description: "By brushing their hand against writing, a drawing or something printed out in ink; the shapes the ink took are remembered in the Blood of the user. An ink stain shows on the user's palm, and can be manipulated to perfectly replicate the remembered trace onto another surface. This can be often used for forgery of signatures or other valuable documents. Upon inspection, the replicating ink seems perfectly normal, however tests for the composition of the ink will reveal that it is made out of blood, although it cannot identify who's, due to the blood's altered state. After the power's duration ends, the ink on the palm will excrete and drip off the hand, and the trace will be lost.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Copy and replicate ink patterns for perfect forgery",
+                dicePool: "N/A",
+                level: 1,
+                discipline: "mytherceria"
+            },
+
+            // Level 2
+            {
+                name: "Blur",
+                description: "The user appears to blur into a multitude of indistinct copies of themselves, obscuring their location and allowing them to evade the aim of their enemies. When attempting to physically dodge or avoid an enemy attack, be it a physical blow or target spell, add your Mytherceria rating to the dice pool. If your roll is successful, the power ends. If your enemy is using Sense the Unseen and has an Auspex rating (or similar power and a Discipline, like Fae Sight) greater than your Mytherceria rating, you may not add this dice bonus.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Add Mytherceria rating to dodge rolls until successful dodge",
+                dicePool: "N/A",
+                level: 2,
+                discipline: "mytherceria"
+            },
+            {
+                name: "Intangible Vessel",
+                description: "The vampire can cause a nearby object to temporarily lose its tangibility for mortals and supernaturals, making it untouchable for anyone other than the vampire and those they desire to touch it. The user targets an inanimate object within line of sight and within 10 metres of them. Only the user and those they allow can touch this object. Other beings - mortal, animal or supernatural - cannot interact with it, as they seem to go straight through it. The object will rest on a surface whilst not held by the user, but will fall through anything else (such as a hook). Objects protected by magic are unaffected by this power. The object doesn't appear any different at a glance, but a person can make a Wits Mytherceria vs the current bearer's Wits + Resolve. On a win for the current bearer, the power fails.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Make object intangible to everyone except you and chosen allies",
+                dicePool: "Wits + Mytherceria vs Wits + Resolve",
+                level: 2,
+                discipline: "mytherceria"
+            },
+
+            // Level 3
+            {
+                name: "Aura Absorption",
+                description: "The fae feed on emotions of the living beings, or so the legends say. As is so often the case in Cainite lore, every legend and every lie holds a bit of truth within itself. Subconscious tapping into their fae-touched heritage, the adept of Mytherceria can absorb emotions and impressions off objects and places, allowing the user to relive them while they ingest them. This power may be used only once a night on the same target. On a win, the user can select one of the following effects from the list below and an additional one for each additional margin on the roll: Read the aura the target's Road/Path or Humanity and its rating (can adopt this aura), Reveal the target gender, age and name (can daze target with -2 dice to Intelligence), Read the aura to determine creature type and clan (can adopt this aura), Read the aura to determine Disciplines and supernatural powers and their strength, Read the aura to determine Resonance and Temperament (can adopt these, reducing target's Temperament by one). Those possessing magical perception such as Sense the Unseen may roll against user's successes to see the aura draining.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Absorb and read various aspects of target's aura, can adopt some traits",
+                dicePool: "Resolve + Mytherceria vs Composure + Subterfuge",
+                level: 3,
+                discipline: "mytherceria"
+            },
+            {
+                name: "Mind Steal",
+                description: "The vampire lessens someone's knowledge of a skill they possess and adds it to their own, temporarily granting them superiority in the skill that may normally be impossible, ensuring the odds of victory. The user makes a Resolve + Mytherceria roll opposed by their victim's Composure + Resolve. If the user wins, the target loses a number of dots in a Skill chosen by the user equal to the margin of success for the power's duration, up to a maximum of the number of dots they have in that skill. The user gains a number of bonus dice for pools involving that Skill, equal to the number of dots lost by the target. On a win, these bonus dice must be used on the next relevant dice roll, ending the power. A character may only benefit from one stolen Skill at a time, and using this power again ends the previous effect.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Steal skill dots from target and gain them as bonus dice",
+                dicePool: "Resolve + Mytherceria vs Composure + Resolve",
+                level: 3,
+                discipline: "mytherceria"
+            },
+
+            // Level 4
+            {
+                name: "Aura of Sloth",
+                description: "This power forms an aura that mentally fatigues those within it, able to put mortals to sleep with ease, and even affecting the time supernaturals need before they must rest. The aura can expand to up to 10 metres from the user in all directions, not being obstructed by physical obstacles such as walls. No roll is required against unprepared mortals caught within the radius, who immediately feel drowsy and adopt the most comfortable position they can find to sleep. Causing drowsiness in vampires and other supernatural creatures (ghouls, revenants...) requires a Manipulation + Mytherceria vs. Stamina + Resolve roll when they first enter the aura. On a win, the supernatural does not immediately sleep, but suffers a two-dice penalty to all Mental dice pools while they remain within the aura. On a fail, the supernatural is unaffected.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Create 10m aura causing sleep in mortals, mental penalties in supernaturals",
+                dicePool: "Manipulation + Mytherceria vs Stamina + Resolve",
+                level: 4,
+                discipline: "mytherceria"
+            },
+            {
+                name: "Quick Swap",
+                description: "The user can swap the position of two inanimate objects in an instant. This could swap a scrap of paper in their hand with a shotgun, or swap the blade someone holds with a piece of hot coal that was in a fire. The inanimate objects must both be within 20 metres of the user, have been seen by the user before, and be something that the user can carry in one hand without great effort. Objects that are being held or worn by another at the time of using this power require a contest of the user's Resolve + Mytherceria vs the current bearer's Wits + Resolve. On a win for the current bearer, the power fails. In the case the container is a hand and that the swapped object may harm the person who's now grasping it, they may attempt to make a Dexterity + Athletics with Difficulty equal to the user's Mytherceria rating + 1. On a success, they are able to quickly drop it at their feet, not being harmed by holding it. On a failure, the harm is up to the Storyteller's discretion. For instance, a flaming log or bladed edge appearing in the target's hands would deal a point of Aggravated Health damage, with the former also causing a Kindred to make a Fear Frenzy check.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Instantly swap positions of two hand-sized objects within 20m",
+                dicePool: "Resolve + Mytherceria vs Wits + Resolve",
+                level: 4,
+                discipline: "mytherceria"
+            },
+
+            // Level 5
+            {
+                name: "Hold the Power",
+                description: "Not only can the vampire steal experience of mundane tasks earned over years of practice but they can even copy powers of the Blood. When used against a kindred or ghoul, the user makes a Resolve + Mytherceria roll opposed by their victim's Composure + Resolve. This power can reduce the target's rating in a non-Blood Sorcery Discipline by 1 on a win, or 2 on a critical win, and they cannot use powers of a higher level than their rating for the duration. The user gains the Discipline dots of the target they have reduced if they do not possess a single dot in that Discipline. If the target gets a critical win on the contest, the power cannot be used against them again until the following night. A character may only weaken one discipline at a time, and using this power again ends the effect on the previous target.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Steal Discipline dots from target, reducing their rating and gaining temporary access",
+                dicePool: "Composure + Resolve vs Resolve + Mytherceria",
+                level: 5,
+                discipline: "mytherceria"
+            },
+            {
+                name: "Grand Trick",
+                description: "After draining all the life from a mortal, the vampire gets the grand power to mimic aspects of mortality until the next night whilst maintaining their ability to use their Mytherceria discipline powers at the cost of draining their willpower. Using your skill and knowledge in Necromancy, you know how to twist life like Cappadocian elders. When you fully drain a mortal and kill them with your kiss, you can forego slaking your hunger as the Blood is immediately absorbed to fuel this power. The user's form grows closer to mortality, being very similar to a Thin-Blood; possessing all of their normal traits, including a Blood Potency of 0 as well as the Baby Teeth, Bestial Temper, and Mortal Frailty Flaws; and the Day Drinker and Lifelike Merits. The user becomes unable to use or benefit from any Discipline powers except those from the Mytherceria Discipline, and even using these powers requires them to take 2 superficial willpower damage for each Rouse Check. User may still perform Blood Sorcery normally. Whilst the user does have Bestial Temper, they do not suffer fear the sunlight and have a two-dice bonus to all frenzy rolls. The user keeps all parts of their Clan Bane with a Bane Severity of 1.",
+                rouseChecks: 2,
+                amalgamPrerequisites: [{ discipline: "necromancy", level: 3 }],
+                summary: "Become mortal-like after killing a mortal, gain Thin-Blood traits until next night",
+                dicePool: "N/A",
+                level: 5,
+                discipline: "mytherceria"
+            },
+        ],
+    },
+    temporis: {
+        clans: ["True Brujah"],
+        summary: "Time manipulation powers unique to True Brujah",
+        logo: celerityLogo, // Uses Celerity logo as specified
+        powers: [
+            // Level 1
+            {
+                name: "Fluent Tardiness",
+                description: "Users of Temporis often feel around them that the world is just too slow, even when they are not actively focusing on manipulating time. There is some truth in this, however, as their presence alone is a threat to the stability of the laws of time. Whenever the vampire uses a Blood Surge to augment a Dexterity or Temporis test, they may reroll the Rouse Check.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Reroll Rouse Checks when Blood Surging Dexterity or Temporis tests (passive)",
+                dicePool: "N/A",
+                level: 1,
+                discipline: "temporis"
+            },
+            {
+                name: "Time Attunement",
+                description: "Your body and the Beast itself have been modified by your skills in Temporis, giving you the ability to always know the flow of time and even some resistance against the drowsiness that compels vampires to sleep. You have a perfect internal clock and can instantly detect manipulations of time, be it from Temporis, sorcery or from another supernatural source. Additionally, you are able to awaken sooner than most vampires by half an hour per dot in Temporis and your Beast does not compel you to fall asleep at least for half an hour per dot in Temporis.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Perfect time sense, detect time manipulation, resist sleep compulsion (passive)",
+                dicePool: "N/A",
+                level: 1,
+                discipline: "temporis"
+            },
+
+            // Level 2
+            {
+                name: "Repeat",
+                description: "Repeating the same course of an action that has failed you is often a sign of madness –or a sign that you are being influenced by a user of Temporis. With Repeat, the target is forced to repeat their previous simple action. Upon a win, the victim's current action is interrupted and they are forced to repeat a simple action they took in previous two turns such as attacking the same target in the same way or repeating a sentence. The user of the power gains a two-dice bonus on any Skill-based roll against the victim, already understanding what their intent and reactions.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Force target to repeat previous action, gain +2 dice against them",
+                dicePool: "Wits + Temporis vs Composure + Resolve",
+                level: 2,
+                discipline: "temporis"
+            },
+            {
+                name: "Slow Job",
+                description: "While not able to directly interfere with the living things due to the laws of time not yet heeding the user's commands to such an extent, the Slow Job allows a user to perform an action that would take seconds much faster – at least that is show it would look to the outsiders. From the user's point of view, the world slows a bit, but enough for them to accomplish their task quickly. When active, this power lets the vampire complete Skill-related tasks that would otherwise take whole turns in the span of a few seconds, and can treat a full action as a minor action. The power cannot be used to speed up attacks, defenses, or to perform any other actively resisted task but it does allow the vampire to, for example, jimmy a lock and fire a gun (the latter with a two-dice penalty, as per the minor action rules.). Other such examples would be activated slaking from the Calix Secretus, reloading bows, crossbows or guns...",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Treat full actions as minor actions for non-combat tasks",
+                dicePool: "N/A",
+                level: 2,
+                discipline: "temporis"
+            },
+
+            // Level 3
+            {
+                name: "Inside the Hourglass",
+                description: "The still unable to stop time or reverse it in a greater state, the user of Temporis with this power is able to slow down their perception just enough to be able to properly respond and react to everyone's actions, giving them more time to consider and rethink their next move – and the True Brujah are great (re)thinkers indeed. Attacks that achieve fewer successes than the user's Temporis rating always miss, no matter the result of a defense or dodge test (if any). This also works against surprise attacks or other attacks that disallow defense tests, such as Lightning Strike. Activating this power requires one Rouse Check and extending it requires an additional Check for each turn it is kept active. If attacking a person with Blurred Momentum while you are using Inside the Hourglass and vice versa, subtract each other's Celerity and Temporis rating for the purposes of the System.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Attacks with fewer successes than Temporis rating automatically miss",
+                dicePool: "N/A",
+                level: 3,
+                discipline: "temporis"
+            },
+            {
+                name: "Slow Walker",
+                description: "Like a Celerity user, the adept of Temporis is able to, in the eyes of those who do not possess Celerity or Temporis, seemingly teleport from one location to the other. In reality, the user of Temporis simply slows the time in the area to traverse a distance without interacting with objects directly as that would violate the strongest laws of time. The vampire moves towards a target, covering any distance under 10 × their Temporis rating in meters while still having enough time to perform an action, such as an attack, during the turn. While moving, the world is essentially grinded to a halt, but the user can not stay in one place and interacting with anything stops the power due to the temporal paradox. Should a user of Celerity be using Blink within the same turn, the users of Temporis and Celerity treat each other as if they are moving at their normal speed.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Move 10x Temporis rating in meters and still perform an action",
+                dicePool: "N/A",
+                level: 3,
+                discipline: "temporis"
+            },
+            {
+                name: "Unweave",
+                description: "The user is able to push their senses of time even further, now able to actively manipulate their own sense of time as they perceive the world even more slowly, allowing them to parry the attacks with ease. Prerequisite: Fluent Tardiness. When active, this power lets the vampire experience time at an even slower pace. The user does not suffer diminishing dice pools when defending against multiple ranged attacks using Dexterity + Athletics, able to quite literally see arrows and bullets fly past at them. They can also add their Temporis rating to all such attempts while this power is active. If they are attacking a person with Celerity using Weaving or vice versa, subtract each other's Discipline rating from the dice bonus, down to 0.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "No diminishing pools vs multiple ranged attacks, +Temporis rating to defense",
+                dicePool: "N/A",
+                level: 3,
+                discipline: "temporis"
+            },
+            {
+                name: "Slow Cuts",
+                description: "By slowing time around them for a swift moment, the user is able to deliver an uncountable amount of quick cuts and slashes against an opponent. The victim appears as if their body spontaneously erupts in hundreds of wounds, each seemingly insignificant in its own right but excruciating in their increasing volume. Prerequisite: Fluent Tardiness. The vampire may add their Celerity rating to any single Brawl or Melee attack (not otherwise augmented by a Discipline) made with claws or an edged weapon. For mortal victims, the cuts and slices caused by this flurry of attacks only cause Superficial damage, but automatically inflict enough additional Superficial damage for the victim to be Impaired. The attack also splashes blood far and wide, causing vampires at Hunger 3 or more to make Hunger Frenzy tests. Used against Kindred, the attack is relatively harmless, but the scores of vicious yet unbleeding wounds leave the victim a walking Masquerade violation, and might provoke a Fury Frenzy test at the Storyteller's discretion. If the user attacking a person with Celerity using A Thousand Cuts while using Slow Cuts and vice versa, subtract each other's Discipline rating from the dice bonus, down to 0.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Add Celerity rating to Brawl/Melee attack, impair mortals, create Masquerade violations",
+                dicePool: "N/A",
+                level: 3,
+                discipline: "temporis"
+            },
+
+            // Level 4
+            {
+                name: "Co-walkers",
+                description: "By seeing cracks through time and space, the user of Temporis is able to, at least for a second, be in two places at the same time. This ability is an essential tool to counter the fact the bloodline of the True Brujah is vastly outnumbered by their usurping counterparts. After making a Rouse Check, the user is able to do two physical actions in the same turn, appearing as if in multiple places at the same time. This can be anything from attacking more than a single foe to attacking the same multiple times. The attacks are treated normally as if made by another person. After the action is done, the person's 'other' selves disappear almost instantly.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Perform two physical actions in the same turn, appearing in multiple places",
+                dicePool: "N/A",
+                level: 4,
+                discipline: "temporis"
+            },
+            {
+                name: "Reverse the Hour",
+                description: "While not nearly as impressive as meddling in it, the user is able to see into the past to observe the events that have transpired through their own eyes and flesh or that of one of the participants. Time is a cruel mistress and should one attempt to change the past, they will be ejected and severely punished. Rumours exist that the ancients of the True Brujah bloodline were able to use this power to go back 1000s of years into the past and influence it – with some tales talking about them also venturing into the future. First, the user must be standing directly where they wish to travel back in time. The user then makes a Wits + Temporis roll at a difficulty of 3. On a success, they may travel into the past for a night (but usually a single scene is enough), with the oldest possible night/scene being days old equal to the margin on the roll. On a critical win, the user's oldest scene could also be from between two to three months old. Once taken back in time, they may either witness it through their own eyes, manifesting as a mundane person within a function (a servant during a masquerade ball) or as a specific person, witnessing the events transpire from their position. The user may also interact with the individuals and objects in the past, but they are not allowed to change the outcome of history in any significant manner – even an attempt to do so has them ejected from the past and suffering three to seven points of Aggravated Health damage. It should be noted that the person does not have access to supernatural powers as they are simply playing an already-made role in the event they are observing.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Travel back in time to witness past events, limited interaction allowed",
+                dicePool: "Wits + Temporis",
+                level: 4,
+                discipline: "temporis"
+            },
+            {
+                name: "Suspend in Time",
+                description: "The user extends their timelessness and forces it upon a victim in such a manner that they are frozen in time until interacted – making them easier to attack or escape them. The user needs to have sight on the target for the power to work. On a win, the victim is frozen in time, counting as an unmoving target and unable to take actions for turns equal to 1 + the margin on the roll or until the target takes damage which ejects them from stasis.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Freeze target in time until damaged or duration expires",
+                dicePool: "Wits + Temporis vs Composure + Resolve",
+                level: 4,
+                discipline: "temporis"
+            },
+
+            // Level 5
+            {
+                name: "Timestop",
+                description: "Already reaching the legendary powers that the elders of the True Brujah are said to possess, Timestop allows its user to quite literally stop time and move – crossing great distances or avoiding lethal dangers by a hair. The player can supersede the Storyteller's narration of events, within reason. They can choose to have their character move through a door before it closes, circumvent an ambush after it has been triggered, roll out of the way of an explosion, and so forth. The action taken must be reasonable and should not take more than a few seconds in real time. The Storyteller decides what Skills, if any, need to be checked to successfully accomplish an action begun using this power. This power can be used to nullify Lighting Strike as the user catches even a split nanosecond of their target utilising such a strong example of Celerity. It may also cancel the Split Second and vice versa as the user of Celerity moves incredibly fast while the user of Temporis slows them down to a normal speed.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Stop time to perform reasonable actions, counter Celerity powers",
+                dicePool: "N/A",
+                level: 5,
+                discipline: "temporis"
+            },
+            {
+                name: "Strike the Slow",
+                description: "The user pushes themselves through a crack in time, effectively slowing the world around themselves from their perspective, to make an attack against what is essentially a stationary target. The user makes a Brawl or a Melee attack against their opponent at a static difficulty of 1 due to the target appearing frozen. This power may cancel the Lightning Strike and vice versa as the two users collide – one speeding while the other slows.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Make Brawl/Melee attack at difficulty 1 against frozen target",
+                dicePool: "N/A",
+                level: 5,
+                discipline: "temporis"
+            },
+        ],
+    },
+    thanatosis: {
+        clans: ["Samedi"],
+        summary: "Death and decay powers of the Samedi",
+        logo: necromancyLogo, // Uses Necromancy logo as specified
+        powers: [
+            // Level 1
+            {
+                name: "Face of the Dead",
+                description: "By channeling decay into their body, the user is able to assume the visage of a cadaver to safely hide among the dead – should the need arise. To change their own face, the user needs to pay no cost and only roll Stamina + Thanatosis against a difficulty of 3. On a win, they lower their Looks Merit's appearance by a single level (normal to Ugly, Stunning Beautiful, etc.) and the effects of any other Looks Merits nullify as they fade and rot. The user also loses a dot of Dexterity to a minimum of 1 and assumes the visage of a corpse, giving them a dice bonus equal to the user's Thanatosis rating to a Composure + Subterfuge roll to pretend to be a corpse that has to be contested by Awareness to recognise the user as something other than an ordinary corpse. The user may also target others with this power, paying the cost of a Rouse Check and rolling Stamina + Thanatosis vs. the target's Stamina + Occult (or a flat difficulty of 3 if the victim is not resisting). On a win, the victim gains the aforementioned benefits counting the user's Thanatosis rating as their own and they gain the aforementioned drawbacks.",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Assume corpse-like appearance to hide among the dead, can target others",
+                dicePool: "Stamina + Thanatosis vs Stamina + Occult (or Fortitude)",
+                level: 1,
+                discipline: "thanatosis"
+            },
+            {
+                name: "Hag's Wrinkles",
+                description: "By stretching their dead skin, the user is able to create little pockets to hide objects in. The user twists their flesh for a turn and rolls Stamina + Thanatosis to create pockets within which they may safely hide items up to a volume of their palm. To hide items larger than that, the user gains their Thanatosis rating as a dice bonus on Wits + Stealth roll to successfully hide them contested by Awareness as if hiding objects in pockets normally.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Create skin pockets to hide small objects, bonus dice for larger items",
+                dicePool: "Stamina + Thanatosis",
+                level: 1,
+                discipline: "thanatosis"
+            },
+            {
+                name: "Sending Them Into the Earth",
+                description: "Disposal of corpses is a useful trick of the Cappadocians that Troglodytia taught her children, allowing them to live on even after the purge of the Cappadocians by acting as cleaning crews for hire. With Sending Them Into the Earth, the user is able to quickly dissolve a corpse or even a corpse construct of necromancy such as zombies. The user touches a cadaver or a zombie and makes a Resolve + Necromancy roll against a difficulty of 3. On a Win, the body begins to dissolve into ash over the course of the next 5 turns with each additional margin reducing the time it takes to dissolve by a turn with at least 5 margins or a Critical Win dissolving the body instantly.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Dissolve corpses and zombies into ash over time",
+                dicePool: "Stamina + Thanatosis",
+                level: 1,
+                discipline: "thanatosis"
+            },
+
+            // Level 2
+            {
+                name: "Paralysis of Death",
+                description: "The user of Thanatosis transforms their vitae into a contact poison capable of delivering rigor mortis. Many a Samedi who has served as a mercenary has found this power extremely useful as it can be coated on weapons. French-kissing a victim works, but who would be so brave as to kiss a Samedi – a walking, decaying corpse. The user concentrates for a turn and forces Blood through an open, usually self-inflicted, wound. Each Rouse Check worth of poison made takes a turn and emits enough Blood to coat one bladed melee weapon stickily or to fill one mouthful to be spat at a foe. Spitting poison at someone involves a Dexterity + Athletics attack roll (which can be dodged like any ranged attack), but French-kissing their victim is also another way. Drinking poisoned Blood from the vein guarantees a hit, of course. Aside from such vein-to-fang transmission, however, this liquid is a contact poison that sublimes away in liquids and is too viscous to inject with a syringe. The user cannot poison beverages with it or (thanks to the pressure differential) inject it by their own bite. The poison is also too fragile in substance to be mixed with other poisons, including ones of Quietus. If the poison hits, the user rolls a contest of Stamina + Thanatosis vs. Stamina + Occult. (Vampires with Fortitude may resist with Stamina + Fortitude). If the user wins, the poison does instantly paralysises a mortal while inflicting physical impairment on a vampire victim as rigor mortis takes effect. The effect lasts for nights equal to the user's Blood Potency rating or until healed as a point of Aggravated Health damage with mortals only being able to heal it by supernatural means such as drinking vampire vitae or other magics.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Create contact poison causing paralysis in mortals, impairment in vampires",
+                dicePool: "Stamina + Thanatosis vs Stamina + Occult (or Fortitude)",
+                level: 2,
+                discipline: "thanatosis"
+            },
+            {
+                name: "Putrefaction",
+                description: "By touch alone, the user of Thanatosis is able to call the victim's flesh to rot and decay, making their punches deliver damage far deeper and devastating blows. The user must touch their victim (which can be performed in combat through any combination of Strength or Dexterity + Brawl or Athletics) and make a Rouse Check. Following that, the victim takes half of the user's Thanatosis rating rounded up as Aggravated Health damage. Additionally, the victim suffers a Crippling Injury as chosen by the user. The user of this power should be weary so as not to touch anything by accident as it deals the damage as stated above, withering plants and accidentally killing humans by touch alone on accident.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Touch causes Aggravated damage and Crippling Injury through decay",
+                dicePool: "N/A",
+                level: 2,
+                discipline: "thanatosis"
+            },
+            {
+                name: "Putrecent Servitude",
+                description: "Users of Thanatosis, perhaps due to the necromantic properties of the Discipline or due to the unlife-giving aspects of vampiric vitae, are able to animate a zombie-like creature to serve their needs. The user feeds a corpse their blood and rolls Stamina + Thanatosis against a difficulty of 3. On a win, the corpse rises as an aggressive corpse after a turn. The zombie possesses some intelligence and will defend themselves if provoked and can only act out one command at a time. They are also able to understand somewhat complex orders such as 'kill everyone who enters,' 'groan if you see anyone pass this way,' or 'terrorize that neighborhood.' If they are left without orders (such as 'Be dormant!') they turn hostile against everybody but their master. These zombies must be permanently bought as a one-dot Necromantic Construct or they will become unruly, disobedient and unstable after a story. The user may also command to them to rot away to deactivate them. Larger animals may be resurrected as an aggressive corpse, using the stats below as normal resurrected aggressive corpses.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Animate intelligent zombies that follow complex commands",
+                dicePool: "Stamina + Thanatosis",
+                level: 2,
+                discipline: "thanatosis"
+            },
+
+            // Level 3
+            {
+                name: "From Ashes We Came",
+                description: "Using this hardly known power, the user is able to instantly turn into ash as if they have been burned by the Sun, allowing them to escape certain death and even become immune to sunlight. As many have not even heard of this ability, many assailants will simply think the vampire dead and move on. The transformation into a small pile of ash takes two turn. Once transformed, the user possesses no senses whatsoever other than touch. The user has no ability to move their ashes except to keep it together (otherwise winds would pose quite a risk). If the ashes are split, the highest amount of ashes carries the user's concentration and upon reforming the user takes appropriate damage as stated by the storyteller (losing half of their mass should check half of their Health with Aggravated damage). While in this form, the vampire is immune to all forms of damage except fire and supernatural powers at the storyteller's discretion. Reforming from a heap of ashes requires a single turn. If the user had been placed into a container, they dramatically smash it if they are physically strong enough.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Transform into ash pile, immune to most damage except fire",
+                dicePool: "N/A",
+                level: 3,
+                discipline: "thanatosis"
+            },
+            {
+                name: "Wear Their Skin",
+                description: "By carefully removing a mortal's face (or entire skin), the user is able to craft themselves a mask or an entire bodysuit to take the form of the one to whom the skin originally belonged. First, the user needs to carve out a facemask (Dexterity + Medicine or Crafts against a difficulty of 3 to craft) or an entire bodysuit (Dexterity + Medicine or Crafts against a difficulty of 4 to craft) from a person. If using the bodymask, the user will gain all of their Looks Merits and will gain the Looks Flaws regardless of what they use for the power. Once they get into the facemask or the bodysuit, they roll Stamina + Thanatosis against a difficulty of 3. On a win, the skin tightly fits around the user and their flesh expands or retracts to accommodate it; the user is a perfect physical copy of the person (without the Looks Merits if only wearing a facemask), matching the height and the voice of their former victim. The user may require additional Performance or Subterfuge rolls to imitate the person's voice and mannerism, however.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Craft skin masks/suits to perfectly impersonate victims",
+                dicePool: "Stamina + Thanatosis",
+                level: 3,
+                discipline: "thanatosis"
+            },
+
+            // Level 4
+            {
+                name: "Creeping Infection",
+                description: "Users of Thanatosis are able to concoct new supernatural ailments to devastate their foes with ease and their breath alone is capable of decimating entire groups of mortals. The user slowly breathes out an invisible gas of various supernatural ailments and rolls Stamina + Thanatosis. Those within a radius equal to the user's rating in Thanatosis may roll Stamina + Medicine (or Fortitude, if they possess it) to resist their effects. All creatures who fail the roll are infected, suffering Physical Impairment for the rest of the scene. Mortals who stay in the radius are even more prone to these ailments and roll Stamina + Medicine (or Fortitude) against a difficulty equal to the user's Thanatosis rating each turn after the first for as long as they stay within the area of effect. On a failure, they take a point of Aggravated Health damage.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Breathe infectious gas causing impairment and ongoing damage to mortals",
+                dicePool: "Stamina + Thanatosis vs Stamina + Medicine (or Fortitude)",
+                level: 4,
+                discipline: "thanatosis"
+            },
+            {
+                name: "Draught of Decay",
+                description: "By feeding a Rouse Check of their vitae to another vampire or a ghoul, they are able to share some of their powers of Thanatosis with them. Prerequisite: Putrefaction. Drinking a Rouse Check's worth of Blood directly from the user gifts the drinker with temporary Fortitude equal to half the Fortitude dots (rounded down) of the donor. The drinker gains the same powers as the donor's, up to that level.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Share Thanatosis powers through blood, grant temporary Fortitude",
+                dicePool: "N/A",
+                level: 4,
+                discipline: "thanatosis"
+            },
+            {
+                name: "Mortal Illness",
+                description: "Harbingers of disease, the user of Thanatosis creates an ailment to induce a complete shutdown of function and death. The user concots an ailment and touches a mortal victim (coating one's sword is also a possibility as it is a contact poison. See Paralysis of Death for that system) and rolls Stamina + Thanatosis vs. The victim's Stamina + Medicine (or Fortitude, if they possess it). On a win, the victim is infected and will expire from a series of what could be described as heart attacks or other organ failures at a moment decreed by the user when they created the ailment. Some set timed ailments to help them drop the guards during haists, having infected them months or even years before that.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Create delayed-death ailment that kills at predetermined time",
+                dicePool: "Stamina + Thanatosis vs Stamina + Medicine (or Fortitude)",
+                level: 4,
+                discipline: "thanatosis"
+            },
+
+            // Level 5
+            {
+                name: "Intelligent Ash",
+                description: "By sharpening their senses in their Ash form, the user is able to both see and hear by sensing vibrations. The greater control over their form also allows them movement. Prerequisite: From Ashes We Came. While in ash form, the user is now able to hear and see most of what they would if they weren't in their ash form. Additionally, they may move at a walking speed (one does not need to state how unusual walking ashes would look to mortals).",
+                rouseChecks: 0,
+                amalgamPrerequisites: [],
+                summary: "Gain sight, hearing, and movement while in ash form",
+                dicePool: "N/A",
+                level: 5,
+                discipline: "thanatosis"
+            },
+            {
+                name: "Necrosis",
+                description: "By sharpening their senses in their Ash form, the user is able to both see and hear by sensing vibrations. The greater control over their form also allows them movement. Prerequisite: Putrefaction. The user smears their hands with vitae and first touches their victim through any combination of Strength/Dexterity+ Athletics/Brawl and deals a point of Aggravated Health damage on physical contact. After that, the user rolls Stamina + Thanatosis against the victim's Stamina + Resolve. On a win, the victim takes one point of Aggravated Health damage for each margin on the user's roll. For every two points on the user's Margin, the victim receives a crippling injury as selected by the user.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Enhanced touch attack causing multiple Aggravated damage and crippling injuries",
+                dicePool: "Stamina + Thanatosis vs Stamina + Medicine (or Fortitude)",
+                level: 5,
+                discipline: "thanatosis"
+            },
+        ],
+    },
     
     valeren: {
         clans: ["Salubri", "Caitiff"],
@@ -5947,6 +6381,162 @@ export const disciplines: Record<DisciplineName, Discipline> = {
             { name: "Carry The Burden", description: "The vampire channels their innate resilience to bear the weight of another's suffering, literally taking their pain into themselves. Through a combination of supernatural fortitude and divine compassion, the vampire can absorb injuries, ailments, or even spiritual burdens from others, healing them while taking the damage upon their own immortal form. This power represents the ultimate sacrifice - using one's undead nature as a vessel for redemption.", rouseChecks: 2, amalgamPrerequisites: [{ discipline: "fortitude", level: 3 }], summary: "Transfer injuries and suffering from others to yourself, healing them.", dicePool: "Valeren + Fortitude", level: 4, discipline: "valeren" },
             { name: "Merciful Departure", description: "The vampire weaves together the arts of healing and illusion to create a merciful experience during suffering and death. When activated while using Valeren healing powers, the user can surround the target with soothing illusions that ease their pain and fear. The illusions might show peaceful scenes from the target's memories, comforting presences of loved ones, or serene landscapes that provide psychological comfort during physical restoration. For those beyond saving, the power creates beautiful, peaceful visions that make their final moments feel like a gentle transition rather than a traumatic end.", rouseChecks: 1, amalgamPrerequisites: [{ discipline: "chimestry", level: 3 }], summary: "Create peaceful illusions during healing or dying to ease suffering.", dicePool: "Valeren + Chimestry", level: 3, discipline: "valeren" },
             { name: "Necromantic Healing", description: "The vampire discovers a perverse method of healing that channels the energies of death itself into restoration. Rather than drawing upon life force or divine compassion, this power uses the natural cycle of decay and renewal, the constant flow between death and rebirth that governs all existence. The vampire can accelerate healing by temporarily channeling necrotic energy through living tissue, causing rapid cellular regeneration at the cost of exposing the target to the raw forces of mortality. While effective, this healing carries an unsettling quality - wounds close with temporary dark veining, and subjects often report disturbing visions of their own death during the process.", rouseChecks: 2, amalgamPrerequisites: [{ discipline: "necromancy", level: 3 }], summary: "Heal using death energies, effective but unsettling with dark side effects.", dicePool: "Valeren + Necromancy", level: 3, discipline: "valeren" },
+
+            // Additional Healer Path Powers
+            {
+                name: "Sense Vitality",
+                description: "The third eye bestowed by Valeren is more than a target-practice for Tremere as it allows the user to see the world in ways they could not before. Sense Vitality allows its user to read the person's physical and mental state, learning how much damage a target has suffered or what manner of a creature they are. For this power to work, the user must be able to see the target with their third eye. On a success, the user may ask questions equal to the margin and get a correct response. The example questions are: How many points of Health damage has the target suffered? What manner of a creature is the target? What is the target's Humanity (or similar tracker's) rating? Is the user's current appearance the result of Metamorphosis? If yes, what parts? How many points of Willpower damage does the target currently have? Is this person drugged or under some kind of influence, supernatural or otherwise? At the storyteller's discretion, other similar questions may be asked, but they will never provide the answers to the overly accurate questions such as 'who has done this Metamorphosis modification?'",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Use third eye to assess target's health, damage, creature type, and various conditions",
+                dicePool: "Resolve + Valeren vs Wits + Subterfuge",
+                level: 1,
+                discipline: "valeren"
+            },
+            {
+                name: "Gift of Sleep",
+                description: "The ability to ease someone's pain and to bestow sleep upon the restless is a valued one within the Healer caste. Problems and discussions about ethics arise here and there when somebody uses it to force others, often opponents in combat, to slumber. Alas, that is a concern, not a limit. Against a willing subject or themselves, the user may roll Resolve + Valeren at a Difficulty of 3 to relieve them of their pains. Upon a success, the target ignores mental and physical impairments for turns equal to the margins on the roll. Another way to use this power is to relieve others of restlessness, causing them to fall asleep instantly upon a success on a Resolve + Valeren roll at a Difficulty of 3. Upon a success the target slumbers for 8 hours and upon waking up recovers an additional point of Superficial Willpower. Unwilling targets may resist, turning the roll into a contest of Resolve + Valeren vs. Composure + Resolve. A slumbering target would not wake by something like hitting the floor when they fall asleep, but taking any damage awakens them promptly. Vampires and other undead creatures, or those who are sleepless for whatever reason, are not affected by this power. Knowing both Gift of Sleep and Morphean Blow grants an additional two dice on this power's roll.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Relieve pain/impairments or induce restorative sleep in targets",
+                dicePool: "Resolve + Valeren vs Composure + Resolve",
+                level: 2,
+                discipline: "valeren"
+            },
+            {
+                name: "Healer's Touch",
+                description: "At this stage of Valeren the Healer may finally heal things properly. As the user touches the target to heal their wounds, the third eye opens wide, shedding slick sanguine light. The target feels sweet, invigorating energies rushing into their wounds. The user is unable to target themselves with this power. This power works on any living or undead.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Touch to heal wounds with third eye's sanguine light",
+                dicePool: "Resolve + Valeren",
+                level: 3,
+                discipline: "valeren"
+            },
+            {
+                name: "Shepard's Watch",
+                description: "The healers are not just passive observers of combat. No, they are also able to protect, repelling all threats from their allies or themselves by raising a shield against the darkness. The user raises a barrier of Willpower and might, extending in a 10-foot/3-meter radius around them. Those within it at its creation and those permitted by the user may leave and return, and the barrier moves with the user. Enemies of the user will have a harder time piercing the barrier, requiring winning a contest of Resolve + Composure against the user's Resolve + Valeren. The trespasser is able to penetrate the barrier and enter the circle for one turn + the margins on the roll. On a Critical Win, the trespasser is immune to the Shepard's Watch of the user for the rest of the night.",
+                rouseChecks: 2,
+                amalgamPrerequisites: [],
+                summary: "Create protective 3-meter barrier that moves with you, enemies must contest to enter",
+                dicePool: "Resolve + Valeren vs Resolve + Composure",
+                level: 4,
+                discipline: "valeren"
+            },
+            {
+                name: "Unburden the Bestial Soul",
+                description: "The greatest healers of the Salubri are able to mend even the souls of others. The third eye opens and a shaft of golden radiance lances out, transfixing the victim as it pulls the stains upon their soul out of them. The vampire spends a scene in seclusion with the subject and rolls Resolve + Valeren vs. the Humanity of the subject. For every success in the margin, they can remove one Stain from the subject, or erect a psychological 'shield' that protects the subject from future Stains on a one-for-one basis. For example, a margin of three applied to a subject with no Stains would effectively 'cancel out' up to three Stains acquired later in the session. On a critical win the user can choose to forgo the above benefits, instead restoring a single point of Humanity to the subject, but no vampire can gain that benefit more than once, ever. Unburdening the Bestial Soul works only on vampires, and automatically fails if the subject has a higher Humanity than the user. No matter the benefits received, for the rest of the session the subject is numbed, having part of their mind merged with the user, and any Dominate powers used on them by this power's user succeed automatically with no eye contact necessary. When the power expires, all psychological 'shields' not used up are lost, though Stains removed or Humanity gained on initial application do not revert. The target of the power may choose to resist with Composure + Resolve, prior to having effects opposed Humanity.",
+                rouseChecks: 2,
+                amalgamPrerequisites: [],
+                summary: "Remove Stains, create Stain shields, or restore Humanity; grants automatic Dominate",
+                dicePool: "Resolve + Valeren vs Humanity",
+                level: 5,
+                discipline: "valeren"
+            },
+
+            // Warrior Path Powers
+            {
+                name: "Sense Death",
+                description: "As the Healers learn where the subject hurts to heal, the Warriors learn it to know where they strike. For this power to work, the user must be able to see the target with their third eye. On a success, the user may ask questions equal to the margin and get a correct response. The questions should thematically be opposite to Sense Vitality, as the user is trying to poach for weaknesses. The example questions are: How many points of Health does the target currently have? What manner of a creature is the target? How many points of Willpower does the target currently have? What is the target's weakest physical combat pool?",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Use third eye to assess target's current health, weaknesses, and combat capabilities",
+                dicePool: "Resolve + Valeren vs Wits + Subterfuge",
+                level: 1,
+                discipline: "valeren"
+            },
+            {
+                name: "Morphean Blow",
+                description: "Healers use sleep to accelerate the healing process. Warriors use sleep to incapacitate enraged foes. Stories abound of Salubri Warriors quelling lupines with a single slap, leaving the beasts vulnerable to the killing blow. This power works identically to the Gift of Sleep, except that the user may only target themselves to dull the pain and it is limited to only ignoring physical impairment. This power may be used in combat as part of a Brawl attack, dealing devastating damage before forcing the enemy to slumber like the Gift of Sleep. Knowing both Gift of Sleep and Morphean Blow grants an additional two-dice bonus on this power's roll.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Combat version of Gift of Sleep - Brawl attack that can induce sleep",
+                dicePool: "Resolve + Valeren vs Composure + Resolve",
+                level: 2,
+                discipline: "valeren"
+            },
+            {
+                name: "Burning Touch",
+                description: "The character's grasp inflicts pain similar to the pain of being burnt alive, without actually damaging the enemy. Acting as a strong tool to repel other Cainites, some, more sadistic Warriors, were known for using it to torture and severely punish Tremere. By touching the target, which in combat could be done with any combination of Strength/Dexterity + Brawl/Athletics, the user causes a surge of fiery pain rushing from their palm onto that of the target, causing them to take one point of Willpower damage from shock. Vampires test for Fire Frenzy as if they took damage by being burnt. This power can be used alongside a Brawl attack, dealing devastating damage and shocking the target at the same time.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Touch causes fiery pain and Willpower damage, triggers Fire Frenzy in vampires",
+                dicePool: "N/A",
+                level: 3,
+                discipline: "valeren"
+            },
+            {
+                name: "Armour of Caine's Fury",
+                description: "The third eye opens, blazing redder than the setting sun. This radiance spreads along the Salubri's desiccated veins in a flash until their entire body is enveloped in a web of radiant light that defies wounding. The Cyclopes consider this (and their talent at Fortitude) to be the chief reasons they are so feared in war. Ventrue have also expressed envy of this power, and have invited Salubri into their domains to teach them Valeren in exchange for patronage. For the rest of this scene, the user gains a point of armour for each margin inflicted by Strength + Brawl attacks in combat with the maximum armour gained this way being equal to their Valeren rating. This armour is calculated separately from any worn armour for the Avoidance rule (by Alratan, if you are using it) which it imposes against all physical attacks, but should otherwise stack with it for the purposes of damage negation. Additionally, the user gains a two-dice bonus to resist fire frenzy as not even fire will scare them from exacting vengeance when required.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Gain armor points from successful Brawl attacks, max = Valeren rating, +2 vs fire frenzy",
+                dicePool: "N/A",
+                level: 4,
+                discipline: "valeren"
+            },
+            {
+                name: "Dream Combat",
+                description: "Warrior Salubri use Dream Combat to confront ghosts, demons and other spirits that they cannot affect physically. Increasingly, they find that it allows them to confront elders and powerful entities on a more equal playing field. The few Healers and Watchers who've learned Warrior Valeren also find the power extremely useful, as their less martial nature matters little in the dreamscape. This power alone is the reason why many refuse to look a Salubri in their third eye, as it is that very same eye which pulls them into this dream combat. Some Practical vampires can use this power to hold long and secretive conversations in the middle of meetings much like telepathy. The user must first lock eyes with their enemy with their third eye uncovered (see Dominate system for locking eyes in combat) for this power to work. On a win, the target is pulled into the dream world and may not leave until the user of this power has been defeated or ended this power by their own will. Time is accelerated within the dreamscape, and the entire battle lasts a turn outside and the bodies of the two within the dream do not give any indication of something unusual happening. In the dreamscape, both participants can do anything they imagine. They can fly, change their shape, and create any environment they want. Affecting each other is more difficult. Combatants can battle in any manner, but it's the will doing battle, not the body as characters replace their Health tracker with that of their Willpower tracker. The characters may also replace their Strength with Resolve and Dexterity with Composure. Disciplines and other supernatural powers do not work within this dreamscape except for that of Auspex, Dominate and Valeren as the battle takes place outside the physical plain of existence and its laws. A character reduced to Willpower 0 is incapacitated; mortals become comatose, while vampires drop into torpor for a night. Spirits, ghosts or demons reduced to Willpower 0 may be diablerised within the dreamscape; this destroys them, and while such an act doesn't affect the Salubri's Generation, it may allow the vampire to purchase Supernatural Merits at the Storyteller's discretion. It should be noted that this power pulls both targets to the dream realm, but it is not an actual dream of a sentient being such as the one entered through the Path of Morpheus.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Pull target into dream realm for Willpower-based combat, only certain Disciplines work",
+                dicePool: "Resolve + Valeren vs Composure + Resolve",
+                level: 5,
+                discipline: "valeren"
+            },
+
+            // Watcher Path Powers
+            {
+                name: "Sense the Cycle",
+                description: "The Warriors and the Healers focus on individuals, but the third eye of the Watchers is capable of observing so much more. The Watcher experiences waking visions that alter her perception of the world around them, leaving them prone to seeing dire omens and auspicious portents in the smallest event. When they focus, these visions resolve into incredible personal insight. For this power to work, the user must be able to see the target and their surroundings with their 3rd eye. On a win, the user may ask the Storyteller (or a player) a question for each margin and get a truthful answer. The questions asked are answered with public knowledge such as 'what is this person's role in mortal society?', 'what would cause this person to turn hostile?' or 'is this person well-known for hostile behaviour?'. Additionally, the user gains a two-dice bonus on their next Social action against the target, using their newly-acquired knowledge to best know how to approach the target.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Gain social insight about targets and +2 dice to next social action against them",
+                dicePool: "Resolve + Valeren vs Composure + Subterfuge",
+                level: 1,
+                discipline: "valeren"
+            },
+            {
+                name: "Peaceful Touch",
+                description: "Watchers deal in forbidden knowledge, but knowledge threatens the most powerful of men — the brutal nights during many of the clan's purges are still fresh in the minds of their elders. Healing wounds after they occur is miraculous, but greater miracles lie in calming the bloodlust that comes with violence. By touching the target, which in combat could be done with any combination of Strength/Dexterity + Brawl/Athletics, the user is able to calm the person who is hostile to them. After touching them, they roll Resolve + Valeren vs. Composure + Resolve. On a win, the target suffers a two-dice penalty on hostile actions against the target for turns equal to 1 + the margin on the roll. Additionally, the target gains a two-dice bonus on resisting Frenzies, making them more susceptible to reason. Knowing Gift of Sleep or Morphean Blow automatically increases the duration for two turns. The user may not perform this power upon themselves.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Touch to reduce hostility (-2 dice to attacks) and improve Frenzy resistance",
+                dicePool: "Resolve + Valeren vs Composure + Resolve",
+                level: 2,
+                discipline: "valeren"
+            },
+            {
+                name: "Pariah's Caress",
+                description: "Watchers must contend with the 'vampires of the east', the Wan Kuei, who do not subscribe to the idea of the lineage of Caine, and stranger beings such as witches, mages and other willworkers. They learned long ago that the best defense lies in misdirection — if enemies are looking at someone else, they aren't looking at the Salubri. With this power, a Watcher may charge her blood with the combined hatred and attention of all her foes, and then transfer that animosity to another with a bloody touch. The user must first touch the target and smear a bit of their vitae on them, preferably with a Stealth roll. After that, the user rolls Resolve + Valeren vs. Composure + Occult of the user. On a win, the target suffers a two-dice penalty on all tests involving Persuasion, Etiquette, Politics and Subterfuge. Should the target win the roll, they will realise that something was off without knowing what exactly had happened. Experienced Tremere immediately look around to see for any too mundane persons hiding themselves in a crowd.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Transfer animosity to target via blood touch, causing social penalties",
+                dicePool: "Resolve + Valeren vs Composure + Occult",
+                level: 3,
+                discipline: "valeren"
+            },
+            {
+                name: "Peacemaker's Aura",
+                description: "Watchers are arbiters and negotiators, dealing with hostile supernatural beings on behalf of all Cainites. Keeping the peace is paramount. With this power, out of control tempers find restraint and bitter arguments are reduced to differences of opinion. No few Healers have strived to learn this power; many simply believe it to be a more advanced Valeren effect rather than a tool of the mysterious Watchers. The user raises an aura of calmness and peace, extending in a 15 meter radius around them. Those within it find it hard to insult or act against the user in any manner as long as the user themselves does not act in any hostile manner to them or their allies. Even raising a sword is enough for the power to vanish as the user appears threatening. As such, the aura only works if raised in good faith and can not be used to ambush others. The Peacemaker Aura is not a numbing or hypnotic effect, but more clearing one's head from the distractions of anger. Those wishing to act against the user must succeed at roll of Resolve + Composure against the user's Resolve + Valeren. If they fail and are of a lower generation than the user, they may spend a point of Willpower to push through calmness and force themselves to make a hostile action against the user. Enemies under the influence of a Frenzy are immune to this, but everybody in the radius of the power gains a one-die bonus on all Frenzy rolls.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "15m peaceful aura that prevents hostility unless you act threatening first",
+                dicePool: "Resolve + Valeren vs Composure + Subterfuge",
+                level: 4,
+                discipline: "valeren"
+            },
+            {
+                name: "Souls' Breath",
+                description: "The Watchers carry a terrible and a miraculous secret with them unknown to almost anybody else: the Curse of Caine to subsist on blood and bitter ashes is a lie. Progression of the soul allows one to draw out the sanguine humor that floats within the lungs and the vitality of will in the breath. It's a meager draught, but one can sup one's fill from a crowd with none the wiser. With the breath comes power, all flowing to the Watcher. This raises the question what exactly are the Cainites and the Wan Kuei feeding from, as they seem to be two separate creatures feeding on similar things. For this power to work, the user must either talk to the target or the target must be conversing with somebody else within the earshot of the user. Facing their victim, the user rolls Resolve + Valeren against the victim's Composure + Occult. On a win, the user slakes a point of Hunger while the victim's Hunger increases by 1 if a vampire or, if their victim is a human, they are drained by one point of Hunger (make note of harmful feedings when slaking too much). On a Critical win, the user slakes two points of Hunger and the vampire victim's Hunger increases by two or the human victim is drained by two points of Hunger. Those possessing Sense the Unseen may contest the user's successes to see the flow of a red breath from the victim to the user.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Feed on breath instead of blood, transferring Hunger to victims",
+                dicePool: "Resolve + Valeren vs Composure + Occult",
+                level: 5,
+                discipline: "valeren"
+            },
         ],
     },
     serpentis: {
@@ -9115,6 +9705,103 @@ export const disciplines: Record<DisciplineName, Discipline> = {
                 dicePool: "None", 
                 level: 3, 
                 discipline: "chimestry" 
+            },
+        ],
+    },
+
+    visceratika: {
+        clans: ["Gargoyle"],
+        summary: "Stone manipulation and camouflage powers exclusive to Gargoyles",
+        logo: metamorphoseLogo,
+        powers: [
+            // Level 1
+            {
+                name: "Skin of the Chameleon",
+                description: "The Gargoyle's skin adapts to match their surroundings, providing natural camouflage. When activated, the vampire's hide shifts color and texture to blend seamlessly with stone, brick, or earth. This power is most effective when the Gargoyle remains motionless against architectural surfaces.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Camouflage skin to blend with stone and architectural surfaces",
+                dicePool: "Stamina + Visceratika",
+                level: 1,
+                discipline: "visceratika"
+            },
+
+            // Level 2
+            {
+                name: "Skin of Stone",
+                description: "The Gargoyle's flesh hardens into a stone-like substance, providing enhanced protection against physical harm. While active, the vampire's skin takes on the appearance and durability of granite or marble, reducing damage from physical attacks.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Harden skin to stone-like durability for enhanced protection",
+                dicePool: "Stamina + Visceratika",
+                level: 2,
+                discipline: "visceratika"
+            },
+            {
+                name: "Stone Strength",
+                description: "Drawing power from their connection to stone and earth, the Gargoyle temporarily increases their physical might. Their muscles become dense as granite, allowing them to perform feats of incredible strength.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Gain supernatural strength by drawing power from stone",
+                dicePool: "Stamina + Visceratika",
+                level: 2,
+                discipline: "visceratika"
+            },
+
+            // Level 3
+            {
+                name: "Bond with the Mountain",
+                description: "The Gargoyle establishes a mystical connection with stone structures and natural rock formations. This bond allows them to sense vibrations, structural weaknesses, and movements within the connected stone mass.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Connect mystically with stone to sense vibrations and weaknesses",
+                dicePool: "Wits + Visceratika",
+                level: 3,
+                discipline: "visceratika"
+            },
+            {
+                name: "Meld with Stone",
+                description: "Similar to Earth Meld, but specifically attuned to worked stone and masonry. The Gargoyle can merge their body with stone walls, statues, or architectural elements. While melded, they are nearly undetectable and can observe their surroundings.",
+                rouseChecks: 1,
+                amalgamPrerequisites: [],
+                summary: "Merge with worked stone, walls, or architectural elements",
+                dicePool: "Stamina + Visceratika",
+                level: 3,
+                discipline: "visceratika"
+            },
+
+            // Level 4
+            {
+                name: "Animate Stone",
+                description: "The Gargoyle can temporarily animate stone constructs, bringing statues, gargoyles, or stone debris to crude life. These animated servants follow simple commands and fight with the durability of their stone composition.",
+                rouseChecks: 2,
+                amalgamPrerequisites: [],
+                summary: "Animate stone constructs to serve as temporary minions",
+                dicePool: "Intelligence + Visceratika",
+                level: 4,
+                discipline: "visceratika"
+            },
+            {
+                name: "Stone Prison",
+                description: "The vampire can cause stone and masonry to flow like liquid, encasing enemies in a prison of hardened rock. The stone reforms quickly, trapping victims until they can break free or the power is dismissed.",
+                rouseChecks: 2,
+                amalgamPrerequisites: [],
+                summary: "Trap enemies in flowing stone that hardens into prison",
+                dicePool: "Intelligence + Visceratika",
+                level: 4,
+                discipline: "visceratika"
+            },
+
+            // Level 5
+            {
+                name: "Heart of the Mountain",
+                description: "The ultimate expression of Visceratika, this power transforms the Gargoyle into a living extension of the earth itself. Their body becomes one with stone and mountain, granting immense durability, strength, and the ability to manipulate vast amounts of rock and earth.",
+                rouseChecks: 3,
+                amalgamPrerequisites: [],
+                summary: "Become one with stone and earth, gaining massive power over rock",
+                dicePool: "Stamina + Visceratika",
+                level: 5,
+                discipline: "visceratika"
             },
         ],
     },

@@ -68,6 +68,10 @@ export const disciplineNameSchema = z.union([
     z.literal("koldunic"),
     z.literal("chimestry"),
     z.literal("daimonion"),
+    z.literal("mytherceria"),
+    z.literal("temporis"),
+    z.literal("thanatosis"),
+    z.literal("visceratika"),
 
     z.literal(""),
 ])
