@@ -312,6 +312,10 @@ export const clans: Record<ClanName, Clan> = {
             "melpominee",
             "koldunic",
             "chimestry",
+            "mytherceria",
+            "temporis",
+            "thanatosis",
+            "visceratika",
         ],
     },
     "Thin-blood": {
@@ -329,7 +333,7 @@ export const clans: Record<ClanName, Clan> = {
         logo: gargoyleLogo, // purple icon
     banes: ["Primordial Flesh - Gargoyles manifest inhuman anatomy. Whenever engaged in a physical task requiring finesse and roll a 1 on a Hunger Die, subtract Bane Severity from successes."],
         compulsions: ["Dysphoria - In the throes of their Beast, the wrongness of their bodies becomes disconcerting. Until completely alone and unseen, take a 2-Die penalty to all dice pools."],
-        nativeDisciplines: ["protean", "fortitude", "obfuscate"],
+        nativeDisciplines: ["protean", "fortitude", "obfuscate", "visceratika"],
     },
     Kiasyd: {
         name: "Kiasyd",
@@ -337,7 +341,7 @@ export const clans: Record<ClanName, Clan> = {
         logo: kiasydLogo, // purple icon
     banes: ["Taboo - Each Kiasyd has specific taboos equal to half Bane Severity (round up). Violating a taboo causes 1 Aggravated Willpower damage."],
         compulsions: ["Chicanerous - Must inflict a serious mishap causing at least 1 Superficial Health or Willpower damage to someone nearby, or take a 2-Die penalty to all dice pools not contributing to this."],
-        nativeDisciplines: ["dominate", "auspex", "oblivion"],
+        nativeDisciplines: ["dominate", "auspex", "oblivion", "mytherceria"],
     },
     Baali: {
         name: "Baali",
@@ -403,7 +407,7 @@ export const clans: Record<ClanName, Clan> = {
             "Rotting Body: The Samedi's flesh is constantly decomposing, giving off a foul odor and a ghastly appearance. This makes blending in with mortals nearly impossible, imposing a severe penalty to all social rolls involving appearance or first impressions. Their touch is cold and clammy, and wounds heal with visible necrosis. Any attempt to mask their condition with mundane means is doomed to fail, and even supernatural disguises are less effective (Storyteller's discretion). In addition, their bodies are more fragile—physical trauma often results in grotesque injuries, and healing takes on a disturbing, patchwork quality."
         ],
         compulsions: ["Morbidity: The vampire must move something from life to death or vice versa, any action not taken to end or resurrect something suffers a two-dice penalty. The subject does not have to be a living thing and can instead be an object or more abstract such as ideas or conversation points. This Compulsion lasts until they manage to kill or return something to life."],
-        nativeDisciplines: ["obfuscate", "fortitude", "oblivion", "necromancy"],
+        nativeDisciplines: ["obfuscate", "fortitude", "oblivion", "necromancy", "thanatosis"],
     },
     "True Brujah": {
         name: "True Brujah",
@@ -413,7 +417,7 @@ export const clans: Record<ClanName, Clan> = {
             "Logical Coldness: Become overly logical and completely insensitive. Any Stain marked on your Humanity is increased by +1 for as long as your Compulsion is active."
         ],
         compulsions: ["Chronic Mind: Obsession with time, philosophy, and proving your viewpoint correct. Becomes inert to emotions and passion."],
-        nativeDisciplines: ["celerity", "fortitude", "auspex"],
+        nativeDisciplines: ["celerity", "fortitude", "auspex", "temporis"],
     },
     Aquarii: {
         name: "Aquarii",
