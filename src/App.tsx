@@ -7,6 +7,7 @@ import Generator from "./generator/Generator"
 import AsideBar from "./sidebar/AsideBar"
 import Sidebar from "./sidebar/Sidebar"
 import Topbar from "./topbar/Topbar"
+import SplatPicker, { SplatType } from "./components/SplatPicker"
 
 import { useViewportSize } from "@mantine/hooks"
 import { rndInt } from "./generator/utils"
@@ -36,7 +37,15 @@ function App() {
 
     const [character, setCharacter] = useLocalStorage<Character>({ key: "character", defaultValue: getEmptyCharacter() })
     const [selectedStep, setSelectedStep] = useLocalStorage({ key: "selectedStep", defaultValue: 0 })
+    const [selectedSplat, setSelectedSplat] = useLocalStorage<SplatType | null>({ key: "selectedSplat", defaultValue: null })
     const [backgroundIndex] = useState(rndInt(0, backgrounds.length))
+
+    const handleSplatSelection = (splat: SplatType) => {
+        setSelectedSplat(splat)
+        // Reset character and step when switching splats
+        setCharacter(getEmptyCharacter())
+        setSelectedStep(0)
+    }
 
     const [showAsideBar, setShowAsideBar] = useState(!globals.isSmallScreen)
     useEffect(() => {
@@ -62,6 +71,8 @@ function App() {
                         setCharacter={setCharacter}
                         setSelectedStep={setSelectedStep}
                         setShowAsideBar={setShowAsideBar}
+                        selectedSplat={selectedSplat}
+                        onBackToSplatSelection={() => setSelectedSplat(null)}
                     />
                 </Header>
             }
@@ -73,14 +84,18 @@ function App() {
             {
                 <BackgroundImage h={"99%"} src={backgrounds[backgroundIndex]}>
                     <div style={{ backgroundColor: "rgba(0, 0, 0, 0.7)", height: "100%" }}>
-                        <Container h={"100%"}>
-                            <Generator
-                                character={character}
-                                setCharacter={setCharacter}
-                                selectedStep={selectedStep}
-                                setSelectedStep={setSelectedStep}
-                            />
-                        </Container>
+                        {selectedSplat === null ? (
+                            <SplatPicker onSplatSelected={handleSplatSelection} />
+                        ) : (
+                            <Container h={"100%"}>
+                                <Generator
+                                    character={character}
+                                    setCharacter={setCharacter}
+                                    selectedStep={selectedStep}
+                                    setSelectedStep={setSelectedStep}
+                                />
+                            </Container>
+                        )}
                     </div>
                 </BackgroundImage>
             }
