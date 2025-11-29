@@ -1,4 +1,4 @@
-import { Button, Card, Container, Grid, Group, Image, Stack, Text, Title } from "@mantine/core"
+import { Button, Card, Container, Grid, Group, Stack, Text, Title } from "@mantine/core"
 import { IconBat, IconMoon, IconSword, IconWand } from "@tabler/icons-react"
 
 export type SplatType = "vampire" | "werewolf" | "hunter" | "mage"

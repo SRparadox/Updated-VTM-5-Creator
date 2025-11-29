@@ -1,5 +1,5 @@
 import { Card, Center, Grid, Image, ScrollArea, Text, Title } from "@mantine/core"
-import { useEffect } from "react"
+
 import { AuspiceName, auspiceNameSchema } from "../../data/NameSchemas"
 import { Character, isWerewolfCharacter, syncWerewolfCompatibilityFields } from "../../data/UnifiedCharacter"
 import { auspices } from "../../data/Auspices"

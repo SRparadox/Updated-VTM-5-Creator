@@ -1,7 +1,7 @@
 import { Button, Card, Center, Grid, Group, ScrollArea, Stack, Text, Title } from "@mantine/core"
 import { useState } from "react"
 import { Character, isWerewolfCharacter, syncWerewolfCompatibilityFields } from "../../data/UnifiedCharacter"
-import { sampleGifts, Gift, giftsByCategory } from "../../data/Gifts"
+import { Gift, giftsByCategory } from "../../data/Gifts"
 import { Power } from "../../data/Disciplines"
 import { globals } from "../../globals"
 
@@ -21,13 +21,13 @@ const GiftsPicker = ({ character, setCharacter, nextStep }: GiftsPickerProps) =>
 
     const convertGiftToPower = (gift: Gift): Power => ({
         name: gift.name,
-        discipline: "gifts", // Use a generic discipline name for gifts
+        discipline: "", // Use empty discipline name for gifts
         level: 1, // Default level
         summary: gift.summary,
         description: gift.description,
         dicePool: gift.dicePool,
-        cost: gift.cost,
-        duration: gift.duration,
+        rouseChecks: 0, // Gifts don't use rouse checks, they use Rage/Gnosis
+        amalgamPrerequisites: []
     })
 
     const handleGiftSelect = (gift: Gift) => {

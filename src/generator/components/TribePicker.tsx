@@ -1,7 +1,6 @@
-import { Card, Center, Grid, Image, ScrollArea, Text, Title, useMantineTheme } from "@mantine/core"
+import { Card, Center, Grid, Image, ScrollArea, Text, Title } from "@mantine/core"
 import { notifications } from "@mantine/notifications"
-import { useEffect } from "react"
-import { TribeName, tribeNameSchema, GiftName } from "../../data/NameSchemas"
+import { TribeName, tribeNameSchema } from "../../data/NameSchemas"
 import { Character, isWerewolfCharacter, syncWerewolfCompatibilityFields } from "../../data/UnifiedCharacter"
 import { tribes } from "../../data/Tribes"
 import { globals } from "../../globals"
@@ -19,7 +18,7 @@ const TribePicker = ({ character, setCharacter, nextStep }: TribePickerProps) =>
         return <Text size="xl">Error: TribePicker only works with werewolf characters</Text>
     }
 
-    const theme = useMantineTheme()
+
 
     const c1 = "rgba(26, 27, 30, 0.90)"
 
