@@ -5,13 +5,15 @@ import { useEffect, useState } from "react"
 import ReactGA from "react-ga4"
 import { Character, MeritFlaw } from "../../data/Character"
 import { isThinbloodFlaw, isThinbloodMerit, isGhoulFlaw, isGhoulMerit, isElderFlaw, isElderMerit, MeritOrFlaw, meritsAndFlaws, thinbloodMeritsAndFlaws, ghoulMeritsAndFlaws, elderMeritsAndFlaws, bargainFlaws } from "../../data/MeritsAndFlaws"
+import { meritsAndFlaws as werewolfMeritsAndFlaws } from "../../data/WerewolfMeritsAndFlaws"
+import { UnifiedCharacter, isWerewolfCharacter } from "../../data/UnifiedCharacter"
 import { PredatorTypes } from "../../data/PredatorType"
 import { globals } from "../../globals"
 import { Loresheets } from "./Loresheets"
 
 type MeritsAndFlawsPickerProps = {
-    character: Character
-    setCharacter: (character: Character) => void
+    character: UnifiedCharacter
+    setCharacter: (character: UnifiedCharacter) => void
     nextStep: () => void
 }
 
@@ -32,8 +34,13 @@ const MeritsAndFlawsPicker = ({ character, setCharacter, nextStep }: MeritsAndFl
 
     const [pickedMeritsAndFlaws, setPickedMeritsAndFlaws] = useState<MeritFlaw[]>([...character.merits, ...character.flaws])
 
+    const isWerewolf = isWerewolfCharacter(character)
     const isGhoul = character.clan === "Ghoul"
     const isElder = character.isElder || character.isMethuselah
+    
+    // Use werewolf merits for werewolf characters, vampire merits for others
+    const currentMeritsAndFlaws = isWerewolf ? werewolfMeritsAndFlaws : meritsAndFlaws
+    
     const usedMeritsLevel = character.merits.filter((m) => !isThinbloodMerit(m.name) && !isGhoulMerit(m.name) && !isElderMerit(m.name)).reduce((acc, { level }) => acc + level, 0)
     const usedFLawsLevel = character.flaws.filter((f) => !isThinbloodFlaw(f.name) && !isGhoulFlaw(f.name) && !isElderFlaw(f.name)).reduce((acc, { level }) => acc + level, 0)
 
@@ -228,7 +235,7 @@ const MeritsAndFlawsPicker = ({ character, setCharacter, nextStep }: MeritsAndFl
                             {isElder ? elderMeritsAndFlawsComponent(getMeritOrFlawLine) : null}
 
                             {/* Regular merits and flaws (hidden for Thinbloods, Ghouls, and shows all for Elders) */}
-                            {!isThinBlood && !isGhoul && meritsAndFlaws.map((category) => {
+                            {!isThinBlood && !isGhoul && currentMeritsAndFlaws.map((category) => {
                                 return (
                                     <Grid.Col span={6} key={category.title}>
                                         <Stack spacing={"xs"}>

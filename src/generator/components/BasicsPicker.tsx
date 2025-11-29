@@ -1,11 +1,12 @@
 import { Button, Stack, Text, TextInput, Textarea } from "@mantine/core"
 import { useEffect, useState } from "react"
 import { Character } from "../../data/Character"
+import { UnifiedCharacter, isVampireCharacter, isWerewolfCharacter } from "../../data/UnifiedCharacter"
 import ReactGA from "react-ga4"
 
 type BasicsPickerProps = {
-    character: Character
-    setCharacter: (character: Character) => void
+    character: UnifiedCharacter
+    setCharacter: (character: UnifiedCharacter) => void
     nextStep: () => void
 }
 
@@ -14,6 +15,9 @@ const BasicsPicker = ({ character, setCharacter, nextStep }: BasicsPickerProps) 
         ReactGA.send({ hitType: "pageview", title: "Basics Picker" })
     }, [])
 
+    const isVampire = isVampireCharacter(character)
+    const isWerewolf = isWerewolfCharacter(character)
+    
     const [playerName, setPlayerName] = useState((character as any).playerName || "")
     const [chronicleName, setChronicleName] = useState((character as any).chronicleName || "")
     const [name, setName] = useState(character.name)
@@ -52,20 +56,22 @@ const BasicsPicker = ({ character, setCharacter, nextStep }: BasicsPickerProps) 
                     label="Full name"
                 />
 
-                <TextInput
-                    style={{ width: "300px" }}
-                    value={sire}
-                    onChange={(event) => setSire(event.currentTarget.value)}
-                    placeholder="Your sire"
-                    label="Sire"
-                    description="The vampire that turned you"
-                />
+                {isVampire && (
+                    <TextInput
+                        style={{ width: "300px" }}
+                        value={sire}
+                        onChange={(event) => setSire(event.currentTarget.value)}
+                        placeholder="Your sire"
+                        label="Sire"
+                        description="The vampire that turned you"
+                    />
+                )}
 
                 <TextInput
                     style={{ width: "300px" }}
                     value={ambition}
                     onChange={(event) => setAmbition(event.currentTarget.value)}
-                    placeholder="Break free from my sire's clutches"
+                    placeholder={isWerewolf ? "Protect the natural world" : "Break free from my sire's clutches"}
                     label="Your long term ambition"
                 />
 
@@ -73,7 +79,7 @@ const BasicsPicker = ({ character, setCharacter, nextStep }: BasicsPickerProps) 
                     style={{ width: "300px" }}
                     value={desire}
                     onChange={(event) => setDesire(event.currentTarget.value)}
-                    placeholder="Embarrass my rival in court"
+                    placeholder={isWerewolf ? "Learn a new gift from the spirits" : "Embarrass my rival in court"}
                     label="Your short term desire"
                 />
 

@@ -1,14 +1,14 @@
 import { Card, Center, Grid, Image, ScrollArea, Text, Title } from "@mantine/core"
 import { notifications } from "@mantine/notifications"
 import { TribeName, tribeNameSchema } from "../../data/NameSchemas"
-import { Character, isWerewolfCharacter, syncWerewolfCompatibilityFields } from "../../data/UnifiedCharacter"
+import { UnifiedCharacter, isWerewolfCharacter, syncWerewolfCompatibilityFields } from \"../../data/UnifiedCharacter\"
 import { tribes } from "../../data/Tribes"
 import { globals } from "../../globals"
 import { notDefault } from "../utils"
 
 type TribePickerProps = {
-    character: Character
-    setCharacter: (character: Character) => void
+    character: UnifiedCharacter
+    setCharacter: (character: UnifiedCharacter) => void
     nextStep: () => void
 }
 
