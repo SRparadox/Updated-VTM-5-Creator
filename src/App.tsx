@@ -2,7 +2,7 @@ import { AppShell, BackgroundImage, Container, Header, Navbar } from "@mantine/c
 import { useLocalStorage, useMediaQuery } from "@mantine/hooks"
 import { useEffect, useState } from "react"
 import "./App.css"
-import { Character, getEmptyCharacter } from "./data/Character"
+import { Character, getEmptyCharacter } from "./data/UnifiedCharacter"
 import Generator from "./generator/Generator"
 import AsideBar from "./sidebar/AsideBar"
 import Sidebar from "./sidebar/Sidebar"
@@ -43,7 +43,7 @@ function App() {
     const handleSplatSelection = (splat: SplatType) => {
         setSelectedSplat(splat)
         // Reset character and step when switching splats
-        setCharacter(getEmptyCharacter())
+        setCharacter(getEmptyCharacter(splat))
         setSelectedStep(0)
     }
 

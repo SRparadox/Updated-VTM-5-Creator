@@ -1,5 +1,5 @@
 import { Center, Text } from "@mantine/core"
-import { Character, containsBloodSorcery, isThinBlood } from "../data/Character"
+import { Character, containsBloodSorcery, isThinBlood, isVampireCharacter, isWerewolfCharacter } from "../data/UnifiedCharacter"
 import AttributePicker from "./components/AttributePicker"
 import BasicsPicker from "./components/BasicsPicker"
 import ClanPicker from "./components/ClanPicker"
@@ -22,10 +22,15 @@ import ErrorBoundary from "../components/ErrorBoundary"
 import RitualsPicker from "./components/RitualsPicker"
 import CeremoniesPicker from "./components/CeremoniesPicker"
 import AlchemyPicker from "./components/AlchemyPicker"
+import TribePicker from "./components/TribePicker"
+import AuspicePicker from "./components/AuspicePicker"
+import GiftsPicker from "./components/GiftsPicker"
 
 
-// Export a function to get the step labels dynamically
-export function getStepLabels(character: Character) {
+// Export functions to get step labels dynamically based on splat
+export function getVampireStepLabels(character: Character) {
+    if (!isVampireCharacter(character)) return [];
+    
     const hasBloodSorcery = containsBloodSorcery(character.disciplines);
     const hasOblivion = character.disciplines.some((power: Power) => power.discipline === "oblivion");
     const hasThinBloodAlchemy = isThinBlood(character);
@@ -73,6 +78,32 @@ export function getStepLabels(character: Character) {
     return labels;
 }
 
+export function getWerewolfStepLabels(character: Character) {
+    if (!isWerewolfCharacter(character)) return [];
+    
+    return [
+        "Intro",
+        "Tribe", 
+        "Attributes",
+        "Skills",
+        "Auspice",
+        "Basics",
+        "Gifts",
+        "Touchstones",
+        "Merits & Flaws", 
+        "Final"
+    ];
+}
+
+export function getStepLabels(character: Character) {
+    if (isVampireCharacter(character)) {
+        return getVampireStepLabels(character);
+    } else if (isWerewolfCharacter(character)) {
+        return getWerewolfStepLabels(character);
+    }
+    return [];
+}
+
 export type GeneratorProps = {
     character: Character
     setCharacter: (character: Character) => void
@@ -84,10 +115,6 @@ export type GeneratorProps = {
 const containsOblivion = (powers: Power[]) => powers.some((power) => power.discipline === "oblivion");
 
 const Generator = ({ character, setCharacter, selectedStep, setSelectedStep }: GeneratorProps) => {
-    const hasBloodSorcery = containsBloodSorcery(character.disciplines);
-    const hasOblivion = containsOblivion(character.disciplines);
-    const hasThinBloodAlchemy = isThinBlood(character);
-
     // Define the props type for all step components
     type StepProps = {
         character: Character;
@@ -95,46 +122,83 @@ const Generator = ({ character, setCharacter, selectedStep, setSelectedStep }: G
         nextStep: () => void;
     };
 
-    // Build steps array dynamically, matching getStepLabels
-    const isElderGeneration = character.generation <= 9 && character.generation >= 6;
-    const isMethuselahGeneration = character.generation <= 5 && character.generation >= 4;
-    const qualifiesForElderPowers = isElderGeneration || isMethuselahGeneration;
-    
-    const steps: ((props: StepProps) => JSX.Element)[] = [
-        (props) => <Intro {...props} />, // 0
-        (props) => <ClanPicker {...props} />, // 1
-        (props) => <SectPicker {...props} />, // 2
-        (props) => <ReligionPicker {...props} />, // 3
-        (props) => <AttributePicker {...props} />, // 4
-        (props) => <SkillsPicker {...props} />, // 5
-        (props) => <GenerationPicker {...props} />, // 6
-    ];
-    
-    // Only add Age step if generation qualifies for Elder/Methuselah powers
-    if (qualifiesForElderPowers) {
-        steps.push((props) => <AgePicker {...props} />);
-    }
-    
-    // Only add Elder Powers step if character is flagged as Elder or Methuselah
-    if (character.isElder || character.isMethuselah) {
-        steps.push((props) => <ElderPowerPicker {...props} />);
-    }
-    
-    // Only add Methuselah Powers step if character is flagged as Methuselah
-    if (character.isMethuselah) {
-        steps.push((props) => <MethuselahPowerPicker {...props} />);
-    }
-    
-    steps.push((props) => character.clan === "Ghoul" ? <RolePicker {...props} /> : <PredatorTypePicker {...props} />);
-    steps.push((props) => <BasicsPicker {...props} />);
-    steps.push((props) => <DisciplinesPicker {...props} />);
-    
-    if (hasBloodSorcery) steps.push((props) => <RitualsPicker {...props} />);
-    if (hasOblivion) steps.push((props) => <CeremoniesPicker {...props} />);
-    if (hasThinBloodAlchemy) steps.push((props) => <AlchemyPicker {...props} />);
-    steps.push((props) => <TouchstonePicker {...props} />);
-    steps.push((props) => <MeritsAndFlawsPicker {...props} />);
-    steps.push((props) => <Final {...props} setSelectedStep={setSelectedStep} />);
+    const getVampireSteps = (): ((props: StepProps) => JSX.Element)[] => {
+        if (!isVampireCharacter(character)) return [];
+        
+        const hasBloodSorcery = containsBloodSorcery(character.disciplines);
+        const hasOblivion = containsOblivion(character.disciplines);
+        const hasThinBloodAlchemy = isThinBlood(character);
+
+        const isElderGeneration = character.generation <= 9 && character.generation >= 6;
+        const isMethuselahGeneration = character.generation <= 5 && character.generation >= 4;
+        const qualifiesForElderPowers = isElderGeneration || isMethuselahGeneration;
+        
+        const steps: ((props: StepProps) => JSX.Element)[] = [
+            (props) => <Intro {...props} />, // 0
+            (props) => <ClanPicker {...props} />, // 1
+            (props) => <SectPicker {...props} />, // 2
+            (props) => <ReligionPicker {...props} />, // 3
+            (props) => <AttributePicker {...props} />, // 4
+            (props) => <SkillsPicker {...props} />, // 5
+            (props) => <GenerationPicker {...props} />, // 6
+        ];
+        
+        // Only add Age step if generation qualifies for Elder/Methuselah powers
+        if (qualifiesForElderPowers) {
+            steps.push((props) => <AgePicker {...props} />);
+        }
+        
+        // Only add Elder Powers step if character is flagged as Elder or Methuselah
+        if (character.isElder || character.isMethuselah) {
+            steps.push((props) => <ElderPowerPicker {...props} />);
+        }
+        
+        // Only add Methuselah Powers step if character is flagged as Methuselah
+        if (character.isMethuselah) {
+            steps.push((props) => <MethuselahPowerPicker {...props} />);
+        }
+        
+        steps.push((props) => character.clan === "Ghoul" ? <RolePicker {...props} /> : <PredatorTypePicker {...props} />);
+        steps.push((props) => <BasicsPicker {...props} />);
+        steps.push((props) => <DisciplinesPicker {...props} />);
+        
+        if (hasBloodSorcery) steps.push((props) => <RitualsPicker {...props} />);
+        if (hasOblivion) steps.push((props) => <CeremoniesPicker {...props} />);
+        if (hasThinBloodAlchemy) steps.push((props) => <AlchemyPicker {...props} />);
+        steps.push((props) => <TouchstonePicker {...props} />);
+        steps.push((props) => <MeritsAndFlawsPicker {...props} />);
+        steps.push((props) => <Final {...props} setSelectedStep={setSelectedStep} />);
+        
+        return steps;
+    };
+
+    const getWerewolfSteps = (): ((props: StepProps) => JSX.Element)[] => {
+        if (!isWerewolfCharacter(character)) return [];
+        
+        return [
+            (props) => <Intro {...props} />, // 0
+            (props) => <TribePicker {...props} />, // 1
+            (props) => <AttributePicker {...props} />, // 2
+            (props) => <SkillsPicker {...props} />, // 3 
+            (props) => <AuspicePicker {...props} />, // 4
+            (props) => <BasicsPicker {...props} />, // 5
+            (props) => <GiftsPicker {...props} />, // 6
+            (props) => <TouchstonePicker {...props} />, // 7
+            (props) => <MeritsAndFlawsPicker {...props} />, // 8
+            (props) => <Final {...props} setSelectedStep={setSelectedStep} />, // 9
+        ];
+    };
+
+    const getSteps = () => {
+        if (isVampireCharacter(character)) {
+            return getVampireSteps();
+        } else if (isWerewolfCharacter(character)) {
+            return getWerewolfSteps();
+        }
+        return [];
+    };
+
+    const steps = getSteps();
 
     const getStepComponent = () => {
         if (selectedStep < steps.length) {
@@ -145,7 +209,7 @@ const Generator = ({ character, setCharacter, selectedStep, setSelectedStep }: G
                 nextStep: () => setSelectedStep(selectedStep + 1),
             });
         }
-        return <Text size={"xl"}>{`Error: Step ${selectedStep} is not implemented`}</Text>;
+        return <Text size={"xl"}>{`Error: Step ${selectedStep} is not implemented for ${character.splat}`}</Text>;
     };
 
     return (

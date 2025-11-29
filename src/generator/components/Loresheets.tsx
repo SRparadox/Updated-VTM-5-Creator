@@ -2,7 +2,7 @@ import { Button, Card, Grid, ScrollArea, Text } from "@mantine/core"
 import { useState } from "react"
 import { Loresheet, MeritOrFlaw, loresheets } from "../../data/MeritsAndFlaws"
 import { globals } from "../../globals"
-import { Character, MeritFlaw } from "../../data/Character"
+import { Character, MeritFlaw } from "../../data/UnifiedCharacter"
 import { intersection } from "../utils"
 import React from "react"
 

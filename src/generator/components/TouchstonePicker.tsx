@@ -1,6 +1,6 @@
 import { Button, Center, Divider, Grid, Group, ScrollArea, Space, Stack, Text, TextInput, Textarea } from "@mantine/core"
 import { useEffect, useState } from "react"
-import { Character, Touchstone } from "../../data/Character"
+import { Character, Touchstone } from "../../data/UnifiedCharacter"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faUser } from "@fortawesome/free-regular-svg-icons"
 import ReactGA from "react-ga4"

@@ -6,7 +6,7 @@ import { Buffer } from "buffer"
 import { z } from "zod"
 import { clans } from "~/data/Clans"
 import { clanNameSchema } from "~/data/NameSchemas"
-import { Character, characterSchema } from "../data/Character"
+import { Character, characterSchema } from "../data/UnifiedCharacter"
 import { getUploadFile } from "../generator/utils"
 
 export type LoadModalProps = {

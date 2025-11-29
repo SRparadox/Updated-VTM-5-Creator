@@ -163,3 +163,42 @@ export const roleNameSchema = z.union([
     z.literal("")
 ])
 export type RoleName = z.infer<typeof roleNameSchema>
+
+// Werewolf schemas
+export const tribeNameSchema = z.union([
+    z.literal("Black Furies"),
+    z.literal("Bone Gnawers"),
+    z.literal("Children of Gaia"),
+    z.literal("Galestalkers"),
+    z.literal("Ghost Council"),
+    z.literal("Glass Walkers"),
+    z.literal("Hart Wardens"),
+    z.literal("Red Talons"),
+    z.literal("Shadow Lords"),
+    z.literal("Silent Striders"),
+    z.literal("Silver Fangs"),
+    z.literal(""),
+])
+export type TribeName = z.infer<typeof tribeNameSchema>
+
+export const auspiceNameSchema = z.union([
+    z.literal("Ragabash"),
+    z.literal("Theurge"),
+    z.literal("Philodox"),
+    z.literal("Galliard"),
+    z.literal("Ahroun"),
+    z.literal(""),
+])
+export type AuspiceName = z.infer<typeof auspiceNameSchema>
+
+export const giftNameSchema = z.union([
+    z.literal("rage"),
+    z.literal("wisdom"),
+    z.literal("war"),
+    z.literal("nature"),
+    z.literal("technology"),
+    z.literal("spirit"),
+    z.literal("shadow"),
+    z.literal(""),
+])
+export type GiftName = z.infer<typeof giftNameSchema>

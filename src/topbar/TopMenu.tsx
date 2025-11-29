@@ -5,7 +5,7 @@ import { useDisclosure } from "@mantine/hooks"
 import { useState } from "react"
 import LoadModal from "../components/LoadModal"
 import ResetModal from "../components/ResetModal"
-import { Character } from "../data/Character"
+import { Character } from "../data/UnifiedCharacter"
 import { downloadCharacterSheet } from "../generator/pdfCreator"
 import { downloadJson } from "../generator/utils"
 import { notifications } from "@mantine/notifications"
@@ -113,6 +113,7 @@ const TopMenu = ({ character, setCharacter, setSelectedStep }: TopMenuProps) => 
                 closeLoadModal={closeLoadModal}
             />
             <ResetModal
+                character={character}
                 setCharacter={setCharacter}
                 setSelectedStep={setSelectedStep}
                 resetModalOpened={resetModalOpened}

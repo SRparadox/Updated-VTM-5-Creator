@@ -1,7 +1,7 @@
 import { Button, Burger, Center, Grid, Stack, Text, Title } from "@mantine/core"
 import { useDisclosure } from "@mantine/hooks"
 import { IconArrowLeft } from "@tabler/icons-react"
-import { Character } from "../data/Character"
+import { Character } from "../data/UnifiedCharacter"
 import { SplatType } from "../components/SplatPicker"
 import { globals } from "../globals"
 import TopMenu from "./TopMenu"

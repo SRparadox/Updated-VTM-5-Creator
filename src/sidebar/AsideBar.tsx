@@ -1,5 +1,5 @@
 import { Aside, Center, ScrollArea, Stepper } from "@mantine/core"
-import { Character } from "../data/Character"
+import { Character } from "../data/UnifiedCharacter"
 import { globals } from "../globals"
 import { getStepLabels } from "../generator/Generator"
 

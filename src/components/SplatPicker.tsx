@@ -3,6 +3,17 @@ import { IconBat, IconMoon, IconSword, IconWand } from "@tabler/icons-react"
 
 export type SplatType = "vampire" | "werewolf" | "hunter" | "mage"
 
+const getColorByName = (color: string) => {
+    const colors: Record<string, string> = {
+        red: "#fa5252",
+        green: "#51cf66", 
+        orange: "#ff922b",
+        purple: "#9775fa",
+        gray: "#868e96"
+    }
+    return colors[color] || colors.gray
+}
+
 export interface SplatPickerProps {
     onSplatSelected: (splat: SplatType) => void
 }
@@ -34,7 +45,7 @@ const splatOptions: SplatOption[] = [
         subtitle: "Warriors of Gaia",
         description: "Create werewolves fighting against the corruption of the Wyrm. Select your tribe, auspice, and gifts in the battle for Gaia.",
         icon: <IconMoon size={48} />,
-        color: "yellow",
+        color: "green",
         available: true,
     },
     {
@@ -43,7 +54,7 @@ const splatOptions: SplatOption[] = [
         subtitle: "Imbued Mortals",
         description: "Create hunters awakened to the supernatural truth. Choose your creed and edges in the fight against the monsters.",
         icon: <IconSword size={48} />,
-        color: "blue",
+        color: "orange",
         available: false,
         comingSoon: true,
     },
@@ -75,30 +86,30 @@ const SplatPicker = ({ onSplatSelected }: SplatPickerProps) => {
                     </Text>
                 </Stack>
 
-                <Grid gutter={30} justify="center">
+                <Grid gutter={30}>
                     {splatOptions.map((splat) => (
-                        <Grid.Col key={splat.type} span={{ base: 12, sm: 6, lg: 6 }}>
+                        <Grid.Col key={splat.type} xs={12} sm={6} md={6} lg={6}>
                             <Card
                                 shadow="xl"
                                 padding="xl"
                                 radius="md"
-                                h={280}
                                 style={{
+                                    height: 280,
                                     backgroundColor: splat.available 
                                         ? "rgba(0, 0, 0, 0.8)" 
                                         : "rgba(50, 50, 50, 0.6)",
                                     border: splat.available 
-                                        ? `2px solid var(--mantine-color-${splat.color}-6)` 
-                                        : "2px solid var(--mantine-color-gray-6)",
+                                        ? `2px solid ${getColorByName(splat.color)}` 
+                                        : "2px solid #868e96",
                                     cursor: splat.available ? "pointer" : "not-allowed",
                                     transition: "all 0.2s ease",
                                     opacity: splat.available ? 1 : 0.7,
                                 }}
                                 onClick={() => splat.available && onSplatSelected(splat.type)}
                             >
-                                <Stack align="center" justify="space-between" h="100%">
+                                <Stack align="center" justify="space-between" style={{ height: "100%" }}>
                                     <Stack align="center" spacing={15}>
-                                        <Group position="center" style={{ color: `var(--mantine-color-${splat.color}-4)` }}>
+                                        <Group position="center" style={{ color: getColorByName(splat.color) }}>
                                             {splat.icon}
                                         </Group>
                                         
@@ -106,7 +117,7 @@ const SplatPicker = ({ onSplatSelected }: SplatPickerProps) => {
                                             <Title order={3} size={20} align="center" color="white">
                                                 {splat.name}
                                             </Title>
-                                            <Text size="sm" align="center" color={`${splat.color}.4`} fw={600}>
+                                            <Text size="sm" align="center" style={{ fontWeight: 600, color: getColorByName(splat.color) }}>
                                                 {splat.subtitle}
                                             </Text>
                                         </Stack>
@@ -116,7 +127,7 @@ const SplatPicker = ({ onSplatSelected }: SplatPickerProps) => {
                                         </Text>
                                     </Stack>
 
-                                    <Group position="center" w="100%">
+                                    <Group position="center" style={{ width: "100%" }}>
                                         {splat.available ? (
                                             <Button
                                                 variant="filled"
