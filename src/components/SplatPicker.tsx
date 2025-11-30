@@ -46,7 +46,8 @@ const splatOptions: SplatOption[] = [
         description: "Create werewolves fighting against the corruption of the Wyrm. Select your tribe, auspice, and gifts in the battle for Gaia.",
         icon: <IconMoon size={48} />,
         color: "green",
-        available: true,
+        available: false,
+        comingSoon: true,
     },
     {
         type: "hunter",

@@ -1,5 +1,15 @@
 import { Center, Text } from "@mantine/core"
-import { Character, containsBloodSorcery, isThinBlood, isVampireCharacter, isWerewolfCharacter } from "../data/UnifiedCharacter"
+import { Character, containsBloodSorcery, isThinBlood, isVampireCharacter } from "../data/UnifiedCharacter"
+
+// Safe import for werewolf functionality that might not be fully implemented
+let isWerewolfCharacter: ((character: Character) => boolean) | undefined;
+try {
+    const unifiedCharacterModule = require("../data/UnifiedCharacter");
+    isWerewolfCharacter = unifiedCharacterModule.isWerewolfCharacter;
+} catch (error) {
+    console.warn("Werewolf functionality not available:", error);
+    isWerewolfCharacter = undefined;
+}
 import AttributePicker from "./components/AttributePicker"
 import BasicsPicker from "./components/BasicsPicker"
 import ClanPicker from "./components/ClanPicker"
@@ -79,7 +89,7 @@ export function getVampireStepLabels(character: Character) {
 }
 
 export function getWerewolfStepLabels(character: Character) {
-    if (!isWerewolfCharacter(character)) return [];
+    if (!isWerewolfCharacter || !isWerewolfCharacter(character)) return [];
     
     return [
         "Intro",
@@ -96,9 +106,9 @@ export function getWerewolfStepLabels(character: Character) {
 }
 
 export function getStepLabels(character: Character) {
-    if (isVampireCharacter(character)) {
+    if (isVampireCharacter && isVampireCharacter(character)) {
         return getVampireStepLabels(character);
-    } else if (isWerewolfCharacter(character)) {
+    } else if (isWerewolfCharacter && isWerewolfCharacter(character)) {
         return getWerewolfStepLabels(character);
     }
     return [];
@@ -173,7 +183,7 @@ const Generator = ({ character, setCharacter, selectedStep, setSelectedStep }: G
     };
 
     const getWerewolfSteps = (): ((props: StepProps) => JSX.Element)[] => {
-        if (!isWerewolfCharacter(character)) return [];
+        if (!isWerewolfCharacter || !isWerewolfCharacter(character)) return [];
         
         return [
             (props) => <Intro {...props} />, // 0
@@ -190,9 +200,9 @@ const Generator = ({ character, setCharacter, selectedStep, setSelectedStep }: G
     };
 
     const getSteps = () => {
-        if (isVampireCharacter(character)) {
+        if (isVampireCharacter && isVampireCharacter(character)) {
             return getVampireSteps();
-        } else if (isWerewolfCharacter(character)) {
+        } else if (isWerewolfCharacter && isWerewolfCharacter(character)) {
             return getWerewolfSteps();
         }
         return [];
