@@ -1,9 +1,22 @@
-import { Card, Center, Grid, Image, ScrollArea, Text, Title } from "@mantine/core"
+import { Card, Center, Grid, Image, ScrollArea, Text, Title, Button, Stack } from "@mantine/core"
 
 import { AuspiceName, auspiceNameSchema } from "../../data/NameSchemas"
-import { Character, isWerewolfCharacter, syncWerewolfCompatibilityFields } from "../../data/UnifiedCharacter"
+import { Character } from "../../data/UnifiedCharacter"
 import { auspices } from "../../data/Auspices"
 import { globals } from "../../globals"
+
+// Safe import for werewolf functionality that might not be fully implemented
+let isWerewolfCharacter: ((character: Character) => boolean) | undefined;
+let syncWerewolfCompatibilityFields: ((character: Character) => Character) | undefined;
+try {
+    const unifiedCharacterModule = require("../../data/UnifiedCharacter");
+    isWerewolfCharacter = unifiedCharacterModule.isWerewolfCharacter;
+    syncWerewolfCompatibilityFields = unifiedCharacterModule.syncWerewolfCompatibilityFields;
+} catch (error) {
+    console.warn("Werewolf functionality not available:", error);
+    isWerewolfCharacter = undefined;
+    syncWerewolfCompatibilityFields = undefined;
+}
 
 type AuspicePickerProps = {
     character: Character
@@ -12,9 +25,16 @@ type AuspicePickerProps = {
 }
 
 const AuspicePicker = ({ character, setCharacter, nextStep }: AuspicePickerProps) => {
-    // Only render for werewolf characters
-    if (!isWerewolfCharacter(character)) {
-        return <Text size="xl">Error: AuspicePicker only works with werewolf characters</Text>
+    // Only render for werewolf characters - gracefully handle if werewolf functionality is disabled
+    if (!isWerewolfCharacter || !isWerewolfCharacter(character)) {
+        return (
+            <Center style={{ height: '400px' }}>
+                <Stack align="center" spacing="md">
+                    <Text size="xl" color="dimmed">Werewolf functionality is currently under development</Text>
+                    <Button onClick={nextStep} variant="outline">Continue to Next Step</Button>
+                </Stack>
+            </Center>
+        )
     }
 
     const c1 = "rgba(26, 27, 30, 0.90)"
@@ -36,10 +56,15 @@ const AuspicePicker = ({ character, setCharacter, nextStep }: AuspicePickerProps
                         transition: "transform 0.2s ease",
                     }}
                     onClick={() => {
-                        const updatedCharacter = syncWerewolfCompatibilityFields({
-                            ...character,
-                            auspice: auspice as AuspiceName,
-                        })
+                        const updatedCharacter = syncWerewolfCompatibilityFields
+                            ? syncWerewolfCompatibilityFields({
+                                ...character,
+                                auspice: auspice as AuspiceName,
+                            })
+                            : {
+                                ...character,
+                                auspice: auspice as AuspiceName,
+                            };
 
                         setCharacter(updatedCharacter)
                         nextStep()

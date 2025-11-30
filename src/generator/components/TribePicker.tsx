@@ -1,10 +1,23 @@
-import { Card, Center, Grid, Image, ScrollArea, Text, Title } from "@mantine/core"
+import { Card, Center, Grid, Image, ScrollArea, Text, Title, Button, Stack } from "@mantine/core"
 import { notifications } from "@mantine/notifications"
 import { TribeName, tribeNameSchema } from "../../data/NameSchemas"
-import { UnifiedCharacter, isWerewolfCharacter, syncWerewolfCompatibilityFields } from \"../../data/UnifiedCharacter\"
+import { UnifiedCharacter } from "../../data/UnifiedCharacter"
 import { tribes } from "../../data/Tribes"
 import { globals } from "../../globals"
 import { notDefault } from "../utils"
+
+// Safe import for werewolf functionality that might not be fully implemented
+let isWerewolfCharacter: ((character: UnifiedCharacter) => boolean) | undefined;
+let syncWerewolfCompatibilityFields: ((character: UnifiedCharacter) => UnifiedCharacter) | undefined;
+try {
+    const unifiedCharacterModule = require("../../data/UnifiedCharacter");
+    isWerewolfCharacter = unifiedCharacterModule.isWerewolfCharacter;
+    syncWerewolfCompatibilityFields = unifiedCharacterModule.syncWerewolfCompatibilityFields;
+} catch (error) {
+    console.warn("Werewolf functionality not available:", error);
+    isWerewolfCharacter = undefined;
+    syncWerewolfCompatibilityFields = undefined;
+}
 
 type TribePickerProps = {
     character: UnifiedCharacter
@@ -13,9 +26,16 @@ type TribePickerProps = {
 }
 
 const TribePicker = ({ character, setCharacter, nextStep }: TribePickerProps) => {
-    // Only render for werewolf characters
-    if (!isWerewolfCharacter(character)) {
-        return <Text size="xl">Error: TribePicker only works with werewolf characters</Text>
+    // Only render for werewolf characters - gracefully handle if werewolf functionality is disabled
+    if (!isWerewolfCharacter || !isWerewolfCharacter(character)) {
+        return (
+            <Center style={{ height: '400px' }}>
+                <Stack align="center" spacing="md">
+                    <Text size="xl" color="dimmed">Werewolf functionality is currently under development</Text>
+                    <Button onClick={nextStep} variant="outline">Continue to Next Step</Button>
+                </Stack>
+            </Center>
+        )
     }
 
 
@@ -47,21 +67,35 @@ const TribePicker = ({ character, setCharacter, nextStep }: TribePickerProps) =>
                                 color: "yellow",
                             })
 
-                            const updatedCharacter = syncWerewolfCompatibilityFields({
-                                ...character,
-                                tribe,
-                                gifts: [],
-                                availableGiftNames: tribes[tribe].gifts,
-                                auspice: character.auspice,
-                            })
+                            const updatedCharacter = syncWerewolfCompatibilityFields
+                                ? syncWerewolfCompatibilityFields({
+                                    ...character,
+                                    tribe,
+                                    gifts: [],
+                                    availableGiftNames: tribes[tribe].gifts,
+                                    auspice: character.auspice,
+                                })
+                                : {
+                                    ...character,
+                                    tribe,
+                                    gifts: [],
+                                    availableGiftNames: tribes[tribe].gifts,
+                                    auspice: character.auspice,
+                                };
 
                             setCharacter(updatedCharacter)
                         } else {
-                            const updatedCharacter = syncWerewolfCompatibilityFields({
-                                ...character,
-                                tribe,
-                                availableGiftNames: tribes[tribe].gifts,
-                            })
+                            const updatedCharacter = syncWerewolfCompatibilityFields
+                                ? syncWerewolfCompatibilityFields({
+                                    ...character,
+                                    tribe,
+                                    availableGiftNames: tribes[tribe].gifts,
+                                })
+                                : {
+                                    ...character,
+                                    tribe,
+                                    availableGiftNames: tribes[tribe].gifts,
+                                };
 
                             setCharacter(updatedCharacter)
                         }

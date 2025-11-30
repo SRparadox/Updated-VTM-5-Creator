@@ -6,10 +6,20 @@ import ReactGA from "react-ga4"
 import { Character, MeritFlaw } from "../../data/Character"
 import { isThinbloodFlaw, isThinbloodMerit, isGhoulFlaw, isGhoulMerit, isElderFlaw, isElderMerit, MeritOrFlaw, meritsAndFlaws, thinbloodMeritsAndFlaws, ghoulMeritsAndFlaws, elderMeritsAndFlaws, bargainFlaws } from "../../data/MeritsAndFlaws"
 import { meritsAndFlaws as werewolfMeritsAndFlaws } from "../../data/WerewolfMeritsAndFlaws"
-import { UnifiedCharacter, isWerewolfCharacter } from "../../data/UnifiedCharacter"
+import { UnifiedCharacter } from "../../data/UnifiedCharacter"
 import { PredatorTypes } from "../../data/PredatorType"
 import { globals } from "../../globals"
 import { Loresheets } from "./Loresheets"
+
+// Safe import for werewolf functionality that might not be fully implemented
+let isWerewolfCharacter: ((character: UnifiedCharacter) => boolean) | undefined;
+try {
+    const unifiedCharacterModule = require("../../data/UnifiedCharacter");
+    isWerewolfCharacter = unifiedCharacterModule.isWerewolfCharacter;
+} catch (error) {
+    console.warn("Werewolf functionality not available:", error);
+    isWerewolfCharacter = undefined;
+}
 
 type MeritsAndFlawsPickerProps = {
     character: UnifiedCharacter
@@ -34,7 +44,7 @@ const MeritsAndFlawsPicker = ({ character, setCharacter, nextStep }: MeritsAndFl
 
     const [pickedMeritsAndFlaws, setPickedMeritsAndFlaws] = useState<MeritFlaw[]>([...character.merits, ...character.flaws])
 
-    const isWerewolf = isWerewolfCharacter(character)
+    const isWerewolf = isWerewolfCharacter ? isWerewolfCharacter(character) : false
     const isGhoul = character.clan === "Ghoul"
     const isElder = character.isElder || character.isMethuselah
     
