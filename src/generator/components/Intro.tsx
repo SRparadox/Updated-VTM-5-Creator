@@ -52,16 +52,6 @@ const Intro = ({ setCharacter, nextStep }: IntroProps) => {
                 it!
             </Text>
 
-            <Text fz={globals.smallerFontSize} mb={"xl"}>
-                For feature requests, bug reports and general feedback, message me on:&nbsp;
-                <ActionIcon display={"inline"} component="a" href="https://www.reddit.com/user/ProgenyDev/" variant="default" c={"#ff6314"}>
-                    <IconBrandReddit />
-                </ActionIcon>
-                &nbsp;
-                <ActionIcon display={"inline"} component="a" href="https://twitter.com/Odin68092534" variant="default" c={"#1DA1F2"}>
-                    <IconBrandTwitter />
-                </ActionIcon>
-            </Text>
             <Stack align="center" spacing="xl">
                 <Button
                     size="xs"
@@ -90,19 +80,6 @@ const Intro = ({ setCharacter, nextStep }: IntroProps) => {
                         </Button>
                     )}
                 </FileButton>
-
-                <Button
-                    component="a"
-                    href="https://github.com/Odin94/Progeny-vtm-v5-character-creator"
-                    target="_blank"
-                    rel="noreferrer"
-                    leftIcon={<IconBrandGithub />}
-                    size="xs"
-                    color="gray"
-                    variant="filled"
-                >
-                    View Source Code
-                </Button>
                 <Button
                     leftIcon={<FontAwesomeIcon icon={faTrash} />}
                     size="md"
