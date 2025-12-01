@@ -1,4 +1,4 @@
-import { Button, Select, Space, Stack, Text } from "@mantine/core"
+import { Button, NumberInput, Select, Space, Stack, Text } from "@mantine/core"
 import { useEffect, useState } from "react"
 import { Character } from "../../data/Character"
 import ReactGA from "react-ga4"
@@ -34,6 +34,70 @@ const GenerationPicker = ({ character, setCharacter, nextStep }: GenerationPicke
                         : "Most common choice is '13 - Neonate'"
                 }
             </Text>
+
+            {!isGhoul && (
+                <>
+                    <Text mt={"xl"} ta="center" fz="xl" fw={700} c="grape">
+                        Vampire Experience
+                    </Text>
+                    <hr color="#9775fa" />
+                    <Space h={"sm"} />
+                    
+                    <Stack align="center" spacing="md">
+                        <NumberInput
+                            label="Years as Vampire"
+                            description="Affects available merits & flaws points"
+                            value={character.yearsAsVampire || 0}
+                            onChange={(value) => {
+                                const years = typeof value === 'number' ? value : 0;
+                                const updatedNotes = character.notes ? 
+                                    character.notes.replace(/Years as Vampire: \d+/g, '').trim() + 
+                                    (character.notes.trim() ? '\n' : '') + `Years as Vampire: ${years}` :
+                                    `Years as Vampire: ${years}`;
+                                
+                                setCharacter({
+                                    ...character,
+                                    yearsAsVampire: years,
+                                    notes: updatedNotes
+                                })
+                            }}
+                            min={0}
+                            max={1000}
+                            step={1}
+                            style={{ width: '300px' }}
+                            styles={{
+                                input: {
+                                    fontFamily: "'Cormorant-Regular', 'CormorantGaramond-Regular', serif",
+                                    fontSize: '16px'
+                                },
+                                label: {
+                                    fontFamily: "'Cormorant-SemiBold', 'CormorantGaramond-SemiBold', serif",
+                                    fontSize: '18px',
+                                    color: '#e8d5b7'
+                                },
+                                description: {
+                                    fontFamily: "'Cormorant-Regular', 'CormorantGaramond-Regular', serif",
+                                    color: '#c9ada7'
+                                }
+                            }}
+                        />
+                        
+                        <Text ta="center" fz="md" c="dimmed" style={{
+                            fontFamily: "'Cormorant-Regular', 'CormorantGaramond-Regular', serif"
+                        }}>
+                            {(() => {
+                                const years = character.yearsAsVampire || 0;
+                                if (years <= 50) return "Fledgling (0-50 years): 7 Merit / 2 Flaw points";
+                                if (years <= 170) return "Ancilla (51-170 years): 14 Merit / 4 Flaw points";
+                                if (years <= 1000) return "Elder (171-1000 years): 21 Merit / 6 Flaw points";
+                                return "Ancient (1000+ years): Unlimited Merit / Flaw points";
+                            })()
+                        </Text>
+                    </Stack>
+                    
+                    <Space h={"xl"} />
+                </>
+            )}
 
             <Text mt={"xl"} ta="center" fz="xl" fw={700} c="red">
                 Generation

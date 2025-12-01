@@ -122,6 +122,7 @@ export const vampireCharacterSchema = baseCharacterSchema.extend({
     bloodPotency: z.number().min(0).int().default(0),
     generation: z.number().min(0).int().default(0),
     humanity: z.number().min(0).int().default(0),
+    yearsAsVampire: z.number().min(0).int().default(0),
     
     // Elder powers
     isElder: z.boolean().default(false),
@@ -255,6 +256,7 @@ export const getEmptyVampireCharacter = (): VampireCharacter => ({
     willpower: 0,
     experience: 0,
     humanity: 0,
+    yearsAsVampire: 0,
     merits: [],
     flaws: [],
     isElder: false,

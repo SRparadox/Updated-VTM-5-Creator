@@ -51,11 +51,31 @@ const MeritsAndFlawsPicker = ({ character, setCharacter, nextStep }: MeritsAndFl
     // Use werewolf merits for werewolf characters, vampire merits for others
     const currentMeritsAndFlaws = isWerewolf ? werewolfMeritsAndFlaws : meritsAndFlaws
     
+    // Calculate merit/flaw points based on years as vampire
+    const getMeritFlawPoints = (yearsAsVampire: number) => {
+        if (yearsAsVampire <= 50) return { merits: 7, flaws: 2 }; // Fledgling
+        if (yearsAsVampire <= 170) return { merits: 14, flaws: 4 }; // Ancilla  
+        if (yearsAsVampire <= 1000) return { merits: 21, flaws: 6 }; // Elder
+        return { merits: 999, flaws: 999 }; // Ancient - unlimited like dev mode
+    }
+    
+    const { merits: baseMeritPoints, flaws: baseFlawPoints } = getMeritFlawPoints(character.yearsAsVampire || 0)
+    
     const usedMeritsLevel = character.merits.filter((m) => !isThinbloodMerit(m.name) && !isGhoulMerit(m.name) && !isElderMerit(m.name)).reduce((acc, { level }) => acc + level, 0)
     const usedFLawsLevel = character.flaws.filter((f) => !isThinbloodFlaw(f.name) && !isGhoulFlaw(f.name) && !isElderFlaw(f.name)).reduce((acc, { level }) => acc + level, 0)
 
-    const [remainingMerits, setRemainingMerits] = useState(7 - usedMeritsLevel)
-    const [remainingFlaws, setRemainingFlaws] = useState(2 - usedFLawsLevel)
+    const [remainingMerits, setRemainingMerits] = useState(baseMeritPoints - usedMeritsLevel)
+    const [remainingFlaws, setRemainingFlaws] = useState(baseFlawPoints - usedFLawsLevel)
+    
+    // Update points when yearsAsVampire changes
+    useEffect(() => {
+        const { merits: newMeritPoints, flaws: newFlawPoints } = getMeritFlawPoints(character.yearsAsVampire || 0)
+        const currentUsedMerits = character.merits.filter((m) => !isThinbloodMerit(m.name) && !isGhoulMerit(m.name) && !isElderMerit(m.name)).reduce((acc, { level }) => acc + level, 0)
+        const currentUsedFlaws = character.flaws.filter((f) => !isThinbloodFlaw(f.name) && !isGhoulFlaw(f.name) && !isElderFlaw(f.name)).reduce((acc, { level }) => acc + level, 0)
+        
+        setRemainingMerits(newMeritPoints - currentUsedMerits)
+        setRemainingFlaws(newFlawPoints - currentUsedFlaws)
+    }, [character.yearsAsVampire])
 
     const isThinBlood = character.clan === "Thin-blood"
     const tbMeritCount = character.merits.filter((m) => isThinbloodMerit(m.name)).length
