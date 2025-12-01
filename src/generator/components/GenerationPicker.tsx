@@ -91,7 +91,7 @@ const GenerationPicker = ({ character, setCharacter, nextStep }: GenerationPicke
                                 if (years <= 170) return "Ancilla (51-170 years): 14 Merit / 4 Flaw points";
                                 if (years <= 1000) return "Elder (171-1000 years): 21 Merit / 6 Flaw points";
                                 return "Ancient (1000+ years): Unlimited Merit / Flaw points";
-                            })()
+                            })()}
                         </Text>
                     </Stack>
                     
