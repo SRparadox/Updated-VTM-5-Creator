@@ -76,13 +76,21 @@ const SplatPicker = ({ onSplatSelected }: SplatPickerProps) => {
         <Container size="lg" py={50}>
             <Stack align="center" spacing={30}>
                 <Stack align="center" spacing={10}>
-                    <Title order={1} size={48} align="center" color="white">
+                    <Title order={1} size={48} align="center" color="white" style={{
+                        fontFamily: "'CormorantGaramond-Bold', 'Cormorant-Bold', serif",
+                        fontWeight: "bold"
+                    }}>
                         World of Darkness
                     </Title>
-                    <Title order={2} size={24} align="center" color="dimmed">
+                    <Title order={2} size={24} align="center" color="dimmed" style={{
+                        fontFamily: "'Cormorant-SemiBoldItalic', 'CormorantGaramond-Italic', serif",
+                        fontStyle: "italic"
+                    }}>
                         Character Creator
                     </Title>
-                    <Text size="lg" align="center" color="dimmed" mt={10}>
+                    <Text size="lg" align="center" color="dimmed" mt={10} style={{
+                        fontFamily: "'Cormorant-Regular', 'CormorantGaramond-Regular', serif"
+                    }}>
                         Choose your supernatural template to begin character creation
                     </Text>
                 </Stack>
@@ -115,15 +123,27 @@ const SplatPicker = ({ onSplatSelected }: SplatPickerProps) => {
                                         </Group>
                                         
                                         <Stack align="center" spacing={5}>
-                                            <Title order={3} size={20} align="center" color="white">
+                                            <Title order={3} size={20} align="center" color="white" style={{
+                                                fontFamily: splat.type === "vampire" ? "'CormorantGaramond-Bold', 'Cormorant-Bold', serif" : "'Cormorant-SemiBold', serif",
+                                                color: splat.type === "vampire" ? "#6f131d" : "white",
+                                                fontWeight: "bold"
+                                            }}>
                                                 {splat.name}
                                             </Title>
-                                            <Text size="sm" align="center" style={{ fontWeight: 600, color: getColorByName(splat.color) }}>
+                                            <Text size="sm" align="center" style={{ 
+                                                fontWeight: 600, 
+                                                color: getColorByName(splat.color),
+                                                fontFamily: "'Cormorant-SemiBoldItalic', 'CormorantGaramond-Italic', serif",
+                                                fontStyle: "italic"
+                                            }}>
                                                 {splat.subtitle}
                                             </Text>
                                         </Stack>
 
-                                        <Text size="sm" align="center" color="dimmed" style={{ minHeight: 60 }}>
+                                        <Text size="sm" align="center" color="dimmed" style={{ 
+                                            minHeight: 60,
+                                            fontFamily: "'Cormorant-Regular', 'CormorantGaramond-Regular', serif"
+                                        }}>
                                             {splat.description}
                                         </Text>
                                     </Stack>

@@ -22,36 +22,52 @@ const Sidebar = ({ character }: SidebarProps) => {
             <Stack>
                 {/* Splat-specific primary identity */}
                 {isVampireCharacter(character) && notDefault(character, "clan") ? (
-                    <Text size="xl">
+                    <Text size="xl" style={{
+                        fontFamily: "'CormorantGaramond-Bold', 'Cormorant-Bold', serif",
+                        color: '#6f131d',
+                        fontWeight: 'bold'
+                    }}>
                         <Center>{character.clan}</Center>
                     </Text>
                 ) : null}
                 {isWerewolfCharacter(character) && notDefault(character, "tribe") ? (
-                    <Text size="xl">
+                    <Text size="xl" style={{
+                        fontFamily: "'CormorantGaramond-Bold', 'Cormorant-Bold', serif",
+                        color: '#6f131d',
+                        fontWeight: 'bold'
+                    }}>
                         <Center>{character.tribe}</Center>
                     </Text>
                 ) : null}
 
                 {/* Vampire-specific info */}
                 {isVampireCharacter(character) && notDefault(character, "sect") ? (
-                    <Text size="lg" color="dimmed">
+                    <Text size="lg" color="dimmed" style={{
+                        fontFamily: "'Cormorant-SemiBold', 'CormorantGaramond-SemiBold', serif"
+                    }}>
                         <Center>{character.sect}</Center>
                     </Text>
                 ) : null}
                 {isVampireCharacter(character) && notDefault(character, "religion") ? (
-                    <Text size="md" color="dimmed">
+                    <Text size="md" color="dimmed" style={{
+                        fontFamily: "'Cormorant-Regular', 'CormorantGaramond-Regular', serif"
+                    }}>
                         <Center>{character.religion}</Center>
                     </Text>
                 ) : null}
 
                 {/* Werewolf-specific info */}
                 {isWerewolfCharacter(character) && notDefault(character, "auspice") ? (
-                    <Text size="lg" color="dimmed">
+                    <Text size="lg" color="dimmed" style={{
+                        fontFamily: "'Cormorant-SemiBold', 'CormorantGaramond-SemiBold', serif"
+                    }}>
                         <Center>{character.auspice}</Center>
                     </Text>
                 ) : null}
                 {isWerewolfCharacter(character) && notDefault(character, "pack") ? (
-                    <Text size="md" color="dimmed">
+                    <Text size="md" color="dimmed" style={{
+                        fontFamily: "'Cormorant-Regular', 'CormorantGaramond-Regular', serif"
+                    }}>
                         <Center>Pack: {character.pack}</Center>
                     </Text>
                 ) : null}
@@ -63,19 +79,25 @@ const Sidebar = ({ character }: SidebarProps) => {
                 
                 {/* Splat-specific stats */}
                 {isVampireCharacter(character) && notDefault(character, "generation") ? (
-                    <Text>
+                    <Text style={{
+                        fontFamily: "'Cormorant-SemiBold', 'CormorantGaramond-SemiBold', serif"
+                    }}>
                         <b>Generation:</b> {character.generation}
                     </Text>
                 ) : null}
                 {isWerewolfCharacter(character) && notDefault(character, "gnosis") ? (
-                    <Text>
+                    <Text style={{
+                        fontFamily: "'Cormorant-SemiBold', 'CormorantGaramond-SemiBold', serif"
+                    }}>
                         <b>Gnosis:</b> {character.gnosis}
                     </Text>
                 ) : null}
 
                 {/* Splat-specific role/type */}
                 {isVampireCharacter(character) && notDefault(character, "predatorType") ? (
-                    <Text>
+                    <Text style={{
+                        fontFamily: "'Cormorant-SemiBold', 'CormorantGaramond-SemiBold', serif"
+                    }}>
                         <b>Predator Type:</b> {character.predatorType.name}
                     </Text>
                 ) : null}

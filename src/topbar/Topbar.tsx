@@ -60,7 +60,13 @@ const Topbar = ({ character, setCharacter, setSelectedStep, setShowAsideBar, sel
                                 </Button>
                             )}
                             <span style={{ textAlign: "center" }}>
-                                <Title style={{ display: "inline", marginLeft: selectedSplat ? "0px" : "50px" }} order={smallScreen ? 3 : 1}>
+                                <Title style={{ 
+                                    display: "inline", 
+                                    marginLeft: selectedSplat ? "0px" : "50px",
+                                    fontFamily: selectedSplat === "vampire" ? "'CormorantGaramond-Bold', 'Cormorant-Bold', serif" : undefined,
+                                    color: selectedSplat === "vampire" ? "#6f131d" : undefined,
+                                    fontWeight: selectedSplat === "vampire" ? "bold" : undefined
+                                }} order={smallScreen ? 3 : 1}>
                                     {selectedSplat ? getSplatDisplayName(selectedSplat) : "Progeny"}
                                 </Title>
                                 {phoneScreen ? null : (

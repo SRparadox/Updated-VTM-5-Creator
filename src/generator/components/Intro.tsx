@@ -9,6 +9,7 @@ import ResetModal from "../../components/ResetModal"
 import { Character } from "../../data/Character"
 import ReactGA from "react-ga4"
 import { globals } from "../../globals"
+import vtmCoverImage from "../../resources/backgrounds/Vampire the Masquerade Cover.jpg"
 
 type IntroProps = {
     setCharacter: (character: Character) => void
@@ -43,7 +44,14 @@ const Intro = ({ setCharacter, nextStep }: IntroProps) => {
                 minHeight: '80vh',
                 display: 'flex',
                 flexDirection: 'column',
-                justifyContent: 'center'
+                justifyContent: 'center',
+                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${vtmCoverImage})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                backgroundAttachment: 'fixed',
+                borderRadius: '10px',
+                padding: '20px'
             }}
         >
             <Box
@@ -77,14 +85,15 @@ const Intro = ({ setCharacter, nextStep }: IntroProps) => {
                     <Title 
                         order={1}
                         style={{
-                            fontSize: globals.isPhoneScreen ? '28px' : '42px',
-                            fontFamily: "'Cinzel', 'Times New Roman', serif",
-                            color: '#e8d5b7',
-                            textShadow: '2px 2px 8px rgba(139, 69, 19, 0.8), 0 0 20px rgba(139, 69, 19, 0.4)',
-                            letterSpacing: '2px',
+                            fontSize: globals.isPhoneScreen ? '32px' : '48px',
+                            fontFamily: "'CormorantGaramond-Bold', 'Cormorant-Bold', serif",
+                            color: '#6f131d',
+                            textShadow: '3px 3px 10px rgba(0, 0, 0, 0.9), 0 0 25px rgba(111, 19, 29, 0.6)',
+                            letterSpacing: '3px',
                             textAlign: 'center',
-                            marginBottom: '10px',
-                            animation: 'titleGlow 2s ease-in-out infinite alternate'
+                            marginBottom: '15px',
+                            animation: 'titleGlow 2s ease-in-out infinite alternate',
+                            fontWeight: 'bold'
                         }}
                     >
                         Vampire: The Masquerade
@@ -92,16 +101,17 @@ const Intro = ({ setCharacter, nextStep }: IntroProps) => {
                     
                     <Text 
                         style={{
-                            fontSize: globals.isPhoneScreen ? '16px' : '20px',
-                            fontFamily: "'Crimson Text', 'Georgia', serif",
-                            color: '#d4af37',
+                            fontSize: globals.isPhoneScreen ? '18px' : '24px',
+                            fontFamily: "'Cormorant-SemiBoldItalic', 'CormorantGaramond-Italic', serif",
+                            color: '#6f131d',
                             textAlign: 'center',
                             fontStyle: 'italic',
-                            textShadow: '1px 1px 4px rgba(0, 0, 0, 0.8)',
-                            marginBottom: '20px'
+                            textShadow: '2px 2px 6px rgba(0, 0, 0, 0.8)',
+                            marginBottom: '25px',
+                            fontWeight: '600'
                         }}
                     >
-                        Character Creation Tool for the Fifth Edition
+                        Character Creator
                     </Text>
 
                     <Stack spacing="md" style={{ maxWidth: '600px', textAlign: 'center' }}>
