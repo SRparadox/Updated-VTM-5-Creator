@@ -12,14 +12,7 @@ import SplatPicker, { SplatType } from "./components/SplatPicker"
 import { useViewportSize } from "@mantine/hooks"
 import { rndInt } from "./generator/utils"
 import { globals } from "./globals"
-import club from "./resources/backgrounds/aleksandr-popov-3InMDrsuYrk-unsplash.jpg"
-import brokenDoor from "./resources/backgrounds/amber-kipp-VcPo_DvKjQE-unsplash.jpg"
-import city from "./resources/backgrounds/dominik-hofbauer-IculuMoubkQ-unsplash.jpg"
-import bloodGuy from "./resources/backgrounds/marcus-bellamy-xvW725b6LQk-unsplash.jpg"
-import batWoman from "./resources/backgrounds/peter-scherbatykh-VzQWVqHOCaE-unsplash.jpg"
-import alley from "./resources/backgrounds/thomas-le-KNQEvvCGoew-unsplash.jpg"
-
-const backgrounds = [club, brokenDoor, city, bloodGuy, batWoman, alley]
+import vtmCover from "./resources/backgrounds/Vampire the Masquerade Cover.jpg"
 
 function App() {
     const { height: viewportHeight, width: viewportWidth } = useViewportSize()
@@ -38,7 +31,7 @@ function App() {
     const [character, setCharacter] = useLocalStorage<Character>({ key: "character", defaultValue: getEmptyCharacter() })
     const [selectedStep, setSelectedStep] = useLocalStorage({ key: "selectedStep", defaultValue: 0 })
     const [selectedSplat, setSelectedSplat] = useLocalStorage<SplatType | null>({ key: "selectedSplat", defaultValue: null })
-    const [backgroundIndex] = useState(rndInt(0, backgrounds.length))
+    // Use VTM cover as the main background
 
     const handleSplatSelection = (splat: SplatType) => {
         setSelectedSplat(splat)
@@ -82,7 +75,7 @@ function App() {
             })}
         >
             {
-                <BackgroundImage h={"99%"} src={backgrounds[backgroundIndex]}>
+                <BackgroundImage h={"99%"} src={vtmCover}>
                     <div style={{ backgroundColor: "rgba(0, 0, 0, 0.7)", height: "100%" }}>
                         {selectedSplat === null ? (
                             <SplatPicker onSplatSelected={handleSplatSelection} />

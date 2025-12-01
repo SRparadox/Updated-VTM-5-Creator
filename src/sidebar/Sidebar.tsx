@@ -24,7 +24,7 @@ const Sidebar = ({ character }: SidebarProps) => {
                 {isVampireCharacter(character) && notDefault(character, "clan") ? (
                     <Text size="xl" style={{
                         fontFamily: "'CormorantGaramond-Bold', 'Cormorant-Bold', serif",
-                        color: '#6f131d',
+                        color: 'white',
                         fontWeight: 'bold'
                     }}>
                         <Center>{character.clan}</Center>
@@ -33,7 +33,7 @@ const Sidebar = ({ character }: SidebarProps) => {
                 {isWerewolfCharacter(character) && notDefault(character, "tribe") ? (
                     <Text size="xl" style={{
                         fontFamily: "'CormorantGaramond-Bold', 'Cormorant-Bold', serif",
-                        color: '#6f131d',
+                        color: 'white',
                         fontWeight: 'bold'
                     }}>
                         <Center>{character.tribe}</Center>

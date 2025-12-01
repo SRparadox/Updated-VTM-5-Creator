@@ -87,8 +87,8 @@ const Intro = ({ setCharacter, nextStep }: IntroProps) => {
                         style={{
                             fontSize: globals.isPhoneScreen ? '32px' : '48px',
                             fontFamily: "'CormorantGaramond-Bold', 'Cormorant-Bold', serif",
-                            color: '#6f131d',
-                            textShadow: '3px 3px 10px rgba(0, 0, 0, 0.9), 0 0 25px rgba(111, 19, 29, 0.6)',
+                            color: '#e8d5b7',
+                            textShadow: '3px 3px 10px rgba(0, 0, 0, 0.9), 0 0 25px rgba(139, 69, 19, 0.6)',
                             letterSpacing: '3px',
                             textAlign: 'center',
                             marginBottom: '15px',
@@ -103,7 +103,7 @@ const Intro = ({ setCharacter, nextStep }: IntroProps) => {
                         style={{
                             fontSize: globals.isPhoneScreen ? '18px' : '24px',
                             fontFamily: "'Cormorant-SemiBoldItalic', 'CormorantGaramond-Italic', serif",
-                            color: '#6f131d',
+                            color: '#d4af37',
                             textAlign: 'center',
                             fontStyle: 'italic',
                             textShadow: '2px 2px 6px rgba(0, 0, 0, 0.8)',
