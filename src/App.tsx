@@ -1,4 +1,4 @@
-import { AppShell, BackgroundImage, Container, Header, Navbar } from "@mantine/core"
+import { AppShell, BackgroundImage, Container, Navbar } from "@mantine/core"
 import { useLocalStorage, useMediaQuery } from "@mantine/hooks"
 import { useEffect, useState } from "react"
 import "./App.css"
@@ -6,7 +6,6 @@ import { Character, getEmptyCharacter } from "./data/UnifiedCharacter"
 import Generator from "./generator/Generator"
 import AsideBar from "./sidebar/AsideBar"
 import Sidebar from "./sidebar/Sidebar"
-import Topbar from "./topbar/Topbar"
 import SplatPicker, { SplatType } from "./components/SplatPicker"
 
 import { useViewportSize } from "@mantine/hooks"
@@ -57,18 +56,6 @@ function App() {
                     </Navbar>
                 )
             }
-            header={
-                <Header height={75} p="xs">
-                    <Topbar
-                        character={character}
-                        setCharacter={setCharacter}
-                        setSelectedStep={setSelectedStep}
-                        setShowAsideBar={setShowAsideBar}
-                        selectedSplat={selectedSplat}
-                        onBackToSplatSelection={() => setSelectedSplat(null)}
-                    />
-                </Header>
-            }
             aside={showAsideBar ? <AsideBar selectedStep={selectedStep} setSelectedStep={setSelectedStep} character={character} /> : <></>}
             styles={(theme) => ({
                 main: { backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[8] : theme.colors.gray[0] },
@@ -86,6 +73,7 @@ function App() {
                                     setCharacter={setCharacter}
                                     selectedStep={selectedStep}
                                     setSelectedStep={setSelectedStep}
+                                    onBackToSplatSelection={() => setSelectedSplat(null)}
                                 />
                             </Container>
                         )}

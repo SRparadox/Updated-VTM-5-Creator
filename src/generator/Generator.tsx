@@ -1,4 +1,5 @@
-import { Center, Text } from "@mantine/core"
+import { Center, Text, Button, Stack } from "@mantine/core"
+import { IconArrowLeft } from "@tabler/icons-react"
 import { Character, containsBloodSorcery, isThinBlood, isVampireCharacter } from "../data/UnifiedCharacter"
 
 // Safe import for werewolf functionality that might not be fully implemented
@@ -120,11 +121,12 @@ export type GeneratorProps = {
 
     selectedStep: number
     setSelectedStep: (step: number) => void
+    onBackToSplatSelection?: () => void
 }
 
 const containsOblivion = (powers: Power[]) => powers.some((power) => power.discipline === "oblivion");
 
-const Generator = ({ character, setCharacter, selectedStep, setSelectedStep }: GeneratorProps) => {
+const Generator = ({ character, setCharacter, selectedStep, setSelectedStep, onBackToSplatSelection }: GeneratorProps) => {
     // Define the props type for all step components
     type StepProps = {
         character: Character;
@@ -223,9 +225,41 @@ const Generator = ({ character, setCharacter, selectedStep, setSelectedStep }: G
     };
 
     return (
-        <Center h={"100%"}>
-            <ErrorBoundary key={selectedStep}>{getStepComponent()}</ErrorBoundary>
-        </Center>
+        <Stack spacing={0} h={"100%"}>
+            {onBackToSplatSelection && (
+                <Center pt="md">
+                    <Button
+                        variant="outline"
+                        leftIcon={<IconArrowLeft size={16} />}
+                        onClick={onBackToSplatSelection}
+                        size="lg"
+                        style={{
+                            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                            borderColor: '#d4af37',
+                            color: '#d4af37',
+                            fontFamily: "'Cormorant-SemiBold', 'CormorantGaramond-SemiBold', serif",
+                            fontSize: '16px',
+                            fontWeight: '600',
+                            boxShadow: '0 4px 12px rgba(212, 175, 55, 0.3)',
+                            transition: 'all 0.3s ease'
+                        }}
+                        onMouseEnter={(e) => {
+                            e.currentTarget.style.backgroundColor = 'rgba(212, 175, 55, 0.1)';
+                            e.currentTarget.style.transform = 'translateY(-2px)';
+                        }}
+                        onMouseLeave={(e) => {
+                            e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+                            e.currentTarget.style.transform = 'translateY(0)';
+                        }}
+                    >
+                        ← Back to Game Selection
+                    </Button>
+                </Center>
+            )}
+            <Center style={{ flex: 1 }}>
+                <ErrorBoundary key={selectedStep}>{getStepComponent()}</ErrorBoundary>
+            </Center>
+        </Stack>
     )
 }
 
