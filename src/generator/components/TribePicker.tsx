@@ -5,19 +5,7 @@ import { UnifiedCharacter } from "../../data/UnifiedCharacter"
 import { tribes } from "../../data/Tribes"
 import { globals } from "../../globals"
 import { notDefault } from "../utils"
-
-// Safe import for werewolf functionality that might not be fully implemented
-let isWerewolfCharacter: ((character: UnifiedCharacter) => boolean) | undefined;
-let syncWerewolfCompatibilityFields: ((character: UnifiedCharacter) => UnifiedCharacter) | undefined;
-try {
-    const unifiedCharacterModule = require("../../data/UnifiedCharacter");
-    isWerewolfCharacter = unifiedCharacterModule.isWerewolfCharacter;
-    syncWerewolfCompatibilityFields = unifiedCharacterModule.syncWerewolfCompatibilityFields;
-} catch (error) {
-    console.warn("Werewolf functionality not available:", error);
-    isWerewolfCharacter = undefined;
-    syncWerewolfCompatibilityFields = undefined;
-}
+import { isWerewolfCharacter, syncWerewolfCompatibilityFields } from "../../data/UnifiedCharacter"
 
 type TribePickerProps = {
     character: UnifiedCharacter
@@ -26,12 +14,12 @@ type TribePickerProps = {
 }
 
 const TribePicker = ({ character, setCharacter, nextStep }: TribePickerProps) => {
-    // Only render for werewolf characters - gracefully handle if werewolf functionality is disabled
-    if (!isWerewolfCharacter || !isWerewolfCharacter(character)) {
+    // Only render for werewolf characters
+    if (!isWerewolfCharacter(character)) {
         return (
             <Center style={{ height: '400px' }}>
                 <Stack align="center" spacing="md">
-                    <Text size="xl" color="dimmed">Werewolf functionality is currently under development</Text>
+                    <Text size="xl" color="dimmed">This component is only available for werewolf characters</Text>
                     <Button onClick={nextStep} variant="outline">Continue to Next Step</Button>
                 </Stack>
             </Center>

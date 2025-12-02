@@ -1,19 +1,6 @@
 import { Button, Card, Center, Grid, Group, ScrollArea, Stack, Text, Title } from "@mantine/core"
 import { useState } from "react"
-import { Character } from "../../data/UnifiedCharacter"
-
-// Safe import for werewolf functionality that might not be fully implemented
-let isWerewolfCharacter: ((character: Character) => boolean) | undefined;
-let syncWerewolfCompatibilityFields: ((character: Character) => Character) | undefined;
-try {
-    const unifiedCharacterModule = require("../../data/UnifiedCharacter");
-    isWerewolfCharacter = unifiedCharacterModule.isWerewolfCharacter;
-    syncWerewolfCompatibilityFields = unifiedCharacterModule.syncWerewolfCompatibilityFields;
-} catch (error) {
-    console.warn("Werewolf functionality not available:", error);
-    isWerewolfCharacter = undefined;
-    syncWerewolfCompatibilityFields = undefined;
-}
+import { Character, isWerewolfCharacter, syncWerewolfCompatibilityFields } from "../../data/UnifiedCharacter"
 import { Gift, giftsByCategory } from "../../data/Gifts"
 import { Power } from "../../data/Disciplines"
 import { globals } from "../../globals"
@@ -25,12 +12,12 @@ type GiftsPickerProps = {
 }
 
 const GiftsPicker = ({ character, setCharacter, nextStep }: GiftsPickerProps) => {
-    // Only render for werewolf characters - gracefully handle if werewolf functionality is disabled
-    if (!isWerewolfCharacter || !isWerewolfCharacter(character)) {
+    // Only render for werewolf characters
+    if (!isWerewolfCharacter(character)) {
         return (
             <Center style={{ height: '400px' }}>
                 <Stack align="center" spacing="md">
-                    <Text size="xl" color="dimmed">Werewolf functionality is currently under development</Text>
+                    <Text size="xl" color="dimmed">This component is only available for werewolf characters</Text>
                     <Button onClick={nextStep} variant="outline">Continue to Next Step</Button>
                 </Stack>
             </Center>

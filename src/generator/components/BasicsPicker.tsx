@@ -1,18 +1,8 @@
 import { Button, Stack, Text, TextInput, Textarea } from "@mantine/core"
 import { useEffect, useState } from "react"
 import { Character } from "../../data/Character"
-import { UnifiedCharacter, isVampireCharacter } from "../../data/UnifiedCharacter"
+import { UnifiedCharacter, isVampireCharacter, isWerewolfCharacter } from "../../data/UnifiedCharacter"
 import ReactGA from "react-ga4"
-
-// Safe import for werewolf functionality that might not be fully implemented
-let isWerewolfCharacter: ((character: UnifiedCharacter) => boolean) | undefined;
-try {
-    const unifiedCharacterModule = require("../../data/UnifiedCharacter");
-    isWerewolfCharacter = unifiedCharacterModule.isWerewolfCharacter;
-} catch (error) {
-    console.warn("Werewolf functionality not available:", error);
-    isWerewolfCharacter = undefined;
-}
 
 type BasicsPickerProps = {
     character: UnifiedCharacter

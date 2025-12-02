@@ -10,16 +10,7 @@ import { UnifiedCharacter } from "../../data/UnifiedCharacter"
 import { PredatorTypes } from "../../data/PredatorType"
 import { globals } from "../../globals"
 import { Loresheets } from "./Loresheets"
-
-// Safe import for werewolf functionality that might not be fully implemented
-let isWerewolfCharacter: ((character: UnifiedCharacter) => boolean) | undefined;
-try {
-    const unifiedCharacterModule = require("../../data/UnifiedCharacter");
-    isWerewolfCharacter = unifiedCharacterModule.isWerewolfCharacter;
-} catch (error) {
-    console.warn("Werewolf functionality not available:", error);
-    isWerewolfCharacter = undefined;
-}
+import { isWerewolfCharacter } from "../../data/UnifiedCharacter"
 
 type MeritsAndFlawsPickerProps = {
     character: UnifiedCharacter
