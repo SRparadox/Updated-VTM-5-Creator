@@ -1,9 +1,10 @@
-import { Button, Card, Center, Grid, Group, ScrollArea, Stack, Text, Title } from "@mantine/core"
-import { useState } from "react"
-import { Character, isWerewolfCharacter, syncWerewolfCompatibilityFields } from "../../data/UnifiedCharacter"
-import { Gift, giftsByCategory } from "../../data/Gifts"
-import { Power } from "../../data/Disciplines"
+import { Accordion, Badge, Button, Card, Grid, Group, ScrollArea, Stack, Text } from "@mantine/core"
+import { useEffect, useState } from "react"
+import ReactGA from "react-ga4"
+import { Character, isWerewolfCharacter, WerewolfCharacter } from "../../data/UnifiedCharacter"
+import { Gift, getGiftsByCategory, GiftCategory } from "../../data/Gifts"
 import { globals } from "../../globals"
+
 
 type GiftsPickerProps = {
     character: Character
@@ -11,137 +12,273 @@ type GiftsPickerProps = {
     nextStep: () => void
 }
 
+const getAvailableGifts = (character: Character): Gift[] => {
+    // Only werewolf characters have access to gifts
+    if (!isWerewolfCharacter(character)) {
+        return []
+    }
+    
+    const werewolfChar = character as WerewolfCharacter
+    const availableGifts: Gift[] = []
+    
+    // Add native gifts (available to all Garou)
+    availableGifts.push(...getGiftsByCategory("Native"))
+    
+    // Add gifts based on auspice
+    if (werewolfChar.auspice) {
+        availableGifts.push(...getGiftsByCategory(werewolfChar.auspice as GiftCategory))
+    }
+    
+    // Add gifts based on tribe  
+    if (werewolfChar.tribe) {
+        availableGifts.push(...getGiftsByCategory(werewolfChar.tribe as GiftCategory))
+    }
+    
+    return availableGifts
+}
+
 const GiftsPicker = ({ character, setCharacter, nextStep }: GiftsPickerProps) => {
+    useEffect(() => {
+        ReactGA.send({ hitType: "pageview", title: "Gifts Picker" })
+    }, [])
+    
     // Only render for werewolf characters
     if (!isWerewolfCharacter(character)) {
         return (
-            <Center style={{ height: '400px' }}>
-                <Stack align="center" spacing="md">
-                    <Text size="xl" color="dimmed">This component is only available for werewolf characters</Text>
-                    <Button onClick={nextStep} variant="outline">Continue to Next Step</Button>
+            <div style={{ textAlign: "center", padding: "50px" }}>
+                <Text size="xl" color="dimmed">This component is only available for werewolf characters</Text>
+                <Button onClick={nextStep} variant="outline" style={{ marginTop: "20px" }}>Continue to Next Step</Button>
+            </div>
+        )
+    }
+    
+    const werewolfChar = character as WerewolfCharacter
+
+    const smallScreen = globals.isSmallScreen
+    const [pickedGifts, setPickedGifts] = useState<Gift[]>([])
+
+    const allPickedGifts = pickedGifts
+
+    const availableGifts = getAvailableGifts(character)
+
+    const isPicked = (gift: Gift) => {
+        return allPickedGifts.map((gift) => gift.name).includes(gift.name)
+    }
+
+    // New gift selection rules: 1 from Auspice, 1 from Native, 1 from Tribe
+    const canPickMoreGifts = (giftCategory: string) => {
+        const currentCount = allPickedGifts.filter((p: Gift) => p.category === giftCategory).length
+        
+        // Always allow 1 gift from each category type
+        if (giftCategory === "Native") {
+            return currentCount < 1
+        }
+        
+        // Check if this is an auspice gift
+        const auspiceCategories = ["Ragabash", "Theurge", "Philodox", "Galliard", "Ahroun"]
+        if (auspiceCategories.includes(giftCategory)) {
+            const auspiceGiftsCount = allPickedGifts.filter((p: Gift) => auspiceCategories.includes(p.category)).length
+            return auspiceGiftsCount < 1
+        }
+        
+        // Check if this is a tribe gift
+        const tribeCategories = ["Black Furies", "Bone Gnawers", "Children of Gaia", "Galestalkers", "Ghost Council", "Glass Walkers", "Hart Wardens", "Red Talons", "Shadow Lords", "Silent Striders", "Silver Fangs"]
+        if (tribeCategories.includes(giftCategory)) {
+            const tribeGiftsCount = allPickedGifts.filter((p: Gift) => tribeCategories.includes(p.category)).length
+            return tribeGiftsCount < 1
+        }
+        
+        return false
+    }
+
+    const validToMove = pickedGifts.length === 3 // Must have exactly 3 gifts: 1 Auspice, 1 Native, 1 Tribe
+
+    const createGiftCard = (gift: Gift) => {
+        const picked = isPicked(gift)
+        const disabled = picked || !canPickMoreGifts(gift.category)
+
+        return (
+            <Card key={gift.name} withBorder shadow="sm" style={{ opacity: disabled ? 0.5 : 1 }}>
+                <Stack spacing="xs">
+                    <Group position="apart" align="flex-start">
+                        <Text weight={500} size="sm">
+                            {gift.name}
+                        </Text>
+                        <Badge size="xs" color={picked ? "green" : "gray"}>
+                            {gift.renown}
+                        </Badge>
+                    </Group>
+                    <Text size="xs" color="dimmed">
+                        {gift.summary}
+                    </Text>
+                    {gift.dicePool && (
+                        <Text size="xs" color="blue">
+                            Dice Pool: {gift.dicePool}
+                        </Text>
+                    )}
+                    <Group position="apart">
+                        <Text size="xs" color="orange">
+                            Cost: {gift.cost}
+                        </Text>
+                        <Text size="xs" color="gray">
+                            Duration: {gift.duration}
+                        </Text>
+                    </Group>
+                    <Button
+                        size="xs"
+                        disabled={disabled}
+                        onClick={() => {
+                            if (picked) return
+                            
+                            const newGifts = [...pickedGifts, gift]
+                            setPickedGifts(newGifts)
+                            
+                            // Convert gifts to disciplines format for backward compatibility
+                            const disciplinesFormat = newGifts.map(g => ({
+                                name: g.name,
+                                description: g.description,
+                                summary: g.summary,
+                                dicePool: g.dicePool,
+                                level: 1,
+                                discipline: "potence" as const, // Use consistent discipline for gifts
+                                rouseChecks: 0,
+                                amalgamPrerequisites: [],
+                            }))
+                            
+                            setCharacter({
+                                ...character,
+                                disciplines: disciplinesFormat,
+                            })
+
+                            ReactGA.event({
+                                action: "gift picked",
+                                category: "character_creation",
+                                label: gift.name,
+                            })
+                        }}
+                        color={picked ? "green" : "blue"}
+                    >
+                        {picked ? "✓ Selected" : "Select Gift"}
+                    </Button>
                 </Stack>
-            </Center>
+            </Card>
         )
     }
 
-    const [selectedGifts, setSelectedGifts] = useState<Gift[]>([])
+    const createCategoryAccordion = (categoryName: string, categoryGifts: Gift[]) => {
+        if (!categoryGifts.length) return null
 
-    const convertGiftToPower = (gift: Gift): Power => ({
-        name: gift.name,
-        discipline: "", // Use empty discipline name for gifts
-        level: 1, // Default level
-        summary: gift.summary,
-        description: gift.description,
-        dicePool: gift.dicePool,
-        rouseChecks: 0, // Gifts don't use rouse checks, they use Rage/Gnosis
-        amalgamPrerequisites: []
-    })
+        // Get the category type and count for display
+        let pickedCount = 0
+        const maxCount = 1
+        let categoryDisplayName = categoryName
 
-    const handleGiftSelect = (gift: Gift) => {
-        const isSelected = selectedGifts.some(g => g.name === gift.name)
-        
-        if (isSelected) {
-            setSelectedGifts(selectedGifts.filter(g => g.name !== gift.name))
+        if (categoryName === "Native") {
+            pickedCount = allPickedGifts.filter((p: Gift) => p.category === "Native").length
+            categoryDisplayName = "Native Gifts"
         } else {
-            if (selectedGifts.length < 3) { // Limit to 3 gifts
-                setSelectedGifts([...selectedGifts, gift])
+            const auspiceCategories = ["Ragabash", "Theurge", "Philodox", "Galliard", "Ahroun"]
+            const tribeCategories = ["Black Furies", "Bone Gnawers", "Children of Gaia", "Galestalkers", "Ghost Council", "Glass Walkers", "Hart Wardens", "Red Talons", "Shadow Lords", "Silent Striders", "Silver Fangs"]
+            
+            if (auspiceCategories.includes(categoryName)) {
+                pickedCount = allPickedGifts.filter((p: Gift) => auspiceCategories.includes(p.category)).length
+                categoryDisplayName = `${categoryName} Gifts (Auspice)`
+            } else if (tribeCategories.includes(categoryName)) {
+                pickedCount = allPickedGifts.filter((p: Gift) => tribeCategories.includes(p.category)).length
+                categoryDisplayName = `${categoryName} Gifts (Tribe)`
             }
         }
+
+        return (
+            <Accordion.Item key={categoryName} value={categoryName}>
+                <Accordion.Control>
+                    <Group position="apart">
+                        <Text weight={500}>{categoryDisplayName}</Text>
+                        <Badge color={pickedCount >= maxCount ? "green" : "blue"}>
+                            {pickedCount}/{maxCount}
+                        </Badge>
+                    </Group>
+                </Accordion.Control>
+                <Accordion.Panel>
+                    <Grid>
+                        {categoryGifts.map((gift) => (
+                            <Grid.Col key={gift.name} span={smallScreen ? 12 : 6}>
+                                {createGiftCard(gift)}
+                            </Grid.Col>
+                        ))}
+                    </Grid>
+                </Accordion.Panel>
+            </Accordion.Item>
+        )
     }
 
-    const handleNext = () => {
-        const giftPowers = selectedGifts.map(convertGiftToPower)
-        
-        const updatedCharacter = syncWerewolfCompatibilityFields 
-            ? syncWerewolfCompatibilityFields({
-                ...character,
-                gifts: giftPowers,
-            })
-            : {
-                ...character,
-                gifts: giftPowers,
-            };
-
-        setCharacter(updatedCharacter)
-        nextStep()
-    }
-
-    // Get available gifts based on tribe and auspice
-    const availableGifts = [
-        ...giftsByCategory.Native,
-        ...giftsByCategory[character.auspice as keyof typeof giftsByCategory] || [],
-        ...giftsByCategory[character.tribe as keyof typeof giftsByCategory] || [],
-    ]
+    // Group gifts by category, but only show categories the character has access to
+    const giftsByCategory: Record<string, Gift[]> = {}
+    availableGifts.forEach(gift => {
+        // Only include gifts that the character should have access to
+        if (gift.category === "Native" || 
+            gift.category === werewolfChar.auspice || 
+            gift.category === werewolfChar.tribe) {
+            if (!giftsByCategory[gift.category]) {
+                giftsByCategory[gift.category] = []
+            }
+            giftsByCategory[gift.category].push(gift)
+        }
+    })
 
     const height = globals.viewportHeightPx
 
     return (
-        <div style={{ height: height - 250 }}>
-            <Text size={30} align="center">
-                Choose your starting <b>Gifts</b>
-            </Text>
+        <div style={{ width: smallScreen ? "393px" : "810px", marginTop: globals.isPhoneScreen ? "60px" : "80px" }}>
+            <Stack spacing="lg">
+                <div>
+                    <Text size="xl" weight={700} align="center">
+                        Choose Your Gifts
+                    </Text>
+                    <Text size="sm" color="dimmed" align="center">
+                        Select 3 Gifts: 1 from your Auspice, 1 Native Gift, and 1 from your Tribe
+                    </Text>
+                </div>
 
-            <Text align="center" size="xl" weight={700} color="red">
-                Gifts ({selectedGifts.length}/3)
-            </Text>
-            <hr color="#e03131" />
+                <ScrollArea style={{ height: height - 200 }}>
+                    <Accordion variant="contained" multiple>
+                        {Object.entries(giftsByCategory).map(([categoryName, categoryGifts]) =>
+                            createCategoryAccordion(categoryName, categoryGifts)
+                        )}
+                    </Accordion>
+                </ScrollArea>
 
-            <ScrollArea style={{ height: height - 280 }} w="100%" p={20}>
-                <Grid>
-                    {availableGifts.map((gift) => {
-                        const isSelected = selectedGifts.some(g => g.name === gift.name)
-                        
-                        return (
-                            <Grid.Col key={gift.name} xs={12} sm={6} md={4}>
-                                <Card
-                                    padding="lg"
-                                    radius="md"
-                                    style={{
-                                        cursor: "pointer",
-                                        height: 200,
-                                        border: isSelected ? "2px solid #51cf66" : "1px solid #495057",
-                                        backgroundColor: isSelected ? "rgba(81, 207, 102, 0.1)" : undefined,
-                                        transition: "all 0.2s ease",
-                                    }}
-                                    onClick={() => handleGiftSelect(gift)}
-                                >
-                                    <Stack spacing="xs" style={{ height: "100%" }} justify="space-between">
-                                        <div>
-                                            <Title order={4} align="center">{gift.name}</Title>
-                                            <Text size="xs" color="dimmed" align="center" mb="sm">
-                                                {gift.category} • {gift.renown}
-                                            </Text>
-                                            <Text size="sm" style={{ minHeight: 60, overflow: "hidden" }}>
-                                                {gift.summary}
-                                            </Text>
-                                        </div>
-                                        <div>
-                                            <Text size="xs" color="dimmed">
-                                                <b>Dice Pool:</b> {gift.dicePool}
-                                            </Text>
-                                            <Text size="xs" color="dimmed">
-                                                <b>Cost:</b> {gift.cost}
-                                            </Text>
-                                        </div>
-                                    </Stack>
-                                </Card>
-                            </Grid.Col>
-                        )
-                    })}
-                </Grid>
-            </ScrollArea>
-
-            <Center mt="md">
-                <Group>
+                <Group position="center" spacing="lg">
+                    <Text size="sm" color="dimmed">
+                        Selected: {pickedGifts.length}/3 gifts
+                    </Text>
                     <Button
-                        onClick={handleNext}
-                        size="lg"
-                        disabled={selectedGifts.length === 0}
+                        color="red"
+                        onClick={() => {
+                            setPickedGifts([])
+                            setCharacter({
+                                ...character,
+                                disciplines: [],
+                            })
+                        }}
+                        disabled={pickedGifts.length === 0}
                     >
-                        Continue with {selectedGifts.length} Gift{selectedGifts.length !== 1 ? 's' : ''}
+                        Reset Selection
+                    </Button>
+                    <Button
+                        disabled={!validToMove}
+                        onClick={() => {
+                            ReactGA.event({
+                                action: "gifts completed",
+                                category: "character_creation",
+                            })
+                            nextStep()
+                        }}
+                    >
+                        Continue
                     </Button>
                 </Group>
-            </Center>
+            </Stack>
         </div>
     )
 }

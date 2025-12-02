@@ -303,6 +303,371 @@ export const ahrounGifts: Gift[] = [
     }
 ]
 
+// ===== TRIBE GIFTS =====
+
+export const blackFuriesGifts: Gift[] = [
+    {
+        name: "Sense Wyrm",
+        category: "Black Furies",
+        renown: "Wisdom",
+        description: "The werewolf can sense the spiritual corruption of the Wyrm in any of its forms.",
+        summary: "Detect Wyrm corruption",
+        dicePool: "Perception + Occult",
+        cost: "None",
+        duration: "Instant"
+    },
+    {
+        name: "Rage of Gaia",
+        category: "Black Furies",
+        renown: "Glory",
+        description: "The Fury can channel the righteous anger of Gaia herself, increasing combat prowess against enemies of nature.",
+        summary: "Enhanced combat against nature's enemies",
+        dicePool: "Automatic",
+        cost: "1 Rage",
+        duration: "Scene"
+    },
+    {
+        name: "Curse of Aeacus",
+        category: "Black Furies",
+        renown: "Honor",
+        description: "This gift allows the Black Fury to lay a curse upon a target, bringing them misfortune.",
+        summary: "Lay a curse of misfortune",
+        dicePool: "Manipulation + Occult",
+        cost: "1 Gnosis",
+        duration: "One week"
+    }
+]
+
+export const boneGnawersGifts: Gift[] = [
+    {
+        name: "Cooking",
+        category: "Bone Gnawers",
+        renown: "Wisdom",
+        description: "The werewolf can make even the most inedible substances nourishing and palatable.",
+        summary: "Make anything edible",
+        dicePool: "Wits + Survival",
+        cost: "None",
+        duration: "Per meal"
+    },
+    {
+        name: "Urban Camouflage",
+        category: "Bone Gnawers",
+        renown: "Honor",
+        description: "The Bone Gnawer can blend seamlessly into urban environments, becoming effectively invisible to casual observation.",
+        summary: "Blend into city environments",
+        dicePool: "Wits + Stealth",
+        cost: "None",
+        duration: "Scene"
+    },
+    {
+        name: "Infest",
+        category: "Bone Gnawers",
+        renown: "Glory",
+        description: "The werewolf can summon and command vermin such as rats, roaches, and flies.",
+        summary: "Command urban vermin",
+        dicePool: "Charisma + Animal Ken",
+        cost: "1 Gnosis",
+        duration: "Scene"
+    }
+]
+
+export const childrenOfGaiaGifts: Gift[] = [
+    {
+        name: "Calm",
+        category: "Children of Gaia",
+        renown: "Honor",
+        description: "The werewolf can soothe savage beasts and calm hostile emotions in others.",
+        summary: "Pacify hostile emotions",
+        dicePool: "Charisma + Expression",
+        cost: "None",
+        duration: "Scene"
+    },
+    {
+        name: "Healing Touch",
+        category: "Children of Gaia",
+        renown: "Wisdom",
+        description: "The Child of Gaia can accelerate natural healing in themselves or others.",
+        summary: "Accelerate natural healing",
+        dicePool: "Intelligence + Medicine",
+        cost: "1 Gnosis",
+        duration: "Instant"
+    },
+    {
+        name: "Mercy",
+        category: "Children of Gaia",
+        renown: "Honor",
+        description: "This gift allows the werewolf to calm even the most frenzied Garou or supernatural creature.",
+        summary: "End frenzy in others",
+        dicePool: "Charisma + Expression",
+        cost: "1 Willpower",
+        duration: "Instant"
+    }
+]
+
+export const galestalkersGifts: Gift[] = [
+    {
+        name: "Wind's Whisper",
+        category: "Galestalkers",
+        renown: "Wisdom",
+        description: "The werewolf can hear messages carried on the wind from great distances.",
+        summary: "Hear distant wind-carried messages",
+        dicePool: "Perception + Occult",
+        cost: "None",
+        duration: "Concentration"
+    },
+    {
+        name: "Storm Walker",
+        category: "Galestalkers",
+        renown: "Honor",
+        description: "The Garou can move through any weather without impediment and never takes damage from natural weather.",
+        summary: "Immunity to weather effects",
+        dicePool: "Automatic",
+        cost: "None",
+        duration: "Permanent"
+    },
+    {
+        name: "Lightning Strike",
+        category: "Galestalkers",
+        renown: "Glory",
+        description: "The werewolf can call down a bolt of lightning to strike a target.",
+        summary: "Summon lightning bolt",
+        dicePool: "Dexterity + Occult",
+        cost: "2 Gnosis",
+        duration: "Instant"
+    }
+]
+
+export const ghostCouncilGifts: Gift[] = [
+    {
+        name: "Speak with Spirits",
+        category: "Ghost Council",
+        renown: "Wisdom",
+        description: "The werewolf can communicate with any spirit, regardless of language barriers.",
+        summary: "Universal spirit communication",
+        dicePool: "Automatic",
+        cost: "None",
+        duration: "Permanent"
+    },
+    {
+        name: "Wisdom of the Ancestors",
+        category: "Ghost Council",
+        renown: "Wisdom",
+        description: "The Ghost Council member can call upon ancestral spirits for guidance and knowledge.",
+        summary: "Gain ancestral wisdom",
+        dicePool: "Gnosis",
+        cost: "1 Gnosis",
+        duration: "Next roll"
+    },
+    {
+        name: "Summon Ancestor",
+        category: "Ghost Council",
+        renown: "Honor",
+        description: "The werewolf can temporarily summon the spirit of a powerful ancestor to aid them.",
+        summary: "Summon ancestral spirit ally",
+        dicePool: "Charisma + Occult",
+        cost: "2 Gnosis",
+        duration: "Scene"
+    }
+]
+
+export const glassWalkersGifts: Gift[] = [
+    {
+        name: "Control Simple Machines",
+        category: "Glass Walkers",
+        renown: "Wisdom",
+        description: "The werewolf can mentally control simple mechanical devices without touching them.",
+        summary: "Remote control of machines",
+        dicePool: "Manipulation + Crafts",
+        cost: "None",
+        duration: "Scene"
+    },
+    {
+        name: "Cybersenses",
+        category: "Glass Walkers",
+        renown: "Wisdom",
+        description: "The Glass Walker can interface directly with electronic systems and networks.",
+        summary: "Interface with electronics",
+        dicePool: "Intelligence + Computer",
+        cost: "1 Gnosis",
+        duration: "Scene"
+    },
+    {
+        name: "Techno-Spirit Summoning",
+        category: "Glass Walkers",
+        renown: "Honor",
+        description: "The werewolf can summon and bind spirits of technology to inhabit and empower devices.",
+        summary: "Empower technology with spirits",
+        dicePool: "Charisma + Occult",
+        cost: "2 Gnosis",
+        duration: "Scene"
+    }
+]
+
+export const hartWardensGifts: Gift[] = [
+    {
+        name: "Nature's Camouflage",
+        category: "Hart Wardens",
+        renown: "Wisdom",
+        description: "The werewolf can blend perfectly with natural environments, becoming nearly invisible.",
+        summary: "Natural camouflage",
+        dicePool: "Wits + Stealth",
+        cost: "None",
+        duration: "Scene"
+    },
+    {
+        name: "Plant Growth",
+        category: "Hart Wardens",
+        renown: "Wisdom",
+        description: "The Hart Warden can accelerate plant growth, causing vegetation to flourish rapidly.",
+        summary: "Accelerate plant growth",
+        dicePool: "Stamina + Survival",
+        cost: "1 Gnosis",
+        duration: "Scene"
+    },
+    {
+        name: "Gaia's Strength",
+        category: "Hart Wardens",
+        renown: "Glory",
+        description: "Drawing power from the earth itself, the werewolf gains incredible physical might.",
+        summary: "Draw strength from earth",
+        dicePool: "Stamina + Occult",
+        cost: "2 Gnosis",
+        duration: "Scene"
+    }
+]
+
+export const redTalonsGifts: Gift[] = [
+    {
+        name: "Scent of Prey",
+        category: "Red Talons",
+        renown: "Wisdom",
+        description: "The werewolf can track any creature by scent alone, even across great distances.",
+        summary: "Enhanced tracking by scent",
+        dicePool: "Perception + Primal-Urge",
+        cost: "None",
+        duration: "24 hours"
+    },
+    {
+        name: "Predator's Arsenal",
+        category: "Red Talons",
+        renown: "Glory",
+        description: "The Red Talon's natural weapons become supernaturally sharp and deadly.",
+        summary: "Enhance natural weapons",
+        dicePool: "Stamina + Primal-Urge",
+        cost: "1 Rage",
+        duration: "Scene"
+    },
+    {
+        name: "Terror of the Wilderness",
+        category: "Red Talons",
+        renown: "Glory",
+        description: "The werewolf can instill primal fear in any creature, causing them to flee in terror.",
+        summary: "Instill primal terror",
+        dicePool: "Charisma + Intimidation",
+        cost: "1 Gnosis",
+        duration: "Scene"
+    }
+]
+
+export const shadowLordsGifts: Gift[] = [
+    {
+        name: "Fatal Flaw",
+        category: "Shadow Lords",
+        renown: "Wisdom",
+        description: "The werewolf can discern the greatest weakness or character flaw in any individual.",
+        summary: "Perceive character flaws",
+        dicePool: "Perception + Empathy",
+        cost: "None",
+        duration: "Instant"
+    },
+    {
+        name: "Seizing the Edge",
+        category: "Shadow Lords",
+        renown: "Honor",
+        description: "The Shadow Lord can steal the initiative in any social or physical confrontation.",
+        summary: "Seize initiative in conflicts",
+        dicePool: "Manipulation + Leadership",
+        cost: "1 Willpower",
+        duration: "One turn"
+    },
+    {
+        name: "Shadow Weaving",
+        category: "Shadow Lords",
+        renown: "Wisdom",
+        description: "The werewolf can manipulate shadows to conceal themselves or create illusions.",
+        summary: "Manipulate shadows and darkness",
+        dicePool: "Manipulation + Occult",
+        cost: "1 Gnosis",
+        duration: "Scene"
+    }
+]
+
+export const silentStridersGifts: Gift[] = [
+    {
+        name: "Speed of Thought",
+        category: "Silent Striders",
+        renown: "Glory",
+        description: "The werewolf can move at incredible speeds, appearing as little more than a blur.",
+        summary: "Supernatural speed",
+        dicePool: "Dexterity + Athletics",
+        cost: "1 Gnosis",
+        duration: "Scene"
+    },
+    {
+        name: "Sense the Unnatural",
+        category: "Silent Striders",
+        renown: "Wisdom",
+        description: "The Silent Strider can detect any supernatural presence or activity in the area.",
+        summary: "Detect supernatural presences",
+        dicePool: "Perception + Occult",
+        cost: "None",
+        duration: "Instant"
+    },
+    {
+        name: "Gate Walker",
+        category: "Silent Striders",
+        renown: "Wisdom",
+        description: "The werewolf can open temporary portals through the Umbra to travel vast distances instantly.",
+        summary: "Create travel portals",
+        dicePool: "Gnosis",
+        cost: "3 Gnosis",
+        duration: "Instant"
+    }
+]
+
+export const silverFangsGifts: Gift[] = [
+    {
+        name: "Lambent Flame",
+        category: "Silver Fangs",
+        renown: "Glory",
+        description: "The werewolf can ignite a cold, silver flame that burns only supernatural creatures and Wyrm-tainted beings.",
+        summary: "Create silver flame",
+        dicePool: "Gnosis",
+        cost: "1 Gnosis",
+        duration: "Scene"
+    },
+    {
+        name: "Resist Toxin",
+        category: "Silver Fangs",
+        renown: "Honor",
+        description: "The Silver Fang becomes immune to all forms of poison, disease, and toxins.",
+        summary: "Immunity to toxins",
+        dicePool: "Automatic",
+        cost: "1 Gnosis",
+        duration: "Scene"
+    },
+    {
+        name: "Mindblock",
+        category: "Silver Fangs",
+        renown: "Wisdom",
+        description: "The werewolf can shield their mind from mental intrusion and supernatural mental attacks.",
+        summary: "Mental protection",
+        dicePool: "Willpower",
+        cost: "1 Willpower",
+        duration: "Scene"
+    }
+]
+
 // All gifts combined for easy access
 export const allGifts = [
     ...nativeGifts,
@@ -310,7 +675,18 @@ export const allGifts = [
     ...theurgeGifts,
     ...philodoxGifts,
     ...galliardGifts,
-    ...ahrounGifts
+    ...ahrounGifts,
+    ...blackFuriesGifts,
+    ...boneGnawersGifts,
+    ...childrenOfGaiaGifts,
+    ...galestalkersGifts,
+    ...ghostCouncilGifts,
+    ...glassWalkersGifts,
+    ...hartWardensGifts,
+    ...redTalonsGifts,
+    ...shadowLordsGifts,
+    ...silentStridersGifts,
+    ...silverFangsGifts
 ]
 
 // Sample gifts for backward compatibility
@@ -324,17 +700,17 @@ export const giftsByCategory: Record<GiftCategory, Gift[]> = {
     "Philodox": philodoxGifts,
     "Galliard": galliardGifts,
     "Ahroun": ahrounGifts,
-    "Black Furies": [],
-    "Bone Gnawers": [],
-    "Children of Gaia": [],
-    "Galestalkers": [],
-    "Ghost Council": [],
-    "Glass Walkers": [],
-    "Hart Wardens": [],
-    "Red Talons": [],
-    "Shadow Lords": [],
-    "Silent Striders": [],
-    "Silver Fangs": []
+    "Black Furies": blackFuriesGifts,
+    "Bone Gnawers": boneGnawersGifts,
+    "Children of Gaia": childrenOfGaiaGifts,
+    "Galestalkers": galestalkersGifts,
+    "Ghost Council": ghostCouncilGifts,
+    "Glass Walkers": glassWalkersGifts,
+    "Hart Wardens": hartWardensGifts,
+    "Red Talons": redTalonsGifts,
+    "Shadow Lords": shadowLordsGifts,
+    "Silent Striders": silentStridersGifts,
+    "Silver Fangs": silverFangsGifts
 }
 
 // Helper functions
