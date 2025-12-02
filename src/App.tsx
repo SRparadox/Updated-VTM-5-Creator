@@ -12,6 +12,7 @@ import { useViewportSize } from "@mantine/hooks"
 import { rndInt } from "./generator/utils"
 import { globals } from "./globals"
 import vtmCover from "./resources/backgrounds/Vampire the Masquerade Cover.jpg"
+import werewolfCover from "./resources/backgrounds/Werewolf The Apocalypse Cover.jpg"
 
 function App() {
     const { height: viewportHeight, width: viewportWidth } = useViewportSize()
@@ -62,11 +63,18 @@ function App() {
             })}
         >
             {
-                <BackgroundImage h={"99%"} src={vtmCover}>
-                    <div style={{ backgroundColor: "rgba(0, 0, 0, 0.7)", height: "100%" }}>
-                        {selectedSplat === null ? (
-                            <SplatPicker onSplatSelected={handleSplatSelection} />
-                        ) : (
+                selectedSplat === null ? (
+                    // Black background for splat picker
+                    <div style={{ backgroundColor: "#000000", height: "99%" }}>
+                        <SplatPicker onSplatSelected={handleSplatSelection} />
+                    </div>
+                ) : (
+                    // Character-specific background for generator
+                    <BackgroundImage 
+                        h={"99%"} 
+                        src={selectedSplat === "vampire" ? vtmCover : selectedSplat === "werewolf" ? werewolfCover : vtmCover}
+                    >
+                        <div style={{ backgroundColor: "rgba(0, 0, 0, 0.7)", height: "100%" }}>
                             <Container h={"100%"}>
                                 <Generator
                                     character={character}
@@ -76,9 +84,9 @@ function App() {
                                     onBackToSplatSelection={() => setSelectedSplat(null)}
                                 />
                             </Container>
-                        )}
-                    </div>
-                </BackgroundImage>
+                        </div>
+                    </BackgroundImage>
+                )
             }
         </AppShell>
     )

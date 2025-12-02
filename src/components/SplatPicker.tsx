@@ -1,5 +1,7 @@
 import { Button, Card, Container, Grid, Group, Stack, Text, Title } from "@mantine/core"
 import { IconBat, IconMoon, IconSword, IconWand } from "@tabler/icons-react"
+import vtmCover from "../resources/backgrounds/Vampire the Masquerade Cover.jpg"
+import werewolfCover from "../resources/backgrounds/Werewolf The Apocalypse Cover.jpg"
 
 export type SplatType = "vampire" | "werewolf" | "hunter" | "mage"
 
@@ -12,6 +14,17 @@ const getColorByName = (color: string) => {
         gray: "#868e96"
     }
     return colors[color] || colors.gray
+}
+
+const getBackgroundImage = (splatType: SplatType) => {
+    switch (splatType) {
+        case "vampire":
+            return vtmCover
+        case "werewolf":
+            return werewolfCover
+        default:
+            return null
+    }
 }
 
 export interface SplatPickerProps {
@@ -104,8 +117,14 @@ const SplatPicker = ({ onSplatSelected }: SplatPickerProps) => {
                                 radius="md"
                                 style={{
                                     height: 280,
+                                    backgroundImage: splat.available && getBackgroundImage(splat.type) 
+                                        ? `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${getBackgroundImage(splat.type)})` 
+                                        : "none",
+                                    backgroundSize: "cover",
+                                    backgroundPosition: "center",
+                                    backgroundRepeat: "no-repeat",
                                     backgroundColor: splat.available 
-                                        ? "rgba(0, 0, 0, 0.8)" 
+                                        ? (getBackgroundImage(splat.type) ? "transparent" : "rgba(0, 0, 0, 0.8)") 
                                         : "rgba(50, 50, 50, 0.6)",
                                     border: splat.available 
                                         ? `2px solid ${getColorByName(splat.color)}` 
