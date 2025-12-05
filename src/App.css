@@ -184,6 +184,10 @@
 }
 
 /* Custom Stepper Styling */
+.custom-stepper {
+  position: relative;
+}
+
 .custom-stepper .mantine-Stepper-stepIcon {
   background-color: #7f1d1d !important;
   border-color: #7f1d1d !important;
@@ -204,13 +208,35 @@
 }
 
 .custom-stepper .mantine-Stepper-stepLabel {
-  transition: color 0.3s ease-in-out !important;
+  transition: all 0.3s ease-in-out !important;
   color: #7f1d1d !important;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+.custom-stepper .mantine-Stepper-step[data-progress="true"] {
+  position: relative;
+}
+
+.custom-stepper .mantine-Stepper-step[data-progress="true"]::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -15px;
+  right: -200px;
+  bottom: -5px;
+  background-color: #dc2626;
+  z-index: -1;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
 }
 
 .custom-stepper .mantine-Stepper-step[data-progress="true"] .mantine-Stepper-stepLabel {
-  color: #dc2626 !important;
+  color: white !important;
   font-weight: bold !important;
+  background-color: transparent !important;
+  position: relative;
+  z-index: 1;
 }
 
 .custom-stepper .mantine-Stepper-step:not([data-progress="true"]) .mantine-Stepper-stepLabel {

@@ -15,16 +15,10 @@ const AsideBar = ({ selectedStep, setSelectedStep, character }: AsideBarProps) =
     const stepLabels = getStepLabels(character)
     const [isTransitioning, setIsTransitioning] = useState(false)
     
-    // Sync transition state with Generator
+    // Track transition state locally
     useEffect(() => {
-        const checkTransitionState = () => {
-            const generatorTransitioning = (window as any).isGeneratorTransitioning || false
-            setIsTransitioning(generatorTransitioning)
-        }
-        
-        const interval = setInterval(checkTransitionState, 50)
-        return () => clearInterval(interval)
-    }, [])
+        setIsTransitioning(false)
+    }, [selectedStep])
     
     // Simple accessibility logic - allow navigation to completed steps and next step
     const isStepAccessible = (stepIndex: number) => {
@@ -100,9 +94,15 @@ const AsideBar = ({ selectedStep, setSelectedStep, character }: AsideBarProps) =
     const height = globals.viewportHeightPx
     const scrollerHeight = 940
     return (
-        <Aside p="md" hiddenBreakpoint="sm" width={{ xs: 200 }} style={{ zIndex: 0 }}>
+        <Aside p="md" hiddenBreakpoint="sm" width={{ xs: 200 }} style={{ zIndex: 0, overflow: 'visible' }}>
             <Center h={"100%"}>
-                {height <= scrollerHeight ? <ScrollArea h={height - 100}>{getStepper()}</ScrollArea> : <>{getStepper()}</>}
+                {height <= scrollerHeight ? (
+                    <ScrollArea h={height - 100} style={{ overflow: 'visible' }}>
+                        {getStepper()}
+                    </ScrollArea>
+                ) : (
+                    <>{getStepper()}</>
+                )}
             </Center>
         </Aside>
     )

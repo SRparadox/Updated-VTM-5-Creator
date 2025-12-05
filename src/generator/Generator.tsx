@@ -215,14 +215,13 @@ const Generator = ({ character, setCharacter, selectedStep, setSelectedStep, onB
         setTransitionDirection(newStep > selectedStep ? 'forward' : 'backward');
         setIsTransitioning(true);
         
-        // Start fade out animation
+        // Immediately change step and handle animation
+        setSelectedStep(newStep);
+        
+        // Reset transition state after animation
         setTimeout(() => {
-            setSelectedStep(newStep);
-            // After step change, fade in new content
-            setTimeout(() => {
-                setIsTransitioning(false);
-            }, 200);
-        }, 200);
+            setIsTransitioning(false);
+        }, 400);
     };
 
     const getStepComponent = () => {
