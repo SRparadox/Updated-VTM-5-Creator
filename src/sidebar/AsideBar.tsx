@@ -1,6 +1,6 @@
 import { Aside, Center, ScrollArea, Stepper } from "@mantine/core"
 import { useState, useEffect } from "react"
-import { Character } from "../data/UnifiedCharacter"
+import { Character, isWerewolfCharacter } from "../data/UnifiedCharacter"
 import { globals } from "../globals"
 import { getStepLabels } from "../generator/Generator"
 
@@ -14,6 +14,7 @@ const AsideBar = ({ selectedStep, setSelectedStep, character }: AsideBarProps) =
     // Use the same step labels as the Generator for consistency
     const stepLabels = getStepLabels(character)
     const [isTransitioning, setIsTransitioning] = useState(false)
+    const isWerewolf = isWerewolfCharacter(character)
     
     // Track transition state locally
     useEffect(() => {
@@ -45,7 +46,7 @@ const AsideBar = ({ selectedStep, setSelectedStep, character }: AsideBarProps) =
 
     const getStepper = () => {
         return (
-            <div className={`custom-stepper ${isTransitioning ? 'transitioning' : ''}`}>
+            <div className={`custom-stepper ${isTransitioning ? 'transitioning' : ''} ${isWerewolf ? 'werewolf' : 'vampire'}`}>
                 <Stepper
                     color="grape"
                     orientation="vertical"
