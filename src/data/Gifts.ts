@@ -4,7 +4,7 @@ import { Power } from "./Disciplines"
 export const renownTypeSchema = z.enum(["Glory", "Honor", "Wisdom"])
 export type RenownType = z.infer<typeof renownTypeSchema>
 
-export const giftCategorySchema = z.enum(["Native", "Ragabash", "Theurge", "Philodox", "Galliard", "Ahroun", "Black Furies", "Bone Gnawers", "Children of Gaia", "Galestalkers", "Ghost Council", "Glass Walkers", "Hart Wardens", "Red Talons", "Shadow Lords", "Silent Striders", "Silver Fangs"])
+export const giftCategorySchema = z.enum(["Native", "Ragabash", "Theurge", "Philodox", "Galliard", "Ahroun", "Black Furies", "Bone Gnawers", "Children of Gaia", "Galestalkers", "Ghost Council", "Glass Walkers", "Hart Wardens", "Red Talons", "Shadow Lords", "Silent Striders", "Silver Fangs", "Beyond Supernatural"])
 export type GiftCategory = z.infer<typeof giftCategorySchema>
 
 export const giftSchema = z.object({
@@ -668,6 +668,164 @@ export const silverFangsGifts: Gift[] = [
     }
 ]
 
+export const beyondSupernaturalGifts: Gift[] = [
+    // Rank 1 Gifts
+    {
+        name: "Leech",
+        category: "Beyond Supernatural",
+        renown: "Glory",
+        description: "The blood drinkers are so common this close to the apocalypse that a garou pack can spend a lifetime fighting nothing else. The vampires are tough to put down and their ability to reinvigorate themselves with the blood of their enemies is enviable. And where there exists envy there exists a will to copy. And where there is a will...",
+        summary: "Gain rage and gnosis from drinking mortal blood",
+        dicePool: "Automatic",
+        cost: "None",
+        duration: "Instant"
+    },
+    {
+        name: "Child of the Mists",
+        category: "Beyond Supernatural",
+        renown: "Wisdom",
+        description: "The changelings and fairies sometimes complains about the inability of humans to remember them. They speak in metaphors about the mists of dream over late night drinks shared with Fiana warriors and Get of Fenris mystics. Some of those mystics listened and learned. To remain forgotten is not the same curse for the warriors of Gaia as it is for the emissaries of dreams.",
+        summary: "Make delirium victims completely forget the incident",
+        dicePool: "Automatic",
+        cost: "1 Gnosis",
+        duration: "Permanent"
+    },
+    {
+        name: "Gun!",
+        category: "Beyond Supernatural",
+        renown: "Honor",
+        description: "Sometimes a willworker just make changes happen in a way that makes no sense. The world is just suddenly different and everybody else have to move if they want to keep up. Some of them thinks that gnosis is the thing that makes up the reality, and some of them think that it can be used to change reality. People are already afraid of there being an active shooter in their school, workplace or nearby supermarket. This gift blends that fear with gnosis and makes it a little bit more real.",
+        summary: "Make someone suddenly be holding a gun",
+        dicePool: "Automatic",
+        cost: "1 Gnosis",
+        duration: "Instant"
+    },
+    // Rank 2 Gifts
+    {
+        name: "Dream Talons",
+        category: "Beyond Supernatural",
+        renown: "Glory",
+        description: "The changelings and fey talk a big game about being champions of dreams and wonder. But they fall to the Wyrm like everybody else. They are just a whole lot harder to stop when they do. This little trick makes things a lot easier.",
+        summary: "Turn teeth and claws into cold iron",
+        dicePool: "Automatic",
+        cost: "1 Rage",
+        duration: "Scene"
+    },
+    {
+        name: "Dream Portal",
+        category: "Beyond Supernatural",
+        renown: "Wisdom",
+        description: "The dreams of mortals are potent portals to the other side, if you know how to use them right. With this gift the garou can hijack the dreams of a nearby sleeping mortal and use them to travel to the umbra without the use of a mirror.",
+        summary: "Use sleeping mortal's dreams to enter umbra",
+        dicePool: "Automatic",
+        cost: "None",
+        duration: "Instant"
+    },
+    {
+        name: "Asp Tongue",
+        category: "Beyond Supernatural",
+        renown: "Glory",
+        description: "The vampires come in many different types, some seem to belong to an entirely different species. The egyptian breed seems especially vicious with almost as many natural weapons as the garou, weapons that can be stolen and used against them.",
+        summary: "Transform tongue into a deadly weapon",
+        dicePool: "Dexterity + Brawl",
+        cost: "None",
+        duration: "Scene"
+    },
+    // Rank 3 Gifts
+    {
+        name: "Sterilize",
+        category: "Beyond Supernatural",
+        renown: "Wisdom",
+        description: "When fighting witches there is nothing more important than to not leave parts of yourself behind. Blood, fur or knocked out teeth can all be used against you. This gift cleans up all evidence that you having been present making it both harder to track you and harder to use ritual magicks against you.",
+        summary: "Clean up all evidence of your presence",
+        dicePool: "Automatic",
+        cost: "1 Gnosis",
+        duration: "Instant"
+    },
+    {
+        name: "Only Serve the Strong",
+        category: "Beyond Supernatural",
+        renown: "Honor",
+        description: "Say what you want about the leeches but they know hierarchy. It is a twisted hierarchy of course, but everyone knows their place since they can not use their power on their superiors. By using this gift the Garou can enforce the same hierarchy.",
+        summary: "Immunity to mental powers from equal/lower rank Garou",
+        dicePool: "Automatic",
+        cost: "1 Willpower",
+        duration: "Scene"
+    },
+    {
+        name: "Alchemy",
+        category: "Beyond Supernatural",
+        renown: "Wisdom",
+        description: "This gift was designed to combat changelings and fey hunters who desires captured Garou as slaves or pets. It gives them a taste of their own medicine.",
+        summary: "Turn silver object into cold iron",
+        dicePool: "Automatic",
+        cost: "1 Gnosis",
+        duration: "Permanent"
+    },
+    // Rank 4 Gifts
+    {
+        name: "Mistform",
+        category: "Beyond Supernatural",
+        renown: "Glory",
+        description: "The werewolf have stolen one of the greatest tricks from the animalistic vampires who sometimes challenge them for their territory and made it their own. The werewolf turns from flesh and blood into mist and can escape situations that should be the end of them.",
+        summary: "Transform into mist form",
+        dicePool: "Automatic",
+        cost: "1 Rage",
+        duration: "Scene or until ended"
+    },
+    {
+        name: "Umbralreality",
+        category: "Beyond Supernatural",
+        renown: "Wisdom",
+        description: "The changelings talk about making dreams and phantoms come alive and dance with the mortals. Their power was the key to creating this gift, for what is the spirits if not dreams and phantoms? The garou using this gift rips a hole in the umbra and let's the local spirits into the world, if only for a few moments.",
+        summary: "Allow umbral spirits to act in physical world",
+        dicePool: "Intelligence + Occult",
+        cost: "1 Gnosis + 1 Willpower",
+        duration: "Special"
+    },
+    {
+        name: "Banality Beam",
+        category: "Beyond Supernatural",
+        renown: "Honor",
+        description: "Bills to pay, chores to do, dreams to let go off, talent wasted in dead end jobs and cynical skepticism can all slowly break down the magics of changelings and mages. This gift weaponises that fact. It takes everything ugly and mundane and boring in life and focuses it into a laser beam of banality that unmakes dreams and makes magick impossible.",
+        summary: "Project beam that inflicts banality or blocks magic",
+        dicePool: "Current Willpower",
+        cost: "1 Gnosis",
+        duration: "Instant"
+    },
+    // Rank 5 Gifts
+    {
+        name: "Warform",
+        category: "Beyond Supernatural",
+        renown: "Glory",
+        description: "The vampires have many different warforms. Several different clans and bloodlines have their own unique strain or type. This gift have taken the power behind them and adds that power to the werewolf Crinos form. It looks like a twisted hulked out version of the Crinos form. Simply more of everything.",
+        summary: "Enhanced Crinos form with massive attribute boosts",
+        dicePool: "Stamina + Primal Urge",
+        cost: "1 Rage",
+        duration: "Variable based on successes"
+    },
+    {
+        name: "Reincarnation",
+        category: "Beyond Supernatural",
+        renown: "Wisdom",
+        description: "The changelings are just fey beings hiding in mortal flesh, reincarnating over and over again. They are not so different from the garou really. But the changelings do it a lot more efficiently. This gift combines the changeling way with the arts of the spirit practiced by the garou and enables mighty garou warriors to return from the dead as soon as the moon is full.",
+        summary: "Return from death by possessing kinfolk body",
+        dicePool: "Automatic",
+        cost: "1 Gnosis (upon death)",
+        duration: "Permanent"
+    },
+    {
+        name: "Weapons Bane",
+        category: "Beyond Supernatural",
+        renown: "Honor",
+        description: "Mages break things. They talk and talk and talk but the essence of magic is destroying that which should not be destroyed. The garou knows that this is sometimes the only way. But this gift takes this power and channels it into destroying the sacred weapons of the garou. An inherently heretical act. But when you are alone and they come after you with their fathers grand klaives you will need it.",
+        summary: "Destroy fetish weapons that hit you",
+        dicePool: "Automatic",
+        cost: "1 Rage",
+        duration: "Instant"
+    }
+]
+
 // All gifts combined for easy access
 export const allGifts = [
     ...nativeGifts,
@@ -686,7 +844,8 @@ export const allGifts = [
     ...redTalonsGifts,
     ...shadowLordsGifts,
     ...silentStridersGifts,
-    ...silverFangsGifts
+    ...silverFangsGifts,
+    ...beyondSupernaturalGifts
 ]
 
 // Sample gifts for backward compatibility
@@ -710,7 +869,8 @@ export const giftsByCategory: Record<GiftCategory, Gift[]> = {
     "Red Talons": redTalonsGifts,
     "Shadow Lords": shadowLordsGifts,
     "Silent Striders": silentStridersGifts,
-    "Silver Fangs": silverFangsGifts
+    "Silver Fangs": silverFangsGifts,
+    "Beyond Supernatural": beyondSupernaturalGifts
 }
 
 // Helper functions
