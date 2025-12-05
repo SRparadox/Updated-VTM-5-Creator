@@ -31,7 +31,9 @@ export const religionSchema = z.union([
 
 export const sectSchema = z.union([
     z.literal("Camarilla"),
-    z.literal("Anarchs"),
+    z.literal("Anarch"),
+    z.literal("Independent"),
+    z.literal("Ashirra"),
     z.literal("Black Hand"),
     z.literal("Sabbat"),
     z.literal("TalMaheRa"),

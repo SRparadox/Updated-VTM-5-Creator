@@ -1,7 +1,7 @@
 import { Accordion, Badge, Button, Card, Grid, Group, ScrollArea, Stack, Text } from "@mantine/core"
 import { useEffect, useState } from "react"
 import ReactGA from "react-ga4"
-import { Character } from "../../data/UnifiedCharacter"
+import { Character, isWerewolfCharacter } from "../../data/UnifiedCharacter"
 import { Rite, getRitesByType } from "../../data/Rites"
 import { globals } from "../../globals"
 import { upcase } from "../utils"
@@ -60,17 +60,21 @@ const RitesPicker = ({ character, setCharacter, nextStep }: RitesPickerProps) =>
                             if (picked) {
                                 // Unpick the rite
                                 setPickedRite(null)
-                                setCharacter({
-                                    ...character,
-                                    rites: [],
-                                })
+                                if (isWerewolfCharacter(character)) {
+                                    setCharacter({
+                                        ...character,
+                                        rites: [],
+                                    })
+                                }
                             } else {
                                 // Pick this rite
                                 setPickedRite(rite)
-                                setCharacter({
-                                    ...character,
-                                    rites: [rite],
-                                })
+                                if (isWerewolfCharacter(character)) {
+                                    setCharacter({
+                                        ...character,
+                                        rites: [rite],
+                                    })
+                                }
                             }
 
                             ReactGA.event({
@@ -153,10 +157,12 @@ const RitesPicker = ({ character, setCharacter, nextStep }: RitesPickerProps) =>
                             color="red"
                             onClick={() => {
                                 setPickedRite(null)
-                                setCharacter({
-                                    ...character,
-                                    rites: [],
-                                })
+                                if (isWerewolfCharacter(character)) {
+                                    setCharacter({
+                                        ...character,
+                                        rites: [],
+                                    })
+                                }
                             }}
                             disabled={pickedRite === null}
                         >

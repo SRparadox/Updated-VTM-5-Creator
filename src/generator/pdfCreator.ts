@@ -66,7 +66,7 @@ export const testTemplate = async (basePdf: string) => {
 }
 
 const downloadPdf = (fileName: string, bytes: Uint8Array) => {
-    const blob = new Blob([bytes], { type: "application/pdf" })
+    const blob = new Blob([bytes.slice()], { type: "application/pdf" })
     const link = document.createElement("a")
 
     link.href = window.URL.createObjectURL(blob)
@@ -246,7 +246,8 @@ const createPdf_nerdbert_vampire = async (character: Character): Promise<Uint8Ar
     
     // For Ghouls, use role blood potency change; for vampires, use predator type
     if (character.clan === "Ghoul" && character.role) {
-        bloodPotency += character.role.bloodPotencyChange || 0
+        const roleDefinition = Roles[character.role.name as keyof typeof Roles]
+        bloodPotency += roleDefinition?.bloodPotencyChange || 0
     } else {
         bloodPotency += PredatorTypes[character.predatorType.name].bloodPotencyChange
     }
@@ -265,7 +266,7 @@ const createPdf_nerdbert_vampire = async (character: Character): Promise<Uint8Ar
     //Humanity
     // For Ghouls, use role humanity change; for vampires, use predator type
     const humanityChange = character.clan === "Ghoul" && character.role
-        ? character.role.humanityChange || 0
+        ? (Roles[character.role.name as keyof typeof Roles]?.humanityChange || 0)
         : PredatorTypes[character.predatorType.name].humanityChange
     const humanity = 7 + humanityChange
     const checkImageBytes = await fetch(checkPng).then((res) => res.arrayBuffer())
@@ -422,24 +423,25 @@ const createPdf_nerdbert_vampire = async (character: Character): Promise<Uint8Ar
     const characterMeritsFlaws = [...character.merits, ...character.flaws]
     
     // Handle role-based merits and flaws for Ghouls
-    let roleOrPredatorMeritsFlaws: any[] = []
-    let pickedRoleOrPredatorMeritsFlaws: any[] = []
+    let roleOrPredatorMeritsFlaws: unknown[] = []
+    let pickedRoleOrPredatorMeritsFlaws: unknown[] = []
     
     if (character.clan === "Ghoul" && character.role) {
         // For Ghouls, we don't have predefined merits/flaws in roles like we do in predator types
         // Roles only give skill bonuses, so we skip role-based merits/flaws
         roleOrPredatorMeritsFlaws = []
-        pickedRoleOrPredatorMeritsFlaws = character.role.pickedMeritsAndFlaws || []
+        pickedRoleOrPredatorMeritsFlaws = (character.role.pickedMeritsAndFlaws || []) as unknown[]
     } else {
         // For vampires, use predator type merits and flaws
         roleOrPredatorMeritsFlaws = PredatorTypes[character.predatorType.name].meritsAndFlaws.filter(
             (m) => !characterMeritsFlaws.map((cm) => cm.name).includes(m.name)
-        )
-        pickedRoleOrPredatorMeritsFlaws = character.predatorType.pickedMeritsAndFlaws
+        ) as unknown[]
+        pickedRoleOrPredatorMeritsFlaws = character.predatorType.pickedMeritsAndFlaws as unknown[]
     }
     
     const meritsAndFlaws = [...roleOrPredatorMeritsFlaws, ...pickedRoleOrPredatorMeritsFlaws, ...characterMeritsFlaws]
-    meritsAndFlaws.forEach(({ name, level, summary }, i) => {
+    meritsAndFlaws.forEach((item, i) => {
+        const { name, level, summary } = item as { name: string; level: number; summary: string }
         const fieldNum = i + 1
         form.getTextField(`Merit${fieldNum}`).setText(name + ": " + summary)
         for (let l = 1; l <= level; l++) {
@@ -605,18 +607,20 @@ const createPdf_nerdbert_werewolf = async (character: UnifiedCharacter): Promise
     form.getTextField("pcDescription").setText(character.description)
     
     // New Werewolf fields replacing vampire fields
-    try {
-        form.getTextField("Concept").setText(character.concept || "")
-    } catch (e) {
-        // Fallback if Concept field doesn't exist
-        form.getTextField("Predator type")?.setText(character.concept || "")
-    }
-    
-    try {
-        form.getTextField("Chronicle").setText(character.chronicle || "")
-    } catch (e) {
-        // Fallback if Chronicle field doesn't exist  
-        form.getTextField("Ambition")?.setText(character.chronicle || "")
+    if (isWerewolfCharacter(character)) {
+        try {
+            form.getTextField("Concept").setText(character.concept || "")
+        } catch (e) {
+            // Fallback if Concept field doesn't exist
+            form.getTextField("Predator type")?.setText(character.concept || "")
+        }
+        
+        try {
+            form.getTextField("Chronicle").setText(character.chronicle || "")
+        } catch (e) {
+            // Fallback if Chronicle field doesn't exist  
+            form.getTextField("Ambition")?.setText(character.chronicle || "")
+        }
     }
 
     // Werewolf-specific fields
@@ -775,9 +779,8 @@ export const downloadCharacterSheet = async (character: UnifiedCharacter) => {
         pdfBytes = await createPdf_nerdbert_werewolf(character)
         filename = `W5_${character.name}.pdf`
     } else {
-        // Default to vampire for backward compatibility
-        pdfBytes = await createPdf_nerdbert_vampire(character)
-        filename = `V5_${character.name}.pdf`
+        // This should never happen due to the discriminated union, but we need to satisfy TypeScript
+        throw new Error(`Unknown character type - this should never happen due to discriminated union`)
     }
     
     notifications.show({
