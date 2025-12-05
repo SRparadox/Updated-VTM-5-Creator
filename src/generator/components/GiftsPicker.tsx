@@ -240,7 +240,7 @@ const GiftsPicker = ({ character, setCharacter, nextStep }: GiftsPickerProps) =>
                     </Text>
                 </div>
 
-                <ScrollArea style={{ height: height - 200 }}>
+                <ScrollArea style={{ height: height - 260 }}>
                     <Accordion variant="contained" multiple>
                         {Object.entries(giftsByCategory).map(([categoryName, categoryGifts]) =>
                             createCategoryAccordion(categoryName, categoryGifts)
@@ -248,36 +248,38 @@ const GiftsPicker = ({ character, setCharacter, nextStep }: GiftsPickerProps) =>
                     </Accordion>
                 </ScrollArea>
 
-                <Group position="center" spacing="lg">
-                    <Text size="sm" color="dimmed">
-                        Selected: {pickedGifts.length}/3 gifts
-                    </Text>
-                    <Button
-                        color="red"
-                        onClick={() => {
-                            setPickedGifts([])
-                            setCharacter({
-                                ...character,
-                                disciplines: [],
+                <div style={{ position: "sticky", bottom: 0, backgroundColor: "rgba(0, 0, 0, 0.8)", padding: "10px", borderRadius: "8px", marginTop: "10px" }}>
+                    <Group position="center" spacing="lg">
+                        <Text size="sm" color="dimmed">
+                            Selected: {pickedGifts.length}/3 gifts
+                        </Text>
+                        <Button
+                            color="red"
+                            onClick={() => {
+                                setPickedGifts([])
+                                setCharacter({
+                                    ...character,
+                                    disciplines: [],
+                                })
+                            }}
+                            disabled={pickedGifts.length === 0}
+                        >
+                            Reset Selection
+                        </Button>
+                        <Button
+                            disabled={!validToMove}
+                            onClick={() => {
+                                ReactGA.event({
+                                    action: "gifts completed",
+                                    category: "character_creation",
+                                })
+                                nextStep()
                             })
-                        }}
-                        disabled={pickedGifts.length === 0}
-                    >
-                        Reset Selection
-                    </Button>
-                    <Button
-                        disabled={!validToMove}
-                        onClick={() => {
-                            ReactGA.event({
-                                action: "gifts completed",
-                                category: "character_creation",
-                            })
-                            nextStep()
-                        }}
-                    >
-                        Continue
-                    </Button>
-                </Group>
+                        >
+                            Continue
+                        </Button>
+                    </Group>
+                </div>
             </Stack>
         </div>
     )

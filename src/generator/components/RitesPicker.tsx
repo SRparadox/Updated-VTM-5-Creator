@@ -136,7 +136,7 @@ const RitesPicker = ({ character, setCharacter, nextStep }: RitesPickerProps) =>
                     </Text>
                 </div>
 
-                <ScrollArea style={{ height: height - 220, marginTop: "10px" }}>
+                <ScrollArea style={{ height: height - 260, marginTop: "10px" }}>
                     <Accordion variant="contained" multiple>
                         {createCategoryAccordion("Common", commonRites)}
                         {createCategoryAccordion("Social", socialRites)}
@@ -144,36 +144,38 @@ const RitesPicker = ({ character, setCharacter, nextStep }: RitesPickerProps) =>
                     </Accordion>
                 </ScrollArea>
 
-                <Group position="center" spacing="lg">
-                    <Text size="sm" color="dimmed">
-                        Selected: {pickedRite ? pickedRite.name : "None"}
-                    </Text>
-                    <Button
-                        color="red"
-                        onClick={() => {
-                            setPickedRite(null)
-                            setCharacter({
-                                ...character,
-                                rites: [],
-                            })
-                        }}
-                        disabled={pickedRite === null}
-                    >
-                        Reset Selection
-                    </Button>
-                    <Button
-                        disabled={!validToMove}
-                        onClick={() => {
-                            ReactGA.event({
-                                action: "rites completed",
-                                category: "character_creation",
-                            })
-                            nextStep()
-                        }}
-                    >
-                        Continue
-                    </Button>
-                </Group>
+                <div style={{ position: "sticky", bottom: 0, backgroundColor: "rgba(0, 0, 0, 0.8)", padding: "10px", borderRadius: "8px", marginTop: "10px" }}>
+                    <Group position="center" spacing="lg">
+                        <Text size="sm" color="dimmed">
+                            Selected: {pickedRite ? pickedRite.name : "None"}
+                        </Text>
+                        <Button
+                            color="red"
+                            onClick={() => {
+                                setPickedRite(null)
+                                setCharacter({
+                                    ...character,
+                                    rites: [],
+                                })
+                            }}
+                            disabled={pickedRite === null}
+                        >
+                            Reset Selection
+                        </Button>
+                        <Button
+                            disabled={!validToMove}
+                            onClick={() => {
+                                ReactGA.event({
+                                    action: "rites completed",
+                                    category: "character_creation",
+                                })
+                                nextStep()
+                            }}
+                        >
+                            Continue
+                        </Button>
+                    </Group>
+                </div>
             </Stack>
         </div>
     )
