@@ -27,6 +27,7 @@ import AlchemyPicker from "./components/AlchemyPicker"
 import TribePicker from "./components/TribePicker"
 import AuspicePicker from "./components/AuspicePicker"
 import GiftsPicker from "./components/GiftsPicker"
+import RitesPicker from "./components/RitesPicker"
 
 
 // Export functions to get step labels dynamically based on splat
@@ -91,6 +92,7 @@ export function getWerewolfStepLabels(character: Character) {
         "Auspice",
         "Basics",
         "Gifts",
+        "Rites",
         "Touchstones",
         "Merits & Flaws", 
         "Final"
@@ -191,9 +193,10 @@ const Generator = ({ character, setCharacter, selectedStep, setSelectedStep, onB
             (props) => <AuspicePicker {...props} />, // 4
             (props) => <BasicsPicker {...props} />, // 5
             (props) => <GiftsPicker {...props} />, // 6
-            (props) => <TouchstonePicker {...props} />, // 7
-            (props) => <MeritsAndFlawsPicker {...props} />, // 8
-            (props) => <Final {...props} setSelectedStep={setSelectedStep} />, // 9
+            (props) => <RitesPicker {...props} />, // 7
+            (props) => <TouchstonePicker {...props} />, // 8
+            (props) => <MeritsAndFlawsPicker {...props} />, // 9
+            (props) => <Final {...props} setSelectedStep={setSelectedStep} />, // 10
         ];
     };
 

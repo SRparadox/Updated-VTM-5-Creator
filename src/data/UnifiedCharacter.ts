@@ -2,6 +2,7 @@ import { z } from "zod"
 import { SplatType } from "../components/SplatPicker"
 import { Power, powerSchema, ritualSchema, ceremonySchema } from "./Disciplines"
 import { alchemyFormulaSchema } from "./Alchemy"
+import { riteSchema } from "./Rites"
 import { specialtySchema } from "./Specialties"
 import { skillsSchema } from "./Skills"
 import { attributesSchema } from "./Attributes"
@@ -155,7 +156,7 @@ export const werewolfCharacterSchema = baseCharacterSchema.extend({
     // Werewolf powers
     availableGiftNames: giftNameSchema.array().default([]),
     gifts: powerSchema.array().default([]),
-    rites: ritualSchema.array().default([]),
+    rites: riteSchema.array().default([]),
     
     // Werewolf uses Harmony instead of Humanity
     harmony: z.number().min(0).int().default(0),

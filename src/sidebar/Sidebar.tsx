@@ -5,6 +5,7 @@ import AttributesDisplay from "./components/AttributesDisplay"
 import BasicsDisplay from "./components/BasicsDisplay"
 import DisciplineDisplay from "./components/DisciplinesDisplay"
 import MeritsAndFlawsDisplay from "./components/MeritsAndFlawsDisplay"
+import RitesDisplay from "./components/RitesDisplay"
 import SkillDisplay from "./components/SkillsDisplay"
 import TouchstoneDisplay from "./components/TouchstoneDisplay"
 import { globals } from "../globals"
@@ -120,6 +121,11 @@ const Sidebar = ({ character }: SidebarProps) => {
                         {character.renown.honor > 0 ? <Text size="sm"><b>Honor:</b> {character.renown.honor}</Text> : null}
                         {character.renown.wisdom > 0 ? <Text size="sm"><b>Wisdom:</b> {character.renown.wisdom}</Text> : null}
                     </Stack>
+                ) : null}
+
+                {/* Werewolf rites */}
+                {isWerewolfCharacter(character) && notDefault(character, "rites") ? (
+                    <RitesDisplay rites={character.rites} />
                 ) : null}
 
                 {/* Shared components */}
