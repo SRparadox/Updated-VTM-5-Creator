@@ -42,31 +42,45 @@ const MeritsAndFlawsPicker = ({ character, setCharacter, nextStep }: MeritsAndFl
     // Use werewolf merits for werewolf characters, vampire merits for others
     const currentMeritsAndFlaws = isWerewolf ? werewolfMeritsAndFlaws : meritsAndFlaws
     
-    // Calculate merit/flaw points based on years as vampire
-    const getMeritFlawPoints = (yearsAsVampire: number) => {
+    // Calculate merit/flaw points - simplified for werewolf characters
+    const getMeritFlawPoints = () => {
+        if (isWerewolf) {
+            return { merits: 15, flaws: 7 }; // Standard werewolf points
+        }
+        // Vampire point calculation based on years as vampire
+        const yearsAsVampire = character.yearsAsVampire || 0;
         if (yearsAsVampire <= 50) return { merits: 7, flaws: 2 }; // Fledgling
         if (yearsAsVampire <= 170) return { merits: 14, flaws: 4 }; // Ancilla  
         if (yearsAsVampire <= 1000) return { merits: 21, flaws: 6 }; // Elder
         return { merits: 999, flaws: 999 }; // Ancient - unlimited like dev mode
     }
     
-    const { merits: baseMeritPoints, flaws: baseFlawPoints } = getMeritFlawPoints(character.yearsAsVampire || 0)
+    const { merits: baseMeritPoints, flaws: baseFlawPoints } = getMeritFlawPoints()
     
-    const usedMeritsLevel = character.merits.filter((m) => !isThinbloodMerit(m.name) && !isGhoulMerit(m.name) && !isElderMerit(m.name)).reduce((acc, { level }) => acc + level, 0)
-    const usedFLawsLevel = character.flaws.filter((f) => !isThinbloodFlaw(f.name) && !isGhoulFlaw(f.name) && !isElderFlaw(f.name)).reduce((acc, { level }) => acc + level, 0)
+    // For werewolf characters, use simple point calculation
+    const usedMeritsLevel = isWerewolf 
+        ? character.merits.reduce((acc, { level }) => acc + level, 0)
+        : character.merits.filter((m) => !isThinbloodMerit(m.name) && !isGhoulMerit(m.name) && !isElderMerit(m.name)).reduce((acc, { level }) => acc + level, 0)
+    const usedFLawsLevel = isWerewolf
+        ? character.flaws.reduce((acc, { level }) => acc + level, 0) 
+        : character.flaws.filter((f) => !isThinbloodFlaw(f.name) && !isGhoulFlaw(f.name) && !isElderFlaw(f.name)).reduce((acc, { level }) => acc + level, 0)
 
     const [remainingMerits, setRemainingMerits] = useState(baseMeritPoints - usedMeritsLevel)
     const [remainingFlaws, setRemainingFlaws] = useState(baseFlawPoints - usedFLawsLevel)
     
-    // Update points when yearsAsVampire changes
+    // Update points when character data changes
     useEffect(() => {
-        const { merits: newMeritPoints, flaws: newFlawPoints } = getMeritFlawPoints(character.yearsAsVampire || 0)
-        const currentUsedMerits = character.merits.filter((m) => !isThinbloodMerit(m.name) && !isGhoulMerit(m.name) && !isElderMerit(m.name)).reduce((acc, { level }) => acc + level, 0)
-        const currentUsedFlaws = character.flaws.filter((f) => !isThinbloodFlaw(f.name) && !isGhoulFlaw(f.name) && !isElderFlaw(f.name)).reduce((acc, { level }) => acc + level, 0)
+        const { merits: newMeritPoints, flaws: newFlawPoints } = getMeritFlawPoints()
+        const currentUsedMerits = isWerewolf 
+            ? character.merits.reduce((acc, { level }) => acc + level, 0)
+            : character.merits.filter((m) => !isThinbloodMerit(m.name) && !isGhoulMerit(m.name) && !isElderMerit(m.name)).reduce((acc, { level }) => acc + level, 0)
+        const currentUsedFlaws = isWerewolf
+            ? character.flaws.reduce((acc, { level }) => acc + level, 0)
+            : character.flaws.filter((f) => !isThinbloodFlaw(f.name) && !isGhoulFlaw(f.name) && !isElderFlaw(f.name)).reduce((acc, { level }) => acc + level, 0)
         
         setRemainingMerits(newMeritPoints - currentUsedMerits)
         setRemainingFlaws(newFlawPoints - currentUsedFlaws)
-    }, [character.yearsAsVampire])
+    }, [character.yearsAsVampire, isWerewolf, character.merits, character.flaws])
 
     const isThinBlood = character.clan === "Thin-blood"
     const tbMeritCount = character.merits.filter((m) => isThinbloodMerit(m.name)).length
@@ -86,7 +100,8 @@ const MeritsAndFlawsPicker = ({ character, setCharacter, nextStep }: MeritsAndFl
         const alreadyPickedItem = pickedMeritsAndFlaws.find((l) => l.name === meritOrFlaw.name)
         const wasPickedLevel = alreadyPickedItem?.level ?? 0
 
-        const predatorTypeMeritsFlaws = PredatorTypes[character.predatorType.name].meritsAndFlaws
+        // For werewolf characters, no predator type merits
+        const predatorTypeMeritsFlaws = isWerewolf ? [] : PredatorTypes[character.predatorType?.name]?.meritsAndFlaws || []
         const meritInPredatorType = predatorTypeMeritsFlaws.find((m) => m.name === meritOrFlaw.name)
         const meritInPredatorTypeLevel = meritInPredatorType?.level ?? 0
 
@@ -105,30 +120,42 @@ const MeritsAndFlawsPicker = ({ character, setCharacter, nextStep }: MeritsAndFl
                             ])
                             return;
                         }
-                        if (isBargain) {
-                            setRemainingMerits(remainingMerits + cost) // add merit points
-                        } else if (isThinbloodFlaw(meritOrFlaw.name)) {
-                            setRemainingThinbloodMeritPoints(remainingThinbloodMeritPoints + 1)
-                        } else if (isThinbloodMerit(meritOrFlaw.name)) {
-                            if (remainingThinbloodMeritPoints < cost) return
-                            setRemainingThinbloodMeritPoints(remainingThinbloodMeritPoints - 1)
-                        } else if (isElderFlaw(meritOrFlaw.name)) {
-                            setRemainingElderMeritPoints(remainingElderMeritPoints + 1)
-                        } else if (isElderMerit(meritOrFlaw.name)) {
-                            if (remainingElderMeritPoints < 1) return
-                            setRemainingElderMeritPoints(remainingElderMeritPoints - 1)
-                        } else if (isGhoulFlaw(meritOrFlaw.name)) {
-                            if (remainingFlaws + wasPickedLevel < cost) return
-                            setRemainingFlaws(remainingFlaws + wasPickedLevel - cost)
-                        } else if (isGhoulMerit(meritOrFlaw.name)) {
-                            if (remainingMerits + wasPickedLevel < cost) return
-                            setRemainingMerits(remainingMerits + wasPickedLevel - cost)
-                        } else if (type === "flaw") {
-                            if (remainingFlaws + wasPickedLevel < cost) return
-                            setRemainingFlaws(remainingFlaws + wasPickedLevel - cost)
+                        if (isWerewolf) {
+                            // Simplified werewolf logic
+                            if (type === "flaw") {
+                                if (remainingFlaws + wasPickedLevel < cost) return
+                                setRemainingFlaws(remainingFlaws + wasPickedLevel - cost)
+                            } else {
+                                if (remainingMerits + wasPickedLevel < cost) return
+                                setRemainingMerits(remainingMerits + wasPickedLevel - cost)
+                            }
                         } else {
-                            if (remainingMerits + wasPickedLevel < cost) return
-                            setRemainingMerits(remainingMerits + wasPickedLevel - cost)
+                            // Vampire logic
+                            if (isBargain) {
+                                setRemainingMerits(remainingMerits + cost) // add merit points
+                            } else if (isThinbloodFlaw(meritOrFlaw.name)) {
+                                setRemainingThinbloodMeritPoints(remainingThinbloodMeritPoints + 1)
+                            } else if (isThinbloodMerit(meritOrFlaw.name)) {
+                                if (remainingThinbloodMeritPoints < cost) return
+                                setRemainingThinbloodMeritPoints(remainingThinbloodMeritPoints - 1)
+                            } else if (isElderFlaw(meritOrFlaw.name)) {
+                                setRemainingElderMeritPoints(remainingElderMeritPoints + 1)
+                            } else if (isElderMerit(meritOrFlaw.name)) {
+                                if (remainingElderMeritPoints < 1) return
+                                setRemainingElderMeritPoints(remainingElderMeritPoints - 1)
+                            } else if (isGhoulFlaw(meritOrFlaw.name)) {
+                                if (remainingFlaws + wasPickedLevel < cost) return
+                                setRemainingFlaws(remainingFlaws + wasPickedLevel - cost)
+                            } else if (isGhoulMerit(meritOrFlaw.name)) {
+                                if (remainingMerits + wasPickedLevel < cost) return
+                                setRemainingMerits(remainingMerits + wasPickedLevel - cost)
+                            } else if (type === "flaw") {
+                                if (remainingFlaws + wasPickedLevel < cost) return
+                                setRemainingFlaws(remainingFlaws + wasPickedLevel - cost)
+                            } else {
+                                if (remainingMerits + wasPickedLevel < cost) return
+                                setRemainingMerits(remainingMerits + wasPickedLevel - cost)
+                            }
                         }
                         setPickedMeritsAndFlaws([
                             ...pickedMeritsAndFlaws.filter((m) => m.name !== alreadyPickedItem?.name),
@@ -157,22 +184,28 @@ const MeritsAndFlawsPicker = ({ character, setCharacter, nextStep }: MeritsAndFl
                         <Button
                             onClick={() => {
                                 setPickedMeritsAndFlaws([...pickedMeritsAndFlaws.filter((m) => m.name !== alreadyPickedItem?.name)])
-                                if (isBargain) {
-                                    setRemainingMerits(remainingMerits - alreadyPickedItem.level)
-                                } else if (isThinbloodFlaw(meritOrFlaw.name)) {
-                                    setRemainingThinbloodMeritPoints(remainingThinbloodMeritPoints - 1)
-                                } else if (isThinbloodMerit(meritOrFlaw.name)) {
-                                    setRemainingThinbloodMeritPoints(remainingThinbloodMeritPoints + 1)
-                                } else if (isElderFlaw(meritOrFlaw.name)) {
-                                    setRemainingElderMeritPoints(remainingElderMeritPoints - 1)
-                                } else if (isElderMerit(meritOrFlaw.name)) {
-                                    setRemainingElderMeritPoints(remainingElderMeritPoints + 1)
-                                } else if (isGhoulFlaw(meritOrFlaw.name)) {
-                                    setRemainingFlaws(remainingFlaws + cost)
-                                } else if (isGhoulMerit(meritOrFlaw.name)) {
-                                    setRemainingMerits(remainingMerits + cost)
-                                } else {
+                                if (isWerewolf) {
+                                    // Simplified werewolf unpick logic
                                     type === "flaw" ? setRemainingFlaws(remainingFlaws + cost) : setRemainingMerits(remainingMerits + cost)
+                                } else {
+                                    // Vampire unpick logic
+                                    if (isBargain) {
+                                        setRemainingMerits(remainingMerits - alreadyPickedItem.level)
+                                    } else if (isThinbloodFlaw(meritOrFlaw.name)) {
+                                        setRemainingThinbloodMeritPoints(remainingThinbloodMeritPoints - 1)
+                                    } else if (isThinbloodMerit(meritOrFlaw.name)) {
+                                        setRemainingThinbloodMeritPoints(remainingThinbloodMeritPoints + 1)
+                                    } else if (isElderFlaw(meritOrFlaw.name)) {
+                                        setRemainingElderMeritPoints(remainingElderMeritPoints - 1)
+                                    } else if (isElderMerit(meritOrFlaw.name)) {
+                                        setRemainingElderMeritPoints(remainingElderMeritPoints + 1)
+                                    } else if (isGhoulFlaw(meritOrFlaw.name)) {
+                                        setRemainingFlaws(remainingFlaws + cost)
+                                    } else if (isGhoulMerit(meritOrFlaw.name)) {
+                                        setRemainingMerits(remainingMerits + cost)
+                                    } else {
+                                        type === "flaw" ? setRemainingFlaws(remainingFlaws + cost) : setRemainingMerits(remainingMerits + cost)
+                                    }
                                 }
                             }}
                             style={{ marginRight: "5px" }}
@@ -189,7 +222,11 @@ const MeritsAndFlawsPicker = ({ character, setCharacter, nextStep }: MeritsAndFl
     }
 
     const height = globals.viewportHeightPx
-    const isConfirmDisabled = !globals.devMode && ((isThinBlood && remainingThinbloodMeritPoints < 0) || (isElder && remainingElderMeritPoints < 0))
+    const isConfirmDisabled = !globals.devMode && (
+        (isWerewolf && (remainingMerits < 0 || remainingFlaws < 0)) ||
+        (isThinBlood && remainingThinbloodMeritPoints < 0) || 
+        (isElder && remainingElderMeritPoints < 0)
+    )
     return (
         <Stack align="center" mt={100}>
             {globals.devMode && (
@@ -213,19 +250,30 @@ const MeritsAndFlawsPicker = ({ character, setCharacter, nextStep }: MeritsAndFl
             </Text>
 
             <Tabs color="grape" value={activeTab} onTabChange={setActiveTab}>
-                <Tabs.List>
-                    <Tabs.Tab maw={"30%"} value="merits">
+                <Tabs.List grow>
+                    <Tabs.Tab maw={isWerewolf ? "100%" : "30%"} value="merits">
                         Merits & Flaws
                     </Tabs.Tab>
-                    <Tabs.Tab maw={"70%"} value="loresheets">
-                        Loresheets (optional & advanced)
-                    </Tabs.Tab>
+                    {!isWerewolf && (
+                        <Tabs.Tab maw={"70%"} value="loresheets">
+                            Loresheets (optional & advanced)
+                        </Tabs.Tab>
+                    )}
                 </Tabs.List>
 
                 {/* Merits & Flaws */}
                 <Tabs.Panel value="merits" pt="xs">
                     <ScrollArea h={height - 330} w={"100%"} p={20}>
-                        {isThinBlood ? (
+                        {isWerewolf ? (
+                            <>
+                                <Text fz={globals.largeFontSize} ta={"center"} c={theme.colors.green[6]}>
+                                    Werewolf Merits & Flaws
+                                </Text>
+                                <Text fz={globals.smallFontSize} ta={"center"} c={theme.colors.green[6]}>
+                                    Merit Points: {remainingMerits} | Flaw Points: {remainingFlaws}
+                                </Text>
+                            </>
+                        ) : isThinBlood ? (
                             <>
                                 <Text fz={globals.largeFontSize} ta={"center"} c={theme.colors.grape[6]}>
                                     Pick Thin-blood flaws to gain Thin-blood merit points
@@ -234,8 +282,7 @@ const MeritsAndFlawsPicker = ({ character, setCharacter, nextStep }: MeritsAndFl
                                     Points: {remainingThinbloodMeritPoints}
                                 </Text>
                             </>
-                        ) : null}
-                        {isElder ? (
+                        ) : isElder ? (
                             <>
                                 <Text fz={globals.largeFontSize} ta={"center"} c={theme.colors.orange[6]}>
                                     Pick Elder flaws to gain Elder merit points
@@ -244,7 +291,16 @@ const MeritsAndFlawsPicker = ({ character, setCharacter, nextStep }: MeritsAndFl
                                     Points: {remainingElderMeritPoints}
                                 </Text>
                             </>
-                        ) : null}
+                        ) : (
+                            <>
+                                <Text fz={globals.largeFontSize} ta={"center"} c={theme.colors.blue[6]}>
+                                    Vampire Merits & Flaws
+                                </Text>
+                                <Text fz={globals.smallFontSize} ta={"center"} c={theme.colors.blue[6]}>
+                                    Merit Points: {remainingMerits} | Flaw Points: {remainingFlaws}
+                                </Text>
+                            </>
+                        )}
                         <Grid m={0}>
                             {/* Thinbloods */}
                             {isThinBlood ? thinBloodMeritsAndFlawsComponent(getMeritOrFlawLine) : null}
@@ -255,8 +311,8 @@ const MeritsAndFlawsPicker = ({ character, setCharacter, nextStep }: MeritsAndFl
                             {/* Elders */}
                             {isElder ? elderMeritsAndFlawsComponent(getMeritOrFlawLine) : null}
 
-                            {/* Regular merits and flaws (hidden for Thinbloods, Ghouls, and shows all for Elders) */}
-                            {!isThinBlood && !isGhoul && currentMeritsAndFlaws.map((category) => {
+                            {/* Regular merits and flaws */}
+                            {((isWerewolf) || (!isThinBlood && !isGhoul)) && currentMeritsAndFlaws.map((category) => {
                                 return (
                                     <Grid.Col span={6} key={category.title}>
                                         <Stack spacing={"xs"}>
@@ -280,14 +336,18 @@ const MeritsAndFlawsPicker = ({ character, setCharacter, nextStep }: MeritsAndFl
                 </Tabs.Panel>
 
                 {/* Loresheets */}
-                <Tabs.Panel value="loresheets" pt="xs">
-                    <Loresheets character={character} getMeritOrFlawLine={getMeritOrFlawLine} pickedMeritsAndFlaws={pickedMeritsAndFlaws} />
-                </Tabs.Panel>
+                {!isWerewolf && (
+                    <Tabs.Panel value="loresheets" pt="xs">
+                        <Loresheets character={character} getMeritOrFlawLine={getMeritOrFlawLine} pickedMeritsAndFlaws={pickedMeritsAndFlaws} />
+                    </Tabs.Panel>
+                )}
             </Tabs>
 
             {isConfirmDisabled ? (
                 <Text c={theme.colors.red[9]}>
-                    {isThinBlood && remainingThinbloodMeritPoints < 0 
+                    {isWerewolf && (remainingMerits < 0 || remainingFlaws < 0)
+                        ? `Need to balance points (Merits: ${remainingMerits}, Flaws: ${remainingFlaws})`
+                        : isThinBlood && remainingThinbloodMeritPoints < 0 
                         ? "Need to balance Thin-blood merit points"
                         : isElder && remainingElderMeritPoints < 0
                         ? "Need to balance Elder merit points" 
