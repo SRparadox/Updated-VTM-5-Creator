@@ -274,7 +274,7 @@ const GiftsPicker = ({ character, setCharacter, nextStep }: GiftsPickerProps) =>
                                     category: "character_creation",
                                 })
                                 nextStep()
-                            })
+                            }}
                         >
                             Continue
                         </Button>
