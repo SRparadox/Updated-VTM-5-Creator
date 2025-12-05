@@ -186,6 +186,7 @@
 /* Custom Stepper Styling */
 .custom-stepper {
   position: relative;
+  overflow: visible;
 }
 
 .custom-stepper .mantine-Stepper-stepIcon {
@@ -216,19 +217,25 @@
 
 .custom-stepper .mantine-Stepper-step[data-progress="true"] {
   position: relative;
+  overflow: visible;
 }
 
 .custom-stepper .mantine-Stepper-step[data-progress="true"]::before {
   content: '';
   position: absolute;
-  top: -5px;
-  left: -15px;
-  right: -200px;
-  bottom: -5px;
-  background-color: #dc2626;
+  top: -8px;
+  left: -25px;
+  right: -180px;
+  bottom: -8px;
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 50%, #991b1b 100%);
   z-index: -1;
-  border-radius: 6px;
-  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
+  border-radius: 50px;
+  box-shadow: 
+    0 4px 15px rgba(220, 38, 38, 0.4),
+    0 2px 8px rgba(220, 38, 38, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .custom-stepper .mantine-Stepper-step[data-progress="true"] .mantine-Stepper-stepLabel {
@@ -237,6 +244,16 @@
   background-color: transparent !important;
   position: relative;
   z-index: 1;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.custom-stepper .mantine-Stepper-step[data-progress="true"]:hover::before {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #b91c1c 100%);
+  box-shadow: 
+    0 6px 20px rgba(220, 38, 38, 0.5),
+    0 3px 12px rgba(220, 38, 38, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transform: scale(1.02);
 }
 
 .custom-stepper .mantine-Stepper-step:not([data-progress="true"]) .mantine-Stepper-stepLabel {

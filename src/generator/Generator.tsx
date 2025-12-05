@@ -210,12 +210,12 @@ const Generator = ({ character, setCharacter, selectedStep, setSelectedStep, onB
 
     // Enhanced step navigation with transitions
     const navigateToStep = (newStep: number) => {
-        if (newStep === selectedStep || isTransitioning) return;
+        if (newStep === selectedStep) return;
         
         setTransitionDirection(newStep > selectedStep ? 'forward' : 'backward');
         setIsTransitioning(true);
         
-        // Immediately change step and handle animation
+        // Immediately change step
         setSelectedStep(newStep);
         
         // Reset transition state after animation
@@ -241,12 +241,13 @@ const Generator = ({ character, setCharacter, selectedStep, setSelectedStep, onB
         setCurrentStepContent(getStepComponent());
     }, [selectedStep, character]);
 
-    // Expose navigation function and transition state for sidebar
+    // Clean up any global references
     useEffect(() => {
-        // Store the navigation function globally so AsideBar can use it
-        (window as any).navigateToStep = navigateToStep;
-        (window as any).isGeneratorTransitioning = isTransitioning;
-    }, [selectedStep, isTransitioning]);
+        return () => {
+            delete (window as any).navigateToStep;
+            delete (window as any).isGeneratorTransitioning;
+        };
+    }, []);
 
     return (
         <Stack spacing={0} h={"100%"}>

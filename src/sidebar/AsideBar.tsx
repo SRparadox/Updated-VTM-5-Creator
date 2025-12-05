@@ -39,13 +39,8 @@ const AsideBar = ({ selectedStep, setSelectedStep, character }: AsideBarProps) =
     const handleStepClick = (stepIndex: number) => {
         if (!isStepAccessible(stepIndex) || stepIndex === selectedStep) return
         
-        // Use the global navigation function if available, otherwise fallback to direct step setting
-        const navigateToStep = (window as any).navigateToStep
-        if (navigateToStep) {
-            navigateToStep(stepIndex)
-        } else {
-            setSelectedStep(stepIndex)
-        }
+        // Directly set the step - no complex coordination needed
+        setSelectedStep(stepIndex)
     }
 
     const getStepper = () => {
