@@ -45,7 +45,7 @@ const MeritsAndFlawsPicker = ({ character, setCharacter, nextStep }: MeritsAndFl
     // Calculate merit/flaw points - simplified for werewolf characters
     const getMeritFlawPoints = () => {
         if (isWerewolf) {
-            return { merits: 15, flaws: 7 }; // Standard werewolf points
+            return { merits: 7, flaws: 2 }; // 7 Advantages and 2 Flaws for werewolf
         }
         // Vampire point calculation based on years as vampire
         const yearsAsVampire = character.yearsAsVampire || 0;
@@ -252,7 +252,7 @@ const MeritsAndFlawsPicker = ({ character, setCharacter, nextStep }: MeritsAndFl
             <Tabs color="grape" value={activeTab} onTabChange={setActiveTab}>
                 <Tabs.List grow>
                     <Tabs.Tab maw={isWerewolf ? "100%" : "30%"} value="merits">
-                        Merits & Flaws
+                        {isWerewolf ? "Advantages & Flaws" : "Merits & Flaws"}
                     </Tabs.Tab>
                     {!isWerewolf && (
                         <Tabs.Tab maw={"70%"} value="loresheets">
@@ -267,10 +267,10 @@ const MeritsAndFlawsPicker = ({ character, setCharacter, nextStep }: MeritsAndFl
                         {isWerewolf ? (
                             <>
                                 <Text fz={globals.largeFontSize} ta={"center"} c={theme.colors.green[6]}>
-                                    Werewolf Merits & Flaws
+                                    Werewolf Advantages & Flaws
                                 </Text>
                                 <Text fz={globals.smallFontSize} ta={"center"} c={theme.colors.green[6]}>
-                                    Merit Points: {remainingMerits} | Flaw Points: {remainingFlaws}
+                                    Advantages: {remainingMerits} | Flaws: {remainingFlaws}
                                 </Text>
                             </>
                         ) : isThinBlood ? (
@@ -343,38 +343,53 @@ const MeritsAndFlawsPicker = ({ character, setCharacter, nextStep }: MeritsAndFl
                 )}
             </Tabs>
 
-            {isConfirmDisabled ? (
-                <Text c={theme.colors.red[9]}>
-                    {isWerewolf && (remainingMerits < 0 || remainingFlaws < 0)
-                        ? `Need to balance points (Merits: ${remainingMerits}, Flaws: ${remainingFlaws})`
-                        : isThinBlood && remainingThinbloodMeritPoints < 0 
-                        ? "Need to balance Thin-blood merit points"
-                        : isElder && remainingElderMeritPoints < 0
-                        ? "Need to balance Elder merit points" 
-                        : "Need to balance merit points"}
-                </Text>
-            ) : null}
-            <Button
-                color="grape"
-                disabled={isConfirmDisabled}
-                onClick={() => {
-                    setCharacter({
-                        ...character,
-                        merits: pickedMeritsAndFlaws.filter((l) => l.type === "merit"),
-                        flaws: pickedMeritsAndFlaws.filter((l) => l.type === "flaw" || l.type === "bargainflaw"),
-                    })
+            {/* Sticky confirm button at bottom */}
+            <div style={{ 
+                position: "fixed", 
+                bottom: 20, 
+                left: "50%", 
+                transform: "translateX(-50%)", 
+                backgroundColor: "rgba(0, 0, 0, 0.9)", 
+                padding: "15px 20px", 
+                borderRadius: "10px", 
+                zIndex: 1000,
+                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.3)"
+            }}>
+                {isConfirmDisabled ? (
+                    <Text c={theme.colors.red[9]} mb={10} ta="center">
+                        {isWerewolf && (remainingMerits < 0 || remainingFlaws < 0)
+                            ? `Need to balance points (Advantages: ${remainingMerits}, Flaws: ${remainingFlaws})`
+                            : isThinBlood && remainingThinbloodMeritPoints < 0 
+                            ? "Need to balance Thin-blood merit points"
+                            : isElder && remainingElderMeritPoints < 0
+                            ? "Need to balance Elder merit points" 
+                            : "Need to balance merit points"}
+                    </Text>
+                ) : null}
+                <Button
+                    color="grape"
+                    disabled={isConfirmDisabled}
+                    fullWidth
+                    size="lg"
+                    onClick={() => {
+                        setCharacter({
+                            ...character,
+                            merits: pickedMeritsAndFlaws.filter((l) => l.type === "merit"),
+                            flaws: pickedMeritsAndFlaws.filter((l) => l.type === "flaw" || l.type === "bargainflaw"),
+                        })
 
-                    ReactGA.event({
-                        action: "merits confirm clicked",
-                        category: "merits",
-                        label: pickedMeritsAndFlaws.map((m) => `${m.name}: ${m.level}`).join(", "),
-                    })
+                        ReactGA.event({
+                            action: "merits confirm clicked",
+                            category: "merits",
+                            label: pickedMeritsAndFlaws.map((m) => `${m.name}: ${m.level}`).join(", "),
+                        })
 
-                    nextStep()
-                }}
-            >
-                Confirm
-            </Button>
+                        nextStep()
+                    }}
+                >
+                    Confirm
+                </Button>
+            </div>
         </Stack>
     )
 }
