@@ -223,10 +223,10 @@
 .custom-stepper .mantine-Stepper-step[data-progress="true"]::before {
   content: '';
   position: absolute;
-  top: -8px;
-  left: -25px;
-  right: -180px;
-  bottom: -8px;
+  top: -4px;
+  left: -15px;
+  right: -120px;
+  bottom: -4px;
   background: linear-gradient(135deg, #dc2626 0%, #b91c1c 50%, #991b1b 100%);
   z-index: -1;
   border-radius: 50px;
