@@ -125,10 +125,10 @@ const RitesPicker = ({ character, setCharacter, nextStep }: RitesPickerProps) =>
     const height = globals.viewportHeightPx
 
     return (
-        <div style={{ width: smallScreen ? "393px" : "810px", marginTop: globals.isPhoneScreen ? "60px" : "80px" }}>
+        <div style={{ width: smallScreen ? "393px" : "810px", marginTop: globals.isPhoneScreen ? "40px" : "60px" }}>
             <Stack spacing="lg">
-                <div>
-                    <Text size="xl" weight={700} align="center">
+                <div style={{ marginBottom: "20px" }}>
+                    <Text size="xl" weight={700} align="center" mb="sm">
                         Choose Your Rite
                     </Text>
                     <Text size="sm" color="dimmed" align="center">
@@ -136,7 +136,7 @@ const RitesPicker = ({ character, setCharacter, nextStep }: RitesPickerProps) =>
                     </Text>
                 </div>
 
-                <ScrollArea style={{ height: height - 200 }}>
+                <ScrollArea style={{ height: height - 220, marginTop: "10px" }}>
                     <Accordion variant="contained" multiple>
                         {createCategoryAccordion("Common", commonRites)}
                         {createCategoryAccordion("Social", socialRites)}
