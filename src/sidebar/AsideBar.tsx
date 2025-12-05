@@ -1,4 +1,5 @@
 import { Aside, Center, ScrollArea, Stepper } from "@mantine/core"
+import { useState, useEffect } from "react"
 import { Character } from "../data/UnifiedCharacter"
 import { globals } from "../globals"
 import { getStepLabels } from "../generator/Generator"
@@ -12,6 +13,18 @@ export type AsideBarProps = {
 const AsideBar = ({ selectedStep, setSelectedStep, character }: AsideBarProps) => {
     // Use the same step labels as the Generator for consistency
     const stepLabels = getStepLabels(character)
+    const [isTransitioning, setIsTransitioning] = useState(false)
+    
+    // Sync transition state with Generator
+    useEffect(() => {
+        const checkTransitionState = () => {
+            const generatorTransitioning = (window as any).isGeneratorTransitioning || false
+            setIsTransitioning(generatorTransitioning)
+        }
+        
+        const interval = setInterval(checkTransitionState, 50)
+        return () => clearInterval(interval)
+    }, [])
     
     // Simple accessibility logic - allow navigation to completed steps and next step
     const isStepAccessible = (stepIndex: number) => {
@@ -28,30 +41,59 @@ const AsideBar = ({ selectedStep, setSelectedStep, character }: AsideBarProps) =
         return false
     }
 
+    // Enhanced step navigation with transition coordination
+    const handleStepClick = (stepIndex: number) => {
+        if (!isStepAccessible(stepIndex) || stepIndex === selectedStep) return
+        
+        // Use the global navigation function if available, otherwise fallback to direct step setting
+        const navigateToStep = (window as any).navigateToStep
+        if (navigateToStep) {
+            navigateToStep(stepIndex)
+        } else {
+            setSelectedStep(stepIndex)
+        }
+    }
+
     const getStepper = () => {
         return (
-            <Stepper
-                color="grape"
-                orientation="vertical"
-                active={selectedStep}
-                onStepClick={(x) => {
-                    setSelectedStep(x)
-                }}
-                breakpoint="sm"
-            >
-                {stepLabels.map((label, index) => {
-                    return (
-                        <Stepper.Step
-                            key={label}
-                            label={label}
-                            description=""
-                            disabled={!isStepAccessible(index)}
-                        >
-                            {" "}
-                        </Stepper.Step>
-                    )
-                })}
-            </Stepper>
+            <div className={`custom-stepper ${isTransitioning ? 'transitioning' : ''}`}>
+                <Stepper
+                    color="grape"
+                    orientation="vertical"
+                    active={selectedStep}
+                    onStepClick={handleStepClick}
+                    breakpoint="sm"
+                    styles={(theme) => ({
+                        step: {
+                            transition: 'all 0.3s ease-in-out',
+                        },
+                        stepIcon: {
+                            transition: 'all 0.3s ease-in-out',
+                        },
+                        stepBody: {
+                            transition: 'all 0.3s ease-in-out',
+                        }
+                    })}
+                >
+                    {stepLabels.map((label, index) => {
+                        const isCurrent = index === selectedStep
+                        
+                        return (
+                            <Stepper.Step
+                                key={label}
+                                label={label}
+                                description=""
+                                disabled={!isStepAccessible(index)}
+                                style={{
+                                    cursor: isStepAccessible(index) ? 'pointer' : 'not-allowed'
+                                }}
+                            >
+                                {" "}
+                            </Stepper.Step>
+                        )
+                    })}
+                </Stepper>
+            </div>
         )
     }
 

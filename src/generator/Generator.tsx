@@ -1,5 +1,6 @@
 import { Center, Text, Button, Stack } from "@mantine/core"
 import { IconArrowLeft } from "@tabler/icons-react"
+import { useState, useEffect } from "react"
 import { Character, containsBloodSorcery, isThinBlood, isVampireCharacter, isWerewolfCharacter } from "../data/UnifiedCharacter"
 import AttributePicker from "./components/AttributePicker"
 import BasicsPicker from "./components/BasicsPicker"
@@ -117,6 +118,11 @@ export type GeneratorProps = {
 const containsOblivion = (powers: Power[]) => powers.some((power) => power.discipline === "oblivion");
 
 const Generator = ({ character, setCharacter, selectedStep, setSelectedStep, onBackToSplatSelection }: GeneratorProps) => {
+    // State for managing page transitions
+    const [isTransitioning, setIsTransitioning] = useState(false)
+    const [transitionDirection, setTransitionDirection] = useState<'forward' | 'backward'>('forward')
+    const [currentStepContent, setCurrentStepContent] = useState<JSX.Element | null>(null)
+    
     // Define the props type for all step components
     type StepProps = {
         character: Character;
@@ -202,17 +208,46 @@ const Generator = ({ character, setCharacter, selectedStep, setSelectedStep, onB
 
     const steps = getSteps();
 
+    // Enhanced step navigation with transitions
+    const navigateToStep = (newStep: number) => {
+        if (newStep === selectedStep || isTransitioning) return;
+        
+        setTransitionDirection(newStep > selectedStep ? 'forward' : 'backward');
+        setIsTransitioning(true);
+        
+        // Start fade out animation
+        setTimeout(() => {
+            setSelectedStep(newStep);
+            // After step change, fade in new content
+            setTimeout(() => {
+                setIsTransitioning(false);
+            }, 200);
+        }, 200);
+    };
+
     const getStepComponent = () => {
         if (selectedStep < steps.length) {
             const StepComponent = steps[selectedStep];
             return StepComponent({
                 character,
                 setCharacter,
-                nextStep: () => setSelectedStep(selectedStep + 1),
+                nextStep: () => navigateToStep(selectedStep + 1),
             });
         }
         return <Text size={"xl"}>{`Error: Step ${selectedStep} is not implemented for ${character.splat}`}</Text>;
     };
+
+    // Update currentStepContent when selectedStep changes
+    useEffect(() => {
+        setCurrentStepContent(getStepComponent());
+    }, [selectedStep, character]);
+
+    // Expose navigation function and transition state for sidebar
+    useEffect(() => {
+        // Store the navigation function globally so AsideBar can use it
+        (window as any).navigateToStep = navigateToStep;
+        (window as any).isGeneratorTransitioning = isTransitioning;
+    }, [selectedStep, isTransitioning]);
 
     return (
         <Stack spacing={0} h={"100%"}>
@@ -246,9 +281,21 @@ const Generator = ({ character, setCharacter, selectedStep, setSelectedStep, onB
                     </Button>
                 </Center>
             )}
-            <Center style={{ flex: 1 }}>
-                <ErrorBoundary key={selectedStep}>{getStepComponent()}</ErrorBoundary>
-            </Center>
+            <div className="page-transition-container" style={{ flex: 1 }}>
+                <div 
+                    className={`page-content ${
+                        isTransitioning 
+                            ? (transitionDirection === 'forward' ? 'page-fade-out' : 'page-fade-out')
+                            : 'page-fade-in'
+                    }`}
+                >
+                    <Center style={{ height: '100%' }}>
+                        <ErrorBoundary key={selectedStep}>
+                            {currentStepContent}
+                        </ErrorBoundary>
+                    </Center>
+                </div>
+            </div>
         </Stack>
     )
 }
