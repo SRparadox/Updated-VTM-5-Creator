@@ -65,6 +65,38 @@ export const testTemplate = async (basePdf: string) => {
     return { success: true, error: null }
 }
 
+export const testWerewolfTemplate = async (basePdf: string) => {
+    let form
+    try {
+        const bytes = base64ToArrayBuffer(basePdf)
+        const pdfDoc = await initPDFDocument(bytes)
+
+        form = pdfDoc.getForm()
+    } catch (err) {
+        return { success: false, error: new Error("Can't get form from pdf - is it a fillable pdf?") }
+    }
+    try {
+        form.getTextField("Name").setText("")
+        // Try werewolf fields first, fallback to vampire fields for compatibility
+        try {
+            form.getTextField("Auspice").setText("")
+            form.getTextField("Player").setText("")
+            form.getTextField("Tribe").setText("")
+            form.getTextField("Chronicle").setText("")
+            form.getTextField("Patron").setText("")
+        } catch (e) {
+            // Werewolf fields don't exist in this PDF
+        }
+    } catch (err) {
+        return {
+            success: false,
+            error: new Error("PDF doesn't contain required fields - is it the correct Werewolf character sheet?"),
+        }
+    }
+
+    return { success: true, error: null }
+}
+
 const downloadPdf = (fileName: string, bytes: Uint8Array) => {
     const blob = new Blob([bytes.slice()], { type: "application/pdf" })
     const link = document.createElement("a")
@@ -476,14 +508,41 @@ const createPdf_nerdbert_werewolf = async (character: UnifiedCharacter): Promise
     const pdfDoc = await initPDFDocument(bytes)
     const form = pdfDoc.getForm()
 
-    // Attributes
+    // Debug: Print available fields (remove this after debugging)
+    console.log("Available Werewolf PDF Fields:", JSON.stringify(getFields(form), null, 2))
+
+    // Helper function to safely check if a field exists and set it
+    const safeSetCheckBox = (fieldName: string) => {
+        try {
+            const field = form.getCheckBox(fieldName)
+            field.check()
+            return true
+        } catch (e) {
+            console.warn(`Checkbox field '${fieldName}' not found in PDF`)
+            return false
+        }
+    }
+
+    const safeSetTextField = (fieldName: string, value: string) => {
+        try {
+            const field = form.getTextField(fieldName)
+            field.setText(value)
+            return true
+        } catch (e) {
+            console.warn(`Text field '${fieldName}' not found in PDF`)
+            return false
+        }
+    }
+
+    // Attributes - with error handling
     const attributes = character.attributes
     ;["strength", "dexterity", "stamina", "charisma", "manipulation", "composure", "intelligence", "wits", "resolve"]
         .map((a) => attributesKeySchema.parse(a))
         .forEach((attr) => {
             const lvl = attributes[attr]
             for (let i = 1; i <= lvl; i++) {
-                form.getCheckBox(`${upcase(attr).slice(0, 3)}-${i}`).check()
+                const fieldName = `${upcase(attr).slice(0, 3)}-${i}`
+                safeSetCheckBox(fieldName)
             }
         })
 
@@ -494,7 +553,7 @@ const createPdf_nerdbert_werewolf = async (character: UnifiedCharacter): Promise
             .filter((s) => s.name !== "")
             .map((s) => s.name)
 
-        if (specialties.length > 0) form.getTextField(textFieldKey).setText(specialties.join(", "))
+        if (specialties.length > 0) safeSetTextField(textFieldKey, specialties.join(", "))
     }
 
     const skills = character.skills
@@ -503,41 +562,42 @@ const createPdf_nerdbert_werewolf = async (character: UnifiedCharacter): Promise
         .forEach((skill) => {
             const lvl = skills[skill]
             for (let i = 1; i <= lvl; i++) {
-                form.getCheckBox(`${upcase(skill).slice(0, 3)}-${i}`).check()
+                const fieldName = `${upcase(skill).slice(0, 3)}-${i}`
+                safeSetCheckBox(fieldName)
             }
             setSpecialty(skill, `spec${upcase(skill).slice(0, 3)}`)
         })
 
     const aniKenLvl = skills["animal ken"]
     for (let i = 1; i <= aniKenLvl; i++) {
-        form.getCheckBox(`AniKen-${i}`).check()
+        safeSetCheckBox(`AniKen-${i}`)
     }
     setSpecialty("animal ken", "specAniKen")
 
     // PDF-issue: Lead-1, but specLea  (4 letters vs 3 letters)
     const leadLvl = skills["leadership"]
     for (let i = 1; i <= leadLvl; i++) {
-        form.getCheckBox(`Lead-${i}`).check()
+        safeSetCheckBox(`Lead-${i}`)
     }
     setSpecialty("leadership", "specLea")
 
     const stealthLvl = skills["stealth"]
     for (let i = 1; i <= stealthLvl; i++) {
-        form.getCheckBox(`Ste-${i}`).check()
+        safeSetCheckBox(`Ste-${i}`)
     }
     setSpecialty("stealth", "specStea")
 
     // PDF-issue: "Fri-1" instead of "Fir-1"
     const fireLvl = skills["firearms"]
     for (let i = 1; i <= fireLvl; i++) {
-        form.getCheckBox(`Fri-${i}`).check()
+        safeSetCheckBox(`Fri-${i}`)
     }
     setSpecialty("firearms", "specFir")
 
     // PDF-issue: Stre-1-1, but specStree  (4 letters vs 5 letters)
     const streeLvl = skills["streetwise"]
     for (let i = 1; i <= streeLvl; i++) {
-        form.getCheckBox(`Stre-${i}`).check()
+        safeSetCheckBox(`Stre-${i}`)
     }
     setSpecialty("streetwise", "specStree")
     ;[
@@ -561,7 +621,8 @@ const createPdf_nerdbert_werewolf = async (character: UnifiedCharacter): Promise
         .forEach((skill) => {
             const lvl = skills[skill]
             for (let i = 1; i <= lvl; i++) {
-                form.getCheckBox(`${upcase(skill).slice(0, 4)}-${i}`).check()
+                const fieldName = `${upcase(skill).slice(0, 4)}-${i}`
+                safeSetCheckBox(fieldName)
             }
 
             setSpecialty(skill, `spec${upcase(skill).slice(0, 4)}`)
@@ -570,13 +631,13 @@ const createPdf_nerdbert_werewolf = async (character: UnifiedCharacter): Promise
     // Health - Werewolf health calculation
     const health = 3 + character.attributes["stamina"]
     for (let i = 1; i <= health; i++) {
-        form.getCheckBox(`Health-${i}`).check()
+        safeSetCheckBox(`Health-${i}`)
     }
 
     // Willpower
     const willpower = character.attributes["composure"] + character.attributes["resolve"]
     for (let i = 1; i <= willpower; i++) {
-        form.getCheckBox(`WP-${i}`).check()
+        safeSetCheckBox(`WP-${i}`)
     }
 
     // Werewolf-specific stats
@@ -584,42 +645,39 @@ const createPdf_nerdbert_werewolf = async (character: UnifiedCharacter): Promise
         // Rage
         const rage = character.rage || 1
         for (let i = 1; i <= rage; i++) {
-            try {
-                form.getCheckBox(`Rage-${i}`).check()
-            } catch (e) {
-                // If Rage fields don't exist in PDF, skip
-            }
+            safeSetCheckBox(`Rage-${i}`)
         }
 
         // Gnosis
         const gnosis = character.gnosis || 1
         for (let i = 1; i <= gnosis; i++) {
-            try {
-                form.getCheckBox(`Gnosis-${i}`).check()
-            } catch (e) {
-                // If Gnosis fields don't exist in PDF, skip
+            safeSetCheckBox(`Gnosis-${i}`)
+        }
+
+        // Harmony (Werewolf equivalent of Humanity)
+        const harmony = character.harmony || 7
+        for (let i = 1; i <= harmony; i++) {
+            if (!safeSetCheckBox(`Harmony-${i}`)) {
+                // Fallback to Humanity fields if Harmony doesn't exist
+                safeSetCheckBox(`Humanity-${i}`)
             }
         }
     }
 
     // Top fields - Werewolf character info
-    form.getTextField("Name").setText(character.name)
-    form.getTextField("pcDescription").setText(character.description)
+    safeSetTextField("Name", character.name)
+    safeSetTextField("pcDescription", character.description)
     
     // New Werewolf fields replacing vampire fields
     if (isWerewolfCharacter(character)) {
-        try {
-            form.getTextField("Concept").setText(character.concept || "")
-        } catch (e) {
+        if (!safeSetTextField("Concept", character.concept || "")) {
             // Fallback if Concept field doesn't exist
-            form.getTextField("Predator type")?.setText(character.concept || "")
+            safeSetTextField("Predator type", character.concept || "")
         }
         
-        try {
-            form.getTextField("Chronicle").setText(character.chronicle || "")
-        } catch (e) {
+        if (!safeSetTextField("Chronicle", character.chronicle || "")) {
             // Fallback if Chronicle field doesn't exist  
-            form.getTextField("Ambition")?.setText(character.chronicle || "")
+            safeSetTextField("Ambition", character.chronicle || "")
         }
     }
 
@@ -627,18 +685,14 @@ const createPdf_nerdbert_werewolf = async (character: UnifiedCharacter): Promise
     if (isWerewolfCharacter(character)) {
         // Set tribe name - try "Tribe" field first, fallback to "Clan"
         const tribeName = character.tribe
-        try {
-            form.getTextField("Tribe")?.setText(tribeName || "")
-        } catch (e) {
-            form.getTextField("Clan")?.setText(tribeName || "")
+        if (!safeSetTextField("Tribe", tribeName || "")) {
+            safeSetTextField("Clan", tribeName || "")
         }
         
         // Set auspice - try "Auspice" field first, fallback to predator type field
         const auspiceName = character.auspice
-        try {
-            form.getTextField("Auspice")?.setText(auspiceName || "")
-        } catch (e) {
-            form.getTextField("Predator")?.setText(auspiceName || "")
+        if (!safeSetTextField("Auspice", auspiceName || "")) {
+            safeSetTextField("Predator", auspiceName || "")
         }
         
         // For werewolf, we use ban and favor instead of bane and compulsion
@@ -649,38 +703,42 @@ const createPdf_nerdbert_werewolf = async (character: UnifiedCharacter): Promise
             const patronText = tribe.patron || ""
             
             // Try to set tribe-specific fields, fall back to clan fields if werewolf sheet doesn't have them yet
-            try {
-                form.getTextField("TribeBan")?.setText(banText)
-                form.getTextField("TribeFavor")?.setText(favorText)
-                form.getTextField("Patron")?.setText(patronText)
-            } catch (e) {
+            if (!safeSetTextField("TribeBan", banText) || 
+                !safeSetTextField("TribeFavor", favorText) || 
+                !safeSetTextField("Patron", patronText)) {
                 // Fallback to original clan fields if werewolf sheet isn't ready
-                try {
-                    form.getTextField("ClanBane")?.setText(banText)
-                    form.getTextField("ClanCompulsion")?.setText(favorText)
-                    form.getTextField("Sire")?.setText(patronText)
-                } catch (e2) {
-                    // If neither work, just continue
-                }
+                safeSetTextField("ClanBane", banText)
+                safeSetTextField("ClanCompulsion", favorText)
+                safeSetTextField("Sire", patronText)
             }
             
-            // Try to set renown information
+            // Try to set renown information from tribe
+            const renownField = `${tribe.renownType}Renown`
             try {
-                const renownField = `${tribe.renownType}Renown`
                 const existingRenown = form.getTextField(renownField)?.getText() || "0"
                 const newRenown = parseInt(existingRenown) + tribe.renownDots
-                form.getTextField(renownField)?.setText(newRenown.toString())
+                safeSetTextField(renownField, newRenown.toString())
             } catch (e) {
                 // If renown fields don't exist yet, continue
             }
         }
 
+        // Set individual renown values from character
+        if (character.renown) {
+            safeSetTextField("GloryRenown", character.renown.glory.toString())
+            safeSetTextField("HonorRenown", character.renown.honor.toString())  
+            safeSetTextField("WisdomRenown", character.renown.wisdom.toString())
+            
+            // Alternative field names if the above don't work
+            safeSetTextField("Glory", character.renown.glory.toString())
+            safeSetTextField("Honor", character.renown.honor.toString())
+            safeSetTextField("Wisdom", character.renown.wisdom.toString())
+        }
+
         // Pack info instead of sire
-        try {
-            form.getTextField("Pack").setText(character.pack || "")
-        } catch (e) {
+        if (!safeSetTextField("Pack", character.pack || "")) {
             // Fallback to Sire field if Pack doesn't exist
-            form.getTextField("Sire")?.setText(character.pack || "")
+            safeSetTextField("Sire", character.pack || "")
         }
     }
 
@@ -718,18 +776,24 @@ const createPdf_nerdbert_werewolf = async (character: UnifiedCharacter): Promise
     )
     for (const [disciplineIndex, powers] of Object.values(powersByDiscipline).entries()) {
         const di = disciplineIndex + 1
-        form.getTextField(`Disc${di}`).setText(upcase(powers[0].discipline))
+        safeSetTextField(`Disc${di}`, upcase(powers[0].discipline))
         for (const [powerIndex, power] of powers.entries()) {
             const pi = powerIndex + 1
-            form.getTextField(`Disc${di}_Ability${pi}`).setText(getGiftText(power))
-            form.getTextField(`Disc${di}_Ability${pi}`).disableRichFormatting()
-            form.getCheckBox(`Disc${di}-${pi}`).check()
+            if (safeSetTextField(`Disc${di}_Ability${pi}`, getGiftText(power))) {
+                try {
+                    form.getTextField(`Disc${di}_Ability${pi}`)?.disableRichFormatting()
+                } catch (e) {}
+            }
+            safeSetCheckBox(`Disc${di}-${pi}`)
         }
         if (powers[0].discipline === "blood sorcery") {
             for (const [ritualIndex, ritual] of (character.rituals || []).entries()) {
                 const ri = powers.length + ritualIndex + 1
-                form.getTextField(`Disc${di}_Ability${ri}`).setText(getGiftText(ritual))
-                form.getTextField(`Disc${di}_Ability${ri}`).disableRichFormatting()
+                if (safeSetTextField(`Disc${di}_Ability${ri}`, getGiftText(ritual))) {
+                    try {
+                        form.getTextField(`Disc${di}_Ability${ri}`)?.disableRichFormatting()
+                    } catch (e) {}
+                }
             }
         }
     }
@@ -738,24 +802,21 @@ const createPdf_nerdbert_werewolf = async (character: UnifiedCharacter): Promise
     const meritsAndFlaws = [...character.merits, ...character.flaws]
     meritsAndFlaws.forEach(({ name, level, summary }, i) => {
         const fieldNum = i + 1
-        form.getTextField(`Merit${fieldNum}`).setText(name + ": " + summary)
+        safeSetTextField(`Merit${fieldNum}`, name + ": " + summary)
         for (let l = 1; l <= level; l++) {
-            try {
-                form.getCheckBox(`Merit${fieldNum}-${l}`).check()
-            } catch (e) {
-                // If checkbox doesn't exist, skip
-            }
+            safeSetCheckBox(`Merit${fieldNum}-${l}`)
         }
     })
 
     // Touchstones & Convictions
-    form.getTextField("Convictions").setText(
-        (character.touchstones || []).map(({ name, description, conviction }) => `${name}: ${conviction}\n${description}`).join("\n\n")
-    )
+    const touchstonesText = (character.touchstones || []).map(({ name, description, conviction }) => 
+        `${name}: ${conviction}\n${description}`
+    ).join("\n\n")
+    safeSetTextField("Convictions", touchstonesText)
 
     // Experience - use character experience value directly
     const experience = character.experience || 0
-    form.getTextField("tEXP").setText(`${experience} XP`)
+    safeSetTextField("tEXP", `${experience} XP`)
 
     // Fixes bug where text that is too long for field doesn't show until clicked
     // see https://github.com/Hopding/pdf-lib/issues/569#issuecomment-1087328416 and https://stackoverflow.com/questions/73058238/some-pdf-textfield-content-not-visible-until-clicked
@@ -824,5 +885,15 @@ export const printFieldNames = async () => {
     const pdfDoc = await initPDFDocument(bytes)
     const form = pdfDoc.getForm()
 
-    console.log(JSON.stringify(getFields(form), null, 2))
+    console.log("Vampire PDF Fields:", JSON.stringify(getFields(form), null, 2))
+}
+
+export const printWerewolfFieldNames = async () => {
+    const basePdf = base64Pdf_werewolf
+    const bytes = base64ToArrayBuffer(basePdf)
+
+    const pdfDoc = await initPDFDocument(bytes)
+    const form = pdfDoc.getForm()
+
+    console.log("Werewolf PDF Fields:", JSON.stringify(getFields(form), null, 2))
 }
