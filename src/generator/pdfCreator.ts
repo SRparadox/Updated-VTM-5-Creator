@@ -508,41 +508,68 @@ const createPdf_nerdbert_werewolf = async (character: UnifiedCharacter): Promise
     const pdfDoc = await initPDFDocument(bytes)
     const form = pdfDoc.getForm()
 
-    // Debug: Print available fields (remove this after debugging)
-    console.log("Available Werewolf PDF Fields:", JSON.stringify(getFields(form), null, 2))
-
-    // Helper function to safely check if a field exists and set it
-    const safeSetCheckBox = (fieldName: string) => {
-        try {
-            const field = form.getCheckBox(fieldName)
-            field.check()
-            return true
-        } catch (e) {
-            console.warn(`Checkbox field '${fieldName}' not found in PDF`)
-            return false
+    // Get all available field names for debugging
+    const availableFields = getFields(form)
+    console.log("Total fields in werewolf PDF:", Object.keys(availableFields).length)
+    console.log("Available field names:", Object.keys(availableFields).sort())
+    
+    // Helper function to try multiple field name variations for checkboxes
+    const safeSetCheckBox = (fieldName: string, alternatives: string[] = []) => {
+        const fieldsToTry = [fieldName, ...alternatives]
+        
+        for (const name of fieldsToTry) {
+            try {
+                const field = form.getCheckBox(name)
+                field.check()
+                console.log(`✓ Successfully set checkbox: ${name}`)
+                return true
+            } catch (e) {
+                // Continue to next field name
+            }
         }
+        console.warn(`✗ Checkbox field '${fieldName}' (and ${alternatives.length} alternatives) not found in PDF`)
+        return false
     }
 
-    const safeSetTextField = (fieldName: string, value: string) => {
-        try {
-            const field = form.getTextField(fieldName)
-            field.setText(value)
-            return true
-        } catch (e) {
-            console.warn(`Text field '${fieldName}' not found in PDF`)
-            return false
+    // Helper function to try multiple field name variations for text fields
+    const safeSetTextField = (fieldName: string, value: string, alternatives: string[] = []) => {
+        const fieldsToTry = [fieldName, ...alternatives]
+        
+        for (const name of fieldsToTry) {
+            try {
+                const field = form.getTextField(name)
+                field.setText(value)
+                console.log(`✓ Successfully set text field: ${name} = "${value}"`)
+                return true
+            } catch (e) {
+                // Continue to next field name
+            }
         }
+        console.warn(`✗ Text field '${fieldName}' (and ${alternatives.length} alternatives) not found in PDF`)
+        return false
     }
 
-    // Attributes - with error handling
+    // Attributes - with error handling and multiple naming patterns
     const attributes = character.attributes
     ;["strength", "dexterity", "stamina", "charisma", "manipulation", "composure", "intelligence", "wits", "resolve"]
         .map((a) => attributesKeySchema.parse(a))
         .forEach((attr) => {
             const lvl = attributes[attr]
+            const attrShort = upcase(attr).slice(0, 3)
+            const attrFull = upcase(attr)
+            
             for (let i = 1; i <= lvl; i++) {
-                const fieldName = `${upcase(attr).slice(0, 3)}-${i}`
-                safeSetCheckBox(fieldName)
+                const alternatives = [
+                    `${attrFull}-${i}`,
+                    `${attrShort}${i}`,
+                    `${attrFull}${i}`,
+                    `${attr}-${i}`,
+                    `${attr}${i}`,
+                    `Attribute_${attrShort}_${i}`,
+                    `${attrShort.toLowerCase()}-${i}`,
+                    `${attrFull.toLowerCase()}-${i}`
+                ]
+                safeSetCheckBox(`${attrShort}-${i}`, alternatives)
             }
         })
 

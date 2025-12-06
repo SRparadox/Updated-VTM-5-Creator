@@ -2,7 +2,7 @@ import { faFileArrowUp, faPlay, faTrash } from "@fortawesome/free-solid-svg-icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { ActionIcon, Alert, Button, FileButton, Stack, Text, Box, Group, Title, Container } from "@mantine/core"
 import { useDisclosure } from "@mantine/hooks"
-import { IconBrandGithub, IconBrandReddit, IconBrandTwitter } from "@tabler/icons-react"
+import { IconBrandGithub, IconBrandReddit } from "@tabler/icons-react"
 import { useEffect, useState } from "react"
 import LoadModal from "../../components/LoadModal"
 import ResetModal from "../../components/ResetModal"

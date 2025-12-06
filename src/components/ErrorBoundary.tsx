@@ -34,13 +34,7 @@ class ErrorBoundary extends Component<Props, State> {
                         <Text fz={"xl"} ta={"center"}>
                             There was an error: {this.state.error?.message}
                         </Text>
-                        <Text fz={"lg"} ta={"center"} mb={"xl"}>
-                            Send a screenshot of this to me on{" "}
-                            <a target="_blank" rel="noreferrer" href="https://twitter.com/Odin68092534">
-                                Twitter
-                            </a>{" "}
-                            to help me fix it
-                        </Text>
+
                         <Text fz={"xs"} ta={"center"}>
                             {this.state.error?.stack}
                         </Text>

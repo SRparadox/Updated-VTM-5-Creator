@@ -3,7 +3,7 @@ import { faFileExport, faFloppyDisk, faTrash } from "@fortawesome/free-solid-svg
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { ActionIcon, Alert, Button, Stack, Text } from "@mantine/core"
 import { useDisclosure } from "@mantine/hooks"
-import { IconAlertCircle, IconBrandReddit, IconBrandTwitter } from "@tabler/icons-react"
+import { IconAlertCircle, IconBrandReddit } from "@tabler/icons-react"
 import ResetModal from "../../components/ResetModal"
 import { Character } from "../../data/UnifiedCharacter"
 import { downloadCharacterSheet } from "../pdfCreator"
@@ -49,10 +49,6 @@ const Final = ({ character, setCharacter, setSelectedStep }: FinalProps) => {
                         c={"#ff6314"}
                     >
                         <IconBrandReddit />
-                    </ActionIcon>
-                    &nbsp;
-                    <ActionIcon display={"inline"} component="a" href="https://twitter.com/Odin68092534" variant="default" c={"#1DA1F2"}>
-                        <IconBrandTwitter />
                     </ActionIcon>
                 </Text>
             </div>
@@ -129,13 +125,7 @@ const Final = ({ character, setCharacter, setSelectedStep }: FinalProps) => {
                     <Text fz={"xl"} ta={"center"}>
                         There was a download-error: {downloadError.message}
                     </Text>
-                    <Text fz={"lg"} ta={"center"} mb={"xl"}>
-                        Send a screenshot of this to me on{" "}
-                        <a target="_blank" rel="noreferrer" href="https://twitter.com/Odin68092534">
-                            Twitter
-                        </a>{" "}
-                        to help me fix it
-                    </Text>
+
                     <Text fz={"xs"} ta={"center"}>
                         {downloadError.stack}
                     </Text>
