@@ -34,6 +34,9 @@ const getAvailableGifts = (character: Character): Gift[] => {
         availableGifts.push(...getGiftsByCategory(werewolfChar.tribe as GiftCategory))
     }
     
+    // Add Beyond Supernatural gifts (available to all Garou who have learned them)
+    availableGifts.push(...getGiftsByCategory("Beyond Supernatural"))
+    
     return availableGifts
 }
 
@@ -88,10 +91,16 @@ const GiftsPicker = ({ character, setCharacter, nextStep }: GiftsPickerProps) =>
             return tribeGiftsCount < 1
         }
         
+        // Check if this is a Beyond Supernatural gift
+        if (giftCategory === "Beyond Supernatural") {
+            const beyondSupernaturalCount = allPickedGifts.filter((p: Gift) => p.category === "Beyond Supernatural").length
+            return beyondSupernaturalCount < 1
+        }
+        
         return false
     }
 
-    const validToMove = pickedGifts.length === 3 // Must have exactly 3 gifts: 1 Auspice, 1 Native, 1 Tribe
+    const validToMove = pickedGifts.length >= 3 && pickedGifts.length <= 4 // Must have 3-4 gifts: 1 Auspice, 1 Native, 1 Tribe, and optionally 1 Beyond Supernatural
 
     const createGiftCard = (gift: Gift) => {
         const picked = isPicked(gift)
@@ -236,7 +245,7 @@ const GiftsPicker = ({ character, setCharacter, nextStep }: GiftsPickerProps) =>
                         Choose Your Gifts
                     </Text>
                     <Text size="sm" color="dimmed" align="center">
-                        Select 3 Gifts: 1 from your Auspice, 1 Native Gift, and 1 from your Tribe
+                        Select 3-4 Gifts: 1 from your Auspice, 1 Native Gift, 1 from your Tribe, and optionally 1 Beyond Supernatural
                     </Text>
                 </div>
 
@@ -251,7 +260,7 @@ const GiftsPicker = ({ character, setCharacter, nextStep }: GiftsPickerProps) =>
                 <div style={{ position: "sticky", bottom: 0, backgroundColor: "rgba(0, 0, 0, 0.8)", padding: "10px", borderRadius: "8px", marginTop: "10px" }}>
                     <Group position="center" spacing="lg">
                         <Text size="sm" color="dimmed">
-                            Selected: {pickedGifts.length}/3 gifts
+                            Selected: {pickedGifts.length}/3-4 gifts
                         </Text>
                         <Button
                             color="red"
