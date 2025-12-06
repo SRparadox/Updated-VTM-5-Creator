@@ -11,6 +11,12 @@ export type BackgroundsData = {
     backgrounds: MeritOrFlaw[]
 }
 
+export type WerewolfLoresheet = {
+    title: string
+    summary: string
+    merits: MeritOrFlaw[]
+}
+
 // Caern Merits & Flaws
 export const caernMeritsAndFlaws: MeritsAndFlaws = {
     title: "🏔️ Caern",
@@ -226,6 +232,65 @@ export const backgroundsData: BackgroundsData = {
         { name: "Totem", cost: [1, 2, 3, 4, 5], summary: "Shared pack totem spirit" }
     ]
 }
+
+// Loresheets
+export const werewolfLoresheets: WerewolfLoresheet[] = [
+    {
+        title: "Monkeywrenchers",
+        summary: "You've run with a pack — a large, decentralized, geographically disparate pack — of Garou whose collective aim is to completely fuck up the efforts of Pentex Group fronts specifically. The Monkeywrenchers share information about which fronts are active, where, and how to hamstring them.",
+        merits: [
+            { name: "Demagogue", cost: [1], summary: "You know how to rile up the workers. Once per story, whenever you attempt to sway a human crowd into violent action, you may add two dice to the relevant pool to do so." },
+            { name: "Firebug", cost: [2], summary: "You have a knack for setting structures on fire, using only the poorly protected materials that workers often leave on site. If you can spend a number of days preparing beforehand, you can trigger a structure fire at the exact moment in the scene you choose, regardless of whether you're present." },
+            { name: "Blowout Bash", cost: [3], summary: "Once per story, you can stage an event such as a benefit concert, fundraiser, protest, or rally that draws public attention to the cause or crisis you declare. Your Fame increases by 3 locally for the remainder of the session." },
+            { name: "Delegator", cost: [4], summary: "You're adept at the art of shifting blame and avoiding accountability. Gain two dice to relevant pools whenever you attempt to convince someone that the results of your actions were actually set in motion by someone else. You're at -1 dice pools to Social tests with werewolves during a scene in which you make use of this effect." },
+            { name: "Paper Trail", cost: [5], summary: "If documentation exists that can tie a Pentex front to a specific transgression, you can come up with it. You may use this effect once per chronicle — and either Pentex operations become aware of you, or you can give up a fellow Monkeywrencher." }
+        ]
+    },
+    {
+        title: "Project Twilight",
+        summary: "Whatever you want to call it, it's a fed-funded kill-squad. You've got some dirt on the organization that you can use to influence its operations. It's really dangerous shit — you've got some sway over extremely well-funded governmental organizations that exist to stamp out the werewolf menace.",
+        merits: [
+            { name: "Improper Procedure", cost: [1], summary: "Once per story, you can make a minor but relevant piece of evidence (a photograph, a file folder, a DNA test result) disappear, whether as a result of luck, knowledge of process, or being childhood friends with someone on the scene." },
+            { name: "Airtight Alibi", cost: [2], summary: "Once per story, you can provide (false) proof of being somewhere you weren't. The downside is that the proof is on federal departmental letterhead, and it's both classified and redacted." },
+            { name: "Stolen Valor", cost: [3], summary: "Project Twilight might be an off-the-books wetwork squad, but it's an effective one, and you were instrumental in its success in taking down a notorious Unusual Threat. Once per story, you can claim credit for this kill to gain three bonus dice on a Social test. Subsequent Social tests in the same scene suffer a one-die penalty." },
+            { name: "Heads Up", cost: [4], summary: "Once per chronicle you learn critical details (when, where, personnel) beforehand for any direct action that Project Twilight plans to take against your pack, if any." },
+            { name: "The Red Phone", cost: [5], summary: "A well-placed somebody in the organization owes you a favor. Once per chronicle, your go-between agrees to take action on your 'anonymous tip.' You gain five dice to distribute as you like on any roll(s) involving the operation of werewolf-hunting organizations." }
+        ]
+    },
+    {
+        title: "Umbral Traveler",
+        summary: "The Spirit Wilds constitute a mystery even to the Garou, whose animistic outlook makes them familiar with the spirit world but not strictly of it. To those Garou who make explorations of the Umbra their specialty, one can understand the rules of the spirit world if one knows what to look for.",
+        merits: [
+            { name: "Silver Steps", cost: [1], summary: "In the Umbra, the Garou leaves behind silvery footsteps that only they themselves can see, which helps them find a way back across the Gauntlet. The Difficulty to return to the physical world from the Umbra by using the Rite of Shadow Passage is reduced by 1 when you're the Rite master." },
+            { name: "Web Music", cost: [2], summary: "You have observed the movements of pattern spiders, and once per scene, when their webs are present, you may pluck those strands like musical strings and draw the attention of any single pattern spider present, whether visible or otherwise." },
+            { name: "Underworld Initiate", cost: [3], summary: "You're aware that there are parts of the Umbra that belong to a different kind of spirit and a different timbre of emotional resonance. You can see what can only be described as 'ghosts' when they're present in portions of the Umbra or when they haunt the physical world." },
+            { name: "Spirit Sustenance", cost: [4], summary: "You are particularly attuned to the spirit world, and you suffer only Superficial Health damage when you fail to spend Willpower to stay in the Umbra for a protracted period of time." },
+            { name: "Chthonic Secret", cost: [5], summary: "You're the current keeper of a monumental Umbral secret, such as the location of a powerful spirit's demesne or the hunting grounds of a legendary Garou spirit, handed down to you by the previous keeper of the secret." }
+        ]
+    },
+    {
+        title: "Renunciate of Fenris",
+        summary: "Not every member of the Cult of Fenris followed their fellows down the path of hauglosk. Some broke their compact with Wolf once they saw the direction the tribe was headed and pledged themselves to another tribe.",
+        merits: [
+            { name: "Bootlicker", cost: [1], summary: "Even among werewolves, the Cult of Fenris has a violent reputation and a predilection for following strongman-type leaders. Once per game session, you regain one Willpower after a Garou of greater Renown than you orders you into a conflict during which you spent Willpower on a reroll." },
+            { name: "Repudiated Cultist", cost: [2], summary: "Esteemed Garou were present during your renunciation of Fenris and made you a bit of an example for others. Your Renown is considered one lower than its actual value during social interactions at moots. However, if you ever have a situation that would cause you to Lose the Wolf because of a failed Rage check, you may make an additional Rage check." },
+            { name: "Unbroken", cost: [3], summary: "Despite renouncing Wolf, the great spirit's patronage taught you fearlessness that persists within you. When a Gift or other supernatural effect would engender fear in you, you may gain two dice with which to resist. Should you do so, however, you lose one die to resist frenzy for the remainder of the scene." },
+            { name: "Channeled Fury", cost: [4], summary: "Fenris' asperity remains strong in you. Once per scene you may opt to automatically succeed at any single Rage check to activate a Gift with a pool roll, but you also incur an extra Brutal result on that pool roll." },
+            { name: "Last Howl", cost: [5], summary: "You have witnessed firsthand the effects of hauglosk, having watched the glint of fanatical zeal fall kindle in your compatriots' eyes — but not so in yours. Once per chronicle, if you mark your last hauglosk box, you may make a Rage check; if that Rage check fails, untick that last hauglosk box." }
+        ]
+    },
+    {
+        title: "The Black Spiral",
+        summary: "Many Garou believe the Black Spiral to be hidden somewhere in the depths of the Umbra — probably a portion of it foully proximate to the Wyrm. Whatever the case, the Black Spiral is a place of import to the Wyrm-aligned of the like-named tribe.",
+        merits: [
+            { name: "Black Spiral Glyph", cost: [1], summary: "You know how to convincingly make the true Black Spiral glyph, which you might use as bait or to mislead others, but those who know you possess this ability are suspicious of you, and you suffer a -2 to all Social dice pools when interacting with those Garou, your present pack excepted." },
+            { name: "Bad Company", cost: [2], summary: "You have contact, and perhaps even a sort of strange trust, with a Black Spiral Dancer, a remarkably stable fomor, or even a vampire or other supernatural creature that has some association with the foulness of the Wyrm. Once per story you can call upon this contact for information. Your Renown for social interaction drops by 2 for the remainder of the session in which you do so." },
+            { name: "Spiral Cyst", cost: [3], summary: "Vile burrows or refuges scarred with the Black Spiral glyph mar the world, serving as bolt-holes for agents of the Wyrm. You know the location of one such place in your territory, and you can temporarily subvert it as a secure Safe House in which you are Zeroed while you hide there." },
+            { name: "Inviolate", cost: [4], summary: "One particular Wyrm-aligned spirit refuses to harm you, even if it don't know who you are, owing to some secret pact forged in a forgotten time. As great as this arrangement may seem, if anyone sees the spirit avoid you or show deference... you get the picture." },
+            { name: "Solving the Labyrinth", cost: [5], summary: "Once per story, you can attempt to persuade a Black Spiral Dancer to emancipate themselves from the horrors of Bat's patronage. To do so, you must completely isolate the subject and make a test of Intelligence or Charisma + Insight, far away from the influence of cruel spirits." }
+        ]
+    }
+]
 
 // Main merits and flaws array
 export const meritsAndFlaws: MeritsAndFlaws[] = [

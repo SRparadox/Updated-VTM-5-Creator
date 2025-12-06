@@ -1,8 +1,9 @@
 import { Button, Card, Grid, ScrollArea, Text } from "@mantine/core"
 import { useState } from "react"
 import { Loresheet, MeritOrFlaw, loresheets } from "../../data/MeritsAndFlaws"
+import { WerewolfLoresheet, werewolfLoresheets } from "../../data/WerewolfMeritsAndFlaws"
 import { globals } from "../../globals"
-import { Character, MeritFlaw } from "../../data/UnifiedCharacter"
+import { Character, MeritFlaw, isWerewolfCharacter } from "../../data/UnifiedCharacter"
 import { intersection } from "../utils"
 import React from "react"
 
@@ -15,16 +16,24 @@ type LoresheetProps = {
 // TODO: Create text-filter for loresheets?
 export const Loresheets = ({ character, getMeritOrFlawLine, pickedMeritsAndFlaws }: LoresheetProps) => {
     const [openLoresheetTitle, setOpenLoresheetTitle] = useState("")
-    const openLoresheet = loresheets.find((sheet) => sheet.title === openLoresheetTitle)
+    const isWerewolf = isWerewolfCharacter(character)
+    
+    // Use werewolf loresheets for werewolf characters, vampire loresheets for others
+    const currentLoresheets = isWerewolf ? werewolfLoresheets : loresheets
+    const openLoresheet = currentLoresheets.find((sheet) => sheet.title === openLoresheetTitle)
 
-    const getLoresheetCol = (loresheet: Loresheet) => {
+    const getLoresheetCol = (loresheet: Loresheet | WerewolfLoresheet) => {
         const sheetPicked =
             intersection(
                 pickedMeritsAndFlaws.map((m) => m.name),
                 loresheet.merits.map((m) => m.name)
             ).length > 0
 
-        const requirementsMet = loresheet.requirementFunctions.every((fun) => fun(character))
+        // Vampire loresheets have requirement functions, werewolf loresheets don't
+        const requirementsMet = 'requirementFunctions' in loresheet 
+            ? loresheet.requirementFunctions.every((fun) => fun(character))
+            : true // Werewolf loresheets are available to all werewolves
+        
         if (!requirementsMet) return <React.Fragment key={loresheet.title}></React.Fragment>
 
         return (
@@ -62,7 +71,7 @@ export const Loresheets = ({ character, getMeritOrFlawLine, pickedMeritsAndFlaws
                         setOpenLoresheetTitle={setOpenLoresheetTitle}
                     />
                 ) : (
-                    loresheets.map(getLoresheetCol)
+                    currentLoresheets.map(getLoresheetCol)
                 )}
             </Grid>
         </ScrollArea>
@@ -74,7 +83,7 @@ const OpenedLoresheet = ({
     getMeritOrFlawLine,
     setOpenLoresheetTitle,
 }: {
-    loresheet: Loresheet
+    loresheet: Loresheet | WerewolfLoresheet
     getMeritOrFlawLine: (meritOrFlaw: MeritOrFlaw, type: "flaw" | "merit") => JSX.Element
     setOpenLoresheetTitle: (t: string) => void
 }) => {

@@ -251,14 +251,12 @@ const MeritsAndFlawsPicker = ({ character, setCharacter, nextStep }: MeritsAndFl
 
             <Tabs color="grape" value={activeTab} onTabChange={setActiveTab}>
                 <Tabs.List grow>
-                    <Tabs.Tab maw={isWerewolf ? "100%" : "30%"} value="merits">
+                    <Tabs.Tab maw={isWerewolf ? "50%" : "30%"} value="merits">
                         {isWerewolf ? "Advantages & Flaws" : "Merits & Flaws"}
                     </Tabs.Tab>
-                    {!isWerewolf && (
-                        <Tabs.Tab maw={"70%"} value="loresheets">
-                            Loresheets (optional & advanced)
-                        </Tabs.Tab>
-                    )}
+                    <Tabs.Tab maw={isWerewolf ? "50%" : "70%"} value="loresheets">
+                        Loresheets (optional & advanced)
+                    </Tabs.Tab>
                 </Tabs.List>
 
                 {/* Merits & Flaws */}
@@ -336,11 +334,9 @@ const MeritsAndFlawsPicker = ({ character, setCharacter, nextStep }: MeritsAndFl
                 </Tabs.Panel>
 
                 {/* Loresheets */}
-                {!isWerewolf && (
-                    <Tabs.Panel value="loresheets" pt="xs">
-                        <Loresheets character={character} getMeritOrFlawLine={getMeritOrFlawLine} pickedMeritsAndFlaws={pickedMeritsAndFlaws} />
-                    </Tabs.Panel>
-                )}
+                <Tabs.Panel value="loresheets" pt="xs">
+                    <Loresheets character={character} getMeritOrFlawLine={getMeritOrFlawLine} pickedMeritsAndFlaws={pickedMeritsAndFlaws} />
+                </Tabs.Panel>
             </Tabs>
 
             {/* Sticky confirm button at bottom */}
